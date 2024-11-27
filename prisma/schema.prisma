@@ -133,7 +133,7 @@ model Estimate {
   MovingInfo        MovingInfo      @relation(fields: [movingInfoId], references: [id], onDelete: Cascade)
   movingInfoId      Int             @map("moving_info_id")
   isMovingComplete  Boolean         @default(false) @map("is_moving_complete")
-  status            Int
+  status            Int             @default(1)
   isAssigned        Boolean         @default(false) @map("is_assigned")
   price             Int
   comment           String
