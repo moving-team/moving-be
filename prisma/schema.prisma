@@ -14,14 +14,16 @@ datasource db {
 }
 
 model User {
-  id          Int     @id @default(autoincrement())
-  userType    String  @map("user_type")
-  name        String  @db.VarChar(10)
-  email       String  @unique @db.VarChar(254)
-  password    String? @db.VarChar(60)
+  id          Int      @id @default(autoincrement())
+  userType    String   @map("user_type")
+  name        String   @db.VarChar(10)
+  email       String   @unique @db.VarChar(254)
+  password    String?  @db.VarChar(60)
   provider    String?
-  providerId  String? @map("provider_id")
-  phoneNumber String  @map("phone_number") @db.VarChar(11)
+  providerId  String?  @map("provider_id")
+  phoneNumber String   @map("phone_number") @db.VarChar(11)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   Mover        Mover[]
   Customer     Customer[]
@@ -31,17 +33,19 @@ model User {
 }
 
 model Mover {
-  id                Int     @id @default(autoincrement())
-  User              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId            Int     @map("user_id")
-  profileImage      String? @map("profile_image")
-  nickname          String  @unique @db.VarChar(10)
+  id                Int      @id @default(autoincrement())
+  User              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            Int      @map("user_id")
+  profileImage      String?  @map("profile_image")
+  nickname          String   @unique @db.VarChar(10)
   career            Int
   summary           String
   description       String
-  serviceRegion     Int[]   @map("service_region")
-  serviceType       Int[]   @map("service_type")
-  confirmationCount Int     @map("confirmation_count")
+  serviceRegion     Int[]    @map("service_region")
+  serviceType       Int[]    @map("service_type")
+  confirmationCount Int      @map("confirmation_count")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 
   Review                  Review[]
   Estimate                Estimate[]
@@ -52,13 +56,15 @@ model Mover {
 }
 
 model Customer {
-  id           Int     @id @default(autoincrement())
-  User         User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId       Int     @map("user_id")
-  profileImage String? @map("profile_image")
-  serviceType  Int[]   @map("service_type")
+  id           Int      @id @default(autoincrement())
+  User         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       Int      @map("user_id")
+  profileImage String?  @map("profile_image")
+  serviceType  Int[]    @map("service_type")
+  region       Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
-  region          Int
   Review          Review[]
   EstimateRequest EstimateRequest[]
   Estimate        Estimate[]
@@ -75,16 +81,20 @@ model Review {
   moverId     Int      @map("mover_id")
   score       Int
   description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@map("review")
 }
 
 model MovingInfo {
-  id         Int    @id @default(autoincrement())
-  movingType Int    @map("moving_type")
-  movingDate String @map("moving_date")
+  id         Int      @id @default(autoincrement())
+  movingType Int      @map("moving_type")
+  movingDate String   @map("moving_date")
   departure  String
   arrival    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   EstimateRequest EstimateRequest[]
   Estimate        Estimate[]
@@ -101,6 +111,8 @@ model EstimateRequest {
   comment      String?
   isConfirmed  Boolean    @default(false) @map("is_confirmed")
   isCancelled  Boolean    @default(false) @map("is_cancelled")
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
 
   Estimate                Estimate[]
   AssignedEstimateRequest AssignedEstimateRequest[]
@@ -116,6 +128,8 @@ model AssignedEstimateRequest {
   moverId           Int             @map("mover_id")
   isRejected        Boolean         @default(false) @map("is_rejected")
   rejectionReason   String?         @map("rejection_reason")
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
 
   Notification Notification[]
 
@@ -137,6 +151,8 @@ model Estimate {
   isAssigned        Boolean         @default(false) @map("is_assigned")
   price             Int
   comment           String
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
 
   Notification Notification[]
 
@@ -149,6 +165,8 @@ model Favorite {
   customerId Int      @map("customer_id")
   Mover      Mover    @relation(fields: [moverId], references: [id], onDelete: Cascade)
   moverId    Int      @map("mover_id")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   @@map("favorite")
 }
@@ -163,6 +181,8 @@ model Notification {
   assignedEstimateRequestId Int                     @map("assigned_estimate_request_id")
   contents                  String
   isRead                    Boolean                 @default(false) @map("is_read")
+  createdAt                 DateTime                @default(now())
+  updatedAt                 DateTime                @updatedAt
 
   @@map("notification")
 }
