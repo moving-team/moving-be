@@ -75,6 +75,8 @@ model Customer {
 
 model Review {
   id          Int      @id @default(autoincrement())
+  Estimate    Estimate @relation(fields: [estimateId], references: [id], onDelete: Cascade)
+  estimateId  Int      @unique @map("estimate_id")
   Customer    Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
   customerId  Int      @map("customer_id")
   Mover       Mover    @relation(fields: [moverId], references: [id], onDelete: Cascade)
@@ -155,6 +157,7 @@ model Estimate {
   updatedAt         DateTime        @updatedAt
 
   Notification Notification[]
+  Review       Review?
 
   @@map("estimate")
 }

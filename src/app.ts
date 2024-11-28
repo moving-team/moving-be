@@ -1,10 +1,13 @@
-import * as dotenv from 'dotenv';
-dotenv.config();
 import express from 'express';
 import cors from 'cors';
+import errorHandler from './middlewares/errHandler';
+import { PORT } from './config/env';
 
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
-app.listen(process.env.PORT || 3001, () => console.log('Server Started'));
+app.use(errorHandler);
+
+app.listen(PORT || 3001, () => console.log('Server Started'));
