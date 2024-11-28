@@ -1,0 +1,168 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int     @id @default(autoincrement())
+  userType    String  @map("user_type")
+  name        String  @db.VarChar(10)
+  email       String  @unique @db.VarChar(254)
+  password    String? @db.VarChar(60)
+  provider    String?
+  providerId  String? @map("provider_id")
+  phoneNumber String  @map("phone_number") @db.VarChar(11)
+
+  Mover        Mover[]
+  Customer     Customer[]
+  Notification Notification[]
+
+  @@map("user")
+}
+
+model Mover {
+  id                Int     @id @default(autoincrement())
+  User              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            Int     @map("user_id")
+  profileImage      String? @map("profile_image")
+  nickname          String  @unique @db.VarChar(10)
+  career            Int
+  summary           String
+  description       String
+  serviceRegion     Int[]   @map("service_region")
+  serviceType       Int[]   @map("service_type")
+  confirmationCount Int     @map("confirmation_count")
+
+  Review                  Review[]
+  Estimate                Estimate[]
+  AssignedEstimateRequest AssignedEstimateRequest[]
+  Favorite                Favorite[]
+
+  @@map("mover")
+}
+
+model Customer {
+  id           Int     @id @default(autoincrement())
+  User         User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       Int     @map("user_id")
+  profileImage String? @map("profile_image")
+  serviceType  Int[]   @map("service_type")
+
+  region          Int
+  Review          Review[]
+  EstimateRequest EstimateRequest[]
+  Estimate        Estimate[]
+  Favorite        Favorite[]
+
+  @@map("customer")
+}
+
+model Review {
+  id          Int      @id @default(autoincrement())
+  Customer    Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId  Int      @map("customer_id")
+  Mover       Mover    @relation(fields: [moverId], references: [id], onDelete: Cascade)
+  moverId     Int      @map("mover_id")
+  score       Int
+  description String
+
+  @@map("review")
+}
+
+model MovingInfo {
+  id         Int    @id @default(autoincrement())
+  movingType Int    @map("moving_type")
+  movingDate String @map("moving_date")
+  departure  String
+  arrival    String
+
+  EstimateRequest EstimateRequest[]
+  Estimate        Estimate[]
+
+  @@map("moving_info")
+}
+
+model EstimateRequest {
+  id           Int        @id @default(autoincrement())
+  Customer     Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId   Int        @map("customer_id")
+  MovingInfo   MovingInfo @relation(fields: [movingInfoId], references: [id], onDelete: Cascade)
+  movingInfoId Int        @map("moving_info_id")
+  comment      String?
+  isConfirmed  Boolean    @default(false) @map("is_confirmed")
+  isCancelled  Boolean    @default(false) @map("is_cancelled")
+
+  Estimate                Estimate[]
+  AssignedEstimateRequest AssignedEstimateRequest[]
+
+  @@map("estimate_requests")
+}
+
+model AssignedEstimateRequest {
+  id                Int             @id @default(autoincrement())
+  EstimateRequest   EstimateRequest @relation(fields: [estimateRequestId], references: [id], onDelete: Cascade)
+  estimateRequestId Int             @map("estimate_requests_id")
+  Mover             Mover           @relation(fields: [moverId], references: [id], onDelete: Cascade)
+  moverId           Int             @map("mover_id")
+  isRejected        Boolean         @default(false) @map("is_rejected")
+  rejectionReason   String?         @map("rejection_reason")
+
+  Notification Notification[]
+
+  @@map("assigned_estimate_request")
+}
+
+model Estimate {
+  id                Int             @id @default(autoincrement())
+  Customer          Customer        @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId        Int             @map("customer_id")
+  Mover             Mover           @relation(fields: [moverId], references: [id], onDelete: Cascade)
+  moverId           Int             @map("mover_id")
+  EstimateRequest   EstimateRequest @relation(fields: [estimateRequestId], references: [id], onDelete: Cascade)
+  estimateRequestId Int             @map("estimate_requests_id")
+  MovingInfo        MovingInfo      @relation(fields: [movingInfoId], references: [id], onDelete: Cascade)
+  movingInfoId      Int             @map("moving_info_id")
+  isMovingComplete  Boolean         @default(false) @map("is_moving_complete")
+  status            Int
+  isAssigned        Boolean         @default(false) @map("is_assigned")
+  price             Int
+  comment           String
+
+  Notification Notification[]
+
+  @@map("estimate")
+}
+
+model Favorite {
+  id         Int      @id @default(autoincrement())
+  Customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId Int      @map("customer_id")
+  Mover      Mover    @relation(fields: [moverId], references: [id], onDelete: Cascade)
+  moverId    Int      @map("mover_id")
+
+  @@map("favorite")
+}
+
+model Notification {
+  id                        Int                     @id @default(autoincrement())
+  User                      User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId                    Int                     @map("user_id")
+  Estimate                  Estimate                @relation(fields: [estimateId], references: [id], onDelete: Cascade)
+  estimateId                Int                     @map("estimate_id")
+  AssignedEstimateRequest   AssignedEstimateRequest @relation(fields: [assignedEstimateRequestId], references: [id], onDelete: Cascade)
+  assignedEstimateRequestId Int                     @map("assigned_estimate_request_id")
+  contents                  String
+  isRead                    Boolean                 @default(false) @map("is_read")
+
+  @@map("notification")
+}
