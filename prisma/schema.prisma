@@ -13,9 +13,46 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum userType {
+  CUSTOMER
+  MOVER
+}
+
+enum serviceRegion {
+  SEOUL
+  GYEONGGI
+  INCHEON
+  GANGWON
+  CHUNGBUK
+  CHUNGNAM
+  SEJONG
+  DAEJEON
+  JEONBUK
+  JEONNAM
+  GWANGJU
+  GYEONGBUK
+  GYEONGNAM
+  DAEGU
+  ULSAN
+  BUSAN
+  JEJU
+}
+
+enum serviceType {
+  SMALL
+  HOUSE
+  OFFICE
+}
+
+enum status {
+  WAITING
+  ACCEPTED
+  REJECTED
+}
+
 model User {
   id          Int      @id @default(autoincrement())
-  userType    String   @map("user_type")
+  userType    userType @map("user_type")
   name        String   @db.VarChar(10)
   email       String   @unique @db.VarChar(254)
   password    String?  @db.VarChar(60)
@@ -33,19 +70,19 @@ model User {
 }
 
 model Mover {
-  id                Int      @id @default(autoincrement())
-  User              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId            Int      @unique @map("user_id")
-  profileImage      String?  @map("profile_image")
-  nickname          String   @unique @db.VarChar(10)
+  id                Int             @id @default(autoincrement())
+  User              User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            Int             @unique @map("user_id")
+  profileImage      String?         @map("profile_image")
+  nickname          String          @unique @db.VarChar(10)
   career            Int
   summary           String
   description       String
-  serviceRegion     Int[]    @map("service_region")
-  serviceType       Int[]    @map("service_type")
-  confirmationCount Int      @map("confirmation_count")
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  serviceRegion     serviceRegion[] @map("service_region")
+  serviceType       serviceType[]   @map("service_type")
+  confirmationCount Int             @map("confirmation_count")
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
 
   Review                  Review[]
   Estimate                Estimate[]
@@ -56,14 +93,14 @@ model Mover {
 }
 
 model Customer {
-  id           Int      @id @default(autoincrement())
-  User         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId       Int      @unique @map("user_id")
-  profileImage String?  @map("profile_image")
-  serviceType  Int[]    @map("service_type")
-  region       Int
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id           Int           @id @default(autoincrement())
+  User         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       Int           @unique @map("user_id")
+  profileImage String?       @map("profile_image")
+  serviceType  serviceType[] @map("service_type")
+  region       serviceRegion
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 
   Review          Review[]
   EstimateRequest EstimateRequest[]
@@ -90,13 +127,13 @@ model Review {
 }
 
 model MovingInfo {
-  id         Int      @id @default(autoincrement())
-  movingType Int      @map("moving_type")
-  movingDate String   @map("moving_date")
+  id         Int         @id @default(autoincrement())
+  movingType serviceType @map("moving_type")
+  movingDate String      @map("moving_date")
   departure  String
   arrival    String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
 
   EstimateRequest EstimateRequest[]
   Estimate        Estimate[]
@@ -149,7 +186,7 @@ model Estimate {
   MovingInfo        MovingInfo      @relation(fields: [movingInfoId], references: [id], onDelete: Cascade)
   movingInfoId      Int             @map("moving_info_id")
   isMovingComplete  Boolean         @default(false) @map("is_moving_complete")
-  status            Int             @default(1)
+  status            status          @default(WAITING)
   isAssigned        Boolean         @default(false) @map("is_assigned")
   price             Int
   comment           String
