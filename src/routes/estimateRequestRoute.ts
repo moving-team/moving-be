@@ -2,7 +2,7 @@ import express from 'express';
 import { validateEstimateReq } from '../middlewares/validateData';
 import estimateRequestController from '../controllers/estimateRequestController';
 
-const estimateReqRouter = express.Router();
+export const estimateReqRouter = express.Router();
 
 estimateReqRouter
   .route('/')
