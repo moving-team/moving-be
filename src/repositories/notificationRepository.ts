@@ -11,7 +11,7 @@ interface NotificationPagenationParams extends PagenationParamsByPage {
   where?: Prisma.NotificationWhereInput;
 }
 
-type NotificationUncheckedCreateInputTrype =
+type NotificationUncheckedCreateInputType =
   Prisma.NotificationUncheckedCreateInput;
 
 type NotificationWhereInputType = Prisma.NotificationWhereInput;
@@ -25,20 +25,20 @@ function createData<T extends NotificationSelectType>({
   data,
   select,
 }: {
-  data: NotificationUncheckedCreateInputTrype;
+  data: NotificationUncheckedCreateInputType;
   select: T;
 }): Promise<NotificationPayload<T>>;
 function createData({
   data,
 }: {
-  data: NotificationUncheckedCreateInputTrype;
+  data: NotificationUncheckedCreateInputType;
 }): Promise<NotificationPayload<undefined>>;
 
 async function createData<T extends NotificationSelectType | undefined>({
   data,
   select,
 }: {
-  data: NotificationUncheckedCreateInputTrype;
+  data: NotificationUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {

@@ -11,7 +11,7 @@ interface EstimateReqPagenationParams extends PagenationParamsByPage {
   where?: Prisma.EstimateRequestWhereInput;
 }
 
-type EstimateReqUncheckedCreateInputTrype =
+type EstimateReqUncheckedCreateInputType =
   Prisma.EstimateRequestUncheckedCreateInput;
 
 type EstimateReqWhereInputType = Prisma.EstimateRequestWhereInput;
@@ -25,20 +25,20 @@ function createData<T extends EstimateReqSelectType>({
   data,
   select,
 }: {
-  data: EstimateReqUncheckedCreateInputTrype;
+  data: EstimateReqUncheckedCreateInputType;
   select: T;
 }): Promise<EstimateReqPayload<T>>;
 function createData({
   data,
 }: {
-  data: EstimateReqUncheckedCreateInputTrype;
+  data: EstimateReqUncheckedCreateInputType;
 }): Promise<EstimateReqPayload<undefined>>;
 
 async function createData<T extends EstimateReqSelectType | undefined>({
   data,
   select,
 }: {
-  data: EstimateReqUncheckedCreateInputTrype;
+  data: EstimateReqUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {

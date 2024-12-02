@@ -11,7 +11,7 @@ interface MoverPagenationParams extends PagenationParamsByPage {
   where?: Prisma.MoverWhereInput;
 }
 
-type MoverUncheckedCreateInputTrype = Prisma.MoverUncheckedCreateInput;
+type MoverUncheckedCreateInputType = Prisma.MoverUncheckedCreateInput;
 
 type MoverWhereInputType = Prisma.MoverWhereInput;
 
@@ -24,20 +24,20 @@ function createData<T extends MoverSelectType>({
   data,
   select,
 }: {
-  data: MoverUncheckedCreateInputTrype;
+  data: MoverUncheckedCreateInputType;
   select: T;
 }): Promise<MoverPayload<T>>;
 function createData({
   data,
 }: {
-  data: MoverUncheckedCreateInputTrype;
+  data: MoverUncheckedCreateInputType;
 }): Promise<MoverPayload<undefined>>;
 
 async function createData<T extends MoverSelectType | undefined>({
   data,
   select,
 }: {
-  data: MoverUncheckedCreateInputTrype;
+  data: MoverUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {
