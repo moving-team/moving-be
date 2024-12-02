@@ -28,6 +28,23 @@ async function createEstimateReq(
   }
 }
 
+async function deleteEstimateReq(
+  req: Request<{ estimateRequestId: string }, {}, {}>,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const { estimateRequestId } = req.params;
+    const id = Number(estimateRequestId);
+    const estimateReq = await estimateRequestService.deleteEstimateReq(id);
+
+    res.status(200).send(estimateReq);
+  } catch (err) {
+    return next(err);
+  }
+}
+
 export default {
   createEstimateReq,
+  deleteEstimateReq,
 };
