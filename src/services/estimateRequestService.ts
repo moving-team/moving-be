@@ -2,6 +2,7 @@ import estimateRequestRepository from '../repositories/estimateRequestRepository
 import movingInfoRepository from '../repositories/movingInfoRepository';
 import userRepository from '../repositories/userRepository';
 import { CreateEstimateReq } from '../structs/estimateRequest-struct';
+import { createEstimateReqMapper } from './mappers/estimateRequestMapper';
 import { estimateReqSelect } from './selerts/estimateRequsetSelect';
 import { movinginfoSelect } from './selerts/movingInfoSelect';
 import { userCustomerSelect } from './selerts/userSelect';
@@ -13,6 +14,7 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
   });
 
   // 소비자 프로필 유무 확인
+  // 프로필 생성방식이 정해지면 수정 가능
   if (!user.Customer) {
     const error = new Error('프로필을 등록 해주세요');
     throw error;
@@ -35,6 +37,5 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
     select: estimateReqSelect,
   });
 
-  return; 
+  return createEstimateReqMapper(user.name, movingInfo, estimateReq);
 }
-
