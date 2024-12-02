@@ -42,9 +42,37 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
 
 // 견적 요청 삭제 API
 async function deleteEstimateReq(estimateRequestId: number) {
-  
+  const estimateReq = await estimateRequestRepository.findFirstData({
+    where: { id: estimateRequestId },
+    select: estimateReqSelect,
+  });
+
+  // 견적 요청 유무 확인
+  if (!estimateReq) {
+    throw new Error('존재하지 않는 견적 요청입니다.');
+  } else if (estimateReq.isCancelled) {
+    throw new Error('이미 취소된 요청입니다.');
+  }
+
+  // 취소 여부 수정
+  const deleteEstimateReq = await estimateRequestRepository.updateData({
+    where: { id: estimateRequestId },
+    data: { isCancelled: true },
+    select: estimateReqSelect,
+  });
+
+  // 취소 여부가 변경이 안됐을때
+  if (!deleteEstimateReq.isCancelled) {
+    throw new Error('다시 시도해 주세요.');
+  }
+
+  return {
+    id: deleteEstimateReq.id,
+    isCancelled: deleteEstimateReq.isCancelled,
+  };
 }
 
 export default {
   createEstimateReq,
+  deleteEstimateReq,
 };
