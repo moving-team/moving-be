@@ -11,7 +11,7 @@ interface MovingInfoPagenationParams extends PagenationParamsByPage {
   where?: Prisma.MovingInfoWhereInput;
 }
 
-type MovingInfoUncheckedCreateInputTrype =
+type MovingInfoUncheckedCreateInputType =
   Prisma.MovingInfoUncheckedCreateInput;
 
 type MovingInfoWhereInputType = Prisma.MovingInfoWhereInput;
@@ -25,20 +25,20 @@ function createData<T extends MovingInfoSelectType>({
   data,
   select,
 }: {
-  data: MovingInfoUncheckedCreateInputTrype;
+  data: MovingInfoUncheckedCreateInputType;
   select: T;
 }): Promise<MovingInfoPayload<T>>;
 function createData({
   data,
 }: {
-  data: MovingInfoUncheckedCreateInputTrype;
+  data: MovingInfoUncheckedCreateInputType;
 }): Promise<MovingInfoPayload<undefined>>;
 
 async function createData<T extends MovingInfoSelectType | undefined>({
   data,
   select,
 }: {
-  data: MovingInfoUncheckedCreateInputTrype;
+  data: MovingInfoUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {

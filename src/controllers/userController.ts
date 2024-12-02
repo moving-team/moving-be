@@ -8,9 +8,9 @@ const registerController = async (
   res: Response,
   next: NextFunction
 ) => {
-  const {userTpye} = req.query
+  const {userType} = req.query
   try {
-    const user = await userService.register(req.body,userTpye as string);
+    const user = await userService.register(req.body,userType as string);
     
     if (user.userType === 'CUSTOMER') {
       await customerService.createCustomer(user.id);
