@@ -9,12 +9,16 @@ async function createEstimateReq(
   next: NextFunction
 ) {
   try {
-    const { userId } = req.auth;
-    const estimateReq = await estimateRequestService.createEstimateReq(
-      userId,
-      req.body
-    );
-    res.status(201).send(estimateReq);
+    if (req.user) {
+      const { userId } = req.user;
+      const estimateReq = await estimateRequestService.createEstimateReq(
+        userId,
+        req.body
+      );
+      res.status(201).send(estimateReq);
+    }
+
+    throw new Error('로그인 해주세요');
   } catch (err) {
     return next(err);
   }
