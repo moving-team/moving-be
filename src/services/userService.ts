@@ -11,7 +11,7 @@ const register = async (data: any,userTpye : string) => {
   const where = { email: data.email };
 
   if (!data.email || !data.password) {
-    throw new Error('이메일와 패스워드를 입력해주세요.');
+    throw new Error('이메일 및 패스워드를 입력해주세요.');
   }
   if(!userTpye || userTpye !== 'CUSTOMER' && userTpye !== 'MOVER') {
     throw new Error('유저 타입을 확인해주세요.'); 
@@ -32,10 +32,10 @@ const register = async (data: any,userTpye : string) => {
 
 const userLogin = async (data: any) => {
   if (!data.email || !data.password) {
-    throw new Error("이메일과 패스워드를 입력해주세요.");
+    throw new Error("이메일 및 패스워드를 입력해주세요.");
   }
 
-  const user = await userRepository.findUniqueOrThrowtData({
+  const user = await userRepository.findFirstData({
     where: { email: data.email },
   });
   if(!user) {

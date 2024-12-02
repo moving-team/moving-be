@@ -17,7 +17,7 @@ const createCustomer = async (userId: number) => {
 }
 
 const patchCustomerProfile = async (userId: number, data: any) => {
-    const customerData = await customerRepository.findFirstData({ where: { id: userId } });
+    const customerData = await customerRepository.findFirstData({ where: { userId: userId } });
     if(!customerData) {
         throw new Error("프로필 생성하지 않음");
     }

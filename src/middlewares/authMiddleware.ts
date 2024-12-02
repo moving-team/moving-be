@@ -25,8 +25,8 @@ export const authenticateToken = async (
     next(); 
   } catch (err) {
     if (!refreshToken) {
-      res.status(403).json({ message: '유효하지 않은 토큰입니다.' });
       res.clearCookie('accessToken');
+      res.status(403).json({ message: '유효하지 않은 토큰입니다.' });
       return;
     }
 
