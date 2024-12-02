@@ -41,6 +41,11 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
   return createEstimateReqMapper(user.name, movingInfo, estimateReq);
 }
 
+// 견적 요청 삭제 API
+async function deleteEstimateReq(estimateRequestId: number) {
+  
+}
+
 export default {
   createEstimateReq,
 };
