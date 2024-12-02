@@ -166,7 +166,6 @@ model AssignedEstimateRequest {
   Mover             Mover           @relation(fields: [moverId], references: [id], onDelete: Cascade)
   moverId           Int             @map("mover_id")
   isRejected        Boolean         @default(false) @map("is_rejected")
-  rejectionReason   String?         @map("rejection_reason")
   createdAt         DateTime        @default(now())
   updatedAt         DateTime        @updatedAt
 
