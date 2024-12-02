@@ -9,7 +9,6 @@ const generateToken = (payload: any, secret: string, expiresIn: string) => {
 
 const register = async (data: any,userType : string) => {
   const where = { email: data.email };
-  console.log(data)
 
   if (!data.email || !data.password) {
     throw new Error('이메일 및 패스워드를 입력해주세요.');
