@@ -11,7 +11,7 @@ interface ReviewPagenationParams extends PagenationParamsByPage {
   where?: Prisma.ReviewWhereInput;
 }
 
-type ReviewUncheckedCreateInputTrype =
+type ReviewUncheckedCreateInputType =
   Prisma.ReviewUncheckedCreateInput;
 
 type ReviewWhereInputType = Prisma.ReviewWhereInput;
@@ -25,20 +25,20 @@ function createData<T extends ReviewSelectType>({
   data,
   select,
 }: {
-  data: ReviewUncheckedCreateInputTrype;
+  data: ReviewUncheckedCreateInputType;
   select: T;
 }): Promise<ReviewPayload<T>>;
 function createData({
   data,
 }: {
-  data: ReviewUncheckedCreateInputTrype;
+  data: ReviewUncheckedCreateInputType;
 }): Promise<ReviewPayload<undefined>>;
 
 async function createData<T extends ReviewSelectType | undefined>({
   data,
   select,
 }: {
-  data: ReviewUncheckedCreateInputTrype;
+  data: ReviewUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {

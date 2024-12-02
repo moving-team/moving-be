@@ -11,7 +11,7 @@ interface FavoritePagenationParams extends PagenationParamsByPage {
   where?: Prisma.FavoriteWhereInput;
 }
 
-type FavoriteUncheckedCreateInputTrype = Prisma.FavoriteUncheckedCreateInput;
+type FavoriteUncheckedCreateInputType = Prisma.FavoriteUncheckedCreateInput;
 
 type FavoriteWhereInputType = Prisma.FavoriteWhereInput;
 
@@ -24,20 +24,20 @@ function createData<T extends FavoriteSelectType>({
   data,
   select,
 }: {
-  data: FavoriteUncheckedCreateInputTrype;
+  data: FavoriteUncheckedCreateInputType;
   select: T;
 }): Promise<FavoritePayload<T>>;
 function createData({
   data,
 }: {
-  data: FavoriteUncheckedCreateInputTrype;
+  data: FavoriteUncheckedCreateInputType;
 }): Promise<FavoritePayload<undefined>>;
 
 async function createData<T extends FavoriteSelectType | undefined>({
   data,
   select,
 }: {
-  data: FavoriteUncheckedCreateInputTrype;
+  data: FavoriteUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {

@@ -11,7 +11,7 @@ interface UserPagenationParams extends PagenationParamsByPage {
   where?: Prisma.UserWhereInput;
 }
 
-type UserUncheckedCreateInputTrype =
+type UserUncheckedCreateInputType =
   Prisma.UserUncheckedCreateInput;
 
 type UserWhereInputType = Prisma.UserWhereInput;
@@ -25,20 +25,20 @@ function createData<T extends UserSelectType>({
   data,
   select,
 }: {
-  data: UserUncheckedCreateInputTrype;
+  data: UserUncheckedCreateInputType;
   select: T;
 }): Promise<UserPayload<T>>;
 function createData({
   data,
 }: {
-  data: UserUncheckedCreateInputTrype;
+  data: UserUncheckedCreateInputType;
 }): Promise<UserPayload<undefined>>;
 
 async function createData<T extends UserSelectType | undefined>({
   data,
   select,
 }: {
-  data: UserUncheckedCreateInputTrype;
+  data: UserUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {
