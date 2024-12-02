@@ -7,13 +7,13 @@ const generateToken = (payload: any, secret: string, expiresIn: string) => {
   return jwt.sign(payload, secret, { expiresIn });
 };
 
-const register = async (data: any) => {
+const register = async (data: any,userTpye : string) => {
   const where = { email: data.email };
 
   if (!data.email || !data.password) {
     throw new Error('이메일와 패스워드를 입력해주세요.');
   }
-  if (!data.userType || !['customer', 'mover'].includes(data.userType)) {
+  if(!userTpye || userTpye !== 'CUSTOMER' && userTpye !== 'MOVER') {
     throw new Error('유저 타입을 확인해주세요.'); 
   }
   if (!data.name) {
@@ -26,6 +26,7 @@ const register = async (data: any) => {
     throw new Error('이미 사용중인 이메일 입니다.');
   }
   data.password = await bcrypt.hash(data.password, 10);
+  data.userType = userTpye
   return await userRepository.createData({ data });
 };
 

@@ -1,13 +1,24 @@
 import * as userService from '../services/userService';
 import { Request, Response, NextFunction } from 'express';
+import * as customerService from '../services/customerService';
+import * as moverService from '../services/moverService';
 
 const registerController = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
+  const {userTpye} = req.query
   try {
-    await userService.register(req.body);
+    const user = await userService.register(req.body,userTpye as string);
+    
+    if (user.userType === 'CUSTOMER') {
+      await customerService.createCustomer(user.id);
+    } else if (user.userType === 'MOVER') {
+      await moverService.createMover(user.id);
+    } else {
+      res.status(400).json('회원가입 실패');
+    }
     res.status(201).json('회원가입 성공');
   } catch (err) {
     next(err);

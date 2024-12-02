@@ -6,25 +6,28 @@ interface AuthenticatedRequest extends Request {
   user?: JwtPayload | string;
 }
 
-const authenticateToken = async (
+export const authenticateToken = async (
   req: AuthenticatedRequest,
   res: Response,
   next: NextFunction
-) => {
+): Promise<void> => {
   const accessToken = req.cookies?.accessToken;
   const refreshToken = req.cookies?.refreshToken;
 
   if (!accessToken && !refreshToken) {
-    return res.status(401).json({ message: '인증 토큰이 없습니다.' });
+    res.status(401).json({ message: '인증 토큰이 없습니다.' });
+    return; 
   }
 
   try {
     const user = jwt.verify(accessToken, ACCESS_TOKEN_SECRET);
     req.user = user;
-    next();
+    next(); 
   } catch (err) {
     if (!refreshToken) {
-      return res.status(403).json({ message: '유효하지 않은 토큰입니다.' });
+      res.status(403).json({ message: '유효하지 않은 토큰입니다.' });
+      res.clearCookie('accessToken');
+      return;
     }
 
     try {
@@ -36,16 +39,15 @@ const authenticateToken = async (
       res.cookie('accessToken', newAccessToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 1000 * 60 * 60,
+        maxAge: 1000 * 60 * 60, 
         sameSite: 'strict',
       });
 
       req.user = user;
       next();
     } catch (refreshErr) {
-      return res.status(403).json({ message: '유효하지 않은 리프레시 토큰입니다.' });
+      res.status(403).json({ message: '유효하지 않은 리프레시 토큰입니다.' });
+      return;
     }
   }
 };
-
-export default authenticateToken;

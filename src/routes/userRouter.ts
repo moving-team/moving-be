@@ -1,5 +1,7 @@
 import express from 'express';
 import userController from '../controllers/userController';
+import { authenticateToken } from '../middlewares/authMiddleware';
+
 
 const router = express.Router();
 
@@ -9,7 +11,7 @@ router
 
 router
   .route('/login')
-  .post(userController.loginController);
+  .post(userController.loginController)
 
 router
   .route('/logout')
