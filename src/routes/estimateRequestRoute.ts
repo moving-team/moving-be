@@ -1,9 +1,16 @@
 import express from 'express';
 import { validateEstimateReq } from '../middlewares/validateData';
 import estimateRequestController from '../controllers/estimateRequestController';
+import { authenticateToken } from '../middlewares/authMiddleware';
 
-export const estimateReqRouter = express.Router();
+const estimateReqRouter = express.Router();
 
 estimateReqRouter
   .route('/')
-  .post(validateEstimateReq, estimateRequestController.createEstimateReq); // 유저 인증 미들웨어 필요
+  .post(
+    authenticateToken,
+    validateEstimateReq,
+    estimateRequestController.createEstimateReq
+  );
+
+export default estimateReqRouter;

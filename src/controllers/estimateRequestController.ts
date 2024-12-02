@@ -9,8 +9,12 @@ async function createEstimateReq(
   next: NextFunction
 ) {
   try {
-    if (req.user) {
-      const { userId } = req.user;
+    if (
+      req.user &&
+      typeof req.user !== 'string' &&
+      typeof req.user.id === 'number'
+    ) {
+      const { id: userId } = req.user;
       const estimateReq = await estimateRequestService.createEstimateReq(
         userId,
         req.body
