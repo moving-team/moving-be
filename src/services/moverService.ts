@@ -1,5 +1,26 @@
 import moverRepository from '../repositories/moverRepository';
 
+const getMover = async (userId: number) => {
+    const moverData = await moverRepository.findFirstData({ where: { userId: userId }, select: {
+        id: true,
+        userId: true,
+        profileImage: true,
+        nickname: true,
+        career: true,
+        summary: true,
+        description: true,
+        confirmationCount: true,
+        serviceType: true,
+        serviceRegion: true,
+        User: {
+            select: {
+                name: true,
+            }
+        }
+    }});
+    return moverData;
+}
+
 const createMover = async (userId: number) => {
     const data = {
         userId : userId,
@@ -28,4 +49,4 @@ const patchMoverProfile = async (userId: number, updateData: any) => {
     await moverRepository.updateData({ where: { id: moverData.id }, data: patchData });
 }
 
-export { createMover, patchMoverProfile };
+export { createMover, patchMoverProfile, getMover };
