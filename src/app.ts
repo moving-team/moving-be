@@ -5,6 +5,7 @@ import { PORT } from './config/env';
 import userRouter from './routes/userRouter';
 import customerRouter from './routes/customerRouter';
 import cookieParser from 'cookie-parser';
+import moverRouter from './routes/moverRouter';
 const app = express();
 app.use(cookieParser());
 
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/user', userRouter);
 app.use('/customer', customerRouter);
+app.use('/mover', moverRouter);
 
 app.use(errorHandler);
 
