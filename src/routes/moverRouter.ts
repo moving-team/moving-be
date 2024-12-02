@@ -13,4 +13,8 @@ router
     .route('/me')
     .all(authenticateToken)
     .get(moverController.getMoverController);
+router
+    .route('/:moverId/detail')
+    .all(authenticateToken)
+    .get(moverController.getMoverDetailController);
 export default router;
