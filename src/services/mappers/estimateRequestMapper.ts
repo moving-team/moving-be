@@ -27,6 +27,6 @@ export function createEstimateReqMapper(
     movingDate: movingInfo.movingDate,
     departure: movingInfo.departure,
     arrival: movingInfo.arrival,
-    comment: estimateReq.comment,
+    comment: estimateReq.comment || '',
   };
 }

@@ -12,7 +12,7 @@ export async function validateEstimateReq(
 ) {
   try {
     assert(req.body, createEstimateReq);
-    return next;
+    return next();
   } catch (err) {
     return next(err);
   }

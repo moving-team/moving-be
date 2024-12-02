@@ -7,6 +7,7 @@ import { estimateReqSelect } from './selerts/estimateRequsetSelect';
 import { movinginfoSelect } from './selerts/movingInfoSelect';
 import { userCustomerSelect } from './selerts/userSelect';
 
+// 견적 요청 작성 API
 async function createEstimateReq(userId: number, data: CreateEstimateReq) {
   const user = await userRepository.findUniqueOrThrowtData({
     where: { id: userId },
@@ -39,3 +40,7 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
 
   return createEstimateReqMapper(user.name, movingInfo, estimateReq);
 }
+
+export default {
+  createEstimateReq,
+};
