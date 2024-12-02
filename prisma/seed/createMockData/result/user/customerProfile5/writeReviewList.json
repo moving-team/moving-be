@@ -1,0 +1,173 @@
+{
+  "total": 14,
+  "list": [
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 09. 27",
+      "id": 1,
+      "moverName": "윤태민",
+      "profileImg": "",
+      "movingDate": "2024. 09. 12",
+      "price": 530000,
+      "score": 5,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 03. 31",
+      "id": 2,
+      "moverName": "한우빈",
+      "profileImg": "",
+      "movingDate": "2024. 03. 16",
+      "price": 850000,
+      "score": 4,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 11. 27",
+      "id": 3,
+      "moverName": "강서진",
+      "profileImg": "",
+      "movingDate": "2024. 11. 21",
+      "price": 820000,
+      "score": 3,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": true,
+      "createAt": "2024. 09. 06",
+      "id": 4,
+      "moverName": "강유준",
+      "profileImg": "",
+      "movingDate": "2024. 08. 11",
+      "price": 170000,
+      "score": 3,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": true,
+      "createAt": "2024. 04. 12",
+      "id": 5,
+      "moverName": "조서현",
+      "profileImg": "",
+      "movingDate": "2024. 04. 11",
+      "price": 700000,
+      "score": 4,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 06. 15",
+      "id": 6,
+      "moverName": "임은채",
+      "profileImg": "",
+      "movingDate": "2024. 05. 27",
+      "price": 110000,
+      "score": 5,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 01. 16",
+      "id": 7,
+      "moverName": "강다은",
+      "profileImg": "",
+      "movingDate": "2024. 01. 01",
+      "price": 320000,
+      "score": 3,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 11. 24",
+      "id": 8,
+      "moverName": "신윤우",
+      "profileImg": "",
+      "movingDate": "2024. 11. 01",
+      "price": 150000,
+      "score": 5,
+      "content": "다소 아쉬운 점도 있었지만 전체적으로 만족합니다."
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 11. 03",
+      "id": 9,
+      "moverName": "조태현",
+      "profileImg": "",
+      "movingDate": "2024. 10. 16",
+      "price": 610000,
+      "score": 3,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 04. 19",
+      "id": 10,
+      "moverName": "이하준",
+      "profileImg": "",
+      "movingDate": "2024. 04. 18",
+      "price": 990000,
+      "score": 5,
+      "content": "정말 친절하고 좋은 서비스였습니다!"
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 07. 16",
+      "id": 11,
+      "moverName": "윤인우",
+      "profileImg": "",
+      "movingDate": "2024. 06. 21",
+      "price": 490000,
+      "score": 5,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": true,
+      "createAt": "2024. 06. 25",
+      "id": 12,
+      "moverName": "강다은",
+      "profileImg": "",
+      "movingDate": "2024. 06. 04",
+      "price": 180000,
+      "score": 3,
+      "content": "다소 아쉬운 점도 있었지만 전체적으로 만족합니다."
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": true,
+      "createAt": "2024. 09. 27",
+      "id": 13,
+      "moverName": "김수아",
+      "profileImg": "",
+      "movingDate": "2024. 09. 19",
+      "price": 520000,
+      "score": 3,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 02. 24",
+      "id": 14,
+      "moverName": "한우빈",
+      "profileImg": "",
+      "movingDate": "2024. 02. 13",
+      "price": 1000000,
+      "score": 3,
+      "content": "다음에 또 이용하고 싶어요!"
+    }
+  ]
+}

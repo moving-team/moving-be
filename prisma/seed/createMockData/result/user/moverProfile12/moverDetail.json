@@ -1,0 +1,24 @@
+{
+  "id": 6,
+  "userId": 13,
+  "profileImage": "",
+  "nickname": "",
+  "career": 27,
+  "summary": "",
+  "description": "",
+  "confirmationCount": 5,
+  "serviceType": [
+    "OFFICE",
+    "HOUSE",
+    "SMALL"
+  ],
+  "serviceRegion": [
+    "SEJONG"
+  ],
+  "reviewStats": {
+    "averageScore": 4.1,
+    "totalReviews": 100
+  },
+  "favorite": 41,
+  "isAssigned": false
+}

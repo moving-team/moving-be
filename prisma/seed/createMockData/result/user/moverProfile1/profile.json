@@ -1,0 +1,27 @@
+{
+  "id": 22,
+  "userId": 14,
+  "profileImage": "",
+  "nickname": "nickname_smf5b",
+  "career": 10,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "OFFICE",
+    "SMALL",
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "SEOUL",
+    "GYEONGBUK",
+    "GYEONGGI",
+    "DAEGU",
+    "ULSAN",
+    "INCHEON",
+    "SEJONG",
+    "JEJU"
+  ],
+  "User": {
+    "name": "임소율"
+  }
+}

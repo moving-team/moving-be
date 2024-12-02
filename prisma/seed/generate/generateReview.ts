@@ -1,4 +1,4 @@
-import { reveiwList } from '../dummyList/reviewList';
+import { reveiwList } from '../dummy/reviewList';
 
 let usedReview: string[] = [];
 

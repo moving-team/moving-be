@@ -1,0 +1,22 @@
+{
+  "id": 23,
+  "userId": 4,
+  "profileImage": "",
+  "nickname": "",
+  "career": 26,
+  "summary": "",
+  "description": "",
+  "confirmationCount": 71,
+  "serviceType": [
+    "SMALL"
+  ],
+  "serviceRegion": [
+    "JEONNAM"
+  ],
+  "reviewStats": {
+    "averageScore": 4,
+    "totalReviews": 100
+  },
+  "favorite": 74,
+  "isAssigned": false
+}

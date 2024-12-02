@@ -1,4 +1,4 @@
-import { addressList } from '../dummyList/addressList';
+import { addressList } from '../dummy/addressList';
 
 let usedAddress: string[] = [];
 

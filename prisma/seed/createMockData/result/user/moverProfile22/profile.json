@@ -1,0 +1,23 @@
+{
+  "id": 1,
+  "userId": 12,
+  "profileImage": "",
+  "nickname": "nickname_fses2",
+  "career": 30,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [],
+  "serviceRegion": [
+    "INCHEON",
+    "JEJU",
+    "GYEONGBUK",
+    "SEJONG",
+    "BUSAN",
+    "GYEONGGI",
+    "CHUNGNAM",
+    "JEONNAM"
+  ],
+  "User": {
+    "name": "서현성"
+  }
+}

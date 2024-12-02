@@ -1,0 +1,29 @@
+{
+  "id": 14,
+  "userId": 21,
+  "profileImage": "",
+  "nickname": "nickname_sydhz",
+  "career": 15,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "HOUSE",
+    "SMALL"
+  ],
+  "serviceRegion": [
+    "ULSAN",
+    "SEJONG",
+    "SEOUL",
+    "GANGWON",
+    "CHUNGBUK",
+    "JEONNAM",
+    "JEONBUK",
+    "GYEONGBUK",
+    "CHUNGNAM",
+    "JEJU",
+    "GWANGJU"
+  ],
+  "User": {
+    "name": "조진우"
+  }
+}

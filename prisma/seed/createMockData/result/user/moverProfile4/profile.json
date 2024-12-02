@@ -1,0 +1,27 @@
+{
+  "id": 21,
+  "userId": 17,
+  "profileImage": "",
+  "nickname": "nickname_j6tik",
+  "career": 25,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "OFFICE",
+    "SMALL"
+  ],
+  "serviceRegion": [
+    "JEONBUK",
+    "INCHEON",
+    "BUSAN",
+    "GANGWON",
+    "CHUNGNAM",
+    "DAEJEON",
+    "GYEONGNAM",
+    "GYEONGBUK",
+    "JEJU"
+  ],
+  "User": {
+    "name": "김민지"
+  }
+}

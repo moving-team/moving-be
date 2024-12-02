@@ -1,0 +1,101 @@
+{
+  "total": 8,
+  "list": [
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 02. 24",
+      "id": 1,
+      "moverName": "김수아",
+      "profileImg": "",
+      "movingDate": "2024. 02. 18",
+      "price": 290000,
+      "score": 5,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": true,
+      "createAt": "2024. 03. 14",
+      "id": 2,
+      "moverName": "조서현",
+      "profileImg": "",
+      "movingDate": "2024. 03. 09",
+      "price": 230000,
+      "score": 3,
+      "content": "정말 친절하고 좋은 서비스였습니다!"
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 09. 28",
+      "id": 3,
+      "moverName": "신우석",
+      "profileImg": "",
+      "movingDate": "2024. 09. 18",
+      "price": 370000,
+      "score": 4,
+      "content": "정말 친절하고 좋은 서비스였습니다!"
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 02. 11",
+      "id": 4,
+      "moverName": "이가은",
+      "profileImg": "",
+      "movingDate": "2024. 01. 27",
+      "price": 400000,
+      "score": 4,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 10. 27",
+      "id": 5,
+      "moverName": "윤태민",
+      "profileImg": "",
+      "movingDate": "2024. 10. 23",
+      "price": 520000,
+      "score": 3,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 11. 16",
+      "id": 6,
+      "moverName": "강유준",
+      "profileImg": "",
+      "movingDate": "2024. 11. 04",
+      "price": 600000,
+      "score": 5,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 05. 14",
+      "id": 7,
+      "moverName": "임서윤",
+      "profileImg": "",
+      "movingDate": "2024. 04. 19",
+      "price": 410000,
+      "score": 5,
+      "content": "정말 친절하고 좋은 서비스였습니다!"
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 06. 29",
+      "id": 8,
+      "moverName": "조지유",
+      "profileImg": "",
+      "movingDate": "2024. 06. 12",
+      "price": 490000,
+      "score": 5,
+      "content": "다음에 또 이용하고 싶어요!"
+    }
+  ]
+}

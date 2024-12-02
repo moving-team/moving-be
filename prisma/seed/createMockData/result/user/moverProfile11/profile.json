@@ -1,0 +1,26 @@
+{
+  "id": 18,
+  "userId": 12,
+  "profileImage": "",
+  "nickname": "nickname_ksg23",
+  "career": 14,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "OFFICE",
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "DAEJEON",
+    "JEONNAM",
+    "CHUNGNAM",
+    "GYEONGNAM",
+    "ULSAN",
+    "GANGWON",
+    "JEJU",
+    "JEONBUK"
+  ],
+  "User": {
+    "name": "한시우"
+  }
+}

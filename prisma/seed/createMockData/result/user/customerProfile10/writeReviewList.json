@@ -1,0 +1,41 @@
+{
+  "total": 3,
+  "list": [
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 01. 18",
+      "id": 1,
+      "moverName": "이가은",
+      "profileImg": "",
+      "movingDate": "2023. 12. 26",
+      "price": 930000,
+      "score": 4,
+      "content": "정말 친절하고 좋은 서비스였습니다!"
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 03. 19",
+      "id": 2,
+      "moverName": "서성민",
+      "profileImg": "",
+      "movingDate": "2024. 03. 14",
+      "price": 670000,
+      "score": 3,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 04. 25",
+      "id": 3,
+      "moverName": "한우빈",
+      "profileImg": "",
+      "movingDate": "2024. 04. 21",
+      "price": 690000,
+      "score": 4,
+      "content": "가격 대비 좋은 서비스였습니다."
+    }
+  ]
+}

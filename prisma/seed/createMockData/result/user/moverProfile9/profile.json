@@ -1,0 +1,26 @@
+{
+  "id": 4,
+  "userId": 4,
+  "profileImage": "",
+  "nickname": "nickname_xgkex",
+  "career": 4,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "SMALL"
+  ],
+  "serviceRegion": [
+    "DAEGU",
+    "SEOUL",
+    "GYEONGBUK",
+    "GANGWON",
+    "JEONNAM",
+    "JEJU",
+    "GYEONGGI",
+    "BUSAN",
+    "DAEJEON"
+  ],
+  "User": {
+    "name": "윤도현"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": 25,
+  "userId": 22,
+  "profileImage": "",
+  "nickname": "nickname_jxcaa",
+  "career": 13,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "GYEONGNAM",
+    "SEOUL",
+    "CHUNGBUK",
+    "ULSAN",
+    "JEONNAM",
+    "CHUNGNAM"
+  ],
+  "User": {
+    "name": "홍승현"
+  }
+}

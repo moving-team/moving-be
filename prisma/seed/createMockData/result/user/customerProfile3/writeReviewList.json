@@ -1,0 +1,53 @@
+{
+  "total": 4,
+  "list": [
+    {
+      "serviceType": "SMALL",
+      "isAssigned": true,
+      "createAt": "2024. 06. 15",
+      "id": 1,
+      "moverName": "신윤우",
+      "profileImg": "",
+      "movingDate": "2024. 05. 19",
+      "price": 850000,
+      "score": 3,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": true,
+      "createAt": "2024. 01. 15",
+      "id": 2,
+      "moverName": "서주아",
+      "profileImg": "",
+      "movingDate": "2024. 01. 10",
+      "price": 180000,
+      "score": 4,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 11. 07",
+      "id": 3,
+      "moverName": "강서진",
+      "profileImg": "",
+      "movingDate": "2024. 10. 22",
+      "price": 290000,
+      "score": 3,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 08. 23",
+      "id": 4,
+      "moverName": "서주아",
+      "profileImg": "",
+      "movingDate": "2024. 08. 04",
+      "price": 570000,
+      "score": 3,
+      "content": "다음에 또 이용하고 싶어요!"
+    }
+  ]
+}

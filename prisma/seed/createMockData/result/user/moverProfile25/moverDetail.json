@@ -1,0 +1,31 @@
+{
+  "id": 10,
+  "userId": 22,
+  "profileImage": "",
+  "nickname": "",
+  "career": 11,
+  "summary": "",
+  "description": "",
+  "confirmationCount": 44,
+  "serviceType": [
+    "SMALL"
+  ],
+  "serviceRegion": [
+    "GANGWON",
+    "SEJONG",
+    "JEJU",
+    "BUSAN",
+    "CHUNGNAM",
+    "CHUNGBUK",
+    "GYEONGBUK",
+    "INCHEON",
+    "GYEONGNAM",
+    "GWANGJU"
+  ],
+  "reviewStats": {
+    "averageScore": 4.1,
+    "totalReviews": 100
+  },
+  "favorite": 89,
+  "isAssigned": true
+}

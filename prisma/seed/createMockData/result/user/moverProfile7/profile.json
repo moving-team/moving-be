@@ -1,0 +1,18 @@
+{
+  "id": 8,
+  "userId": 14,
+  "profileImage": "",
+  "nickname": "nickname_wa5q6",
+  "career": 11,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "OFFICE"
+  ],
+  "serviceRegion": [
+    "GWANGJU"
+  ],
+  "User": {
+    "name": "임서준"
+  }
+}

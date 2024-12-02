@@ -1,0 +1,23 @@
+{
+  "id": 4,
+  "userId": 1,
+  "profileImage": "",
+  "nickname": "nickname_tvb8t",
+  "career": 28,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "CHUNGBUK",
+    "GYEONGGI",
+    "ULSAN",
+    "JEONNAM",
+    "GYEONGNAM",
+    "JEONBUK"
+  ],
+  "User": {
+    "name": "강진우"
+  }
+}

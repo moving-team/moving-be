@@ -1,0 +1,22 @@
+{
+  "id": 18,
+  "userId": 12,
+  "profileImage": "",
+  "nickname": "",
+  "career": 16,
+  "summary": "",
+  "description": "",
+  "confirmationCount": 78,
+  "serviceType": [
+    "SMALL",
+    "HOUSE",
+    "OFFICE"
+  ],
+  "serviceRegion": [],
+  "reviewStats": {
+    "averageScore": 3.3,
+    "totalReviews": 100
+  },
+  "favorite": 70,
+  "isAssigned": false
+}

@@ -1,0 +1,32 @@
+{
+  "id": 13,
+  "userId": 4,
+  "profileImage": "",
+  "nickname": "nickname_3uxe4",
+  "career": 9,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "OFFICE",
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "INCHEON",
+    "GYEONGNAM",
+    "DAEJEON",
+    "GYEONGGI",
+    "BUSAN",
+    "ULSAN",
+    "CHUNGBUK",
+    "SEOUL",
+    "JEJU",
+    "GWANGJU",
+    "GYEONGBUK",
+    "JEONBUK",
+    "CHUNGNAM",
+    "DAEGU"
+  ],
+  "User": {
+    "name": "최우진"
+  }
+}

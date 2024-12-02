@@ -1,0 +1,39 @@
+{
+  "id": 4,
+  "userId": 7,
+  "profileImage": "",
+  "nickname": "",
+  "career": 13,
+  "summary": "",
+  "description": "",
+  "confirmationCount": 51,
+  "serviceType": [
+    "HOUSE",
+    "OFFICE",
+    "SMALL"
+  ],
+  "serviceRegion": [
+    "DAEGU",
+    "SEOUL",
+    "GYEONGNAM",
+    "GANGWON",
+    "SEJONG",
+    "GYEONGGI",
+    "DAEJEON",
+    "GWANGJU",
+    "JEONBUK",
+    "GYEONGBUK",
+    "JEONNAM",
+    "BUSAN",
+    "ULSAN",
+    "CHUNGBUK",
+    "INCHEON",
+    "JEJU"
+  ],
+  "reviewStats": {
+    "averageScore": 3.5,
+    "totalReviews": 100
+  },
+  "favorite": 25,
+  "isAssigned": false
+}

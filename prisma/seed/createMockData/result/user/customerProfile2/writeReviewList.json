@@ -1,0 +1,89 @@
+{
+  "total": 7,
+  "list": [
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 07. 03",
+      "id": 1,
+      "moverName": "한우빈",
+      "profileImg": "",
+      "movingDate": "2024. 06. 23",
+      "price": 590000,
+      "score": 5,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 01. 15",
+      "id": 2,
+      "moverName": "이가은",
+      "profileImg": "",
+      "movingDate": "2024. 01. 01",
+      "price": 860000,
+      "score": 3,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 06. 20",
+      "id": 3,
+      "moverName": "서주아",
+      "profileImg": "",
+      "movingDate": "2024. 06. 11",
+      "price": 680000,
+      "score": 4,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 02. 01",
+      "id": 4,
+      "moverName": "신윤우",
+      "profileImg": "",
+      "movingDate": "2024. 01. 31",
+      "price": 330000,
+      "score": 5,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": true,
+      "createAt": "2024. 08. 22",
+      "id": 5,
+      "moverName": "조태현",
+      "profileImg": "",
+      "movingDate": "2024. 08. 05",
+      "price": 920000,
+      "score": 3,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": true,
+      "createAt": "2024. 03. 04",
+      "id": 6,
+      "moverName": "조서현",
+      "profileImg": "",
+      "movingDate": "2024. 03. 01",
+      "price": 900000,
+      "score": 3,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 11. 18",
+      "id": 7,
+      "moverName": "한태현",
+      "profileImg": "",
+      "movingDate": "2024. 11. 11",
+      "price": 860000,
+      "score": 3,
+      "content": "가격 대비 좋은 서비스였습니다."
+    }
+  ]
+}

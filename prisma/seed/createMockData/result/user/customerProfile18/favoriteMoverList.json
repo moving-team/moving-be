@@ -1,0 +1,63 @@
+{
+  "total": 4,
+  "list": [
+    {
+      "serviceType": [],
+      "isAssigned": false,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 5,
+      "reviewCount": 100,
+      "career": 13,
+      "confirmationCount": 79,
+      "favoriteCount": 16
+    },
+    {
+      "serviceType": [
+        "SMALL"
+      ],
+      "isAssigned": false,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 4,
+      "reviewCount": 100,
+      "career": 26,
+      "confirmationCount": 71,
+      "favoriteCount": 74
+    },
+    {
+      "serviceType": [
+        "SMALL",
+        "HOUSE",
+        "OFFICE"
+      ],
+      "isAssigned": false,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 3.3,
+      "reviewCount": 100,
+      "career": 16,
+      "confirmationCount": 78,
+      "favoriteCount": 70
+    },
+    {
+      "serviceType": [
+        "OFFICE",
+        "HOUSE",
+        "SMALL"
+      ],
+      "isAssigned": false,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 4.1,
+      "reviewCount": 100,
+      "career": 27,
+      "confirmationCount": 5,
+      "favoriteCount": 41
+    }
+  ]
+}

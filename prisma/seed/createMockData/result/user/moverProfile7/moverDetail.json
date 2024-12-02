@@ -1,0 +1,24 @@
+{
+  "id": 8,
+  "userId": 14,
+  "profileImage": "",
+  "nickname": "",
+  "career": 2,
+  "summary": "",
+  "description": "",
+  "confirmationCount": 27,
+  "serviceType": [
+    "HOUSE",
+    "OFFICE",
+    "SMALL"
+  ],
+  "serviceRegion": [
+    "GWANGJU"
+  ],
+  "reviewStats": {
+    "averageScore": 3.5,
+    "totalReviews": 100
+  },
+  "favorite": 7,
+  "isAssigned": false
+}

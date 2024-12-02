@@ -1,0 +1,30 @@
+{
+  "id": 2,
+  "userId": 22,
+  "profileImage": "",
+  "nickname": "nickname_9m6vr",
+  "career": 23,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [],
+  "serviceRegion": [
+    "GWANGJU",
+    "ULSAN",
+    "JEONNAM",
+    "BUSAN",
+    "SEJONG",
+    "GANGWON",
+    "INCHEON",
+    "CHUNGBUK",
+    "GYEONGGI",
+    "SEOUL",
+    "DAEGU",
+    "GYEONGBUK",
+    "CHUNGNAM",
+    "JEJU",
+    "JEONBUK"
+  ],
+  "User": {
+    "name": "윤시우"
+  }
+}

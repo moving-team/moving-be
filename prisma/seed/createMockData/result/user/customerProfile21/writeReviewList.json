@@ -1,0 +1,29 @@
+{
+  "total": 2,
+  "list": [
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 01. 06",
+      "id": 1,
+      "moverName": "강서진",
+      "profileImg": "",
+      "movingDate": "2023. 12. 27",
+      "price": 430000,
+      "score": 4,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": true,
+      "createAt": "2024. 04. 03",
+      "id": 2,
+      "moverName": "조서현",
+      "profileImg": "",
+      "movingDate": "2024. 03. 07",
+      "price": 900000,
+      "score": 5,
+      "content": "다소 아쉬운 점도 있었지만 전체적으로 만족합니다."
+    }
+  ]
+}

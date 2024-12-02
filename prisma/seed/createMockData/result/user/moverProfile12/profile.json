@@ -1,0 +1,31 @@
+{
+  "id": 6,
+  "userId": 13,
+  "profileImage": "",
+  "nickname": "nickname_nh81p",
+  "career": 17,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "SMALL",
+    "HOUSE",
+    "OFFICE"
+  ],
+  "serviceRegion": [
+    "DAEJEON",
+    "SEOUL",
+    "GWANGJU",
+    "JEJU",
+    "JEONBUK",
+    "GYEONGGI",
+    "INCHEON",
+    "SEJONG",
+    "JEONNAM",
+    "CHUNGNAM",
+    "GANGWON",
+    "CHUNGBUK"
+  ],
+  "User": {
+    "name": "한아린"
+  }
+}

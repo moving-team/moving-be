@@ -1,0 +1,18 @@
+{
+  "id": 24,
+  "userId": 8,
+  "profileImage": "",
+  "nickname": "nickname_0sq0j",
+  "career": 29,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "HOUSE",
+    "OFFICE",
+    "SMALL"
+  ],
+  "serviceRegion": [],
+  "User": {
+    "name": "최지호"
+  }
+}

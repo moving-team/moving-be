@@ -1,0 +1,30 @@
+{
+  "id": 4,
+  "userId": 1,
+  "profileImage": "",
+  "nickname": "",
+  "career": 18,
+  "summary": "",
+  "description": "",
+  "confirmationCount": 191,
+  "serviceType": [
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "SEOUL",
+    "INCHEON",
+    "JEONNAM",
+    "SEJONG",
+    "ULSAN",
+    "JEJU",
+    "BUSAN",
+    "DAEJEON",
+    "CHUNGNAM"
+  ],
+  "reviewStats": {
+    "averageScore": 4.8,
+    "totalReviews": 100
+  },
+  "favorite": 1,
+  "isAssigned": true
+}

@@ -1,0 +1,711 @@
+{
+  "reviewCount": {
+    "1": 5,
+    "2": 7,
+    "3": 10,
+    "4": 29,
+    "5": 49
+  },
+  "list": [
+    {
+      "id": 1,
+      "writer": "임혜원",
+      "createAt": "2024-11-09",
+      "score": 4,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 2,
+      "writer": "박재윤",
+      "createAt": "2024-11-08",
+      "score": 4,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 3,
+      "writer": "오소현",
+      "createAt": "2024-11-14",
+      "score": 4,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 4,
+      "writer": "김진우",
+      "createAt": "2024-11-09",
+      "score": 2,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 5,
+      "writer": "한수현",
+      "createAt": "2024-11-24",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 6,
+      "writer": "강동민",
+      "createAt": "2024-11-06",
+      "score": 3,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 7,
+      "writer": "장하준",
+      "createAt": "2024-11-27",
+      "score": 5,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 8,
+      "writer": "윤다연",
+      "createAt": "2024-11-19",
+      "score": 5,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 9,
+      "writer": "조예준",
+      "createAt": "2024-11-29",
+      "score": 1,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 10,
+      "writer": "윤소현",
+      "createAt": "2024-11-23",
+      "score": 5,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 11,
+      "writer": "조우현",
+      "createAt": "2024-12-01",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 12,
+      "writer": "조시은",
+      "createAt": "2024-11-03",
+      "score": 4,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 13,
+      "writer": "강종석",
+      "createAt": "2024-11-30",
+      "score": 5,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 14,
+      "writer": "신현우",
+      "createAt": "2024-11-19",
+      "score": 4,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 15,
+      "writer": "김승진",
+      "createAt": "2024-12-02",
+      "score": 4,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 16,
+      "writer": "김소율",
+      "createAt": "2024-11-04",
+      "score": 1,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 17,
+      "writer": "최현준",
+      "createAt": "2024-11-30",
+      "score": 4,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 18,
+      "writer": "서경민",
+      "createAt": "2024-11-23",
+      "score": 5,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 19,
+      "writer": "신재석",
+      "createAt": "2024-11-22",
+      "score": 4,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 20,
+      "writer": "한지호",
+      "createAt": "2024-11-05",
+      "score": 5,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 21,
+      "writer": "정동현",
+      "createAt": "2024-11-10",
+      "score": 1,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 22,
+      "writer": "최우빈",
+      "createAt": "2024-11-26",
+      "score": 4,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 23,
+      "writer": "장영준",
+      "createAt": "2024-11-27",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 24,
+      "writer": "최석종",
+      "createAt": "2024-11-17",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 25,
+      "writer": "홍현우",
+      "createAt": "2024-11-10",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 26,
+      "writer": "한아린",
+      "createAt": "2024-11-03",
+      "score": 4,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 27,
+      "writer": "이유나",
+      "createAt": "2024-11-04",
+      "score": 2,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 28,
+      "writer": "조리나",
+      "createAt": "2024-11-24",
+      "score": 5,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 29,
+      "writer": "신윤우",
+      "createAt": "2024-11-12",
+      "score": 2,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 30,
+      "writer": "서경민",
+      "createAt": "2024-11-20",
+      "score": 2,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 31,
+      "writer": "윤예은",
+      "createAt": "2024-11-16",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 32,
+      "writer": "박윤우",
+      "createAt": "2024-11-22",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 33,
+      "writer": "최시현",
+      "createAt": "2024-11-13",
+      "score": 5,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 34,
+      "writer": "김혜원",
+      "createAt": "2024-11-30",
+      "score": 4,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 35,
+      "writer": "장윤우",
+      "createAt": "2024-11-29",
+      "score": 5,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 36,
+      "writer": "한도윤",
+      "createAt": "2024-11-16",
+      "score": 2,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 37,
+      "writer": "장주아",
+      "createAt": "2024-11-13",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 38,
+      "writer": "이지원",
+      "createAt": "2024-11-16",
+      "score": 4,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 39,
+      "writer": "윤세호",
+      "createAt": "2024-11-27",
+      "score": 5,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 40,
+      "writer": "윤지아",
+      "createAt": "2024-11-18",
+      "score": 4,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 41,
+      "writer": "정다은",
+      "createAt": "2024-11-11",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 42,
+      "writer": "임혜린",
+      "createAt": "2024-11-18",
+      "score": 3,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 43,
+      "writer": "조도현",
+      "createAt": "2024-11-30",
+      "score": 5,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 44,
+      "writer": "강성민",
+      "createAt": "2024-11-04",
+      "score": 4,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 45,
+      "writer": "이종민",
+      "createAt": "2024-11-15",
+      "score": 5,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 46,
+      "writer": "장소윤",
+      "createAt": "2024-11-04",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 47,
+      "writer": "최은서",
+      "createAt": "2024-11-17",
+      "score": 5,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 48,
+      "writer": "오하윤",
+      "createAt": "2024-11-15",
+      "score": 4,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 49,
+      "writer": "오진우",
+      "createAt": "2024-11-08",
+      "score": 4,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 50,
+      "writer": "홍승진",
+      "createAt": "2024-11-30",
+      "score": 3,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 51,
+      "writer": "서가윤",
+      "createAt": "2024-11-12",
+      "score": 5,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 52,
+      "writer": "장나연",
+      "createAt": "2024-11-26",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 53,
+      "writer": "한유진",
+      "createAt": "2024-11-29",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 54,
+      "writer": "한석현",
+      "createAt": "2024-11-03",
+      "score": 5,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 55,
+      "writer": "이은비",
+      "createAt": "2024-11-28",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 56,
+      "writer": "윤주원",
+      "createAt": "2024-11-17",
+      "score": 3,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 57,
+      "writer": "장재원",
+      "createAt": "2024-11-05",
+      "score": 1,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 58,
+      "writer": "정정우",
+      "createAt": "2024-11-04",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 59,
+      "writer": "오소율",
+      "createAt": "2024-11-18",
+      "score": 5,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 60,
+      "writer": "정동민",
+      "createAt": "2024-11-03",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 61,
+      "writer": "박예지",
+      "createAt": "2024-11-07",
+      "score": 1,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 62,
+      "writer": "김다연",
+      "createAt": "2024-11-25",
+      "score": 5,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 63,
+      "writer": "강태민",
+      "createAt": "2024-11-19",
+      "score": 4,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 64,
+      "writer": "이하준",
+      "createAt": "2024-11-26",
+      "score": 4,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 65,
+      "writer": "조현우",
+      "createAt": "2024-11-12",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 66,
+      "writer": "정보라",
+      "createAt": "2024-11-29",
+      "score": 5,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 67,
+      "writer": "임윤아",
+      "createAt": "2024-11-20",
+      "score": 2,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 68,
+      "writer": "윤재원",
+      "createAt": "2024-11-13",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 69,
+      "writer": "홍종현",
+      "createAt": "2024-12-01",
+      "score": 3,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 70,
+      "writer": "이재석",
+      "createAt": "2024-11-07",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 71,
+      "writer": "김주아",
+      "createAt": "2024-12-01",
+      "score": 4,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 72,
+      "writer": "신채윤",
+      "createAt": "2024-11-08",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 73,
+      "writer": "김우빈",
+      "createAt": "2024-11-03",
+      "score": 4,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 74,
+      "writer": "윤나래",
+      "createAt": "2024-11-13",
+      "score": 5,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 75,
+      "writer": "한재윤",
+      "createAt": "2024-11-30",
+      "score": 4,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 76,
+      "writer": "정시은",
+      "createAt": "2024-11-27",
+      "score": 3,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 77,
+      "writer": "강지유",
+      "createAt": "2024-11-20",
+      "score": 4,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 78,
+      "writer": "홍민재",
+      "createAt": "2024-12-02",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 79,
+      "writer": "홍지윤",
+      "createAt": "2024-11-20",
+      "score": 3,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 80,
+      "writer": "홍지현",
+      "createAt": "2024-11-19",
+      "score": 5,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 81,
+      "writer": "장수빈",
+      "createAt": "2024-11-29",
+      "score": 4,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 82,
+      "writer": "조세호",
+      "createAt": "2024-11-26",
+      "score": 5,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 83,
+      "writer": "한시우",
+      "createAt": "2024-11-06",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 84,
+      "writer": "정예지",
+      "createAt": "2024-11-09",
+      "score": 3,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 85,
+      "writer": "홍인우",
+      "createAt": "2024-11-11",
+      "score": 4,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 86,
+      "writer": "이인우",
+      "createAt": "2024-11-06",
+      "score": 4,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 87,
+      "writer": "최지현",
+      "createAt": "2024-11-12",
+      "score": 4,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 88,
+      "writer": "홍혜린",
+      "createAt": "2024-11-29",
+      "score": 4,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 89,
+      "writer": "한재윤",
+      "createAt": "2024-11-20",
+      "score": 5,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 90,
+      "writer": "서지아",
+      "createAt": "2024-11-24",
+      "score": 3,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 91,
+      "writer": "한가윤",
+      "createAt": "2024-11-03",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 92,
+      "writer": "오은채",
+      "createAt": "2024-11-17",
+      "score": 4,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 93,
+      "writer": "홍민준",
+      "createAt": "2024-11-25",
+      "score": 5,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 94,
+      "writer": "이성준",
+      "createAt": "2024-12-02",
+      "score": 2,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 95,
+      "writer": "서은채",
+      "createAt": "2024-11-24",
+      "score": 5,
+      "content": "Great service and friendly staff!"
+    },
+    {
+      "id": 96,
+      "writer": "조지후",
+      "createAt": "2024-11-28",
+      "score": 5,
+      "content": "Highly recommended! Very professional."
+    },
+    {
+      "id": 97,
+      "writer": "신홍석",
+      "createAt": "2024-11-10",
+      "score": 3,
+      "content": "It was okay, but could be better."
+    },
+    {
+      "id": 98,
+      "writer": "한소현",
+      "createAt": "2024-11-26",
+      "score": 5,
+      "content": "Not satisfied with the overall experience."
+    },
+    {
+      "id": 99,
+      "writer": "정유나",
+      "createAt": "2024-11-21",
+      "score": 4,
+      "content": "Excellent service! Will use again."
+    },
+    {
+      "id": 100,
+      "writer": "서은서",
+      "createAt": "2024-11-08",
+      "score": 5,
+      "content": "Not satisfied with the overall experience."
+    }
+  ]
+}

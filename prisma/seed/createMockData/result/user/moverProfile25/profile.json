@@ -1,0 +1,29 @@
+{
+  "id": 10,
+  "userId": 22,
+  "profileImage": "",
+  "nickname": "nickname_sysyz",
+  "career": 26,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [],
+  "serviceRegion": [
+    "DAEJEON",
+    "CHUNGNAM",
+    "DAEGU",
+    "INCHEON",
+    "BUSAN",
+    "CHUNGBUK",
+    "JEONNAM",
+    "GYEONGGI",
+    "ULSAN",
+    "JEJU",
+    "JEONBUK",
+    "GANGWON",
+    "GYEONGBUK",
+    "SEOUL"
+  ],
+  "User": {
+    "name": "장민재"
+  }
+}

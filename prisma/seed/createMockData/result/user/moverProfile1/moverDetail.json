@@ -1,0 +1,34 @@
+{
+  "id": 22,
+  "userId": 14,
+  "profileImage": "",
+  "nickname": "",
+  "career": 13,
+  "summary": "",
+  "description": "",
+  "confirmationCount": 79,
+  "serviceType": [],
+  "serviceRegion": [
+    "GYEONGBUK",
+    "SEOUL",
+    "INCHEON",
+    "CHUNGNAM",
+    "GYEONGNAM",
+    "SEJONG",
+    "CHUNGBUK",
+    "GWANGJU",
+    "DAEGU",
+    "JEJU",
+    "BUSAN",
+    "GANGWON",
+    "JEONNAM",
+    "DAEJEON",
+    "JEONBUK"
+  ],
+  "reviewStats": {
+    "averageScore": 5,
+    "totalReviews": 100
+  },
+  "favorite": 16,
+  "isAssigned": false
+}

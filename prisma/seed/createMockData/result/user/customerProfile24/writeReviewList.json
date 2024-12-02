@@ -1,0 +1,113 @@
+{
+  "total": 9,
+  "list": [
+    {
+      "serviceType": "SMALL",
+      "isAssigned": true,
+      "createAt": "2024. 11. 19",
+      "id": 1,
+      "moverName": "이하준",
+      "profileImg": "",
+      "movingDate": "2024. 10. 30",
+      "price": 520000,
+      "score": 5,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 06. 04",
+      "id": 2,
+      "moverName": "신우석",
+      "profileImg": "",
+      "movingDate": "2024. 05. 28",
+      "price": 280000,
+      "score": 3,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": true,
+      "createAt": "2024. 11. 24",
+      "id": 3,
+      "moverName": "조태현",
+      "profileImg": "",
+      "movingDate": "2024. 11. 21",
+      "price": 140000,
+      "score": 3,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 09. 13",
+      "id": 4,
+      "moverName": "조태현",
+      "profileImg": "",
+      "movingDate": "2024. 08. 25",
+      "price": 350000,
+      "score": 5,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 10. 28",
+      "id": 5,
+      "moverName": "이하준",
+      "profileImg": "",
+      "movingDate": "2024. 10. 09",
+      "price": 640000,
+      "score": 4,
+      "content": "정말 친절하고 좋은 서비스였습니다!"
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": true,
+      "createAt": "2024. 07. 04",
+      "id": 6,
+      "moverName": "조서현",
+      "profileImg": "",
+      "movingDate": "2024. 06. 25",
+      "price": 640000,
+      "score": 3,
+      "content": "정말 친절하고 좋은 서비스였습니다!"
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": true,
+      "createAt": "2024. 08. 26",
+      "id": 7,
+      "moverName": "윤인우",
+      "profileImg": "",
+      "movingDate": "2024. 08. 12",
+      "price": 420000,
+      "score": 3,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": true,
+      "createAt": "2024. 03. 07",
+      "id": 8,
+      "moverName": "김수아",
+      "profileImg": "",
+      "movingDate": "2024. 02. 12",
+      "price": 590000,
+      "score": 4,
+      "content": "다소 아쉬운 점도 있었지만 전체적으로 만족합니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 01. 01",
+      "id": 9,
+      "moverName": "정우현",
+      "profileImg": "",
+      "movingDate": "2023. 12. 11",
+      "price": 230000,
+      "score": 5,
+      "content": "가격 대비 좋은 서비스였습니다."
+    }
+  ]
+}

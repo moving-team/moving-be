@@ -1,0 +1,24 @@
+{
+  "id": 4,
+  "userId": 7,
+  "profileImage": "",
+  "nickname": "nickname_etv3z",
+  "career": 27,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "HOUSE",
+    "SMALL",
+    "OFFICE"
+  ],
+  "serviceRegion": [
+    "JEONBUK",
+    "GYEONGGI",
+    "JEONNAM",
+    "INCHEON",
+    "JEJU"
+  ],
+  "User": {
+    "name": "김시우"
+  }
+}

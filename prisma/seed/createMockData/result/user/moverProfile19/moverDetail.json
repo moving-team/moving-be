@@ -1,0 +1,34 @@
+{
+  "id": 2,
+  "userId": 22,
+  "profileImage": "",
+  "nickname": "",
+  "career": 21,
+  "summary": "",
+  "description": "",
+  "confirmationCount": 180,
+  "serviceType": [
+    "SMALL",
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "DAEGU",
+    "ULSAN",
+    "DAEJEON",
+    "SEOUL",
+    "BUSAN",
+    "GYEONGBUK",
+    "GYEONGGI",
+    "SEJONG",
+    "GANGWON",
+    "JEJU",
+    "JEONNAM",
+    "CHUNGNAM"
+  ],
+  "reviewStats": {
+    "averageScore": 4.4,
+    "totalReviews": 100
+  },
+  "favorite": 17,
+  "isAssigned": false
+}

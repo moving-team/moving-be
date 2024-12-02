@@ -1,0 +1,32 @@
+{
+  "id": 23,
+  "userId": 4,
+  "profileImage": "",
+  "nickname": "nickname_48cdu",
+  "career": 2,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "OFFICE",
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "GWANGJU",
+    "DAEGU",
+    "JEONBUK",
+    "INCHEON",
+    "GYEONGGI",
+    "BUSAN",
+    "DAEJEON",
+    "GYEONGBUK",
+    "CHUNGNAM",
+    "ULSAN",
+    "SEOUL",
+    "GANGWON",
+    "JEJU",
+    "CHUNGBUK"
+  ],
+  "User": {
+    "name": "강주아"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": 23,
+  "userId": 6,
+  "profileImage": "",
+  "nickname": "nickname_ntscx",
+  "career": 13,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "SMALL"
+  ],
+  "serviceRegion": [
+    "BUSAN",
+    "ULSAN",
+    "GWANGJU",
+    "DAEGU",
+    "DAEJEON",
+    "GYEONGNAM",
+    "SEOUL",
+    "GYEONGGI",
+    "JEONNAM",
+    "GYEONGBUK"
+  ],
+  "User": {
+    "name": "최건우"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": 22,
+  "userId": 13,
+  "profileImage": "",
+  "nickname": "nickname_7fqkv",
+  "career": 1,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [],
+  "serviceRegion": [
+    "SEJONG",
+    "GANGWON",
+    "GYEONGNAM",
+    "GYEONGBUK",
+    "JEONBUK",
+    "BUSAN",
+    "SEOUL",
+    "DAEJEON",
+    "INCHEON",
+    "JEONNAM",
+    "GYEONGGI",
+    "GWANGJU"
+  ],
+  "User": {
+    "name": "박혜원"
+  }
+}

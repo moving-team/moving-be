@@ -1,0 +1,89 @@
+{
+  "total": 7,
+  "list": [
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 02. 16",
+      "id": 1,
+      "moverName": "윤태민",
+      "profileImg": "",
+      "movingDate": "2024. 01. 25",
+      "price": 510000,
+      "score": 3,
+      "content": "다소 아쉬운 점도 있었지만 전체적으로 만족합니다."
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 01. 14",
+      "id": 2,
+      "moverName": "윤태민",
+      "profileImg": "",
+      "movingDate": "2024. 01. 02",
+      "price": 880000,
+      "score": 5,
+      "content": "신속하고 깔끔한 이사였습니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 10. 16",
+      "id": 3,
+      "moverName": "임은채",
+      "profileImg": "",
+      "movingDate": "2024. 09. 27",
+      "price": 330000,
+      "score": 5,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 06. 06",
+      "id": 4,
+      "moverName": "정우현",
+      "profileImg": "",
+      "movingDate": "2024. 05. 18",
+      "price": 950000,
+      "score": 3,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": true,
+      "createAt": "2024. 05. 18",
+      "id": 5,
+      "moverName": "한태현",
+      "profileImg": "",
+      "movingDate": "2024. 05. 15",
+      "price": 660000,
+      "score": 5,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": false,
+      "createAt": "2024. 10. 07",
+      "id": 6,
+      "moverName": "조태현",
+      "profileImg": "",
+      "movingDate": "2024. 09. 14",
+      "price": 720000,
+      "score": 3,
+      "content": "정말 친절하고 좋은 서비스였습니다!"
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": true,
+      "createAt": "2024. 10. 01",
+      "id": 7,
+      "moverName": "조지유",
+      "profileImg": "",
+      "movingDate": "2024. 09. 12",
+      "price": 920000,
+      "score": 4,
+      "content": "정말 친절하고 좋은 서비스였습니다!"
+    }
+  ]
+}

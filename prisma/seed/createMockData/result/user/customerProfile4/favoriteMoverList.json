@@ -1,0 +1,125 @@
+{
+  "total": 8,
+  "list": [
+    {
+      "serviceType": [],
+      "isAssigned": true,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 5,
+      "reviewCount": 100,
+      "career": 13,
+      "confirmationCount": 79,
+      "favoriteCount": 16
+    },
+    {
+      "serviceType": [
+        "SMALL"
+      ],
+      "isAssigned": false,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 4,
+      "reviewCount": 100,
+      "career": 26,
+      "confirmationCount": 71,
+      "favoriteCount": 74
+    },
+    {
+      "serviceType": [
+        "SMALL",
+        "HOUSE",
+        "OFFICE"
+      ],
+      "isAssigned": true,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 3.3,
+      "reviewCount": 100,
+      "career": 16,
+      "confirmationCount": 78,
+      "favoriteCount": 70
+    },
+    {
+      "serviceType": [
+        "OFFICE",
+        "HOUSE",
+        "SMALL"
+      ],
+      "isAssigned": false,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 4.1,
+      "reviewCount": 100,
+      "career": 27,
+      "confirmationCount": 5,
+      "favoriteCount": 41
+    },
+    {
+      "serviceType": [
+        "SMALL",
+        "HOUSE"
+      ],
+      "isAssigned": true,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 4.7,
+      "reviewCount": 100,
+      "career": 3,
+      "confirmationCount": 107,
+      "favoriteCount": 11
+    },
+    {
+      "serviceType": [
+        "OFFICE",
+        "SMALL"
+      ],
+      "isAssigned": true,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 4.6,
+      "reviewCount": 100,
+      "career": 8,
+      "confirmationCount": 45,
+      "favoriteCount": 62
+    },
+    {
+      "serviceType": [
+        "HOUSE",
+        "SMALL",
+        "OFFICE"
+      ],
+      "isAssigned": true,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 4.3,
+      "reviewCount": 100,
+      "career": 1,
+      "confirmationCount": 99,
+      "favoriteCount": 43
+    },
+    {
+      "serviceType": [
+        "SMALL",
+        "HOUSE",
+        "OFFICE"
+      ],
+      "isAssigned": true,
+      "nickname": "",
+      "profileImg": "",
+      "comment": "",
+      "score": 3,
+      "reviewCount": 100,
+      "career": 4,
+      "confirmationCount": 81,
+      "favoriteCount": 14
+    }
+  ]
+}

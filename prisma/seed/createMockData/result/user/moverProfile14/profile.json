@@ -1,0 +1,28 @@
+{
+  "id": 20,
+  "userId": 15,
+  "profileImage": "",
+  "nickname": "nickname_lzedk",
+  "career": 30,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "OFFICE",
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "DAEGU",
+    "BUSAN",
+    "GYEONGGI",
+    "ULSAN",
+    "JEJU",
+    "SEJONG",
+    "CHUNGBUK",
+    "JEONNAM",
+    "CHUNGNAM",
+    "SEOUL"
+  ],
+  "User": {
+    "name": "장소율"
+  }
+}

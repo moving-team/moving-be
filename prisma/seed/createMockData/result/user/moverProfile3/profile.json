@@ -1,0 +1,21 @@
+{
+  "id": 11,
+  "userId": 3,
+  "profileImage": "",
+  "nickname": "nickname_4kp9e",
+  "career": 2,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [],
+  "serviceRegion": [
+    "GANGWON",
+    "INCHEON",
+    "GWANGJU",
+    "CHUNGNAM",
+    "BUSAN",
+    "ULSAN"
+  ],
+  "User": {
+    "name": "오지후"
+  }
+}

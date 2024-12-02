@@ -1,0 +1,137 @@
+{
+  "total": 11,
+  "list": [
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 10. 16",
+      "id": 1,
+      "moverName": "이우빈",
+      "profileImg": "",
+      "movingDate": "2024. 10. 01",
+      "price": 930000,
+      "score": 4,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": true,
+      "createAt": "2024. 07. 04",
+      "id": 2,
+      "moverName": "강유준",
+      "profileImg": "",
+      "movingDate": "2024. 06. 22",
+      "price": 590000,
+      "score": 4,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": true,
+      "createAt": "2024. 10. 04",
+      "id": 3,
+      "moverName": "임은채",
+      "profileImg": "",
+      "movingDate": "2024. 09. 28",
+      "price": 220000,
+      "score": 5,
+      "content": "정말 친절하고 좋은 서비스였습니다!"
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": false,
+      "createAt": "2024. 02. 14",
+      "id": 4,
+      "moverName": "임은채",
+      "profileImg": "",
+      "movingDate": "2024. 02. 11",
+      "price": 630000,
+      "score": 3,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": true,
+      "createAt": "2024. 09. 29",
+      "id": 5,
+      "moverName": "한우빈",
+      "profileImg": "",
+      "movingDate": "2024. 09. 23",
+      "price": 300000,
+      "score": 4,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "SMALL",
+      "isAssigned": true,
+      "createAt": "2024. 11. 22",
+      "id": 6,
+      "moverName": "윤태민",
+      "profileImg": "",
+      "movingDate": "2024. 10. 27",
+      "price": 590000,
+      "score": 4,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 04. 03",
+      "id": 7,
+      "moverName": "한태현",
+      "profileImg": "",
+      "movingDate": "2024. 03. 29",
+      "price": 510000,
+      "score": 3,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": true,
+      "createAt": "2023. 12. 11",
+      "id": 8,
+      "moverName": "이우빈",
+      "profileImg": "",
+      "movingDate": "2023. 12. 01",
+      "price": 240000,
+      "score": 3,
+      "content": "가격 대비 좋은 서비스였습니다."
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 07. 14",
+      "id": 9,
+      "moverName": "강다은",
+      "profileImg": "",
+      "movingDate": "2024. 06. 20",
+      "price": 630000,
+      "score": 4,
+      "content": "다소 아쉬운 점도 있었지만 전체적으로 만족합니다."
+    },
+    {
+      "serviceType": "OFFICE",
+      "isAssigned": true,
+      "createAt": "2024. 06. 14",
+      "id": 10,
+      "moverName": "한태현",
+      "profileImg": "",
+      "movingDate": "2024. 05. 22",
+      "price": 130000,
+      "score": 3,
+      "content": "다음에 또 이용하고 싶어요!"
+    },
+    {
+      "serviceType": "HOUSE",
+      "isAssigned": false,
+      "createAt": "2024. 07. 14",
+      "id": 11,
+      "moverName": "조지유",
+      "profileImg": "",
+      "movingDate": "2024. 06. 21",
+      "price": 550000,
+      "score": 5,
+      "content": "가격 대비 좋은 서비스였습니다."
+    }
+  ]
+}

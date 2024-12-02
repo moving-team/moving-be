@@ -1,0 +1,377 @@
+[
+  {
+    "id": 22,
+    "userId": 14,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 13,
+    "summary": "",
+    "description": "",
+    "serviceType": "N/A",
+    "serviceRegion": "GYEONGBUK, SEOUL, INCHEON, CHUNGNAM, GYEONGNAM, SEJONG, CHUNGBUK, GWANGJU, DAEGU, JEJU, BUSAN, GANGWON, JEONNAM, DAEJEON, JEONBUK",
+    "reviewStats": {
+      "averageScore": 5,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 23,
+    "userId": 4,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 26,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL",
+    "serviceRegion": "JEONNAM",
+    "reviewStats": {
+      "averageScore": 4,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 18,
+    "userId": 12,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 16,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL, HOUSE, OFFICE",
+    "serviceRegion": "N/A",
+    "reviewStats": {
+      "averageScore": 3.3,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 6,
+    "userId": 13,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 27,
+    "summary": "",
+    "description": "",
+    "serviceType": "OFFICE, HOUSE, SMALL",
+    "serviceRegion": "SEJONG",
+    "reviewStats": {
+      "averageScore": 4.1,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 14,
+    "userId": 16,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 3,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL, HOUSE",
+    "serviceRegion": "GYEONGGI, GANGWON, INCHEON, ULSAN",
+    "reviewStats": {
+      "averageScore": 4.7,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 20,
+    "userId": 15,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 8,
+    "summary": "",
+    "description": "",
+    "serviceType": "OFFICE, SMALL",
+    "serviceRegion": "CHUNGNAM, CHUNGBUK, GANGWON, BUSAN, DAEGU, JEONBUK, GYEONGNAM, DAEJEON, INCHEON, JEJU, GYEONGGI, ULSAN, JEONNAM, SEOUL, GYEONGBUK",
+    "reviewStats": {
+      "averageScore": 4.6,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 13,
+    "userId": 4,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 1,
+    "summary": "",
+    "description": "",
+    "serviceType": "HOUSE, SMALL, OFFICE",
+    "serviceRegion": "SEOUL, ULSAN, BUSAN, GYEONGGI, CHUNGBUK, INCHEON, SEJONG, GYEONGBUK, DAEJEON, CHUNGNAM",
+    "reviewStats": {
+      "averageScore": 4.3,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 12,
+    "userId": 10,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 4,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL, HOUSE, OFFICE",
+    "serviceRegion": "CHUNGNAM, GYEONGNAM, GYEONGGI, JEONNAM, DAEJEON, CHUNGBUK, SEOUL, GANGWON, BUSAN",
+    "reviewStats": {
+      "averageScore": 3,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 16,
+    "userId": 18,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 24,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL, HOUSE, OFFICE",
+    "serviceRegion": "GYEONGBUK, JEONNAM, SEOUL, CHUNGNAM, GWANGJU, SEJONG, DAEGU, GYEONGGI, INCHEON, ULSAN, GANGWON, DAEJEON",
+    "reviewStats": {
+      "averageScore": 4.4,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 10,
+    "userId": 5,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 8,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL, HOUSE, OFFICE",
+    "serviceRegion": "GYEONGNAM, CHUNGBUK, GYEONGBUK, CHUNGNAM, DAEJEON, SEOUL, DAEGU, SEJONG, BUSAN, GYEONGGI, GANGWON, INCHEON, JEONNAM",
+    "reviewStats": {
+      "averageScore": 4,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 2,
+    "userId": 22,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 21,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL, HOUSE",
+    "serviceRegion": "DAEGU, ULSAN, DAEJEON, SEOUL, BUSAN, GYEONGBUK, GYEONGGI, SEJONG, GANGWON, JEJU, JEONNAM, CHUNGNAM",
+    "reviewStats": {
+      "averageScore": 4.4,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 25,
+    "userId": 22,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 12,
+    "summary": "",
+    "description": "",
+    "serviceType": "OFFICE, SMALL, HOUSE",
+    "serviceRegion": "SEOUL, GYEONGGI, DAEGU, GWANGJU, JEONBUK, SEJONG, JEONNAM, INCHEON, JEJU, CHUNGNAM, GYEONGBUK, GANGWON, GYEONGNAM",
+    "reviewStats": {
+      "averageScore": 3.3,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 22,
+    "userId": 13,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 7,
+    "summary": "",
+    "description": "",
+    "serviceType": "OFFICE, SMALL",
+    "serviceRegion": "CHUNGBUK, SEOUL, GYEONGBUK, GANGWON, DAEGU, JEONNAM, DAEJEON, GYEONGGI, ULSAN, SEJONG, JEONBUK, GWANGJU, INCHEON, CHUNGNAM, GYEONGNAM, JEJU, BUSAN",
+    "reviewStats": {
+      "averageScore": 3.9,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 24,
+    "userId": 8,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 10,
+    "summary": "",
+    "description": "",
+    "serviceType": "OFFICE, HOUSE",
+    "serviceRegion": "SEJONG, GYEONGBUK, INCHEON, DAEGU, JEJU, GWANGJU, CHUNGNAM, BUSAN, JEONNAM, JEONBUK",
+    "reviewStats": {
+      "averageScore": 3.2,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 1,
+    "userId": 12,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 16,
+    "summary": "",
+    "description": "",
+    "serviceType": "N/A",
+    "serviceRegion": "SEOUL, GYEONGGI, INCHEON, BUSAN, JEONBUK, DAEGU, GWANGJU, DAEJEON, CHUNGNAM",
+    "reviewStats": {
+      "averageScore": 4,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 14,
+    "userId": 21,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 21,
+    "summary": "",
+    "description": "",
+    "serviceType": "N/A",
+    "serviceRegion": "DAEJEON, BUSAN, GANGWON, DAEGU, GYEONGGI, JEONBUK, SEOUL, GWANGJU, INCHEON, GYEONGNAM, CHUNGBUK, JEJU, JEONNAM, CHUNGNAM, GYEONGBUK, SEJONG",
+    "reviewStats": {
+      "averageScore": 3.2,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 4,
+    "userId": 1,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 18,
+    "summary": "",
+    "description": "",
+    "serviceType": "HOUSE",
+    "serviceRegion": "SEOUL, INCHEON, JEONNAM, SEJONG, ULSAN, JEJU, BUSAN, DAEJEON, CHUNGNAM",
+    "reviewStats": {
+      "averageScore": 4.8,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 10,
+    "userId": 22,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 11,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL",
+    "serviceRegion": "GANGWON, SEJONG, JEJU, BUSAN, CHUNGNAM, CHUNGBUK, GYEONGBUK, INCHEON, GYEONGNAM, GWANGJU",
+    "reviewStats": {
+      "averageScore": 4.1,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 11,
+    "userId": 3,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 20,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL, HOUSE",
+    "serviceRegion": "INCHEON, GYEONGGI, GYEONGBUK, GWANGJU, JEONNAM, SEOUL, DAEGU, SEJONG, CHUNGNAM, GANGWON, CHUNGBUK, BUSAN",
+    "reviewStats": {
+      "averageScore": 3.3,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 21,
+    "userId": 17,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 30,
+    "summary": "",
+    "description": "",
+    "serviceType": "OFFICE, HOUSE, SMALL",
+    "serviceRegion": "SEOUL, GYEONGGI, GYEONGBUK, CHUNGNAM, INCHEON, CHUNGBUK, GANGWON, DAEGU, BUSAN, ULSAN",
+    "reviewStats": {
+      "averageScore": 4.7,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 4,
+    "userId": 7,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 13,
+    "summary": "",
+    "description": "",
+    "serviceType": "HOUSE, OFFICE, SMALL",
+    "serviceRegion": "DAEGU, SEOUL, GYEONGNAM, GANGWON, SEJONG, GYEONGGI, DAEJEON, GWANGJU, JEONBUK, GYEONGBUK, JEONNAM, BUSAN, ULSAN, CHUNGBUK, INCHEON, JEJU",
+    "reviewStats": {
+      "averageScore": 3.5,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 23,
+    "userId": 6,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 10,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL, HOUSE, OFFICE",
+    "serviceRegion": "DAEJEON, SEJONG, DAEGU, CHUNGNAM, CHUNGBUK, GWANGJU, JEJU, GANGWON, ULSAN",
+    "reviewStats": {
+      "averageScore": 3.5,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 8,
+    "userId": 14,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 2,
+    "summary": "",
+    "description": "",
+    "serviceType": "HOUSE, OFFICE, SMALL",
+    "serviceRegion": "GWANGJU",
+    "reviewStats": {
+      "averageScore": 3.5,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 3,
+    "userId": 16,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 6,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL, HOUSE, OFFICE",
+    "serviceRegion": "SEOUL, JEONBUK, GYEONGBUK, BUSAN, CHUNGBUK, GYEONGGI, ULSAN, INCHEON",
+    "reviewStats": {
+      "averageScore": 3.6,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 4,
+    "userId": 4,
+    "profileImage": "",
+    "nickname": "Unknown",
+    "career": 30,
+    "summary": "",
+    "description": "",
+    "serviceType": "SMALL, HOUSE, OFFICE",
+    "serviceRegion": "CHUNGBUK, GYEONGBUK, ULSAN, SEOUL, DAEJEON, CHUNGNAM, GYEONGGI",
+    "reviewStats": {
+      "averageScore": 4.4,
+      "totalReviews": 100
+    }
+  }
+]

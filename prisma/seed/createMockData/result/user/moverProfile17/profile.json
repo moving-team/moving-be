@@ -1,0 +1,30 @@
+{
+  "id": 16,
+  "userId": 18,
+  "profileImage": "",
+  "nickname": "nickname_li23s",
+  "career": 21,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [
+    "SMALL"
+  ],
+  "serviceRegion": [
+    "SEJONG",
+    "CHUNGNAM",
+    "ULSAN",
+    "JEONBUK",
+    "DAEGU",
+    "DAEJEON",
+    "JEONNAM",
+    "GYEONGBUK",
+    "GYEONGNAM",
+    "CHUNGBUK",
+    "SEOUL",
+    "GYEONGGI",
+    "JEJU"
+  ],
+  "User": {
+    "name": "박서아"
+  }
+}

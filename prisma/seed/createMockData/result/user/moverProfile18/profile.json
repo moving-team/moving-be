@@ -1,0 +1,24 @@
+{
+  "id": 10,
+  "userId": 5,
+  "profileImage": "",
+  "nickname": "nickname_331dz",
+  "career": 2,
+  "summary": "Experienced mover ready to assist!",
+  "description": "I provide high-quality moving services tailored to your needs.",
+  "serviceType": [],
+  "serviceRegion": [
+    "SEOUL",
+    "GYEONGNAM",
+    "JEONNAM",
+    "JEJU",
+    "DAEJEON",
+    "JEONBUK",
+    "GYEONGGI",
+    "DAEGU",
+    "INCHEON"
+  ],
+  "User": {
+    "name": "김건우"
+  }
+}

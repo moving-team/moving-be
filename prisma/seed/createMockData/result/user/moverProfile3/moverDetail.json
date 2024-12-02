@@ -1,0 +1,34 @@
+{
+  "id": 11,
+  "userId": 3,
+  "profileImage": "",
+  "nickname": "",
+  "career": 20,
+  "summary": "",
+  "description": "",
+  "confirmationCount": 121,
+  "serviceType": [
+    "SMALL",
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "INCHEON",
+    "GYEONGGI",
+    "GYEONGBUK",
+    "GWANGJU",
+    "JEONNAM",
+    "SEOUL",
+    "DAEGU",
+    "SEJONG",
+    "CHUNGNAM",
+    "GANGWON",
+    "CHUNGBUK",
+    "BUSAN"
+  ],
+  "reviewStats": {
+    "averageScore": 3.3,
+    "totalReviews": 100
+  },
+  "favorite": 55,
+  "isAssigned": false
+}

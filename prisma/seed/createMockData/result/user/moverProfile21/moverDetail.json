@@ -1,0 +1,32 @@
+{
+  "id": 24,
+  "userId": 8,
+  "profileImage": "",
+  "nickname": "",
+  "career": 10,
+  "summary": "",
+  "description": "",
+  "confirmationCount": 168,
+  "serviceType": [
+    "OFFICE",
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "SEJONG",
+    "GYEONGBUK",
+    "INCHEON",
+    "DAEGU",
+    "JEJU",
+    "GWANGJU",
+    "CHUNGNAM",
+    "BUSAN",
+    "JEONNAM",
+    "JEONBUK"
+  ],
+  "reviewStats": {
+    "averageScore": 3.2,
+    "totalReviews": 100
+  },
+  "favorite": 91,
+  "isAssigned": true
+}
