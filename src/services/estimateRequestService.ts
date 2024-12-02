@@ -3,7 +3,10 @@ import movingInfoRepository from '../repositories/movingInfoRepository';
 import userRepository from '../repositories/userRepository';
 import { CreateEstimateReq } from '../structs/estimateRequest-struct';
 import { createEstimateReqMapper } from './mappers/estimateRequestMapper';
-import { estimateReqSelect } from './selerts/estimateRequsetSelect';
+import {
+  estimateReqCustomerSelect,
+  estimateReqSelect,
+} from './selerts/estimateRequsetSelect';
 import { movinginfoSelect } from './selerts/movingInfoSelect';
 import { userCustomerSelect } from './selerts/userSelect';
 
@@ -41,10 +44,15 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
 }
 
 // 견적 요청 삭제 API
-async function deleteEstimateReq(estimateRequestId: number) {
+async function deleteEstimateReq(userId: number, estimateRequestId: number) {
   const estimateReq = await estimateRequestRepository.findFirstData({
     where: { id: estimateRequestId },
-    select: estimateReqSelect,
+    select: estimateReqCustomerSelect,
+  });
+
+  const user = await userRepository.findUniqueOrThrowtData({
+    where: { id: userId },
+    select: userCustomerSelect,
   });
 
   // 견적 요청 유무 확인
@@ -54,6 +62,11 @@ async function deleteEstimateReq(estimateRequestId: number) {
     throw new Error('이미 취소된 요청입니다.');
   }
 
+  // 권한 확인
+  if (user.Customer && user.Customer.id !== estimateReq?.Customer.id) {
+    throw new Error('권한이 없습니다.');
+  }
+
   // 취소 여부 수정
   const deleteEstimateReq = await estimateRequestRepository.updateData({
     where: { id: estimateRequestId },
@@ -61,7 +74,7 @@ async function deleteEstimateReq(estimateRequestId: number) {
     select: estimateReqSelect,
   });
 
-  // 취소 여부가 변경이 안됐을때
+  // 취소 여부가 변경이 안됐을 때
   if (!deleteEstimateReq.isCancelled) {
     throw new Error('다시 시도해 주세요.');
   }
