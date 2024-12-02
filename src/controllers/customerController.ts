@@ -9,9 +9,16 @@ const patchCustomerProfileController = async (
 ) => {
   try {
     const { id } = (req as any).user as { id: number };
-    await customerService.patchCustomerProfile(id, req.body);
+    const profileImage = req.file ? (req.file as any).location : undefined;
+  
+    const updateData = {
+      ...req.body,
+      profileImage : profileImage
+    };
+    await customerService.patchCustomerProfile(id, updateData);
   } catch (err) {
     next(err);
+    return;
   }
   res.status(200).json({ message: '수정 완료' });
 }

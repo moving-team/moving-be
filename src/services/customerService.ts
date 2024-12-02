@@ -21,6 +21,7 @@ const patchCustomerProfile = async (userId: number, data: any) => {
     if(!customerData) {
         throw new Error("프로필 생성하지 않음");
     }
+
     const patchData = {
         profileImage : data.profileImage,
         serviceType : data.serviceType,
