@@ -15,7 +15,6 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
   });
 
   // 소비자 프로필 유무 확인
-  // 프로필 생성방식이 정해지면 수정 가능
   if (!user.Customer || user.Customer?.region === 'NULL') {
     const error = new Error('프로필을 등록 해주세요');
     throw error;
