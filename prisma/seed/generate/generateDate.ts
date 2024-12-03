@@ -1,6 +1,6 @@
 export function getBeforeDate(): Date {
-  const startDate = new Date('2024-10-01T00:00:00');
-  const endDate = new Date('2024-12-01T23:59:59');
+  const startDate = new Date('2024-01-01T00:00:00');
+  const endDate = new Date('2024-07-01T23:59:59');
   if (startDate >= endDate) {
     throw new Error('startDate must be earlier than endDate');
   }

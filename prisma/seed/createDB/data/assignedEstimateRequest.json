@@ -1,0 +1,5622 @@
+[
+  {
+    "estimateRequestId": 680,
+    "moverId": 301,
+    "isRejected": false,
+    "createdAt": "2024-11-08T00:03:39.914Z"
+  },
+  {
+    "estimateRequestId": 1551,
+    "moverId": 303,
+    "isRejected": true,
+    "rejectionReason": "운송 후 파손 발생 시 보상 규정 협의가 필요합니다.",
+    "createdAt": "2024-10-27T11:30:46.144Z"
+  },
+  {
+    "estimateRequestId": 883,
+    "moverId": 278,
+    "isRejected": false,
+    "createdAt": "2024-09-06T09:13:43.893Z"
+  },
+  {
+    "estimateRequestId": 121,
+    "moverId": 275,
+    "isRejected": false,
+    "createdAt": "2024-11-16T00:42:08.911Z"
+  },
+  {
+    "estimateRequestId": 54,
+    "moverId": 243,
+    "isRejected": false,
+    "createdAt": "2024-10-09T03:26:15.618Z"
+  },
+  {
+    "estimateRequestId": 2223,
+    "moverId": 169,
+    "isRejected": false,
+    "createdAt": "2024-09-28T23:53:10.205Z"
+  },
+  {
+    "estimateRequestId": 1542,
+    "moverId": 293,
+    "isRejected": false,
+    "createdAt": "2024-10-11T23:47:55.475Z"
+  },
+  {
+    "estimateRequestId": 1258,
+    "moverId": 272,
+    "isRejected": true,
+    "rejectionReason": "요청 일정이 지나치게 이른 시간에 설정되었습니다.",
+    "createdAt": "2024-10-09T09:38:50.897Z"
+  },
+  {
+    "estimateRequestId": 625,
+    "moverId": 236,
+    "isRejected": false,
+    "createdAt": "2024-10-25T05:00:10.687Z"
+  },
+  {
+    "estimateRequestId": 2443,
+    "moverId": 59,
+    "isRejected": false,
+    "createdAt": "2024-09-11T20:04:52.393Z"
+  },
+  {
+    "estimateRequestId": 3062,
+    "moverId": 179,
+    "isRejected": true,
+    "rejectionReason": "건물 내 전용 엘리베이터 예약이 불가능합니다.",
+    "createdAt": "2024-11-06T00:04:50.361Z"
+  },
+  {
+    "estimateRequestId": 2888,
+    "moverId": 209,
+    "isRejected": false,
+    "createdAt": "2024-08-21T23:56:37.045Z"
+  },
+  {
+    "estimateRequestId": 2274,
+    "moverId": 260,
+    "isRejected": false,
+    "createdAt": "2024-10-31T16:18:05.919Z"
+  },
+  {
+    "estimateRequestId": 2250,
+    "moverId": 282,
+    "isRejected": false,
+    "createdAt": "2024-08-18T16:20:48.051Z"
+  },
+  {
+    "estimateRequestId": 3330,
+    "moverId": 219,
+    "isRejected": false,
+    "createdAt": "2024-08-10T15:57:07.163Z"
+  },
+  {
+    "estimateRequestId": 1385,
+    "moverId": 256,
+    "isRejected": true,
+    "rejectionReason": "견적 요청서에 기재된 주소지가 정확하지 않습니다.",
+    "createdAt": "2024-09-06T13:53:13.793Z"
+  },
+  {
+    "estimateRequestId": 1365,
+    "moverId": 261,
+    "isRejected": false,
+    "createdAt": "2024-08-03T16:42:51.837Z"
+  },
+  {
+    "estimateRequestId": 3381,
+    "moverId": 287,
+    "isRejected": false,
+    "createdAt": "2024-11-02T07:08:24.180Z"
+  },
+  {
+    "estimateRequestId": 2824,
+    "moverId": 240,
+    "isRejected": false,
+    "createdAt": "2024-11-03T13:00:04.044Z"
+  },
+  {
+    "estimateRequestId": 858,
+    "moverId": 234,
+    "isRejected": true,
+    "rejectionReason": "운송 차량의 규격에 맞지 않는 화물입니다.",
+    "createdAt": "2024-09-28T10:23:32.100Z"
+  },
+  {
+    "estimateRequestId": 2505,
+    "moverId": 256,
+    "isRejected": false,
+    "createdAt": "2024-08-15T10:49:55.436Z"
+  },
+  {
+    "estimateRequestId": 1761,
+    "moverId": 225,
+    "isRejected": false,
+    "createdAt": "2024-08-20T18:18:13.555Z"
+  },
+  {
+    "estimateRequestId": 1035,
+    "moverId": 265,
+    "isRejected": false,
+    "createdAt": "2024-10-14T16:38:47.698Z"
+  },
+  {
+    "estimateRequestId": 1678,
+    "moverId": 232,
+    "isRejected": false,
+    "createdAt": "2024-08-24T17:40:44.097Z"
+  },
+  {
+    "estimateRequestId": 1344,
+    "moverId": 203,
+    "isRejected": false,
+    "createdAt": "2024-11-25T09:02:00.759Z"
+  },
+  {
+    "estimateRequestId": 1461,
+    "moverId": 153,
+    "isRejected": false,
+    "createdAt": "2024-11-28T11:47:50.134Z"
+  },
+  {
+    "estimateRequestId": 115,
+    "moverId": 249,
+    "isRejected": false,
+    "createdAt": "2024-08-06T18:47:01.539Z"
+  },
+  {
+    "estimateRequestId": 2835,
+    "moverId": 250,
+    "isRejected": true,
+    "rejectionReason": "장거리 이사 요청으로 추가 비용 협의가 필요합니다.",
+    "createdAt": "2024-10-26T20:41:12.714Z"
+  },
+  {
+    "estimateRequestId": 2384,
+    "moverId": 234,
+    "isRejected": false,
+    "createdAt": "2024-08-11T22:21:56.804Z"
+  },
+  {
+    "estimateRequestId": 1159,
+    "moverId": 268,
+    "isRejected": false,
+    "createdAt": "2024-09-05T08:12:03.057Z"
+  },
+  {
+    "estimateRequestId": 1783,
+    "moverId": 218,
+    "isRejected": true,
+    "rejectionReason": "새벽 시간 작업 요청으로 스케줄 조정이 어렵습니다.",
+    "createdAt": "2024-11-06T02:30:20.441Z"
+  },
+  {
+    "estimateRequestId": 2361,
+    "moverId": 149,
+    "isRejected": false,
+    "createdAt": "2024-10-11T18:58:00.309Z"
+  },
+  {
+    "estimateRequestId": 1807,
+    "moverId": 203,
+    "isRejected": false,
+    "createdAt": "2024-11-28T20:24:42.015Z"
+  },
+  {
+    "estimateRequestId": 2964,
+    "moverId": 252,
+    "isRejected": false,
+    "createdAt": "2024-11-06T12:35:07.242Z"
+  },
+  {
+    "estimateRequestId": 3278,
+    "moverId": 232,
+    "isRejected": true,
+    "rejectionReason": "현장에서 추가 요청이 많아 작업이 지연될 가능성이 큽니다.",
+    "createdAt": "2024-09-27T03:12:07.533Z"
+  },
+  {
+    "estimateRequestId": 1056,
+    "moverId": 259,
+    "isRejected": false,
+    "createdAt": "2024-09-11T09:38:41.986Z"
+  },
+  {
+    "estimateRequestId": 2410,
+    "moverId": 226,
+    "isRejected": false,
+    "createdAt": "2024-11-08T17:02:17.764Z"
+  },
+  {
+    "estimateRequestId": 2702,
+    "moverId": 100,
+    "isRejected": false,
+    "createdAt": "2024-10-17T02:55:23.368Z"
+  },
+  {
+    "estimateRequestId": 2313,
+    "moverId": 258,
+    "isRejected": false,
+    "createdAt": "2024-08-26T09:50:15.988Z"
+  },
+  {
+    "estimateRequestId": 2056,
+    "moverId": 259,
+    "isRejected": false,
+    "createdAt": "2024-10-09T05:04:30.727Z"
+  },
+  {
+    "estimateRequestId": 350,
+    "moverId": 39,
+    "isRejected": true,
+    "rejectionReason": "비가 많이 오는 날씨 등으로 인해 일정 조정이 필요합니다.",
+    "createdAt": "2024-08-06T08:47:30.603Z"
+  },
+  {
+    "estimateRequestId": 1099,
+    "moverId": 205,
+    "isRejected": false,
+    "createdAt": "2024-08-06T02:29:38.230Z"
+  },
+  {
+    "estimateRequestId": 782,
+    "moverId": 283,
+    "isRejected": false,
+    "createdAt": "2024-11-26T21:02:49.415Z"
+  },
+  {
+    "estimateRequestId": 3328,
+    "moverId": 245,
+    "isRejected": true,
+    "rejectionReason": "고객의 요청 사항이 너무 빈번하게 변경됩니다.",
+    "createdAt": "2024-11-29T15:36:32.134Z"
+  },
+  {
+    "estimateRequestId": 1823,
+    "moverId": 298,
+    "isRejected": false,
+    "createdAt": "2024-08-06T09:01:04.896Z"
+  },
+  {
+    "estimateRequestId": 2674,
+    "moverId": 17,
+    "isRejected": true,
+    "rejectionReason": "특수 장비 요청으로 추가 비용 부담이 큽니다.",
+    "createdAt": "2024-10-04T11:07:27.493Z"
+  },
+  {
+    "estimateRequestId": 3230,
+    "moverId": 200,
+    "isRejected": false,
+    "createdAt": "2024-08-26T03:49:21.976Z"
+  },
+  {
+    "estimateRequestId": 139,
+    "moverId": 203,
+    "isRejected": true,
+    "rejectionReason": "고층 작업이 필요하나 사다리차 사용이 어려운 위치입니다.",
+    "createdAt": "2024-11-20T12:52:38.707Z"
+  },
+  {
+    "estimateRequestId": 1453,
+    "moverId": 260,
+    "isRejected": false,
+    "createdAt": "2024-08-13T17:12:49.182Z"
+  },
+  {
+    "estimateRequestId": 839,
+    "moverId": 297,
+    "isRejected": false,
+    "createdAt": "2024-11-10T00:00:49.920Z"
+  },
+  {
+    "estimateRequestId": 1155,
+    "moverId": 262,
+    "isRejected": false,
+    "createdAt": "2024-09-24T23:23:49.924Z"
+  },
+  {
+    "estimateRequestId": 1898,
+    "moverId": 247,
+    "isRejected": false,
+    "createdAt": "2024-10-05T03:18:42.690Z"
+  },
+  {
+    "estimateRequestId": 2873,
+    "moverId": 209,
+    "isRejected": true,
+    "rejectionReason": "이사 일정이 당사 작업 일정과 겹칩니다.",
+    "createdAt": "2024-09-19T11:56:42.948Z"
+  },
+  {
+    "estimateRequestId": 178,
+    "moverId": 61,
+    "isRejected": false,
+    "createdAt": "2024-10-09T02:19:28.667Z"
+  },
+  {
+    "estimateRequestId": 1474,
+    "moverId": 306,
+    "isRejected": true,
+    "rejectionReason": "이사 경로에 진입 제한 구역이 포함되어 있습니다.",
+    "createdAt": "2024-10-04T16:31:24.186Z"
+  },
+  {
+    "estimateRequestId": 1318,
+    "moverId": 294,
+    "isRejected": false,
+    "createdAt": "2024-11-27T04:44:53.428Z"
+  },
+  {
+    "estimateRequestId": 1562,
+    "moverId": 301,
+    "isRejected": false,
+    "createdAt": "2024-09-18T20:35:30.013Z"
+  },
+  {
+    "estimateRequestId": 33,
+    "moverId": 169,
+    "isRejected": false,
+    "createdAt": "2024-10-01T02:46:52.662Z"
+  },
+  {
+    "estimateRequestId": 3111,
+    "moverId": 294,
+    "isRejected": true,
+    "rejectionReason": "엘리베이터 사용이 불가능한 곳으로 계단 이용만 가능한 경우입니다.",
+    "createdAt": "2024-11-12T06:26:35.481Z"
+  },
+  {
+    "estimateRequestId": 580,
+    "moverId": 272,
+    "isRejected": false,
+    "createdAt": "2024-08-14T01:47:58.047Z"
+  },
+  {
+    "estimateRequestId": 57,
+    "moverId": 297,
+    "isRejected": false,
+    "createdAt": "2024-10-21T20:09:17.090Z"
+  },
+  {
+    "estimateRequestId": 3174,
+    "moverId": 239,
+    "isRejected": true,
+    "rejectionReason": "이삿짐 이동 경로가 좁거나 위험한 곳입니다.",
+    "createdAt": "2024-09-17T10:29:48.194Z"
+  },
+  {
+    "estimateRequestId": 2841,
+    "moverId": 268,
+    "isRejected": true,
+    "rejectionReason": "운송 후 보관 창고 출입 시간이 제한적입니다.",
+    "createdAt": "2024-11-26T04:27:43.129Z"
+  },
+  {
+    "estimateRequestId": 1722,
+    "moverId": 280,
+    "isRejected": false,
+    "createdAt": "2024-11-08T02:21:27.059Z"
+  },
+  {
+    "estimateRequestId": 3113,
+    "moverId": 244,
+    "isRejected": true,
+    "rejectionReason": "의뢰하신 작업 일정이 변경되어 혼란이 예상됩니다.",
+    "createdAt": "2024-08-27T05:45:43.622Z"
+  },
+  {
+    "estimateRequestId": 470,
+    "moverId": 207,
+    "isRejected": true,
+    "rejectionReason": "짐 보관 요청으로 작업 스케줄이 초과됩니다.",
+    "createdAt": "2024-09-07T22:44:32.582Z"
+  },
+  {
+    "estimateRequestId": 777,
+    "moverId": 276,
+    "isRejected": true,
+    "rejectionReason": "특수 화물(금고, ATM 등) 운반 요청이 포함되었습니다.",
+    "createdAt": "2024-11-12T09:00:59.206Z"
+  },
+  {
+    "estimateRequestId": 1362,
+    "moverId": 129,
+    "isRejected": true,
+    "rejectionReason": "요청된 서비스 범위가 일반적인 이사 범위를 초과합니다.",
+    "createdAt": "2024-11-19T09:24:15.497Z"
+  },
+  {
+    "estimateRequestId": 1928,
+    "moverId": 268,
+    "isRejected": false,
+    "createdAt": "2024-08-05T12:51:30.450Z"
+  },
+  {
+    "estimateRequestId": 12,
+    "moverId": 272,
+    "isRejected": true,
+    "rejectionReason": "주변 환경이 위험해 안전 문제 우려가 큽니다.",
+    "createdAt": "2024-11-23T20:35:18.508Z"
+  },
+  {
+    "estimateRequestId": 888,
+    "moverId": 241,
+    "isRejected": false,
+    "createdAt": "2024-09-16T10:11:27.952Z"
+  },
+  {
+    "estimateRequestId": 676,
+    "moverId": 50,
+    "isRejected": false,
+    "createdAt": "2024-11-21T14:50:37.408Z"
+  },
+  {
+    "estimateRequestId": 24,
+    "moverId": 13,
+    "isRejected": false,
+    "createdAt": "2024-09-17T12:52:01.310Z"
+  },
+  {
+    "estimateRequestId": 124,
+    "moverId": 237,
+    "isRejected": false,
+    "createdAt": "2024-10-29T14:55:33.133Z"
+  },
+  {
+    "estimateRequestId": 3227,
+    "moverId": 71,
+    "isRejected": true,
+    "rejectionReason": "특수 장비(예: 피아노 운반기)가 필요한 이사입니다.",
+    "createdAt": "2024-08-19T21:06:57.489Z"
+  },
+  {
+    "estimateRequestId": 496,
+    "moverId": 166,
+    "isRejected": false,
+    "createdAt": "2024-08-16T02:00:45.770Z"
+  },
+  {
+    "estimateRequestId": 254,
+    "moverId": 279,
+    "isRejected": true,
+    "rejectionReason": "거래 조건(선불, 후불 등)이 불명확합니다.",
+    "createdAt": "2024-08-28T22:04:27.528Z"
+  },
+  {
+    "estimateRequestId": 2303,
+    "moverId": 237,
+    "isRejected": false,
+    "createdAt": "2024-10-10T12:36:12.841Z"
+  },
+  {
+    "estimateRequestId": 100,
+    "moverId": 137,
+    "isRejected": true,
+    "rejectionReason": "작업 환경(소음, 진동 등)이 부적합합니다.",
+    "createdAt": "2024-10-15T19:38:29.435Z"
+  },
+  {
+    "estimateRequestId": 656,
+    "moverId": 4,
+    "isRejected": false,
+    "createdAt": "2024-08-20T02:17:49.919Z"
+  },
+  {
+    "estimateRequestId": 37,
+    "moverId": 294,
+    "isRejected": false,
+    "createdAt": "2024-10-09T04:13:56.161Z"
+  },
+  {
+    "estimateRequestId": 624,
+    "moverId": 214,
+    "isRejected": false,
+    "createdAt": "2024-08-07T01:39:09.005Z"
+  },
+  {
+    "estimateRequestId": 645,
+    "moverId": 284,
+    "isRejected": false,
+    "createdAt": "2024-09-03T00:15:56.295Z"
+  },
+  {
+    "estimateRequestId": 1831,
+    "moverId": 59,
+    "isRejected": false,
+    "createdAt": "2024-08-04T07:53:32.566Z"
+  },
+  {
+    "estimateRequestId": 2128,
+    "moverId": 247,
+    "isRejected": false,
+    "createdAt": "2024-10-24T13:02:21.444Z"
+  },
+  {
+    "estimateRequestId": 2041,
+    "moverId": 235,
+    "isRejected": true,
+    "rejectionReason": "포장이 부족하여 작업이 지연될 가능성이 큽니다.",
+    "createdAt": "2024-10-25T18:13:16.116Z"
+  },
+  {
+    "estimateRequestId": 1147,
+    "moverId": 6,
+    "isRejected": false,
+    "createdAt": "2024-11-26T23:40:40.452Z"
+  },
+  {
+    "estimateRequestId": 2700,
+    "moverId": 241,
+    "isRejected": false,
+    "createdAt": "2024-09-14T16:23:01.865Z"
+  },
+  {
+    "estimateRequestId": 1428,
+    "moverId": 226,
+    "isRejected": false,
+    "createdAt": "2024-09-23T00:22:24.071Z"
+  },
+  {
+    "estimateRequestId": 2938,
+    "moverId": 209,
+    "isRejected": false,
+    "createdAt": "2024-11-28T14:04:03.939Z"
+  },
+  {
+    "estimateRequestId": 386,
+    "moverId": 261,
+    "isRejected": false,
+    "createdAt": "2024-11-17T04:42:32.146Z"
+  },
+  {
+    "estimateRequestId": 3441,
+    "moverId": 1,
+    "isRejected": false,
+    "createdAt": "2024-10-15T21:45:53.984Z"
+  },
+  {
+    "estimateRequestId": 3029,
+    "moverId": 291,
+    "isRejected": false,
+    "createdAt": "2024-08-29T14:53:07.849Z"
+  },
+  {
+    "estimateRequestId": 1525,
+    "moverId": 234,
+    "isRejected": false,
+    "createdAt": "2024-09-16T08:11:15.918Z"
+  },
+  {
+    "estimateRequestId": 763,
+    "moverId": 268,
+    "isRejected": false,
+    "createdAt": "2024-11-18T06:40:01.616Z"
+  },
+  {
+    "estimateRequestId": 344,
+    "moverId": 273,
+    "isRejected": false,
+    "createdAt": "2024-08-20T02:51:41.732Z"
+  },
+  {
+    "estimateRequestId": 557,
+    "moverId": 253,
+    "isRejected": false,
+    "createdAt": "2024-10-26T15:44:21.086Z"
+  },
+  {
+    "estimateRequestId": 617,
+    "moverId": 66,
+    "isRejected": false,
+    "createdAt": "2024-11-30T13:35:42.256Z"
+  },
+  {
+    "estimateRequestId": 1015,
+    "moverId": 212,
+    "isRejected": false,
+    "createdAt": "2024-09-16T09:09:32.667Z"
+  },
+  {
+    "estimateRequestId": 701,
+    "moverId": 78,
+    "isRejected": false,
+    "createdAt": "2024-09-01T06:15:34.785Z"
+  },
+  {
+    "estimateRequestId": 218,
+    "moverId": 250,
+    "isRejected": true,
+    "rejectionReason": "비용 청구 방식에 대한 오해가 있어 협의가 필요합니다.",
+    "createdAt": "2024-09-09T06:12:32.905Z"
+  },
+  {
+    "estimateRequestId": 1922,
+    "moverId": 283,
+    "isRejected": false,
+    "createdAt": "2024-09-08T12:12:51.740Z"
+  },
+  {
+    "estimateRequestId": 3068,
+    "moverId": 292,
+    "isRejected": false,
+    "createdAt": "2024-08-21T23:37:45.781Z"
+  },
+  {
+    "estimateRequestId": 111,
+    "moverId": 219,
+    "isRejected": true,
+    "rejectionReason": "요청하신 견적 내용이 너무 추상적입니다.",
+    "createdAt": "2024-09-26T18:15:38.042Z"
+  },
+  {
+    "estimateRequestId": 2681,
+    "moverId": 278,
+    "isRejected": true,
+    "rejectionReason": "화물 운송 시 급경사 도로 이용이 필요합니다.",
+    "createdAt": "2024-09-23T07:22:01.459Z"
+  },
+  {
+    "estimateRequestId": 646,
+    "moverId": 245,
+    "isRejected": false,
+    "createdAt": "2024-10-02T18:45:06.926Z"
+  },
+  {
+    "estimateRequestId": 2687,
+    "moverId": 118,
+    "isRejected": true,
+    "rejectionReason": "이삿짐의 상세 목록이 미제공되었습니다.",
+    "createdAt": "2024-08-08T06:09:12.469Z"
+  },
+  {
+    "estimateRequestId": 2213,
+    "moverId": 247,
+    "isRejected": false,
+    "createdAt": "2024-08-07T15:21:23.629Z"
+  },
+  {
+    "estimateRequestId": 2728,
+    "moverId": 304,
+    "isRejected": false,
+    "createdAt": "2024-11-27T20:07:08.140Z"
+  },
+  {
+    "estimateRequestId": 431,
+    "moverId": 258,
+    "isRejected": false,
+    "createdAt": "2024-08-13T00:59:44.647Z"
+  },
+  {
+    "estimateRequestId": 360,
+    "moverId": 286,
+    "isRejected": false,
+    "createdAt": "2024-09-19T07:45:10.648Z"
+  },
+  {
+    "estimateRequestId": 1238,
+    "moverId": 183,
+    "isRejected": true,
+    "rejectionReason": "특수 목적 이사(전시물, 예술품 등)로 추가 협의가 필요합니다.",
+    "createdAt": "2024-10-06T23:19:30.313Z"
+  },
+  {
+    "estimateRequestId": 1833,
+    "moverId": 272,
+    "isRejected": false,
+    "createdAt": "2024-10-31T21:43:33.053Z"
+  },
+  {
+    "estimateRequestId": 2220,
+    "moverId": 260,
+    "isRejected": false,
+    "createdAt": "2024-09-24T07:03:42.965Z"
+  },
+  {
+    "estimateRequestId": 2038,
+    "moverId": 222,
+    "isRejected": false,
+    "createdAt": "2024-11-20T01:18:13.744Z"
+  },
+  {
+    "estimateRequestId": 308,
+    "moverId": 293,
+    "isRejected": false,
+    "createdAt": "2024-09-25T20:10:11.241Z"
+  },
+  {
+    "estimateRequestId": 1306,
+    "moverId": 268,
+    "isRejected": false,
+    "createdAt": "2024-08-23T04:54:50.944Z"
+  },
+  {
+    "estimateRequestId": 456,
+    "moverId": 240,
+    "isRejected": false,
+    "createdAt": "2024-11-11T08:25:30.574Z"
+  },
+  {
+    "estimateRequestId": 1563,
+    "moverId": 216,
+    "isRejected": false,
+    "createdAt": "2024-08-27T21:44:40.227Z"
+  },
+  {
+    "estimateRequestId": 2298,
+    "moverId": 238,
+    "isRejected": true,
+    "rejectionReason": "현장의 안전상 이유로 작업이 불가능합니다.",
+    "createdAt": "2024-08-15T16:11:39.297Z"
+  },
+  {
+    "estimateRequestId": 2342,
+    "moverId": 304,
+    "isRejected": false,
+    "createdAt": "2024-08-28T09:02:42.984Z"
+  },
+  {
+    "estimateRequestId": 3348,
+    "moverId": 237,
+    "isRejected": false,
+    "createdAt": "2024-09-26T10:36:29.959Z"
+  },
+  {
+    "estimateRequestId": 2594,
+    "moverId": 243,
+    "isRejected": false,
+    "createdAt": "2024-10-27T09:09:37.580Z"
+  },
+  {
+    "estimateRequestId": 2324,
+    "moverId": 211,
+    "isRejected": false,
+    "createdAt": "2024-12-02T01:32:33.465Z"
+  },
+  {
+    "estimateRequestId": 283,
+    "moverId": 240,
+    "isRejected": true,
+    "rejectionReason": "소형 차량으로 대응이 불가능한 짐의 양입니다.",
+    "createdAt": "2024-08-06T22:01:00.442Z"
+  },
+  {
+    "estimateRequestId": 1073,
+    "moverId": 252,
+    "isRejected": false,
+    "createdAt": "2024-09-17T02:51:46.270Z"
+  },
+  {
+    "estimateRequestId": 9,
+    "moverId": 207,
+    "isRejected": false,
+    "createdAt": "2024-12-05T23:58:42.548Z"
+  },
+  {
+    "estimateRequestId": 3160,
+    "moverId": 297,
+    "isRejected": false,
+    "createdAt": "2024-10-29T06:08:57.908Z"
+  },
+  {
+    "estimateRequestId": 2320,
+    "moverId": 239,
+    "isRejected": false,
+    "createdAt": "2024-09-05T22:25:46.374Z"
+  },
+  {
+    "estimateRequestId": 2795,
+    "moverId": 72,
+    "isRejected": false,
+    "createdAt": "2024-10-17T20:16:08.425Z"
+  },
+  {
+    "estimateRequestId": 3058,
+    "moverId": 210,
+    "isRejected": false,
+    "createdAt": "2024-09-12T15:50:32.193Z"
+  },
+  {
+    "estimateRequestId": 410,
+    "moverId": 231,
+    "isRejected": false,
+    "createdAt": "2024-10-23T10:10:51.875Z"
+  },
+  {
+    "estimateRequestId": 2088,
+    "moverId": 280,
+    "isRejected": false,
+    "createdAt": "2024-08-28T19:06:23.417Z"
+  },
+  {
+    "estimateRequestId": 974,
+    "moverId": 251,
+    "isRejected": true,
+    "rejectionReason": "가구가 문이나 창문을 통해 이동하기 어려운 경우입니다.",
+    "createdAt": "2024-08-03T06:35:30.590Z"
+  },
+  {
+    "estimateRequestId": 332,
+    "moverId": 210,
+    "isRejected": false,
+    "createdAt": "2024-08-06T18:07:25.004Z"
+  },
+  {
+    "estimateRequestId": 876,
+    "moverId": 230,
+    "isRejected": true,
+    "rejectionReason": "짐이 너무 많아 1회 운송이 어려운 상황입니다.",
+    "createdAt": "2024-09-24T21:39:03.012Z"
+  },
+  {
+    "estimateRequestId": 2462,
+    "moverId": 211,
+    "isRejected": false,
+    "createdAt": "2024-09-17T05:34:05.489Z"
+  },
+  {
+    "estimateRequestId": 176,
+    "moverId": 44,
+    "isRejected": false,
+    "createdAt": "2024-12-04T16:51:19.612Z"
+  },
+  {
+    "estimateRequestId": 2173,
+    "moverId": 202,
+    "isRejected": false,
+    "createdAt": "2024-11-30T20:00:05.723Z"
+  },
+  {
+    "estimateRequestId": 1165,
+    "moverId": 252,
+    "isRejected": false,
+    "createdAt": "2024-10-05T09:56:43.163Z"
+  },
+  {
+    "estimateRequestId": 1703,
+    "moverId": 268,
+    "isRejected": false,
+    "createdAt": "2024-10-11T21:55:34.365Z"
+  },
+  {
+    "estimateRequestId": 3173,
+    "moverId": 180,
+    "isRejected": false,
+    "createdAt": "2024-08-24T06:31:49.076Z"
+  },
+  {
+    "estimateRequestId": 1139,
+    "moverId": 267,
+    "isRejected": true,
+    "rejectionReason": "짐 분해 및 조립 요청이 많아 소요 시간이 초과됩니다.",
+    "createdAt": "2024-09-17T17:17:47.836Z"
+  },
+  {
+    "estimateRequestId": 2457,
+    "moverId": 239,
+    "isRejected": false,
+    "createdAt": "2024-08-10T19:28:30.750Z"
+  },
+  {
+    "estimateRequestId": 535,
+    "moverId": 227,
+    "isRejected": true,
+    "rejectionReason": "고객과의 작업 계약 조건이 충족되지 않았습니다.",
+    "createdAt": "2024-10-22T23:33:19.892Z"
+  },
+  {
+    "estimateRequestId": 1605,
+    "moverId": 103,
+    "isRejected": false,
+    "createdAt": "2024-11-03T08:11:35.283Z"
+  },
+  {
+    "estimateRequestId": 130,
+    "moverId": 304,
+    "isRejected": false,
+    "createdAt": "2024-09-16T02:55:14.202Z"
+  },
+  {
+    "estimateRequestId": 1644,
+    "moverId": 274,
+    "isRejected": false,
+    "createdAt": "2024-11-01T19:58:43.596Z"
+  },
+  {
+    "estimateRequestId": 1526,
+    "moverId": 212,
+    "isRejected": false,
+    "createdAt": "2024-09-01T04:44:13.012Z"
+  },
+  {
+    "estimateRequestId": 2097,
+    "moverId": 137,
+    "isRejected": true,
+    "rejectionReason": "고객의 작업 요청 사항이 복잡하여 일정이 초과될 수 있습니다.",
+    "createdAt": "2024-11-24T13:10:31.216Z"
+  },
+  {
+    "estimateRequestId": 868,
+    "moverId": 306,
+    "isRejected": false,
+    "createdAt": "2024-10-08T08:13:53.820Z"
+  },
+  {
+    "estimateRequestId": 3187,
+    "moverId": 249,
+    "isRejected": true,
+    "rejectionReason": "운반 경로의 도로 상황이 좋지 않은 경우입니다.",
+    "createdAt": "2024-10-01T08:57:30.319Z"
+  },
+  {
+    "estimateRequestId": 313,
+    "moverId": 274,
+    "isRejected": false,
+    "createdAt": "2024-10-18T08:05:04.893Z"
+  },
+  {
+    "estimateRequestId": 1378,
+    "moverId": 301,
+    "isRejected": false,
+    "createdAt": "2024-11-13T18:05:23.449Z"
+  },
+  {
+    "estimateRequestId": 260,
+    "moverId": 258,
+    "isRejected": true,
+    "rejectionReason": "일부 이삿짐은 고장 상태로 취급 주의가 필요합니다.",
+    "createdAt": "2024-08-17T07:50:20.600Z"
+  },
+  {
+    "estimateRequestId": 2351,
+    "moverId": 298,
+    "isRejected": true,
+    "rejectionReason": "운송 차량의 접근이 어려운 지역입니다.",
+    "createdAt": "2024-09-03T02:17:26.477Z"
+  },
+  {
+    "estimateRequestId": 769,
+    "moverId": 224,
+    "isRejected": true,
+    "rejectionReason": "반입이 제한된 건물(예: 군부대)로 작업이 어렵습니다.",
+    "createdAt": "2024-09-11T18:25:25.777Z"
+  },
+  {
+    "estimateRequestId": 741,
+    "moverId": 12,
+    "isRejected": false,
+    "createdAt": "2024-09-03T02:45:48.841Z"
+  },
+  {
+    "estimateRequestId": 140,
+    "moverId": 283,
+    "isRejected": true,
+    "rejectionReason": "요청 금액이 작업 난이도에 비해 낮은 경우입니다.",
+    "createdAt": "2024-10-01T02:45:32.009Z"
+  },
+  {
+    "estimateRequestId": 2063,
+    "moverId": 184,
+    "isRejected": false,
+    "createdAt": "2024-09-02T06:23:00.641Z"
+  },
+  {
+    "estimateRequestId": 2684,
+    "moverId": 301,
+    "isRejected": false,
+    "createdAt": "2024-10-22T20:57:33.741Z"
+  },
+  {
+    "estimateRequestId": 2959,
+    "moverId": 207,
+    "isRejected": false,
+    "createdAt": "2024-11-26T12:33:19.116Z"
+  },
+  {
+    "estimateRequestId": 2175,
+    "moverId": 12,
+    "isRejected": false,
+    "createdAt": "2024-11-22T21:22:06.369Z"
+  },
+  {
+    "estimateRequestId": 249,
+    "moverId": 30,
+    "isRejected": false,
+    "createdAt": "2024-09-10T20:58:51.289Z"
+  },
+  {
+    "estimateRequestId": 1314,
+    "moverId": 58,
+    "isRejected": false,
+    "createdAt": "2024-11-06T22:44:41.124Z"
+  },
+  {
+    "estimateRequestId": 1136,
+    "moverId": 265,
+    "isRejected": false,
+    "createdAt": "2024-09-04T08:49:05.172Z"
+  },
+  {
+    "estimateRequestId": 592,
+    "moverId": 219,
+    "isRejected": false,
+    "createdAt": "2024-10-09T08:41:38.449Z"
+  },
+  {
+    "estimateRequestId": 331,
+    "moverId": 269,
+    "isRejected": false,
+    "createdAt": "2024-08-05T19:49:15.704Z"
+  },
+  {
+    "estimateRequestId": 31,
+    "moverId": 231,
+    "isRejected": false,
+    "createdAt": "2024-08-23T21:59:14.085Z"
+  },
+  {
+    "estimateRequestId": 1055,
+    "moverId": 271,
+    "isRejected": false,
+    "createdAt": "2024-11-30T11:38:32.209Z"
+  },
+  {
+    "estimateRequestId": 1993,
+    "moverId": 263,
+    "isRejected": false,
+    "createdAt": "2024-11-09T12:44:17.308Z"
+  },
+  {
+    "estimateRequestId": 705,
+    "moverId": 217,
+    "isRejected": true,
+    "rejectionReason": "화물차 주차 허가가 필요합니다.",
+    "createdAt": "2024-09-17T03:21:22.385Z"
+  },
+  {
+    "estimateRequestId": 1770,
+    "moverId": 265,
+    "isRejected": true,
+    "rejectionReason": "긴급 요청으로 준비 시간이 부족합니다.",
+    "createdAt": "2024-10-13T09:30:02.596Z"
+  },
+  {
+    "estimateRequestId": 2573,
+    "moverId": 208,
+    "isRejected": false,
+    "createdAt": "2024-08-12T18:28:02.196Z"
+  },
+  {
+    "estimateRequestId": 1663,
+    "moverId": 303,
+    "isRejected": false,
+    "createdAt": "2024-09-24T09:06:52.318Z"
+  },
+  {
+    "estimateRequestId": 754,
+    "moverId": 226,
+    "isRejected": true,
+    "rejectionReason": "요청하신 작업 시간이 너무 촉박합니다.",
+    "createdAt": "2024-08-03T13:53:15.394Z"
+  },
+  {
+    "estimateRequestId": 2803,
+    "moverId": 147,
+    "isRejected": true,
+    "rejectionReason": "야외 보관 화물로 작업 환경이 까다롭습니다.",
+    "createdAt": "2024-10-03T05:02:26.614Z"
+  },
+  {
+    "estimateRequestId": 1389,
+    "moverId": 231,
+    "isRejected": true,
+    "rejectionReason": "공휴일 작업 요청으로 인력 수급이 어렵습니다.",
+    "createdAt": "2024-08-16T22:06:43.984Z"
+  },
+  {
+    "estimateRequestId": 60,
+    "moverId": 141,
+    "isRejected": false,
+    "createdAt": "2024-08-13T10:52:20.488Z"
+  },
+  {
+    "estimateRequestId": 3341,
+    "moverId": 230,
+    "isRejected": true,
+    "rejectionReason": "짐 포장이 미리 준비되지 않은 경우입니다.",
+    "createdAt": "2024-10-24T03:30:30.037Z"
+  },
+  {
+    "estimateRequestId": 345,
+    "moverId": 304,
+    "isRejected": true,
+    "rejectionReason": "가구나 물품이 외부 크레인 사용을 요합니다.",
+    "createdAt": "2024-10-18T19:03:47.306Z"
+  },
+  {
+    "estimateRequestId": 1151,
+    "moverId": 25,
+    "isRejected": true,
+    "rejectionReason": "운반 시 보관 장소가 부족합니다.",
+    "createdAt": "2024-09-14T12:49:35.221Z"
+  },
+  {
+    "estimateRequestId": 1433,
+    "moverId": 84,
+    "isRejected": true,
+    "rejectionReason": "이삿짐이 화물차 적재 용량을 초과합니다.",
+    "createdAt": "2024-10-17T01:27:08.495Z"
+  },
+  {
+    "estimateRequestId": 1944,
+    "moverId": 193,
+    "isRejected": true,
+    "rejectionReason": "반려동물이 많아 작업 환경이 어려울 수 있습니다.",
+    "createdAt": "2024-11-26T00:46:40.065Z"
+  },
+  {
+    "estimateRequestId": 964,
+    "moverId": 207,
+    "isRejected": false,
+    "createdAt": "2024-10-29T09:44:54.330Z"
+  },
+  {
+    "estimateRequestId": 3056,
+    "moverId": 214,
+    "isRejected": false,
+    "createdAt": "2024-09-26T12:49:15.678Z"
+  },
+  {
+    "estimateRequestId": 2762,
+    "moverId": 205,
+    "isRejected": false,
+    "createdAt": "2024-09-11T02:55:32.570Z"
+  },
+  {
+    "estimateRequestId": 2753,
+    "moverId": 192,
+    "isRejected": true,
+    "rejectionReason": "작업 완료 후 인근 주민과의 소음 민원이 우려됩니다.",
+    "createdAt": "2024-09-19T06:37:49.567Z"
+  },
+  {
+    "estimateRequestId": 2021,
+    "moverId": 234,
+    "isRejected": true,
+    "rejectionReason": "이삿짐 중 고가 물품에 대한 보험 가입 필요합니다.",
+    "createdAt": "2024-10-10T02:12:00.326Z"
+  },
+  {
+    "estimateRequestId": 3128,
+    "moverId": 226,
+    "isRejected": false,
+    "createdAt": "2024-11-16T22:47:58.057Z"
+  },
+  {
+    "estimateRequestId": 1463,
+    "moverId": 229,
+    "isRejected": false,
+    "createdAt": "2024-09-22T14:44:00.768Z"
+  },
+  {
+    "estimateRequestId": 1057,
+    "moverId": 229,
+    "isRejected": false,
+    "createdAt": "2024-08-20T19:07:38.272Z"
+  },
+  {
+    "estimateRequestId": 965,
+    "moverId": 176,
+    "isRejected": false,
+    "createdAt": "2024-08-05T12:28:51.832Z"
+  },
+  {
+    "estimateRequestId": 2604,
+    "moverId": 245,
+    "isRejected": true,
+    "rejectionReason": "이삿짐의 양이 견적 요청서에 비해 과다합니다.",
+    "createdAt": "2024-08-28T02:44:21.841Z"
+  },
+  {
+    "estimateRequestId": 1232,
+    "moverId": 278,
+    "isRejected": false,
+    "createdAt": "2024-09-06T10:47:22.046Z"
+  },
+  {
+    "estimateRequestId": 2640,
+    "moverId": 53,
+    "isRejected": false,
+    "createdAt": "2024-09-13T01:13:32.680Z"
+  },
+  {
+    "estimateRequestId": 2999,
+    "moverId": 305,
+    "isRejected": true,
+    "rejectionReason": "운송 시 전용 도로 사용 허가가 필요합니다.",
+    "createdAt": "2024-11-20T23:07:32.791Z"
+  },
+  {
+    "estimateRequestId": 457,
+    "moverId": 275,
+    "isRejected": true,
+    "rejectionReason": "이사 당일 고객의 연락 두절로 작업이 어렵습니다.",
+    "createdAt": "2024-09-23T11:53:16.580Z"
+  },
+  {
+    "estimateRequestId": 1379,
+    "moverId": 267,
+    "isRejected": false,
+    "createdAt": "2024-08-14T17:38:40.002Z"
+  },
+  {
+    "estimateRequestId": 1870,
+    "moverId": 306,
+    "isRejected": false,
+    "createdAt": "2024-09-03T20:50:46.041Z"
+  },
+  {
+    "estimateRequestId": 1882,
+    "moverId": 258,
+    "isRejected": true,
+    "rejectionReason": "포장이사가 아닌 일반 이사를 요청하셔서 대응이 어렵습니다.",
+    "createdAt": "2024-09-27T01:41:08.755Z"
+  },
+  {
+    "estimateRequestId": 1775,
+    "moverId": 202,
+    "isRejected": false,
+    "createdAt": "2024-09-17T04:49:44.671Z"
+  },
+  {
+    "estimateRequestId": 409,
+    "moverId": 299,
+    "isRejected": false,
+    "createdAt": "2024-10-20T21:16:32.571Z"
+  },
+  {
+    "estimateRequestId": 1841,
+    "moverId": 260,
+    "isRejected": false,
+    "createdAt": "2024-09-29T07:28:04.078Z"
+  },
+  {
+    "estimateRequestId": 3223,
+    "moverId": 304,
+    "isRejected": false,
+    "createdAt": "2024-09-10T22:58:15.555Z"
+  },
+  {
+    "estimateRequestId": 2866,
+    "moverId": 220,
+    "isRejected": false,
+    "createdAt": "2024-11-05T06:11:59.963Z"
+  },
+  {
+    "estimateRequestId": 2592,
+    "moverId": 251,
+    "isRejected": false,
+    "createdAt": "2024-08-08T10:40:20.876Z"
+  },
+  {
+    "estimateRequestId": 3097,
+    "moverId": 228,
+    "isRejected": false,
+    "createdAt": "2024-09-12T21:29:30.380Z"
+  },
+  {
+    "estimateRequestId": 2331,
+    "moverId": 253,
+    "isRejected": true,
+    "rejectionReason": "다른 이사 일정과의 충돌로 스케줄 조정이 어렵습니다.",
+    "createdAt": "2024-09-15T20:43:32.523Z"
+  },
+  {
+    "estimateRequestId": 339,
+    "moverId": 129,
+    "isRejected": false,
+    "createdAt": "2024-08-20T06:52:34.906Z"
+  },
+  {
+    "estimateRequestId": 3064,
+    "moverId": 232,
+    "isRejected": false,
+    "createdAt": "2024-11-25T07:51:22.894Z"
+  },
+  {
+    "estimateRequestId": 951,
+    "moverId": 138,
+    "isRejected": false,
+    "createdAt": "2024-08-23T19:27:12.135Z"
+  },
+  {
+    "estimateRequestId": 848,
+    "moverId": 266,
+    "isRejected": false,
+    "createdAt": "2024-10-01T22:29:42.079Z"
+  },
+  {
+    "estimateRequestId": 2793,
+    "moverId": 284,
+    "isRejected": true,
+    "rejectionReason": "견적 금액이 예산과 맞지 않아 협의가 어렵습니다.",
+    "createdAt": "2024-11-15T11:14:01.376Z"
+  },
+  {
+    "estimateRequestId": 785,
+    "moverId": 276,
+    "isRejected": true,
+    "rejectionReason": "특수 화물(예: 유독 물질)이 포함되어 있습니다.",
+    "createdAt": "2024-08-25T03:17:03.914Z"
+  },
+  {
+    "estimateRequestId": 2745,
+    "moverId": 191,
+    "isRejected": false,
+    "createdAt": "2024-11-01T18:43:10.893Z"
+  },
+  {
+    "estimateRequestId": 47,
+    "moverId": 263,
+    "isRejected": false,
+    "createdAt": "2024-09-13T13:47:29.625Z"
+  },
+  {
+    "estimateRequestId": 2876,
+    "moverId": 286,
+    "isRejected": false,
+    "createdAt": "2024-09-02T00:43:39.193Z"
+  },
+  {
+    "estimateRequestId": 1816,
+    "moverId": 289,
+    "isRejected": true,
+    "rejectionReason": "특수 장비 대여 비용이 과다하여 진행이 어렵습니다.",
+    "createdAt": "2024-08-30T12:43:42.763Z"
+  },
+  {
+    "estimateRequestId": 390,
+    "moverId": 215,
+    "isRejected": false,
+    "createdAt": "2024-09-18T04:47:50.742Z"
+  },
+  {
+    "estimateRequestId": 3247,
+    "moverId": 243,
+    "isRejected": false,
+    "createdAt": "2024-08-06T10:42:39.068Z"
+  },
+  {
+    "estimateRequestId": 2502,
+    "moverId": 272,
+    "isRejected": false,
+    "createdAt": "2024-11-19T20:38:48.854Z"
+  },
+  {
+    "estimateRequestId": 1947,
+    "moverId": 275,
+    "isRejected": false,
+    "createdAt": "2024-09-13T05:02:22.813Z"
+  },
+  {
+    "estimateRequestId": 3279,
+    "moverId": 232,
+    "isRejected": false,
+    "createdAt": "2024-09-19T17:46:28.977Z"
+  },
+  {
+    "estimateRequestId": 1670,
+    "moverId": 221,
+    "isRejected": true,
+    "rejectionReason": "포장재 비용 부담 협의가 불가능합니다.",
+    "createdAt": "2024-11-19T02:36:37.862Z"
+  },
+  {
+    "estimateRequestId": 3231,
+    "moverId": 160,
+    "isRejected": false,
+    "createdAt": "2024-08-08T14:16:25.686Z"
+  },
+  {
+    "estimateRequestId": 3312,
+    "moverId": 219,
+    "isRejected": false,
+    "createdAt": "2024-09-10T01:28:36.873Z"
+  },
+  {
+    "estimateRequestId": 2934,
+    "moverId": 253,
+    "isRejected": false,
+    "createdAt": "2024-10-05T06:38:05.325Z"
+  },
+  {
+    "estimateRequestId": 2847,
+    "moverId": 203,
+    "isRejected": false,
+    "createdAt": "2024-10-24T10:28:50.112Z"
+  },
+  {
+    "estimateRequestId": 1200,
+    "moverId": 275,
+    "isRejected": false,
+    "createdAt": "2024-08-24T16:34:15.801Z"
+  },
+  {
+    "estimateRequestId": 2272,
+    "moverId": 96,
+    "isRejected": false,
+    "createdAt": "2024-09-26T17:47:21.739Z"
+  },
+  {
+    "estimateRequestId": 2287,
+    "moverId": 223,
+    "isRejected": false,
+    "createdAt": "2024-11-11T18:50:25.770Z"
+  },
+  {
+    "estimateRequestId": 1749,
+    "moverId": 81,
+    "isRejected": true,
+    "rejectionReason": "계약 전 무리한 할인 요청으로 협의가 어렵습니다.",
+    "createdAt": "2024-10-25T21:07:38.386Z"
+  },
+  {
+    "estimateRequestId": 3423,
+    "moverId": 303,
+    "isRejected": true,
+    "rejectionReason": "견적서 작성 후 요청 사항이 추가되었습니다.",
+    "createdAt": "2024-08-04T21:20:49.993Z"
+  },
+  {
+    "estimateRequestId": 1025,
+    "moverId": 273,
+    "isRejected": false,
+    "createdAt": "2024-11-16T06:57:44.531Z"
+  },
+  {
+    "estimateRequestId": 1061,
+    "moverId": 182,
+    "isRejected": false,
+    "createdAt": "2024-09-12T00:38:03.231Z"
+  },
+  {
+    "estimateRequestId": 85,
+    "moverId": 262,
+    "isRejected": false,
+    "createdAt": "2024-10-19T18:07:02.694Z"
+  },
+  {
+    "estimateRequestId": 2913,
+    "moverId": 121,
+    "isRejected": true,
+    "rejectionReason": "고객과의 작업 범위 협의가 명확하지 않습니다.",
+    "createdAt": "2024-09-14T16:27:19.581Z"
+  },
+  {
+    "estimateRequestId": 2332,
+    "moverId": 290,
+    "isRejected": false,
+    "createdAt": "2024-08-07T00:06:10.021Z"
+  },
+  {
+    "estimateRequestId": 578,
+    "moverId": 259,
+    "isRejected": false,
+    "createdAt": "2024-10-13T03:07:28.122Z"
+  },
+  {
+    "estimateRequestId": 2499,
+    "moverId": 93,
+    "isRejected": false,
+    "createdAt": "2024-10-07T22:08:57.858Z"
+  },
+  {
+    "estimateRequestId": 220,
+    "moverId": 96,
+    "isRejected": true,
+    "rejectionReason": "새벽이나 야간 작업으로 인한 소음 문제 예상됩니다.",
+    "createdAt": "2024-11-06T16:07:17.089Z"
+  },
+  {
+    "estimateRequestId": 2980,
+    "moverId": 279,
+    "isRejected": false,
+    "createdAt": "2024-10-15T09:15:16.619Z"
+  },
+  {
+    "estimateRequestId": 3434,
+    "moverId": 121,
+    "isRejected": false,
+    "createdAt": "2024-10-05T14:27:34.173Z"
+  },
+  {
+    "estimateRequestId": 51,
+    "moverId": 286,
+    "isRejected": true,
+    "rejectionReason": "건물 관리자와의 협의가 사전에 이루어지지 않았습니다.",
+    "createdAt": "2024-10-15T03:04:45.075Z"
+  },
+  {
+    "estimateRequestId": 1204,
+    "moverId": 251,
+    "isRejected": true,
+    "rejectionReason": "취급 주의 품목에 대한 전문성 확보가 어렵습니다.",
+    "createdAt": "2024-11-27T12:28:20.638Z"
+  },
+  {
+    "estimateRequestId": 113,
+    "moverId": 268,
+    "isRejected": false,
+    "createdAt": "2024-11-22T22:50:08.583Z"
+  },
+  {
+    "estimateRequestId": 1764,
+    "moverId": 281,
+    "isRejected": true,
+    "rejectionReason": "포장재 준비 요청이 추가로 필요합니다.",
+    "createdAt": "2024-10-13T02:21:00.403Z"
+  },
+  {
+    "estimateRequestId": 548,
+    "moverId": 265,
+    "isRejected": true,
+    "rejectionReason": "이삿짐 중 반출 금지 품목이 포함되어 있습니다.",
+    "createdAt": "2024-11-18T23:13:43.691Z"
+  },
+  {
+    "estimateRequestId": 1679,
+    "moverId": 271,
+    "isRejected": true,
+    "rejectionReason": "작업 장소의 주차 공간이 협소하거나 불가능합니다.",
+    "createdAt": "2024-09-28T13:53:50.353Z"
+  },
+  {
+    "estimateRequestId": 212,
+    "moverId": 235,
+    "isRejected": true,
+    "rejectionReason": "가구 보관 창고 제공 요청으로 추가 준비가 필요합니다.",
+    "createdAt": "2024-10-01T19:38:27.172Z"
+  },
+  {
+    "estimateRequestId": 2018,
+    "moverId": 218,
+    "isRejected": true,
+    "rejectionReason": "다른 업체와의 중복 예약으로 일정이 불확실합니다.",
+    "createdAt": "2024-08-15T19:50:05.821Z"
+  },
+  {
+    "estimateRequestId": 1537,
+    "moverId": 244,
+    "isRejected": true,
+    "rejectionReason": "특정 시간에 작업 완료 요청이 있어 대응이 어렵습니다.",
+    "createdAt": "2024-10-15T04:16:26.924Z"
+  },
+  {
+    "estimateRequestId": 206,
+    "moverId": 65,
+    "isRejected": true,
+    "rejectionReason": "취급 주의 물품(예: 고가 가구)이 과다합니다.",
+    "createdAt": "2024-11-22T17:26:32.095Z"
+  },
+  {
+    "estimateRequestId": 3176,
+    "moverId": 208,
+    "isRejected": false,
+    "createdAt": "2024-09-22T14:14:36.188Z"
+  },
+  {
+    "estimateRequestId": 2600,
+    "moverId": 152,
+    "isRejected": false,
+    "createdAt": "2024-09-19T13:32:49.594Z"
+  },
+  {
+    "estimateRequestId": 1502,
+    "moverId": 244,
+    "isRejected": false,
+    "createdAt": "2024-10-12T19:37:00.958Z"
+  },
+  {
+    "estimateRequestId": 428,
+    "moverId": 245,
+    "isRejected": false,
+    "createdAt": "2024-08-19T07:03:38.461Z"
+  },
+  {
+    "estimateRequestId": 2098,
+    "moverId": 10,
+    "isRejected": true,
+    "rejectionReason": "이사 도착지에서 가구 배치 지원이 어려울 수 있습니다.",
+    "createdAt": "2024-11-20T06:17:04.790Z"
+  },
+  {
+    "estimateRequestId": 946,
+    "moverId": 232,
+    "isRejected": true,
+    "rejectionReason": "주차 공간 협소로 차량 대기가 필요합니다.",
+    "createdAt": "2024-08-24T03:31:41.027Z"
+  },
+  {
+    "estimateRequestId": 2970,
+    "moverId": 265,
+    "isRejected": false,
+    "createdAt": "2024-09-27T19:42:25.833Z"
+  },
+  {
+    "estimateRequestId": 1850,
+    "moverId": 298,
+    "isRejected": false,
+    "createdAt": "2024-10-27T05:00:17.680Z"
+  },
+  {
+    "estimateRequestId": 2271,
+    "moverId": 60,
+    "isRejected": false,
+    "createdAt": "2024-10-24T02:17:40.417Z"
+  },
+  {
+    "estimateRequestId": 1464,
+    "moverId": 297,
+    "isRejected": true,
+    "rejectionReason": "작업 중 전기, 수도 등 추가 연결 요청이 있습니다.",
+    "createdAt": "2024-10-16T02:16:03.980Z"
+  },
+  {
+    "estimateRequestId": 1029,
+    "moverId": 92,
+    "isRejected": false,
+    "createdAt": "2024-09-08T15:27:51.625Z"
+  },
+  {
+    "estimateRequestId": 958,
+    "moverId": 272,
+    "isRejected": false,
+    "createdAt": "2024-10-06T05:46:53.010Z"
+  },
+  {
+    "estimateRequestId": 2258,
+    "moverId": 229,
+    "isRejected": false,
+    "createdAt": "2024-11-22T19:34:30.818Z"
+  },
+  {
+    "estimateRequestId": 2526,
+    "moverId": 212,
+    "isRejected": true,
+    "rejectionReason": "해외 이사 요청이 있어 대응이 어렵습니다.",
+    "createdAt": "2024-08-08T05:15:40.864Z"
+  },
+  {
+    "estimateRequestId": 2565,
+    "moverId": 29,
+    "isRejected": false,
+    "createdAt": "2024-08-03T19:04:18.045Z"
+  },
+  {
+    "estimateRequestId": 815,
+    "moverId": 85,
+    "isRejected": true,
+    "rejectionReason": "작업 도중 고객의 입회가 불가능한 경우입니다.",
+    "createdAt": "2024-10-07T16:08:32.968Z"
+  },
+  {
+    "estimateRequestId": 1381,
+    "moverId": 198,
+    "isRejected": false,
+    "createdAt": "2024-08-18T22:44:01.341Z"
+  },
+  {
+    "estimateRequestId": 629,
+    "moverId": 275,
+    "isRejected": false,
+    "createdAt": "2024-11-08T16:24:52.440Z"
+  },
+  {
+    "estimateRequestId": 3194,
+    "moverId": 239,
+    "isRejected": true,
+    "rejectionReason": "이삿짐 보관 요청이 추가로 필요합니다.",
+    "createdAt": "2024-10-09T19:12:23.000Z"
+  },
+  {
+    "estimateRequestId": 2490,
+    "moverId": 135,
+    "isRejected": false,
+    "createdAt": "2024-11-30T13:48:44.705Z"
+  },
+  {
+    "estimateRequestId": 847,
+    "moverId": 270,
+    "isRejected": true,
+    "rejectionReason": "에어컨 철거 및 설치 요청으로 작업 시간이 부족합니다.",
+    "createdAt": "2024-09-10T21:12:47.096Z"
+  },
+  {
+    "estimateRequestId": 1524,
+    "moverId": 304,
+    "isRejected": true,
+    "rejectionReason": "운송 거리 초과로 추가 요금 협의가 필요합니다.",
+    "createdAt": "2024-10-10T18:28:40.440Z"
+  },
+  {
+    "estimateRequestId": 3095,
+    "moverId": 245,
+    "isRejected": false,
+    "createdAt": "2024-11-12T17:35:09.687Z"
+  },
+  {
+    "estimateRequestId": 865,
+    "moverId": 228,
+    "isRejected": false,
+    "createdAt": "2024-09-01T23:13:27.449Z"
+  },
+  {
+    "estimateRequestId": 1828,
+    "moverId": 35,
+    "isRejected": false,
+    "createdAt": "2024-09-02T11:19:34.401Z"
+  },
+  {
+    "estimateRequestId": 1702,
+    "moverId": 279,
+    "isRejected": false,
+    "createdAt": "2024-09-03T02:54:04.942Z"
+  },
+  {
+    "estimateRequestId": 1427,
+    "moverId": 111,
+    "isRejected": false,
+    "createdAt": "2024-08-28T01:44:34.348Z"
+  },
+  {
+    "estimateRequestId": 1388,
+    "moverId": 223,
+    "isRejected": true,
+    "rejectionReason": "건물 구조상 사다리차 진입이 불가능합니다.",
+    "createdAt": "2024-11-26T21:46:16.776Z"
+  },
+  {
+    "estimateRequestId": 793,
+    "moverId": 260,
+    "isRejected": false,
+    "createdAt": "2024-10-10T17:18:57.315Z"
+  },
+  {
+    "estimateRequestId": 3447,
+    "moverId": 219,
+    "isRejected": true,
+    "rejectionReason": "주변 환경(비포장 도로, 진입 제한 등)이 열악합니다.",
+    "createdAt": "2024-09-06T12:12:39.975Z"
+  },
+  {
+    "estimateRequestId": 1955,
+    "moverId": 207,
+    "isRejected": false,
+    "createdAt": "2024-11-15T06:01:18.006Z"
+  },
+  {
+    "estimateRequestId": 1417,
+    "moverId": 278,
+    "isRejected": false,
+    "createdAt": "2024-11-22T20:41:09.688Z"
+  },
+  {
+    "estimateRequestId": 2428,
+    "moverId": 153,
+    "isRejected": true,
+    "rejectionReason": "이사 도착지의 주차 환경이 확인되지 않았습니다.",
+    "createdAt": "2024-08-06T05:36:54.531Z"
+  },
+  {
+    "estimateRequestId": 1144,
+    "moverId": 160,
+    "isRejected": false,
+    "createdAt": "2024-09-11T17:34:26.207Z"
+  },
+  {
+    "estimateRequestId": 1997,
+    "moverId": 244,
+    "isRejected": false,
+    "createdAt": "2024-09-11T06:32:56.832Z"
+  },
+  {
+    "estimateRequestId": 1746,
+    "moverId": 66,
+    "isRejected": false,
+    "createdAt": "2024-11-09T13:07:57.871Z"
+  },
+  {
+    "estimateRequestId": 1865,
+    "moverId": 280,
+    "isRejected": false,
+    "createdAt": "2024-10-18T10:42:49.365Z"
+  },
+  {
+    "estimateRequestId": 275,
+    "moverId": 215,
+    "isRejected": false,
+    "createdAt": "2024-09-27T22:09:46.192Z"
+  },
+  {
+    "estimateRequestId": 468,
+    "moverId": 227,
+    "isRejected": false,
+    "createdAt": "2024-10-15T11:58:42.885Z"
+  },
+  {
+    "estimateRequestId": 2661,
+    "moverId": 267,
+    "isRejected": false,
+    "createdAt": "2024-11-07T20:14:24.333Z"
+  },
+  {
+    "estimateRequestId": 1274,
+    "moverId": 121,
+    "isRejected": false,
+    "createdAt": "2024-08-06T06:23:19.633Z"
+  },
+  {
+    "estimateRequestId": 1368,
+    "moverId": 298,
+    "isRejected": false,
+    "createdAt": "2024-09-12T14:57:43.399Z"
+  },
+  {
+    "estimateRequestId": 2092,
+    "moverId": 222,
+    "isRejected": false,
+    "createdAt": "2024-11-18T12:11:04.832Z"
+  },
+  {
+    "estimateRequestId": 1403,
+    "moverId": 234,
+    "isRejected": false,
+    "createdAt": "2024-10-09T01:14:28.709Z"
+  },
+  {
+    "estimateRequestId": 1535,
+    "moverId": 291,
+    "isRejected": true,
+    "rejectionReason": "가구 포장 해체 작업이 전문성을 요합니다.",
+    "createdAt": "2024-09-12T05:22:26.240Z"
+  },
+  {
+    "estimateRequestId": 1081,
+    "moverId": 296,
+    "isRejected": false,
+    "createdAt": "2024-09-09T07:00:20.931Z"
+  },
+  {
+    "estimateRequestId": 1199,
+    "moverId": 273,
+    "isRejected": true,
+    "rejectionReason": "새로운 작업 요청으로 추가 인력 배치가 필요합니다.",
+    "createdAt": "2024-08-11T20:29:12.124Z"
+  },
+  {
+    "estimateRequestId": 1503,
+    "moverId": 305,
+    "isRejected": false,
+    "createdAt": "2024-09-04T02:33:24.534Z"
+  },
+  {
+    "estimateRequestId": 2649,
+    "moverId": 7,
+    "isRejected": false,
+    "createdAt": "2024-10-16T04:01:14.114Z"
+  },
+  {
+    "estimateRequestId": 258,
+    "moverId": 264,
+    "isRejected": false,
+    "createdAt": "2024-11-20T08:48:57.795Z"
+  },
+  {
+    "estimateRequestId": 353,
+    "moverId": 222,
+    "isRejected": false,
+    "createdAt": "2024-11-20T10:25:02.510Z"
+  },
+  {
+    "estimateRequestId": 372,
+    "moverId": 236,
+    "isRejected": false,
+    "createdAt": "2024-08-24T11:53:12.676Z"
+  },
+  {
+    "estimateRequestId": 448,
+    "moverId": 64,
+    "isRejected": false,
+    "createdAt": "2024-10-13T10:59:36.386Z"
+  },
+  {
+    "estimateRequestId": 84,
+    "moverId": 301,
+    "isRejected": false,
+    "createdAt": "2024-09-14T17:16:51.098Z"
+  },
+  {
+    "estimateRequestId": 3252,
+    "moverId": 205,
+    "isRejected": false,
+    "createdAt": "2024-11-29T21:28:14.997Z"
+  },
+  {
+    "estimateRequestId": 359,
+    "moverId": 96,
+    "isRejected": true,
+    "rejectionReason": "건물 내 이동 경로가 좁아 작업 지연 예상됩니다.",
+    "createdAt": "2024-09-24T05:17:33.942Z"
+  },
+  {
+    "estimateRequestId": 2445,
+    "moverId": 209,
+    "isRejected": false,
+    "createdAt": "2024-10-23T12:04:36.141Z"
+  },
+  {
+    "estimateRequestId": 872,
+    "moverId": 292,
+    "isRejected": false,
+    "createdAt": "2024-10-01T15:06:42.174Z"
+  },
+  {
+    "estimateRequestId": 2234,
+    "moverId": 221,
+    "isRejected": false,
+    "createdAt": "2024-09-13T21:38:05.430Z"
+  },
+  {
+    "estimateRequestId": 875,
+    "moverId": 236,
+    "isRejected": false,
+    "createdAt": "2024-08-18T16:55:26.342Z"
+  },
+  {
+    "estimateRequestId": 2266,
+    "moverId": 203,
+    "isRejected": false,
+    "createdAt": "2024-10-25T05:13:07.202Z"
+  },
+  {
+    "estimateRequestId": 3240,
+    "moverId": 276,
+    "isRejected": true,
+    "rejectionReason": "반입 시 건물 관리자와 협의가 필요합니다.",
+    "createdAt": "2024-08-20T05:07:01.752Z"
+  },
+  {
+    "estimateRequestId": 1787,
+    "moverId": 12,
+    "isRejected": false,
+    "createdAt": "2024-10-05T22:46:11.914Z"
+  },
+  {
+    "estimateRequestId": 773,
+    "moverId": 200,
+    "isRejected": false,
+    "createdAt": "2024-10-16T08:28:48.104Z"
+  },
+  {
+    "estimateRequestId": 322,
+    "moverId": 205,
+    "isRejected": false,
+    "createdAt": "2024-11-07T05:46:29.199Z"
+  },
+  {
+    "estimateRequestId": 1178,
+    "moverId": 218,
+    "isRejected": false,
+    "createdAt": "2024-10-01T06:43:20.807Z"
+  },
+  {
+    "estimateRequestId": 333,
+    "moverId": 261,
+    "isRejected": false,
+    "createdAt": "2024-09-09T21:07:41.992Z"
+  },
+  {
+    "estimateRequestId": 1862,
+    "moverId": 70,
+    "isRejected": true,
+    "rejectionReason": "짐 분해 및 조립 요청이 많아 소요 시간이 초과됩니다.",
+    "createdAt": "2024-08-07T05:51:58.214Z"
+  },
+  {
+    "estimateRequestId": 201,
+    "moverId": 121,
+    "isRejected": false,
+    "createdAt": "2024-09-02T01:43:24.233Z"
+  },
+  {
+    "estimateRequestId": 568,
+    "moverId": 209,
+    "isRejected": false,
+    "createdAt": "2024-09-13T15:39:38.679Z"
+  },
+  {
+    "estimateRequestId": 2933,
+    "moverId": 151,
+    "isRejected": false,
+    "createdAt": "2024-10-27T05:57:56.056Z"
+  },
+  {
+    "estimateRequestId": 2916,
+    "moverId": 104,
+    "isRejected": false,
+    "createdAt": "2024-09-23T08:59:29.529Z"
+  },
+  {
+    "estimateRequestId": 2796,
+    "moverId": 275,
+    "isRejected": false,
+    "createdAt": "2024-11-29T06:02:51.436Z"
+  },
+  {
+    "estimateRequestId": 2880,
+    "moverId": 296,
+    "isRejected": false,
+    "createdAt": "2024-10-17T21:47:32.232Z"
+  },
+  {
+    "estimateRequestId": 2965,
+    "moverId": 68,
+    "isRejected": false,
+    "createdAt": "2024-09-01T03:07:44.650Z"
+  },
+  {
+    "estimateRequestId": 814,
+    "moverId": 237,
+    "isRejected": false,
+    "createdAt": "2024-10-13T14:22:44.237Z"
+  },
+  {
+    "estimateRequestId": 3338,
+    "moverId": 290,
+    "isRejected": false,
+    "createdAt": "2024-12-04T14:24:14.357Z"
+  },
+  {
+    "estimateRequestId": 1115,
+    "moverId": 241,
+    "isRejected": false,
+    "createdAt": "2024-08-28T04:52:01.030Z"
+  },
+  {
+    "estimateRequestId": 1484,
+    "moverId": 203,
+    "isRejected": true,
+    "rejectionReason": "일부 이삿짐은 고장 상태로 취급 주의가 필요합니다.",
+    "createdAt": "2024-08-05T12:31:49.265Z"
+  },
+  {
+    "estimateRequestId": 3505,
+    "moverId": 38,
+    "isRejected": false,
+    "createdAt": "2024-11-28T01:48:02.192Z"
+  },
+  {
+    "estimateRequestId": 2435,
+    "moverId": 210,
+    "isRejected": false,
+    "createdAt": "2024-08-11T06:48:17.925Z"
+  },
+  {
+    "estimateRequestId": 3135,
+    "moverId": 295,
+    "isRejected": false,
+    "createdAt": "2024-09-01T02:34:02.302Z"
+  },
+  {
+    "estimateRequestId": 2892,
+    "moverId": 262,
+    "isRejected": true,
+    "rejectionReason": "비가 많이 오는 날씨 등으로 인해 일정 조정이 필요합니다.",
+    "createdAt": "2024-10-31T05:16:51.320Z"
+  },
+  {
+    "estimateRequestId": 2652,
+    "moverId": 284,
+    "isRejected": false,
+    "createdAt": "2024-08-22T11:31:32.535Z"
+  },
+  {
+    "estimateRequestId": 545,
+    "moverId": 211,
+    "isRejected": true,
+    "rejectionReason": "고객과의 작업 계약 조건이 충족되지 않았습니다.",
+    "createdAt": "2024-09-04T15:54:48.738Z"
+  },
+  {
+    "estimateRequestId": 631,
+    "moverId": 230,
+    "isRejected": true,
+    "rejectionReason": "포장이 부족하여 작업이 지연될 가능성이 큽니다.",
+    "createdAt": "2024-08-06T15:52:02.606Z"
+  },
+  {
+    "estimateRequestId": 2912,
+    "moverId": 271,
+    "isRejected": false,
+    "createdAt": "2024-11-04T22:56:57.235Z"
+  },
+  {
+    "estimateRequestId": 1227,
+    "moverId": 238,
+    "isRejected": false,
+    "createdAt": "2024-11-22T13:30:07.035Z"
+  },
+  {
+    "estimateRequestId": 1255,
+    "moverId": 140,
+    "isRejected": false,
+    "createdAt": "2024-11-03T15:06:45.309Z"
+  },
+  {
+    "estimateRequestId": 1751,
+    "moverId": 152,
+    "isRejected": false,
+    "createdAt": "2024-11-15T14:14:52.054Z"
+  },
+  {
+    "estimateRequestId": 1989,
+    "moverId": 216,
+    "isRejected": true,
+    "rejectionReason": "이사 경로에 진입 제한 구역이 포함되어 있습니다.",
+    "createdAt": "2024-08-02T02:59:35.827Z"
+  },
+  {
+    "estimateRequestId": 925,
+    "moverId": 67,
+    "isRejected": true,
+    "rejectionReason": "새벽이나 야간 작업으로 인한 소음 문제 예상됩니다.",
+    "createdAt": "2024-09-25T21:24:50.621Z"
+  },
+  {
+    "estimateRequestId": 1267,
+    "moverId": 259,
+    "isRejected": false,
+    "createdAt": "2024-11-27T22:52:58.947Z"
+  },
+  {
+    "estimateRequestId": 660,
+    "moverId": 248,
+    "isRejected": false,
+    "createdAt": "2024-08-19T06:59:40.336Z"
+  },
+  {
+    "estimateRequestId": 1802,
+    "moverId": 205,
+    "isRejected": false,
+    "createdAt": "2024-12-02T11:22:08.969Z"
+  },
+  {
+    "estimateRequestId": 2559,
+    "moverId": 226,
+    "isRejected": false,
+    "createdAt": "2024-11-30T03:58:44.930Z"
+  },
+  {
+    "estimateRequestId": 3470,
+    "moverId": 202,
+    "isRejected": false,
+    "createdAt": "2024-10-22T11:02:15.813Z"
+  },
+  {
+    "estimateRequestId": 3428,
+    "moverId": 270,
+    "isRejected": false,
+    "createdAt": "2024-09-14T11:38:58.230Z"
+  },
+  {
+    "estimateRequestId": 3291,
+    "moverId": 269,
+    "isRejected": false,
+    "createdAt": "2024-10-13T08:41:05.079Z"
+  },
+  {
+    "estimateRequestId": 2053,
+    "moverId": 258,
+    "isRejected": false,
+    "createdAt": "2024-08-31T17:51:51.542Z"
+  },
+  {
+    "estimateRequestId": 2365,
+    "moverId": 300,
+    "isRejected": false,
+    "createdAt": "2024-11-23T06:34:04.162Z"
+  },
+  {
+    "estimateRequestId": 928,
+    "moverId": 238,
+    "isRejected": false,
+    "createdAt": "2024-10-17T23:48:07.094Z"
+  },
+  {
+    "estimateRequestId": 577,
+    "moverId": 251,
+    "isRejected": false,
+    "createdAt": "2024-10-27T14:52:34.639Z"
+  },
+  {
+    "estimateRequestId": 112,
+    "moverId": 91,
+    "isRejected": true,
+    "rejectionReason": "운송 차량의 규격에 맞지 않는 화물입니다.",
+    "createdAt": "2024-09-23T15:17:52.501Z"
+  },
+  {
+    "estimateRequestId": 789,
+    "moverId": 223,
+    "isRejected": false,
+    "createdAt": "2024-09-05T16:29:09.855Z"
+  },
+  {
+    "estimateRequestId": 3495,
+    "moverId": 247,
+    "isRejected": false,
+    "createdAt": "2024-11-17T19:51:33.796Z"
+  },
+  {
+    "estimateRequestId": 2584,
+    "moverId": 269,
+    "isRejected": false,
+    "createdAt": "2024-10-12T20:38:24.283Z"
+  },
+  {
+    "estimateRequestId": 861,
+    "moverId": 220,
+    "isRejected": false,
+    "createdAt": "2024-08-02T23:11:25.631Z"
+  },
+  {
+    "estimateRequestId": 1759,
+    "moverId": 241,
+    "isRejected": true,
+    "rejectionReason": "운반 경로의 도로 상황이 좋지 않은 경우입니다.",
+    "createdAt": "2024-09-26T19:35:48.796Z"
+  },
+  {
+    "estimateRequestId": 3115,
+    "moverId": 289,
+    "isRejected": false,
+    "createdAt": "2024-08-18T04:20:57.773Z"
+  },
+  {
+    "estimateRequestId": 2895,
+    "moverId": 244,
+    "isRejected": false,
+    "createdAt": "2024-10-29T12:15:25.971Z"
+  },
+  {
+    "estimateRequestId": 994,
+    "moverId": 233,
+    "isRejected": false,
+    "createdAt": "2024-08-30T23:36:26.820Z"
+  },
+  {
+    "estimateRequestId": 896,
+    "moverId": 214,
+    "isRejected": true,
+    "rejectionReason": "건물 관리자와의 협의가 사전에 이루어지지 않았습니다.",
+    "createdAt": "2024-09-21T20:11:35.702Z"
+  },
+  {
+    "estimateRequestId": 53,
+    "moverId": 207,
+    "isRejected": false,
+    "createdAt": "2024-08-08T04:16:21.885Z"
+  },
+  {
+    "estimateRequestId": 1564,
+    "moverId": 210,
+    "isRejected": false,
+    "createdAt": "2024-11-23T16:12:57.265Z"
+  },
+  {
+    "estimateRequestId": 3039,
+    "moverId": 156,
+    "isRejected": false,
+    "createdAt": "2024-09-08T00:06:33.961Z"
+  },
+  {
+    "estimateRequestId": 1567,
+    "moverId": 226,
+    "isRejected": true,
+    "rejectionReason": "반입이 제한된 건물(예: 군부대)로 작업이 어렵습니다.",
+    "createdAt": "2024-09-09T07:56:39.907Z"
+  },
+  {
+    "estimateRequestId": 2673,
+    "moverId": 217,
+    "isRejected": false,
+    "createdAt": "2024-12-01T03:36:07.902Z"
+  },
+  {
+    "estimateRequestId": 337,
+    "moverId": 256,
+    "isRejected": false,
+    "createdAt": "2024-11-22T16:17:54.529Z"
+  },
+  {
+    "estimateRequestId": 3463,
+    "moverId": 126,
+    "isRejected": false,
+    "createdAt": "2024-09-14T10:05:11.250Z"
+  },
+  {
+    "estimateRequestId": 1038,
+    "moverId": 19,
+    "isRejected": false,
+    "createdAt": "2024-11-16T03:26:35.216Z"
+  },
+  {
+    "estimateRequestId": 452,
+    "moverId": 254,
+    "isRejected": false,
+    "createdAt": "2024-11-05T09:27:48.154Z"
+  },
+  {
+    "estimateRequestId": 2243,
+    "moverId": 286,
+    "isRejected": true,
+    "rejectionReason": "이삿짐 이동 경로가 좁거나 위험한 곳입니다.",
+    "createdAt": "2024-10-20T21:01:16.517Z"
+  },
+  {
+    "estimateRequestId": 1962,
+    "moverId": 227,
+    "isRejected": false,
+    "createdAt": "2024-08-27T10:51:57.394Z"
+  },
+  {
+    "estimateRequestId": 250,
+    "moverId": 51,
+    "isRejected": false,
+    "createdAt": "2024-09-08T09:10:36.714Z"
+  },
+  {
+    "estimateRequestId": 1098,
+    "moverId": 260,
+    "isRejected": false,
+    "createdAt": "2024-08-15T16:05:17.915Z"
+  },
+  {
+    "estimateRequestId": 600,
+    "moverId": 260,
+    "isRejected": false,
+    "createdAt": "2024-09-21T06:21:18.204Z"
+  },
+  {
+    "estimateRequestId": 3050,
+    "moverId": 246,
+    "isRejected": true,
+    "rejectionReason": "주변 환경(비포장 도로, 진입 제한 등)이 열악합니다.",
+    "createdAt": "2024-09-18T01:38:15.085Z"
+  },
+  {
+    "estimateRequestId": 1337,
+    "moverId": 301,
+    "isRejected": false,
+    "createdAt": "2024-11-11T02:25:03.878Z"
+  },
+  {
+    "estimateRequestId": 2720,
+    "moverId": 282,
+    "isRejected": false,
+    "createdAt": "2024-09-16T08:49:53.074Z"
+  },
+  {
+    "estimateRequestId": 2826,
+    "moverId": 251,
+    "isRejected": false,
+    "createdAt": "2024-09-30T16:38:37.721Z"
+  },
+  {
+    "estimateRequestId": 3185,
+    "moverId": 306,
+    "isRejected": true,
+    "rejectionReason": "작업 중 전기, 수도 등 추가 연결 요청이 있습니다.",
+    "createdAt": "2024-08-03T13:14:24.266Z"
+  },
+  {
+    "estimateRequestId": 1811,
+    "moverId": 129,
+    "isRejected": false,
+    "createdAt": "2024-09-08T08:42:33.231Z"
+  },
+  {
+    "estimateRequestId": 1669,
+    "moverId": 269,
+    "isRejected": false,
+    "createdAt": "2024-11-22T14:47:03.259Z"
+  },
+  {
+    "estimateRequestId": 1725,
+    "moverId": 191,
+    "isRejected": false,
+    "createdAt": "2024-10-17T18:29:26.638Z"
+  },
+  {
+    "estimateRequestId": 2955,
+    "moverId": 21,
+    "isRejected": false,
+    "createdAt": "2024-09-05T00:09:46.923Z"
+  },
+  {
+    "estimateRequestId": 1270,
+    "moverId": 207,
+    "isRejected": false,
+    "createdAt": "2024-12-04T15:00:19.223Z"
+  },
+  {
+    "estimateRequestId": 2118,
+    "moverId": 69,
+    "isRejected": true,
+    "rejectionReason": "이사 요청 항목과 실제 작업 항목이 일치하지 않습니다.",
+    "createdAt": "2024-10-08T08:02:02.013Z"
+  },
+  {
+    "estimateRequestId": 1691,
+    "moverId": 214,
+    "isRejected": false,
+    "createdAt": "2024-09-15T19:16:51.791Z"
+  },
+  {
+    "estimateRequestId": 2289,
+    "moverId": 178,
+    "isRejected": true,
+    "rejectionReason": "해외 이사 요청이 있어 대응이 어렵습니다.",
+    "createdAt": "2024-09-10T10:44:34.644Z"
+  },
+  {
+    "estimateRequestId": 1074,
+    "moverId": 270,
+    "isRejected": false,
+    "createdAt": "2024-08-06T09:04:30.188Z"
+  },
+  {
+    "estimateRequestId": 976,
+    "moverId": 303,
+    "isRejected": false,
+    "createdAt": "2024-11-10T13:58:45.813Z"
+  },
+  {
+    "estimateRequestId": 2669,
+    "moverId": 50,
+    "isRejected": false,
+    "createdAt": "2024-08-12T01:10:24.268Z"
+  },
+  {
+    "estimateRequestId": 3217,
+    "moverId": 238,
+    "isRejected": false,
+    "createdAt": "2024-10-09T07:54:11.885Z"
+  },
+  {
+    "estimateRequestId": 210,
+    "moverId": 238,
+    "isRejected": false,
+    "createdAt": "2024-11-16T10:44:40.629Z"
+  },
+  {
+    "estimateRequestId": 2363,
+    "moverId": 35,
+    "isRejected": false,
+    "createdAt": "2024-08-16T00:00:35.643Z"
+  },
+  {
+    "estimateRequestId": 2611,
+    "moverId": 217,
+    "isRejected": true,
+    "rejectionReason": "이사 도착지에서 가구 배치 지원이 어려울 수 있습니다.",
+    "createdAt": "2024-08-14T05:57:54.547Z"
+  },
+  {
+    "estimateRequestId": 1438,
+    "moverId": 269,
+    "isRejected": false,
+    "createdAt": "2024-09-13T01:26:44.664Z"
+  },
+  {
+    "estimateRequestId": 3422,
+    "moverId": 221,
+    "isRejected": false,
+    "createdAt": "2024-11-28T04:03:45.432Z"
+  },
+  {
+    "estimateRequestId": 2488,
+    "moverId": 281,
+    "isRejected": false,
+    "createdAt": "2024-10-02T01:48:13.412Z"
+  },
+  {
+    "estimateRequestId": 1101,
+    "moverId": 227,
+    "isRejected": false,
+    "createdAt": "2024-11-28T19:35:33.345Z"
+  },
+  {
+    "estimateRequestId": 1454,
+    "moverId": 213,
+    "isRejected": false,
+    "createdAt": "2024-10-17T19:33:55.872Z"
+  },
+  {
+    "estimateRequestId": 2087,
+    "moverId": 185,
+    "isRejected": true,
+    "rejectionReason": "거래 조건(선불, 후불 등)이 불명확합니다.",
+    "createdAt": "2024-08-23T23:28:12.476Z"
+  },
+  {
+    "estimateRequestId": 518,
+    "moverId": 221,
+    "isRejected": true,
+    "rejectionReason": "반입 시 건물 관리자와 협의가 필요합니다.",
+    "createdAt": "2024-10-23T10:05:45.218Z"
+  },
+  {
+    "estimateRequestId": 565,
+    "moverId": 257,
+    "isRejected": false,
+    "createdAt": "2024-08-03T04:52:29.529Z"
+  },
+  {
+    "estimateRequestId": 6,
+    "moverId": 284,
+    "isRejected": false,
+    "createdAt": "2024-12-05T23:58:42.548Z"
+  },
+  {
+    "estimateRequestId": 1547,
+    "moverId": 243,
+    "isRejected": false,
+    "createdAt": "2024-09-06T08:42:30.432Z"
+  },
+  {
+    "estimateRequestId": 764,
+    "moverId": 206,
+    "isRejected": false,
+    "createdAt": "2024-09-19T17:52:54.156Z"
+  },
+  {
+    "estimateRequestId": 96,
+    "moverId": 202,
+    "isRejected": false,
+    "createdAt": "2024-12-02T23:41:12.641Z"
+  },
+  {
+    "estimateRequestId": 2216,
+    "moverId": 275,
+    "isRejected": false,
+    "createdAt": "2024-08-16T22:29:24.642Z"
+  },
+  {
+    "estimateRequestId": 179,
+    "moverId": 269,
+    "isRejected": false,
+    "createdAt": "2024-11-17T07:30:18.036Z"
+  },
+  {
+    "estimateRequestId": 2229,
+    "moverId": 270,
+    "isRejected": false,
+    "createdAt": "2024-10-29T15:59:22.740Z"
+  },
+  {
+    "estimateRequestId": 1222,
+    "moverId": 299,
+    "isRejected": false,
+    "createdAt": "2024-08-23T02:40:22.608Z"
+  },
+  {
+    "estimateRequestId": 3126,
+    "moverId": 204,
+    "isRejected": false,
+    "createdAt": "2024-10-26T12:07:17.307Z"
+  },
+  {
+    "estimateRequestId": 502,
+    "moverId": 305,
+    "isRejected": true,
+    "rejectionReason": "특수 장비(예: 피아노 운반기)가 필요한 이사입니다.",
+    "createdAt": "2024-08-22T01:13:37.456Z"
+  },
+  {
+    "estimateRequestId": 844,
+    "moverId": 269,
+    "isRejected": false,
+    "createdAt": "2024-08-08T05:09:16.112Z"
+  },
+  {
+    "estimateRequestId": 2567,
+    "moverId": 203,
+    "isRejected": false,
+    "createdAt": "2024-10-11T20:51:37.564Z"
+  },
+  {
+    "estimateRequestId": 1626,
+    "moverId": 88,
+    "isRejected": false,
+    "createdAt": "2024-10-13T19:20:26.763Z"
+  },
+  {
+    "estimateRequestId": 391,
+    "moverId": 249,
+    "isRejected": false,
+    "createdAt": "2024-09-04T21:55:44.571Z"
+  },
+  {
+    "estimateRequestId": 493,
+    "moverId": 38,
+    "isRejected": true,
+    "rejectionReason": "이사 당일 고객의 연락 두절로 작업이 어렵습니다.",
+    "createdAt": "2024-10-17T23:13:54.110Z"
+  },
+  {
+    "estimateRequestId": 1478,
+    "moverId": 65,
+    "isRejected": true,
+    "rejectionReason": "소형 차량으로 대응이 불가능한 짐의 양입니다.",
+    "createdAt": "2024-11-21T20:48:30.316Z"
+  },
+  {
+    "estimateRequestId": 2437,
+    "moverId": 93,
+    "isRejected": false,
+    "createdAt": "2024-09-02T06:26:54.103Z"
+  },
+  {
+    "estimateRequestId": 1908,
+    "moverId": 249,
+    "isRejected": true,
+    "rejectionReason": "현장에서 추가 요청이 많아 작업이 지연될 가능성이 큽니다.",
+    "createdAt": "2024-10-10T06:19:10.889Z"
+  },
+  {
+    "estimateRequestId": 985,
+    "moverId": 203,
+    "isRejected": false,
+    "createdAt": "2024-11-18T17:53:14.632Z"
+  },
+  {
+    "estimateRequestId": 8,
+    "moverId": 228,
+    "isRejected": true,
+    "rejectionReason": "요청하신 작업 시간이 너무 촉박합니다.",
+    "createdAt": "2024-12-05T06:58:42.548Z"
+  },
+  {
+    "estimateRequestId": 489,
+    "moverId": 216,
+    "isRejected": false,
+    "createdAt": "2024-09-30T08:20:13.255Z"
+  },
+  {
+    "estimateRequestId": 2695,
+    "moverId": 224,
+    "isRejected": false,
+    "createdAt": "2024-09-12T01:12:07.329Z"
+  },
+  {
+    "estimateRequestId": 1046,
+    "moverId": 220,
+    "isRejected": false,
+    "createdAt": "2024-09-25T02:31:42.818Z"
+  },
+  {
+    "estimateRequestId": 897,
+    "moverId": 244,
+    "isRejected": false,
+    "createdAt": "2024-10-23T18:40:09.643Z"
+  },
+  {
+    "estimateRequestId": 2081,
+    "moverId": 250,
+    "isRejected": false,
+    "createdAt": "2024-09-26T23:14:24.171Z"
+  },
+  {
+    "estimateRequestId": 1406,
+    "moverId": 214,
+    "isRejected": true,
+    "rejectionReason": "견적서 작성 후 요청 사항이 추가되었습니다.",
+    "createdAt": "2024-09-12T10:24:45.396Z"
+  },
+  {
+    "estimateRequestId": 1485,
+    "moverId": 292,
+    "isRejected": false,
+    "createdAt": "2024-09-17T22:31:04.295Z"
+  },
+  {
+    "estimateRequestId": 1069,
+    "moverId": 201,
+    "isRejected": false,
+    "createdAt": "2024-11-02T21:19:33.184Z"
+  },
+  {
+    "estimateRequestId": 3432,
+    "moverId": 283,
+    "isRejected": false,
+    "createdAt": "2024-08-02T12:17:22.156Z"
+  },
+  {
+    "estimateRequestId": 312,
+    "moverId": 273,
+    "isRejected": false,
+    "createdAt": "2024-10-10T05:16:11.267Z"
+  },
+  {
+    "estimateRequestId": 2626,
+    "moverId": 249,
+    "isRejected": false,
+    "createdAt": "2024-10-23T21:28:55.698Z"
+  },
+  {
+    "estimateRequestId": 634,
+    "moverId": 274,
+    "isRejected": false,
+    "createdAt": "2024-10-07T01:36:29.069Z"
+  },
+  {
+    "estimateRequestId": 2482,
+    "moverId": 278,
+    "isRejected": false,
+    "createdAt": "2024-09-20T09:37:06.036Z"
+  },
+  {
+    "estimateRequestId": 81,
+    "moverId": 304,
+    "isRejected": false,
+    "createdAt": "2024-10-27T06:39:00.954Z"
+  },
+  {
+    "estimateRequestId": 2355,
+    "moverId": 122,
+    "isRejected": true,
+    "rejectionReason": "공휴일 작업 요청으로 인력 수급이 어렵습니다.",
+    "createdAt": "2024-09-07T02:31:15.832Z"
+  },
+  {
+    "estimateRequestId": 262,
+    "moverId": 277,
+    "isRejected": true,
+    "rejectionReason": "새벽 시간 작업 요청으로 스케줄 조정이 어렵습니다.",
+    "createdAt": "2024-08-27T18:52:51.542Z"
+  },
+  {
+    "estimateRequestId": 248,
+    "moverId": 285,
+    "isRejected": true,
+    "rejectionReason": "취급 주의 품목에 대한 전문성 확보가 어렵습니다.",
+    "createdAt": "2024-09-10T07:49:19.202Z"
+  },
+  {
+    "estimateRequestId": 2083,
+    "moverId": 277,
+    "isRejected": false,
+    "createdAt": "2024-11-28T20:38:50.564Z"
+  },
+  {
+    "estimateRequestId": 3017,
+    "moverId": 252,
+    "isRejected": false,
+    "createdAt": "2024-08-08T04:08:24.198Z"
+  },
+  {
+    "estimateRequestId": 56,
+    "moverId": 244,
+    "isRejected": false,
+    "createdAt": "2024-11-15T14:41:50.478Z"
+  },
+  {
+    "estimateRequestId": 78,
+    "moverId": 241,
+    "isRejected": false,
+    "createdAt": "2024-08-12T11:17:56.341Z"
+  },
+  {
+    "estimateRequestId": 1646,
+    "moverId": 251,
+    "isRejected": false,
+    "createdAt": "2024-08-13T18:14:28.950Z"
+  },
+  {
+    "estimateRequestId": 576,
+    "moverId": 143,
+    "isRejected": false,
+    "createdAt": "2024-11-21T15:45:43.072Z"
+  },
+  {
+    "estimateRequestId": 2169,
+    "moverId": 256,
+    "isRejected": false,
+    "createdAt": "2024-10-16T18:07:18.455Z"
+  },
+  {
+    "estimateRequestId": 3383,
+    "moverId": 160,
+    "isRejected": false,
+    "createdAt": "2024-09-16T19:43:10.941Z"
+  },
+  {
+    "estimateRequestId": 2975,
+    "moverId": 161,
+    "isRejected": false,
+    "createdAt": "2024-11-29T10:33:18.997Z"
+  },
+  {
+    "estimateRequestId": 3302,
+    "moverId": 295,
+    "isRejected": false,
+    "createdAt": "2024-08-05T03:54:20.459Z"
+  },
+  {
+    "estimateRequestId": 232,
+    "moverId": 272,
+    "isRejected": false,
+    "createdAt": "2024-08-31T03:00:40.147Z"
+  },
+  {
+    "estimateRequestId": 3055,
+    "moverId": 230,
+    "isRejected": true,
+    "rejectionReason": "이사 도착지의 주차 환경이 확인되지 않았습니다.",
+    "createdAt": "2024-10-21T19:08:37.302Z"
+  },
+  {
+    "estimateRequestId": 2453,
+    "moverId": 231,
+    "isRejected": false,
+    "createdAt": "2024-08-27T15:45:56.725Z"
+  },
+  {
+    "estimateRequestId": 2966,
+    "moverId": 247,
+    "isRejected": true,
+    "rejectionReason": "고층 작업이 필요하나 사다리차 사용이 어려운 위치입니다.",
+    "createdAt": "2024-09-20T03:37:02.452Z"
+  },
+  {
+    "estimateRequestId": 20,
+    "moverId": 233,
+    "isRejected": false,
+    "createdAt": "2024-08-22T05:07:23.349Z"
+  },
+  {
+    "estimateRequestId": 1793,
+    "moverId": 210,
+    "isRejected": true,
+    "rejectionReason": "야외 보관 화물로 작업 환경이 까다롭습니다.",
+    "createdAt": "2024-11-22T17:02:28.432Z"
+  },
+  {
+    "estimateRequestId": 2392,
+    "moverId": 56,
+    "isRejected": false,
+    "createdAt": "2024-11-27T19:05:36.332Z"
+  },
+  {
+    "estimateRequestId": 150,
+    "moverId": 206,
+    "isRejected": false,
+    "createdAt": "2024-11-15T14:05:48.541Z"
+  },
+  {
+    "estimateRequestId": 1410,
+    "moverId": 70,
+    "isRejected": false,
+    "createdAt": "2024-10-13T16:37:00.781Z"
+  },
+  {
+    "estimateRequestId": 2779,
+    "moverId": 241,
+    "isRejected": true,
+    "rejectionReason": "건물 내 이동 경로가 좁아 작업 지연 예상됩니다.",
+    "createdAt": "2024-11-08T12:09:08.118Z"
+  },
+  {
+    "estimateRequestId": 3131,
+    "moverId": 286,
+    "isRejected": false,
+    "createdAt": "2024-11-11T02:08:40.951Z"
+  },
+  {
+    "estimateRequestId": 3401,
+    "moverId": 238,
+    "isRejected": false,
+    "createdAt": "2024-11-03T22:29:09.043Z"
+  },
+  {
+    "estimateRequestId": 2729,
+    "moverId": 185,
+    "isRejected": true,
+    "rejectionReason": "이삿짐이 화물차 적재 용량을 초과합니다.",
+    "createdAt": "2024-11-10T08:14:38.071Z"
+  },
+  {
+    "estimateRequestId": 2107,
+    "moverId": 271,
+    "isRejected": false,
+    "createdAt": "2024-08-18T04:36:07.750Z"
+  },
+  {
+    "estimateRequestId": 7,
+    "moverId": 217,
+    "isRejected": false,
+    "createdAt": "2024-12-05T21:58:42.548Z"
+  },
+  {
+    "estimateRequestId": 3038,
+    "moverId": 273,
+    "isRejected": false,
+    "createdAt": "2024-09-11T14:56:39.746Z"
+  },
+  {
+    "estimateRequestId": 2367,
+    "moverId": 165,
+    "isRejected": false,
+    "createdAt": "2024-08-12T01:49:19.925Z"
+  },
+  {
+    "estimateRequestId": 1621,
+    "moverId": 288,
+    "isRejected": true,
+    "rejectionReason": "고객의 요청 사항이 너무 빈번하게 변경됩니다.",
+    "createdAt": "2024-08-17T14:35:52.634Z"
+  },
+  {
+    "estimateRequestId": 864,
+    "moverId": 253,
+    "isRejected": false,
+    "createdAt": "2024-09-25T03:29:49.618Z"
+  },
+  {
+    "estimateRequestId": 3002,
+    "moverId": 232,
+    "isRejected": true,
+    "rejectionReason": "주변 환경이 위험해 안전 문제 우려가 큽니다.",
+    "createdAt": "2024-09-28T12:53:38.684Z"
+  },
+  {
+    "estimateRequestId": 1439,
+    "moverId": 295,
+    "isRejected": false,
+    "createdAt": "2024-12-04T17:06:38.363Z"
+  },
+  {
+    "estimateRequestId": 894,
+    "moverId": 154,
+    "isRejected": false,
+    "createdAt": "2024-08-15T08:20:25.037Z"
+  },
+  {
+    "estimateRequestId": 1084,
+    "moverId": 242,
+    "isRejected": false,
+    "createdAt": "2024-08-31T07:30:25.536Z"
+  },
+  {
+    "estimateRequestId": 3090,
+    "moverId": 205,
+    "isRejected": false,
+    "createdAt": "2024-10-01T11:22:31.428Z"
+  },
+  {
+    "estimateRequestId": 3189,
+    "moverId": 297,
+    "isRejected": false,
+    "createdAt": "2024-09-01T05:18:31.387Z"
+  },
+  {
+    "estimateRequestId": 2401,
+    "moverId": 204,
+    "isRejected": false,
+    "createdAt": "2024-11-03T16:57:04.649Z"
+  },
+  {
+    "estimateRequestId": 2764,
+    "moverId": 262,
+    "isRejected": false,
+    "createdAt": "2024-09-21T03:55:38.740Z"
+  },
+  {
+    "estimateRequestId": 1897,
+    "moverId": 205,
+    "isRejected": false,
+    "createdAt": "2024-09-25T06:00:13.760Z"
+  },
+  {
+    "estimateRequestId": 3473,
+    "moverId": 273,
+    "isRejected": false,
+    "createdAt": "2024-10-28T21:23:20.478Z"
+  },
+  {
+    "estimateRequestId": 807,
+    "moverId": 203,
+    "isRejected": false,
+    "createdAt": "2024-09-27T09:38:47.688Z"
+  },
+  {
+    "estimateRequestId": 3458,
+    "moverId": 212,
+    "isRejected": true,
+    "rejectionReason": "반려동물이 많아 작업 환경이 어려울 수 있습니다.",
+    "createdAt": "2024-09-02T17:33:05.974Z"
+  },
+  {
+    "estimateRequestId": 18,
+    "moverId": 201,
+    "isRejected": false,
+    "createdAt": "2024-11-17T03:21:39.806Z"
+  },
+  {
+    "estimateRequestId": 2522,
+    "moverId": 216,
+    "isRejected": false,
+    "createdAt": "2024-11-24T09:47:48.091Z"
+  },
+  {
+    "estimateRequestId": 2206,
+    "moverId": 297,
+    "isRejected": false,
+    "createdAt": "2024-08-24T20:25:36.314Z"
+  },
+  {
+    "estimateRequestId": 2010,
+    "moverId": 256,
+    "isRejected": false,
+    "createdAt": "2024-08-23T20:45:04.121Z"
+  },
+  {
+    "estimateRequestId": 2620,
+    "moverId": 252,
+    "isRejected": true,
+    "rejectionReason": "작업 장소의 주차 공간이 협소하거나 불가능합니다.",
+    "createdAt": "2024-08-29T08:33:46.717Z"
+  },
+  {
+    "estimateRequestId": 1767,
+    "moverId": 260,
+    "isRejected": false,
+    "createdAt": "2024-11-08T19:54:13.857Z"
+  },
+  {
+    "estimateRequestId": 2778,
+    "moverId": 209,
+    "isRejected": false,
+    "createdAt": "2024-10-19T03:11:40.786Z"
+  },
+  {
+    "estimateRequestId": 2228,
+    "moverId": 121,
+    "isRejected": false,
+    "createdAt": "2024-10-18T05:55:50.325Z"
+  },
+  {
+    "estimateRequestId": 1436,
+    "moverId": 136,
+    "isRejected": false,
+    "createdAt": "2024-10-19T09:49:13.890Z"
+  },
+  {
+    "estimateRequestId": 1312,
+    "moverId": 264,
+    "isRejected": false,
+    "createdAt": "2024-10-18T16:50:23.703Z"
+  },
+  {
+    "estimateRequestId": 2181,
+    "moverId": 294,
+    "isRejected": false,
+    "createdAt": "2024-10-16T14:12:14.619Z"
+  },
+  {
+    "estimateRequestId": 1773,
+    "moverId": 293,
+    "isRejected": false,
+    "createdAt": "2024-10-14T11:05:14.116Z"
+  },
+  {
+    "estimateRequestId": 1181,
+    "moverId": 225,
+    "isRejected": false,
+    "createdAt": "2024-10-07T02:59:14.889Z"
+  },
+  {
+    "estimateRequestId": 540,
+    "moverId": 257,
+    "isRejected": false,
+    "createdAt": "2024-08-13T06:52:28.792Z"
+  },
+  {
+    "estimateRequestId": 1183,
+    "moverId": 293,
+    "isRejected": true,
+    "rejectionReason": "포장재 준비 요청이 추가로 필요합니다.",
+    "createdAt": "2024-10-25T19:51:00.382Z"
+  },
+  {
+    "estimateRequestId": 2629,
+    "moverId": 288,
+    "isRejected": false,
+    "createdAt": "2024-10-08T15:58:53.173Z"
+  },
+  {
+    "estimateRequestId": 2444,
+    "moverId": 277,
+    "isRejected": false,
+    "createdAt": "2024-11-16T21:28:19.058Z"
+  },
+  {
+    "estimateRequestId": 1548,
+    "moverId": 256,
+    "isRejected": false,
+    "createdAt": "2024-11-21T22:20:21.019Z"
+  },
+  {
+    "estimateRequestId": 637,
+    "moverId": 250,
+    "isRejected": false,
+    "createdAt": "2024-10-15T00:59:28.959Z"
+  },
+  {
+    "estimateRequestId": 1960,
+    "moverId": 259,
+    "isRejected": false,
+    "createdAt": "2024-11-22T14:25:36.695Z"
+  },
+  {
+    "estimateRequestId": 3363,
+    "moverId": 287,
+    "isRejected": false,
+    "createdAt": "2024-11-22T04:55:24.260Z"
+  },
+  {
+    "estimateRequestId": 2254,
+    "moverId": 271,
+    "isRejected": false,
+    "createdAt": "2024-09-01T03:51:06.295Z"
+  },
+  {
+    "estimateRequestId": 1310,
+    "moverId": 227,
+    "isRejected": true,
+    "rejectionReason": "운송 후 보관 창고 출입 시간이 제한적입니다.",
+    "createdAt": "2024-10-12T02:06:08.450Z"
+  },
+  {
+    "estimateRequestId": 1441,
+    "moverId": 117,
+    "isRejected": true,
+    "rejectionReason": "특수 목적 이사(전시물, 예술품 등)로 추가 협의가 필요합니다.",
+    "createdAt": "2024-11-22T10:30:40.788Z"
+  },
+  {
+    "estimateRequestId": 2099,
+    "moverId": 253,
+    "isRejected": false,
+    "createdAt": "2024-09-08T03:23:10.111Z"
+  },
+  {
+    "estimateRequestId": 234,
+    "moverId": 211,
+    "isRejected": false,
+    "createdAt": "2024-11-13T07:47:50.658Z"
+  },
+  {
+    "estimateRequestId": 1190,
+    "moverId": 293,
+    "isRejected": false,
+    "createdAt": "2024-10-29T06:09:43.432Z"
+  },
+  {
+    "estimateRequestId": 2849,
+    "moverId": 296,
+    "isRejected": false,
+    "createdAt": "2024-09-11T05:07:35.797Z"
+  },
+  {
+    "estimateRequestId": 1294,
+    "moverId": 245,
+    "isRejected": false,
+    "createdAt": "2024-10-10T21:04:03.916Z"
+  },
+  {
+    "estimateRequestId": 1918,
+    "moverId": 263,
+    "isRejected": false,
+    "createdAt": "2024-11-26T17:05:41.942Z"
+  },
+  {
+    "estimateRequestId": 1711,
+    "moverId": 229,
+    "isRejected": false,
+    "createdAt": "2024-09-19T23:49:54.999Z"
+  },
+  {
+    "estimateRequestId": 316,
+    "moverId": 213,
+    "isRejected": false,
+    "createdAt": "2024-11-30T17:46:20.527Z"
+  },
+  {
+    "estimateRequestId": 1553,
+    "moverId": 263,
+    "isRejected": true,
+    "rejectionReason": "에어컨 철거 및 설치 요청으로 작업 시간이 부족합니다.",
+    "createdAt": "2024-11-21T00:03:12.757Z"
+  },
+  {
+    "estimateRequestId": 589,
+    "moverId": 218,
+    "isRejected": false,
+    "createdAt": "2024-11-23T03:30:11.353Z"
+  },
+  {
+    "estimateRequestId": 1221,
+    "moverId": 208,
+    "isRejected": false,
+    "createdAt": "2024-09-15T02:44:56.173Z"
+  },
+  {
+    "estimateRequestId": 2089,
+    "moverId": 67,
+    "isRejected": true,
+    "rejectionReason": "이사 일정이 당사 작업 일정과 겹칩니다.",
+    "createdAt": "2024-08-28T14:24:58.921Z"
+  },
+  {
+    "estimateRequestId": 2430,
+    "moverId": 218,
+    "isRejected": false,
+    "createdAt": "2024-08-03T02:50:25.204Z"
+  },
+  {
+    "estimateRequestId": 3425,
+    "moverId": 112,
+    "isRejected": false,
+    "createdAt": "2024-08-08T13:54:20.769Z"
+  },
+  {
+    "estimateRequestId": 1003,
+    "moverId": 282,
+    "isRejected": false,
+    "createdAt": "2024-10-01T22:33:12.894Z"
+  },
+  {
+    "estimateRequestId": 2833,
+    "moverId": 245,
+    "isRejected": false,
+    "createdAt": "2024-12-02T09:28:49.008Z"
+  },
+  {
+    "estimateRequestId": 336,
+    "moverId": 219,
+    "isRejected": false,
+    "createdAt": "2024-11-09T10:49:41.375Z"
+  },
+  {
+    "estimateRequestId": 1313,
+    "moverId": 35,
+    "isRejected": false,
+    "createdAt": "2024-10-14T18:16:33.702Z"
+  },
+  {
+    "estimateRequestId": 1695,
+    "moverId": 291,
+    "isRejected": false,
+    "createdAt": "2024-09-10T08:08:02.000Z"
+  },
+  {
+    "estimateRequestId": 2112,
+    "moverId": 215,
+    "isRejected": true,
+    "rejectionReason": "특정 시간에 작업 완료 요청이 있어 대응이 어렵습니다.",
+    "createdAt": "2024-11-18T14:18:48.772Z"
+  },
+  {
+    "estimateRequestId": 1163,
+    "moverId": 12,
+    "isRejected": false,
+    "createdAt": "2024-10-02T08:23:41.866Z"
+  },
+  {
+    "estimateRequestId": 1576,
+    "moverId": 67,
+    "isRejected": false,
+    "createdAt": "2024-11-27T07:54:25.042Z"
+  },
+  {
+    "estimateRequestId": 1911,
+    "moverId": 18,
+    "isRejected": false,
+    "createdAt": "2024-10-01T16:04:16.206Z"
+  },
+  {
+    "estimateRequestId": 3306,
+    "moverId": 59,
+    "isRejected": false,
+    "createdAt": "2024-10-14T03:44:19.657Z"
+  },
+  {
+    "estimateRequestId": 1053,
+    "moverId": 278,
+    "isRejected": false,
+    "createdAt": "2024-09-19T23:25:13.318Z"
+  },
+  {
+    "estimateRequestId": 3140,
+    "moverId": 226,
+    "isRejected": false,
+    "createdAt": "2024-09-17T22:50:07.621Z"
+  },
+  {
+    "estimateRequestId": 2485,
+    "moverId": 76,
+    "isRejected": false,
+    "createdAt": "2024-09-26T22:55:15.482Z"
+  },
+  {
+    "estimateRequestId": 2465,
+    "moverId": 303,
+    "isRejected": true,
+    "rejectionReason": "특수 화물(예: 유독 물질)이 포함되어 있습니다.",
+    "createdAt": "2024-08-27T19:18:57.218Z"
+  },
+  {
+    "estimateRequestId": 1853,
+    "moverId": 256,
+    "isRejected": false,
+    "createdAt": "2024-08-22T01:10:05.987Z"
+  },
+  {
+    "estimateRequestId": 1856,
+    "moverId": 216,
+    "isRejected": false,
+    "createdAt": "2024-11-29T02:48:03.708Z"
+  },
+  {
+    "estimateRequestId": 75,
+    "moverId": 181,
+    "isRejected": false,
+    "createdAt": "2024-08-28T15:07:46.284Z"
+  },
+  {
+    "estimateRequestId": 805,
+    "moverId": 214,
+    "isRejected": false,
+    "createdAt": "2024-08-29T06:22:50.114Z"
+  },
+  {
+    "estimateRequestId": 2618,
+    "moverId": 217,
+    "isRejected": true,
+    "rejectionReason": "운송 거리 초과로 추가 요금 협의가 필요합니다.",
+    "createdAt": "2024-08-25T13:54:29.062Z"
+  },
+  {
+    "estimateRequestId": 3510,
+    "moverId": 297,
+    "isRejected": true,
+    "rejectionReason": "건물 내 전용 엘리베이터 예약이 불가능합니다.",
+    "createdAt": "2024-09-24T13:01:25.103Z"
+  },
+  {
+    "estimateRequestId": 640,
+    "moverId": 35,
+    "isRejected": true,
+    "rejectionReason": "가구 포장 해체 작업이 전문성을 요합니다.",
+    "createdAt": "2024-10-09T21:29:26.145Z"
+  },
+  {
+    "estimateRequestId": 2734,
+    "moverId": 288,
+    "isRejected": false,
+    "createdAt": "2024-11-26T13:29:12.204Z"
+  },
+  {
+    "estimateRequestId": 2509,
+    "moverId": 226,
+    "isRejected": false,
+    "createdAt": "2024-11-27T04:11:05.625Z"
+  },
+  {
+    "estimateRequestId": 1126,
+    "moverId": 232,
+    "isRejected": false,
+    "createdAt": "2024-08-02T04:03:34.068Z"
+  },
+  {
+    "estimateRequestId": 3491,
+    "moverId": 297,
+    "isRejected": false,
+    "createdAt": "2024-09-05T08:32:07.012Z"
+  },
+  {
+    "estimateRequestId": 3352,
+    "moverId": 255,
+    "isRejected": true,
+    "rejectionReason": "다른 이사 일정과의 충돌로 스케줄 조정이 어렵습니다.",
+    "createdAt": "2024-09-05T00:23:42.606Z"
+  },
+  {
+    "estimateRequestId": 1569,
+    "moverId": 277,
+    "isRejected": false,
+    "createdAt": "2024-08-28T13:11:08.267Z"
+  },
+  {
+    "estimateRequestId": 3040,
+    "moverId": 264,
+    "isRejected": false,
+    "createdAt": "2024-11-19T04:10:51.192Z"
+  },
+  {
+    "estimateRequestId": 1880,
+    "moverId": 262,
+    "isRejected": false,
+    "createdAt": "2024-08-06T06:09:28.543Z"
+  },
+  {
+    "estimateRequestId": 730,
+    "moverId": 267,
+    "isRejected": false,
+    "createdAt": "2024-09-15T17:33:41.845Z"
+  },
+  {
+    "estimateRequestId": 482,
+    "moverId": 280,
+    "isRejected": false,
+    "createdAt": "2024-09-13T16:15:27.174Z"
+  },
+  {
+    "estimateRequestId": 2646,
+    "moverId": 213,
+    "isRejected": false,
+    "createdAt": "2024-11-19T17:59:03.470Z"
+  },
+  {
+    "estimateRequestId": 1252,
+    "moverId": 292,
+    "isRejected": true,
+    "rejectionReason": "가구가 문이나 창문을 통해 이동하기 어려운 경우입니다.",
+    "createdAt": "2024-09-07T16:34:17.107Z"
+  },
+  {
+    "estimateRequestId": 499,
+    "moverId": 238,
+    "isRejected": false,
+    "createdAt": "2024-10-16T08:29:17.984Z"
+  },
+  {
+    "estimateRequestId": 711,
+    "moverId": 224,
+    "isRejected": false,
+    "createdAt": "2024-09-03T16:49:45.152Z"
+  },
+  {
+    "estimateRequestId": 2090,
+    "moverId": 281,
+    "isRejected": false,
+    "createdAt": "2024-08-16T23:57:40.441Z"
+  },
+  {
+    "estimateRequestId": 3204,
+    "moverId": 150,
+    "isRejected": true,
+    "rejectionReason": "계약 전 무리한 할인 요청으로 협의가 어렵습니다.",
+    "createdAt": "2024-09-12T07:17:38.527Z"
+  },
+  {
+    "estimateRequestId": 679,
+    "moverId": 249,
+    "isRejected": false,
+    "createdAt": "2024-09-18T10:16:59.599Z"
+  },
+  {
+    "estimateRequestId": 2071,
+    "moverId": 303,
+    "isRejected": false,
+    "createdAt": "2024-12-05T00:21:28.613Z"
+  },
+  {
+    "estimateRequestId": 1196,
+    "moverId": 249,
+    "isRejected": true,
+    "rejectionReason": "화물 운송 시 급경사 도로 이용이 필요합니다.",
+    "createdAt": "2024-09-23T21:01:16.279Z"
+  },
+  {
+    "estimateRequestId": 554,
+    "moverId": 52,
+    "isRejected": false,
+    "createdAt": "2024-08-23T06:40:08.131Z"
+  },
+  {
+    "estimateRequestId": 3347,
+    "moverId": 249,
+    "isRejected": false,
+    "createdAt": "2024-09-20T06:05:49.731Z"
+  },
+  {
+    "estimateRequestId": 1432,
+    "moverId": 24,
+    "isRejected": false,
+    "createdAt": "2024-08-31T16:10:39.285Z"
+  },
+  {
+    "estimateRequestId": 1688,
+    "moverId": 244,
+    "isRejected": true,
+    "rejectionReason": "포장재 비용 부담 협의가 불가능합니다.",
+    "createdAt": "2024-11-01T12:54:32.296Z"
+  },
+  {
+    "estimateRequestId": 1677,
+    "moverId": 276,
+    "isRejected": false,
+    "createdAt": "2024-09-03T16:45:50.835Z"
+  },
+  {
+    "estimateRequestId": 1420,
+    "moverId": 247,
+    "isRejected": true,
+    "rejectionReason": "작업 도중 고객의 입회가 불가능한 경우입니다.",
+    "createdAt": "2024-10-04T18:02:45.732Z"
+  },
+  {
+    "estimateRequestId": 2789,
+    "moverId": 226,
+    "isRejected": false,
+    "createdAt": "2024-11-18T07:45:49.703Z"
+  },
+  {
+    "estimateRequestId": 2487,
+    "moverId": 211,
+    "isRejected": false,
+    "createdAt": "2024-11-19T22:31:09.484Z"
+  },
+  {
+    "estimateRequestId": 2838,
+    "moverId": 263,
+    "isRejected": false,
+    "createdAt": "2024-09-04T18:30:56.728Z"
+  },
+  {
+    "estimateRequestId": 932,
+    "moverId": 108,
+    "isRejected": false,
+    "createdAt": "2024-08-29T18:29:06.254Z"
+  },
+  {
+    "estimateRequestId": 2718,
+    "moverId": 237,
+    "isRejected": false,
+    "createdAt": "2024-09-28T03:32:12.859Z"
+  },
+  {
+    "estimateRequestId": 2881,
+    "moverId": 220,
+    "isRejected": false,
+    "createdAt": "2024-11-20T17:07:38.902Z"
+  },
+  {
+    "estimateRequestId": 1794,
+    "moverId": 81,
+    "isRejected": false,
+    "createdAt": "2024-09-20T08:56:30.815Z"
+  },
+  {
+    "estimateRequestId": 1879,
+    "moverId": 240,
+    "isRejected": false,
+    "createdAt": "2024-08-14T22:42:49.577Z"
+  },
+  {
+    "estimateRequestId": 1528,
+    "moverId": 151,
+    "isRejected": true,
+    "rejectionReason": "포장이사가 아닌 일반 이사를 요청하셔서 대응이 어렵습니다.",
+    "createdAt": "2024-08-01T23:12:03.822Z"
+  },
+  {
+    "estimateRequestId": 2619,
+    "moverId": 258,
+    "isRejected": true,
+    "rejectionReason": "운송 시 전용 도로 사용 허가가 필요합니다.",
+    "createdAt": "2024-10-10T12:19:58.409Z"
+  },
+  {
+    "estimateRequestId": 109,
+    "moverId": 166,
+    "isRejected": false,
+    "createdAt": "2024-08-11T08:15:09.548Z"
+  },
+  {
+    "estimateRequestId": 2042,
+    "moverId": 15,
+    "isRejected": false,
+    "createdAt": "2024-08-12T13:37:10.736Z"
+  },
+  {
+    "estimateRequestId": 1482,
+    "moverId": 292,
+    "isRejected": false,
+    "createdAt": "2024-08-26T14:34:59.260Z"
+  },
+  {
+    "estimateRequestId": 981,
+    "moverId": 296,
+    "isRejected": false,
+    "createdAt": "2024-09-13T16:31:20.453Z"
+  },
+  {
+    "estimateRequestId": 1169,
+    "moverId": 279,
+    "isRejected": true,
+    "rejectionReason": "특수 장비 대여 비용이 과다하여 진행이 어렵습니다.",
+    "createdAt": "2024-10-31T03:07:16.365Z"
+  },
+  {
+    "estimateRequestId": 598,
+    "moverId": 249,
+    "isRejected": false,
+    "createdAt": "2024-10-27T14:05:23.199Z"
+  },
+  {
+    "estimateRequestId": 3015,
+    "moverId": 261,
+    "isRejected": false,
+    "createdAt": "2024-10-17T22:53:06.918Z"
+  },
+  {
+    "estimateRequestId": 1091,
+    "moverId": 207,
+    "isRejected": false,
+    "createdAt": "2024-10-28T15:25:13.802Z"
+  },
+  {
+    "estimateRequestId": 1330,
+    "moverId": 203,
+    "isRejected": false,
+    "createdAt": "2024-09-26T02:58:09.133Z"
+  },
+  {
+    "estimateRequestId": 3382,
+    "moverId": 261,
+    "isRejected": false,
+    "createdAt": "2024-10-10T17:12:04.316Z"
+  },
+  {
+    "estimateRequestId": 3183,
+    "moverId": 281,
+    "isRejected": false,
+    "createdAt": "2024-11-08T12:39:31.313Z"
+  },
+  {
+    "estimateRequestId": 300,
+    "moverId": 229,
+    "isRejected": false,
+    "createdAt": "2024-11-20T14:22:31.948Z"
+  },
+  {
+    "estimateRequestId": 2541,
+    "moverId": 296,
+    "isRejected": false,
+    "createdAt": "2024-09-10T12:25:58.181Z"
+  },
+  {
+    "estimateRequestId": 3031,
+    "moverId": 229,
+    "isRejected": false,
+    "createdAt": "2024-08-14T11:42:18.978Z"
+  },
+  {
+    "estimateRequestId": 281,
+    "moverId": 220,
+    "isRejected": false,
+    "createdAt": "2024-11-27T02:22:34.902Z"
+  },
+  {
+    "estimateRequestId": 315,
+    "moverId": 251,
+    "isRejected": true,
+    "rejectionReason": "비용 청구 방식에 대한 오해가 있어 협의가 필요합니다.",
+    "createdAt": "2024-09-24T06:29:54.899Z"
+  },
+  {
+    "estimateRequestId": 2911,
+    "moverId": 158,
+    "isRejected": false,
+    "createdAt": "2024-10-28T21:09:31.105Z"
+  },
+  {
+    "estimateRequestId": 3101,
+    "moverId": 246,
+    "isRejected": false,
+    "createdAt": "2024-09-25T13:19:53.185Z"
+  },
+  {
+    "estimateRequestId": 3215,
+    "moverId": 147,
+    "isRejected": true,
+    "rejectionReason": "주차 공간 협소로 차량 대기가 필요합니다.",
+    "createdAt": "2024-10-11T13:03:09.230Z"
+  },
+  {
+    "estimateRequestId": 3414,
+    "moverId": 253,
+    "isRejected": false,
+    "createdAt": "2024-10-01T17:02:47.342Z"
+  },
+  {
+    "estimateRequestId": 2132,
+    "moverId": 79,
+    "isRejected": false,
+    "createdAt": "2024-11-21T22:06:35.584Z"
+  },
+  {
+    "estimateRequestId": 3246,
+    "moverId": 44,
+    "isRejected": true,
+    "rejectionReason": "짐 포장이 미리 준비되지 않은 경우입니다.",
+    "createdAt": "2024-09-08T12:44:59.999Z"
+  },
+  {
+    "estimateRequestId": 2825,
+    "moverId": 300,
+    "isRejected": false,
+    "createdAt": "2024-10-09T16:41:40.199Z"
+  },
+  {
+    "estimateRequestId": 973,
+    "moverId": 178,
+    "isRejected": false,
+    "createdAt": "2024-08-26T07:56:35.222Z"
+  },
+  {
+    "estimateRequestId": 3066,
+    "moverId": 253,
+    "isRejected": false,
+    "createdAt": "2024-08-19T03:35:28.013Z"
+  },
+  {
+    "estimateRequestId": 2743,
+    "moverId": 243,
+    "isRejected": false,
+    "createdAt": "2024-09-16T06:15:40.822Z"
+  },
+  {
+    "estimateRequestId": 1598,
+    "moverId": 273,
+    "isRejected": false,
+    "createdAt": "2024-10-28T17:58:25.552Z"
+  },
+  {
+    "estimateRequestId": 1549,
+    "moverId": 88,
+    "isRejected": false,
+    "createdAt": "2024-08-23T14:47:58.855Z"
+  },
+  {
+    "estimateRequestId": 636,
+    "moverId": 305,
+    "isRejected": false,
+    "createdAt": "2024-11-11T15:54:52.129Z"
+  },
+  {
+    "estimateRequestId": 2610,
+    "moverId": 41,
+    "isRejected": false,
+    "createdAt": "2024-08-28T16:00:18.180Z"
+  },
+  {
+    "estimateRequestId": 500,
+    "moverId": 39,
+    "isRejected": false,
+    "createdAt": "2024-11-18T21:50:03.796Z"
+  },
+  {
+    "estimateRequestId": 2638,
+    "moverId": 63,
+    "isRejected": true,
+    "rejectionReason": "의뢰하신 작업 일정이 변경되어 혼란이 예상됩니다.",
+    "createdAt": "2024-11-09T16:30:34.046Z"
+  },
+  {
+    "estimateRequestId": 725,
+    "moverId": 227,
+    "isRejected": false,
+    "createdAt": "2024-11-24T12:44:42.672Z"
+  },
+  {
+    "estimateRequestId": 2962,
+    "moverId": 283,
+    "isRejected": false,
+    "createdAt": "2024-10-22T21:38:44.736Z"
+  },
+  {
+    "estimateRequestId": 2080,
+    "moverId": 206,
+    "isRejected": false,
+    "createdAt": "2024-10-13T04:53:26.677Z"
+  },
+  {
+    "estimateRequestId": 2051,
+    "moverId": 270,
+    "isRejected": true,
+    "rejectionReason": "요청 일정이 지나치게 이른 시간에 설정되었습니다.",
+    "createdAt": "2024-09-02T21:53:52.340Z"
+  },
+  {
+    "estimateRequestId": 268,
+    "moverId": 244,
+    "isRejected": false,
+    "createdAt": "2024-11-12T06:37:36.497Z"
+  },
+  {
+    "estimateRequestId": 204,
+    "moverId": 289,
+    "isRejected": true,
+    "rejectionReason": "이삿짐의 양이 견적 요청서에 비해 과다합니다.",
+    "createdAt": "2024-08-10T21:57:10.528Z"
+  },
+  {
+    "estimateRequestId": 2269,
+    "moverId": 298,
+    "isRejected": false,
+    "createdAt": "2024-10-17T08:34:22.938Z"
+  },
+  {
+    "estimateRequestId": 2382,
+    "moverId": 79,
+    "isRejected": false,
+    "createdAt": "2024-09-04T18:06:40.971Z"
+  },
+  {
+    "estimateRequestId": 3170,
+    "moverId": 255,
+    "isRejected": true,
+    "rejectionReason": "새로운 작업 요청으로 추가 인력 배치가 필요합니다.",
+    "createdAt": "2024-08-07T01:39:13.179Z"
+  },
+  {
+    "estimateRequestId": 1616,
+    "moverId": 287,
+    "isRejected": false,
+    "createdAt": "2024-09-15T12:23:05.573Z"
+  },
+  {
+    "estimateRequestId": 15,
+    "moverId": 217,
+    "isRejected": false,
+    "createdAt": "2024-11-01T22:22:09.370Z"
+  },
+  {
+    "estimateRequestId": 1961,
+    "moverId": 29,
+    "isRejected": false,
+    "createdAt": "2024-10-15T00:05:40.913Z"
+  },
+  {
+    "estimateRequestId": 245,
+    "moverId": 99,
+    "isRejected": false,
+    "createdAt": "2024-09-18T18:33:08.573Z"
+  },
+  {
+    "estimateRequestId": 1248,
+    "moverId": 201,
+    "isRejected": false,
+    "createdAt": "2024-08-18T13:41:49.363Z"
+  },
+  {
+    "estimateRequestId": 2299,
+    "moverId": 266,
+    "isRejected": false,
+    "createdAt": "2024-09-07T18:21:19.479Z"
+  },
+  {
+    "estimateRequestId": 2715,
+    "moverId": 214,
+    "isRejected": false,
+    "createdAt": "2024-12-05T01:07:44.122Z"
+  },
+  {
+    "estimateRequestId": 3051,
+    "moverId": 229,
+    "isRejected": false,
+    "createdAt": "2024-08-07T05:33:17.442Z"
+  },
+  {
+    "estimateRequestId": 1397,
+    "moverId": 229,
+    "isRejected": false,
+    "createdAt": "2024-11-28T14:25:22.567Z"
+  },
+  {
+    "estimateRequestId": 1447,
+    "moverId": 113,
+    "isRejected": false,
+    "createdAt": "2024-11-05T10:25:36.152Z"
+  },
+  {
+    "estimateRequestId": 1987,
+    "moverId": 263,
+    "isRejected": false,
+    "createdAt": "2024-08-24T06:51:29.399Z"
+  },
+  {
+    "estimateRequestId": 2655,
+    "moverId": 146,
+    "isRejected": true,
+    "rejectionReason": "긴급 요청으로 준비 시간이 부족합니다.",
+    "createdAt": "2024-10-30T20:40:24.942Z"
+  },
+  {
+    "estimateRequestId": 2719,
+    "moverId": 251,
+    "isRejected": true,
+    "rejectionReason": "엘리베이터 사용이 불가능한 곳으로 계단 이용만 가능한 경우입니다.",
+    "createdAt": "2024-08-14T12:34:41.835Z"
+  },
+  {
+    "estimateRequestId": 2140,
+    "moverId": 6,
+    "isRejected": false,
+    "createdAt": "2024-10-09T08:46:36.501Z"
+  },
+  {
+    "estimateRequestId": 2188,
+    "moverId": 70,
+    "isRejected": false,
+    "createdAt": "2024-12-01T18:11:32.562Z"
+  },
+  {
+    "estimateRequestId": 167,
+    "moverId": 292,
+    "isRejected": false,
+    "createdAt": "2024-10-31T10:27:23.856Z"
+  },
+  {
+    "estimateRequestId": 2690,
+    "moverId": 204,
+    "isRejected": false,
+    "createdAt": "2024-08-06T04:17:36.626Z"
+  },
+  {
+    "estimateRequestId": 246,
+    "moverId": 116,
+    "isRejected": false,
+    "createdAt": "2024-09-14T15:35:07.858Z"
+  },
+  {
+    "estimateRequestId": 813,
+    "moverId": 255,
+    "isRejected": true,
+    "rejectionReason": "고객의 작업 요청 사항이 복잡하여 일정이 초과될 수 있습니다.",
+    "createdAt": "2024-11-09T22:29:17.555Z"
+  },
+  {
+    "estimateRequestId": 1586,
+    "moverId": 38,
+    "isRejected": false,
+    "createdAt": "2024-11-29T15:19:40.388Z"
+  },
+  {
+    "estimateRequestId": 3303,
+    "moverId": 262,
+    "isRejected": true,
+    "rejectionReason": "요청 금액이 작업 난이도에 비해 낮은 경우입니다.",
+    "createdAt": "2024-08-19T13:43:32.518Z"
+  },
+  {
+    "estimateRequestId": 1072,
+    "moverId": 158,
+    "isRejected": true,
+    "rejectionReason": "요청된 서비스 범위가 일반적인 이사 범위를 초과합니다.",
+    "createdAt": "2024-11-16T09:55:13.613Z"
+  },
+  {
+    "estimateRequestId": 2682,
+    "moverId": 213,
+    "isRejected": false,
+    "createdAt": "2024-11-15T14:25:53.291Z"
+  },
+  {
+    "estimateRequestId": 3317,
+    "moverId": 283,
+    "isRejected": false,
+    "createdAt": "2024-09-15T23:02:57.485Z"
+  },
+  {
+    "estimateRequestId": 1359,
+    "moverId": 234,
+    "isRejected": false,
+    "createdAt": "2024-10-10T04:34:09.606Z"
+  },
+  {
+    "estimateRequestId": 1901,
+    "moverId": 292,
+    "isRejected": false,
+    "createdAt": "2024-08-22T22:27:26.842Z"
+  },
+  {
+    "estimateRequestId": 3162,
+    "moverId": 91,
+    "isRejected": false,
+    "createdAt": "2024-09-17T22:07:37.552Z"
+  },
+  {
+    "estimateRequestId": 2940,
+    "moverId": 220,
+    "isRejected": false,
+    "createdAt": "2024-08-16T08:51:15.669Z"
+  },
+  {
+    "estimateRequestId": 147,
+    "moverId": 245,
+    "isRejected": false,
+    "createdAt": "2024-09-30T12:20:24.215Z"
+  },
+  {
+    "estimateRequestId": 1206,
+    "moverId": 6,
+    "isRejected": false,
+    "createdAt": "2024-08-14T23:12:52.590Z"
+  },
+  {
+    "estimateRequestId": 1520,
+    "moverId": 168,
+    "isRejected": false,
+    "createdAt": "2024-11-28T17:35:08.735Z"
+  },
+  {
+    "estimateRequestId": 1801,
+    "moverId": 231,
+    "isRejected": false,
+    "createdAt": "2024-09-18T09:41:45.307Z"
+  },
+  {
+    "estimateRequestId": 3443,
+    "moverId": 256,
+    "isRejected": false,
+    "createdAt": "2024-09-27T08:42:13.239Z"
+  },
+  {
+    "estimateRequestId": 590,
+    "moverId": 279,
+    "isRejected": true,
+    "rejectionReason": "다른 업체와의 중복 예약으로 일정이 불확실합니다.",
+    "createdAt": "2024-08-30T08:59:52.808Z"
+  },
+  {
+    "estimateRequestId": 1079,
+    "moverId": 281,
+    "isRejected": true,
+    "rejectionReason": "운송 후 파손 발생 시 보상 규정 협의가 필요합니다.",
+    "createdAt": "2024-10-14T01:40:54.947Z"
+  },
+  {
+    "estimateRequestId": 2060,
+    "moverId": 276,
+    "isRejected": false,
+    "createdAt": "2024-09-27T17:58:42.992Z"
+  },
+  {
+    "estimateRequestId": 1570,
+    "moverId": 226,
+    "isRejected": false,
+    "createdAt": "2024-09-02T23:46:21.652Z"
+  },
+  {
+    "estimateRequestId": 3297,
+    "moverId": 230,
+    "isRejected": false,
+    "createdAt": "2024-08-10T18:16:40.609Z"
+  },
+  {
+    "estimateRequestId": 1860,
+    "moverId": 230,
+    "isRejected": false,
+    "createdAt": "2024-09-11T06:17:29.636Z"
+  },
+  {
+    "estimateRequestId": 2692,
+    "moverId": 258,
+    "isRejected": false,
+    "createdAt": "2024-11-03T01:38:09.671Z"
+  },
+  {
+    "estimateRequestId": 2784,
+    "moverId": 229,
+    "isRejected": false,
+    "createdAt": "2024-10-15T03:50:05.030Z"
+  },
+  {
+    "estimateRequestId": 940,
+    "moverId": 190,
+    "isRejected": false,
+    "createdAt": "2024-11-17T23:22:14.651Z"
+  },
+  {
+    "estimateRequestId": 3466,
+    "moverId": 261,
+    "isRejected": false,
+    "createdAt": "2024-08-09T06:48:46.591Z"
+  },
+  {
+    "estimateRequestId": 859,
+    "moverId": 248,
+    "isRejected": false,
+    "createdAt": "2024-09-27T08:51:39.490Z"
+  },
+  {
+    "estimateRequestId": 1277,
+    "moverId": 246,
+    "isRejected": false,
+    "createdAt": "2024-10-25T23:47:56.710Z"
+  },
+  {
+    "estimateRequestId": 957,
+    "moverId": 31,
+    "isRejected": false,
+    "createdAt": "2024-11-25T06:33:54.502Z"
+  },
+  {
+    "estimateRequestId": 1873,
+    "moverId": 228,
+    "isRejected": false,
+    "createdAt": "2024-08-29T09:59:35.634Z"
+  },
+  {
+    "estimateRequestId": 2379,
+    "moverId": 253,
+    "isRejected": false,
+    "createdAt": "2024-10-21T23:59:35.124Z"
+  },
+  {
+    "estimateRequestId": 461,
+    "moverId": 222,
+    "isRejected": false,
+    "createdAt": "2024-08-04T05:53:11.390Z"
+  },
+  {
+    "estimateRequestId": 735,
+    "moverId": 232,
+    "isRejected": false,
+    "createdAt": "2024-10-11T06:46:30.604Z"
+  },
+  {
+    "estimateRequestId": 1130,
+    "moverId": 206,
+    "isRejected": false,
+    "createdAt": "2024-10-22T11:47:10.565Z"
+  },
+  {
+    "estimateRequestId": 1202,
+    "moverId": 291,
+    "isRejected": true,
+    "rejectionReason": "가구 보관 창고 제공 요청으로 추가 준비가 필요합니다.",
+    "createdAt": "2024-11-18T10:29:04.627Z"
+  },
+  {
+    "estimateRequestId": 2007,
+    "moverId": 268,
+    "isRejected": false,
+    "createdAt": "2024-08-14T07:42:46.057Z"
+  },
+  {
+    "estimateRequestId": 1574,
+    "moverId": 286,
+    "isRejected": false,
+    "createdAt": "2024-08-16T13:37:12.182Z"
+  },
+  {
+    "estimateRequestId": 43,
+    "moverId": 205,
+    "isRejected": false,
+    "createdAt": "2024-11-13T22:38:34.679Z"
+  },
+  {
+    "estimateRequestId": 1917,
+    "moverId": 212,
+    "isRejected": true,
+    "rejectionReason": "견적 요청서에 기재된 주소지가 정확하지 않습니다.",
+    "createdAt": "2024-10-30T02:33:54.505Z"
+  },
+  {
+    "estimateRequestId": 453,
+    "moverId": 252,
+    "isRejected": true,
+    "rejectionReason": "이삿짐 보관 요청이 추가로 필요합니다.",
+    "createdAt": "2024-10-09T23:55:57.739Z"
+  },
+  {
+    "estimateRequestId": 2961,
+    "moverId": 209,
+    "isRejected": false,
+    "createdAt": "2024-11-23T21:50:53.250Z"
+  },
+  {
+    "estimateRequestId": 459,
+    "moverId": 287,
+    "isRejected": true,
+    "rejectionReason": "견적 금액이 예산과 맞지 않아 협의가 어렵습니다.",
+    "createdAt": "2024-10-15T05:37:06.844Z"
+  },
+  {
+    "estimateRequestId": 1346,
+    "moverId": 212,
+    "isRejected": false,
+    "createdAt": "2024-11-14T19:42:37.580Z"
+  },
+  {
+    "estimateRequestId": 728,
+    "moverId": 303,
+    "isRejected": true,
+    "rejectionReason": "이삿짐 중 반출 금지 품목이 포함되어 있습니다.",
+    "createdAt": "2024-09-15T10:49:34.760Z"
+  },
+  {
+    "estimateRequestId": 2492,
+    "moverId": 276,
+    "isRejected": false,
+    "createdAt": "2024-10-09T12:03:26.330Z"
+  },
+  {
+    "estimateRequestId": 1988,
+    "moverId": 72,
+    "isRejected": true,
+    "rejectionReason": "특수 화물(금고, ATM 등) 운반 요청이 포함되었습니다.",
+    "createdAt": "2024-12-02T00:58:33.190Z"
+  },
+  {
+    "estimateRequestId": 919,
+    "moverId": 216,
+    "isRejected": true,
+    "rejectionReason": "건물 구조상 사다리차 진입이 불가능합니다.",
+    "createdAt": "2024-11-17T00:32:46.852Z"
+  },
+  {
+    "estimateRequestId": 131,
+    "moverId": 224,
+    "isRejected": false,
+    "createdAt": "2024-10-12T22:25:59.702Z"
+  },
+  {
+    "estimateRequestId": 715,
+    "moverId": 179,
+    "isRejected": true,
+    "rejectionReason": "작업 환경(소음, 진동 등)이 부적합합니다.",
+    "createdAt": "2024-08-26T23:59:52.608Z"
+  },
+  {
+    "estimateRequestId": 2667,
+    "moverId": 291,
+    "isRejected": false,
+    "createdAt": "2024-08-27T01:01:54.199Z"
+  },
+  {
+    "estimateRequestId": 3245,
+    "moverId": 275,
+    "isRejected": true,
+    "rejectionReason": "고객과의 작업 범위 협의가 명확하지 않습니다.",
+    "createdAt": "2024-10-25T05:33:10.391Z"
+  },
+  {
+    "estimateRequestId": 3102,
+    "moverId": 264,
+    "isRejected": false,
+    "createdAt": "2024-08-23T14:33:40.310Z"
+  },
+  {
+    "estimateRequestId": 1036,
+    "moverId": 211,
+    "isRejected": false,
+    "createdAt": "2024-11-22T12:22:58.062Z"
+  },
+  {
+    "estimateRequestId": 2219,
+    "moverId": 221,
+    "isRejected": false,
+    "createdAt": "2024-09-27T00:55:05.837Z"
+  },
+  {
+    "estimateRequestId": 1077,
+    "moverId": 85,
+    "isRejected": false,
+    "createdAt": "2024-09-10T11:47:48.707Z"
+  },
+  {
+    "estimateRequestId": 2386,
+    "moverId": 237,
+    "isRejected": false,
+    "createdAt": "2024-12-02T19:45:33.803Z"
+  },
+  {
+    "estimateRequestId": 1170,
+    "moverId": 295,
+    "isRejected": false,
+    "createdAt": "2024-11-15T10:50:06.886Z"
+  },
+  {
+    "estimateRequestId": 2164,
+    "moverId": 294,
+    "isRejected": false,
+    "createdAt": "2024-11-23T01:52:30.728Z"
+  },
+  {
+    "estimateRequestId": 1218,
+    "moverId": 270,
+    "isRejected": false,
+    "createdAt": "2024-11-29T05:34:05.294Z"
+  },
+  {
+    "estimateRequestId": 2535,
+    "moverId": 286,
+    "isRejected": true,
+    "rejectionReason": "짐 보관 요청으로 작업 스케줄이 초과됩니다.",
+    "createdAt": "2024-08-31T10:25:55.365Z"
+  },
+  {
+    "estimateRequestId": 2043,
+    "moverId": 303,
+    "isRejected": false,
+    "createdAt": "2024-09-21T02:31:51.119Z"
+  },
+  {
+    "estimateRequestId": 2458,
+    "moverId": 274,
+    "isRejected": false,
+    "createdAt": "2024-11-21T00:54:14.998Z"
+  },
+  {
+    "estimateRequestId": 2555,
+    "moverId": 260,
+    "isRejected": true,
+    "rejectionReason": "요청하신 견적 내용이 너무 추상적입니다.",
+    "createdAt": "2024-11-03T11:42:46.054Z"
+  },
+  {
+    "estimateRequestId": 1559,
+    "moverId": 59,
+    "isRejected": false,
+    "createdAt": "2024-10-07T08:52:16.681Z"
+  },
+  {
+    "estimateRequestId": 2016,
+    "moverId": 38,
+    "isRejected": false,
+    "createdAt": "2024-11-15T12:43:58.508Z"
+  },
+  {
+    "estimateRequestId": 181,
+    "moverId": 303,
+    "isRejected": false,
+    "createdAt": "2024-11-17T17:38:37.878Z"
+  },
+  {
+    "estimateRequestId": 2222,
+    "moverId": 86,
+    "isRejected": false,
+    "createdAt": "2024-10-07T09:01:10.603Z"
+  },
+  {
+    "estimateRequestId": 2752,
+    "moverId": 229,
+    "isRejected": true,
+    "rejectionReason": "이삿짐 중 고가 물품에 대한 보험 가입 필요합니다.",
+    "createdAt": "2024-08-23T01:50:00.743Z"
+  },
+  {
+    "estimateRequestId": 855,
+    "moverId": 276,
+    "isRejected": true,
+    "rejectionReason": "화물차 주차 허가가 필요합니다.",
+    "createdAt": "2024-10-29T01:18:15.921Z"
+  },
+  {
+    "estimateRequestId": 561,
+    "moverId": 216,
+    "isRejected": false,
+    "createdAt": "2024-10-16T21:32:24.135Z"
+  },
+  {
+    "estimateRequestId": 110,
+    "moverId": 215,
+    "isRejected": false,
+    "createdAt": "2024-08-11T00:53:55.572Z"
+  },
+  {
+    "estimateRequestId": 357,
+    "moverId": 219,
+    "isRejected": false,
+    "createdAt": "2024-10-28T05:59:53.236Z"
+  },
+  {
+    "estimateRequestId": 2035,
+    "moverId": 258,
+    "isRejected": false,
+    "createdAt": "2024-11-19T19:31:50.861Z"
+  },
+  {
+    "estimateRequestId": 2368,
+    "moverId": 209,
+    "isRejected": false,
+    "createdAt": "2024-08-07T04:54:14.744Z"
+  },
+  {
+    "estimateRequestId": 1555,
+    "moverId": 205,
+    "isRejected": false,
+    "createdAt": "2024-10-28T14:55:05.945Z"
+  },
+  {
+    "estimateRequestId": 2353,
+    "moverId": 291,
+    "isRejected": false,
+    "createdAt": "2024-09-03T08:29:43.289Z"
+  },
+  {
+    "estimateRequestId": 3362,
+    "moverId": 202,
+    "isRejected": false,
+    "createdAt": "2024-10-01T14:48:39.315Z"
+  },
+  {
+    "estimateRequestId": 19,
+    "moverId": 113,
+    "isRejected": false,
+    "createdAt": "2024-09-26T12:27:15.807Z"
+  },
+  {
+    "estimateRequestId": 2034,
+    "moverId": 264,
+    "isRejected": false,
+    "createdAt": "2024-09-19T17:00:01.901Z"
+  },
+  {
+    "estimateRequestId": 1360,
+    "moverId": 80,
+    "isRejected": false,
+    "createdAt": "2024-11-23T19:10:51.106Z"
+  },
+  {
+    "estimateRequestId": 696,
+    "moverId": 49,
+    "isRejected": true,
+    "rejectionReason": "현장의 안전상 이유로 작업이 불가능합니다.",
+    "createdAt": "2024-10-31T14:55:23.216Z"
+  },
+  {
+    "estimateRequestId": 1239,
+    "moverId": 304,
+    "isRejected": false,
+    "createdAt": "2024-11-19T01:43:40.851Z"
+  },
+  {
+    "estimateRequestId": 776,
+    "moverId": 248,
+    "isRejected": true,
+    "rejectionReason": "취급 주의 물품(예: 고가 가구)이 과다합니다.",
+    "createdAt": "2024-11-27T09:29:41.622Z"
+  },
+  {
+    "estimateRequestId": 2354,
+    "moverId": 5,
+    "isRejected": false,
+    "createdAt": "2024-11-14T01:48:13.271Z"
+  },
+  {
+    "estimateRequestId": 2901,
+    "moverId": 140,
+    "isRejected": false,
+    "createdAt": "2024-08-14T09:58:32.095Z"
+  },
+  {
+    "estimateRequestId": 1173,
+    "moverId": 32,
+    "isRejected": false,
+    "createdAt": "2024-11-09T19:21:50.026Z"
+  },
+  {
+    "estimateRequestId": 368,
+    "moverId": 9,
+    "isRejected": true,
+    "rejectionReason": "운송 차량의 접근이 어려운 지역입니다.",
+    "createdAt": "2024-08-24T06:05:33.304Z"
+  },
+  {
+    "estimateRequestId": 1753,
+    "moverId": 139,
+    "isRejected": false,
+    "createdAt": "2024-11-18T00:22:11.392Z"
+  },
+  {
+    "estimateRequestId": 1394,
+    "moverId": 260,
+    "isRejected": false,
+    "createdAt": "2024-11-16T16:14:13.417Z"
+  },
+  {
+    "estimateRequestId": 1972,
+    "moverId": 292,
+    "isRejected": true,
+    "rejectionReason": "장거리 이사 요청으로 추가 비용 협의가 필요합니다.",
+    "createdAt": "2024-09-06T04:06:40.620Z"
+  },
+  {
+    "estimateRequestId": 3034,
+    "moverId": 208,
+    "isRejected": true,
+    "rejectionReason": "특수 장비 요청으로 추가 비용 부담이 큽니다.",
+    "createdAt": "2024-10-03T17:54:20.051Z"
+  },
+  {
+    "estimateRequestId": 13,
+    "moverId": 255,
+    "isRejected": false,
+    "createdAt": "2024-10-02T08:07:22.788Z"
+  },
+  {
+    "estimateRequestId": 2520,
+    "moverId": 246,
+    "isRejected": false,
+    "createdAt": "2024-11-24T05:02:21.734Z"
+  },
+  {
+    "estimateRequestId": 1814,
+    "moverId": 249,
+    "isRejected": false,
+    "createdAt": "2024-11-18T07:02:18.602Z"
+  },
+  {
+    "estimateRequestId": 834,
+    "moverId": 77,
+    "isRejected": false,
+    "createdAt": "2024-11-06T09:15:22.676Z"
+  },
+  {
+    "estimateRequestId": 1891,
+    "moverId": 304,
+    "isRejected": false,
+    "createdAt": "2024-11-10T00:13:18.372Z"
+  },
+  {
+    "estimateRequestId": 107,
+    "moverId": 295,
+    "isRejected": false,
+    "createdAt": "2024-11-02T02:15:30.260Z"
+  },
+  {
+    "estimateRequestId": 1648,
+    "moverId": 273,
+    "isRejected": false,
+    "createdAt": "2024-10-12T09:17:45.515Z"
+  },
+  {
+    "estimateRequestId": 3268,
+    "moverId": 219,
+    "isRejected": false,
+    "createdAt": "2024-08-03T09:44:55.630Z"
+  },
+  {
+    "estimateRequestId": 1198,
+    "moverId": 246,
+    "isRejected": false,
+    "createdAt": "2024-11-14T19:36:35.905Z"
+  },
+  {
+    "estimateRequestId": 2416,
+    "moverId": 272,
+    "isRejected": false,
+    "createdAt": "2024-09-21T17:04:52.398Z"
+  },
+  {
+    "estimateRequestId": 1760,
+    "moverId": 206,
+    "isRejected": false,
+    "createdAt": "2024-09-07T14:53:24.117Z"
+  },
+  {
+    "estimateRequestId": 750,
+    "moverId": 222,
+    "isRejected": false,
+    "createdAt": "2024-10-13T18:37:54.974Z"
+  },
+  {
+    "estimateRequestId": 1490,
+    "moverId": 216,
+    "isRejected": false,
+    "createdAt": "2024-09-09T06:33:22.158Z"
+  },
+  {
+    "estimateRequestId": 2340,
+    "moverId": 218,
+    "isRejected": true,
+    "rejectionReason": "짐이 너무 많아 1회 운송이 어려운 상황입니다.",
+    "createdAt": "2024-11-28T10:07:55.709Z"
+  },
+  {
+    "estimateRequestId": 1457,
+    "moverId": 300,
+    "isRejected": false,
+    "createdAt": "2024-11-25T16:17:48.544Z"
+  },
+  {
+    "estimateRequestId": 2116,
+    "moverId": 230,
+    "isRejected": false,
+    "createdAt": "2024-08-26T22:07:02.436Z"
+  },
+  {
+    "estimateRequestId": 1217,
+    "moverId": 280,
+    "isRejected": true,
+    "rejectionReason": "이삿짐의 상세 목록이 미제공되었습니다.",
+    "createdAt": "2024-08-13T09:11:45.339Z"
+  },
+  {
+    "estimateRequestId": 1709,
+    "moverId": 283,
+    "isRejected": false,
+    "createdAt": "2024-10-15T14:47:32.950Z"
+  },
+  {
+    "estimateRequestId": 2062,
+    "moverId": 241,
+    "isRejected": false,
+    "createdAt": "2024-09-14T01:21:23.109Z"
+  },
+  {
+    "estimateRequestId": 757,
+    "moverId": 204,
+    "isRejected": true,
+    "rejectionReason": "작업 완료 후 인근 주민과의 소음 민원이 우려됩니다.",
+    "createdAt": "2024-09-25T08:54:12.617Z"
+  },
+  {
+    "estimateRequestId": 2821,
+    "moverId": 297,
+    "isRejected": false,
+    "createdAt": "2024-08-13T12:42:51.741Z"
+  },
+  {
+    "estimateRequestId": 3506,
+    "moverId": 295,
+    "isRejected": false,
+    "createdAt": "2024-08-03T14:11:41.644Z"
+  },
+  {
+    "estimateRequestId": 1419,
+    "moverId": 242,
+    "isRejected": true,
+    "rejectionReason": "가구나 물품이 외부 크레인 사용을 요합니다.",
+    "createdAt": "2024-10-03T18:18:33.815Z"
+  },
+  {
+    "estimateRequestId": 983,
+    "moverId": 203,
+    "isRejected": false,
+    "createdAt": "2024-10-28T04:28:09.138Z"
+  },
+  {
+    "estimateRequestId": 1883,
+    "moverId": 215,
+    "isRejected": true,
+    "rejectionReason": "운반 시 보관 장소가 부족합니다.",
+    "createdAt": "2024-10-29T01:08:34.469Z"
+  },
+  {
+    "estimateRequestId": 2872,
+    "moverId": 230,
+    "isRejected": false,
+    "createdAt": "2024-08-30T11:45:41.651Z"
+  },
+  {
+    "estimateRequestId": 3377,
+    "moverId": 237,
+    "isRejected": true,
+    "rejectionReason": "특수 목적 이사(전시물, 예술품 등)로 추가 협의가 필요합니다.",
+    "createdAt": "2024-10-01T20:47:35.040Z"
+  },
+  {
+    "estimateRequestId": 2601,
+    "moverId": 232,
+    "isRejected": false,
+    "createdAt": "2024-08-16T02:23:32.599Z"
+  },
+  {
+    "estimateRequestId": 1924,
+    "moverId": 244,
+    "isRejected": false,
+    "createdAt": "2024-11-03T08:12:40.973Z"
+  },
+  {
+    "estimateRequestId": 567,
+    "moverId": 241,
+    "isRejected": false,
+    "createdAt": "2024-09-25T01:42:01.081Z"
+  },
+  {
+    "estimateRequestId": 162,
+    "moverId": 246,
+    "isRejected": true,
+    "rejectionReason": "소형 차량으로 대응이 불가능한 짐의 양입니다.",
+    "createdAt": "2024-12-01T13:34:33.812Z"
+  },
+  {
+    "estimateRequestId": 3236,
+    "moverId": 53,
+    "isRejected": false,
+    "createdAt": "2024-08-06T23:06:14.832Z"
+  },
+  {
+    "estimateRequestId": 1714,
+    "moverId": 3,
+    "isRejected": false,
+    "createdAt": "2024-09-06T04:15:29.775Z"
+  },
+  {
+    "estimateRequestId": 856,
+    "moverId": 306,
+    "isRejected": false,
+    "createdAt": "2024-10-15T11:16:36.490Z"
+  },
+  {
+    "estimateRequestId": 3069,
+    "moverId": 301,
+    "isRejected": false,
+    "createdAt": "2024-08-17T09:35:22.863Z"
+  },
+  {
+    "estimateRequestId": 2534,
+    "moverId": 201,
+    "isRejected": false,
+    "createdAt": "2024-10-30T13:15:30.583Z"
+  },
+  {
+    "estimateRequestId": 397,
+    "moverId": 287,
+    "isRejected": false,
+    "createdAt": "2024-10-31T22:33:34.724Z"
+  },
+  {
+    "estimateRequestId": 2632,
+    "moverId": 297,
+    "isRejected": false,
+    "createdAt": "2024-08-03T18:24:45.208Z"
+  },
+  {
+    "estimateRequestId": 2689,
+    "moverId": 210,
+    "isRejected": false,
+    "createdAt": "2024-11-04T17:31:38.815Z"
+  },
+  {
+    "estimateRequestId": 664,
+    "moverId": 21,
+    "isRejected": false,
+    "createdAt": "2024-10-26T12:03:21.384Z"
+  },
+  {
+    "estimateRequestId": 265,
+    "moverId": 114,
+    "isRejected": false,
+    "createdAt": "2024-08-29T00:32:17.677Z"
+  },
+  {
+    "estimateRequestId": 76,
+    "moverId": 238,
+    "isRejected": false,
+    "createdAt": "2024-11-05T11:06:19.367Z"
+  },
+  {
+    "estimateRequestId": 116,
+    "moverId": 284,
+    "isRejected": false,
+    "createdAt": "2024-09-15T03:44:56.698Z"
+  },
+  {
+    "estimateRequestId": 225,
+    "moverId": 60,
+    "isRejected": false,
+    "createdAt": "2024-09-11T21:54:33.140Z"
+  },
+  {
+    "estimateRequestId": 3222,
+    "moverId": 252,
+    "isRejected": false,
+    "createdAt": "2024-10-25T11:47:03.923Z"
+  },
+  {
+    "estimateRequestId": 2617,
+    "moverId": 303,
+    "isRejected": false,
+    "createdAt": "2024-08-27T06:35:03.261Z"
+  },
+  {
+    "estimateRequestId": 2054,
+    "moverId": 59,
+    "isRejected": false,
+    "createdAt": "2024-11-01T07:41:14.994Z"
+  },
+  {
+    "estimateRequestId": 1207,
+    "moverId": 270,
+    "isRejected": false,
+    "createdAt": "2024-11-03T17:03:52.724Z"
+  },
+  {
+    "estimateRequestId": 721,
+    "moverId": 178,
+    "isRejected": false,
+    "createdAt": "2024-10-25T08:57:14.831Z"
+  },
+  {
+    "estimateRequestId": 2817,
+    "moverId": 206,
+    "isRejected": false,
+    "createdAt": "2024-08-12T23:56:38.539Z"
+  },
+  {
+    "estimateRequestId": 285,
+    "moverId": 274,
+    "isRejected": false,
+    "createdAt": "2024-08-25T18:44:16.680Z"
+  },
+  {
+    "estimateRequestId": 3389,
+    "moverId": 133,
+    "isRejected": false,
+    "createdAt": "2024-11-23T16:46:30.914Z"
+  },
+  {
+    "estimateRequestId": 817,
+    "moverId": 226,
+    "isRejected": false,
+    "createdAt": "2024-10-18T22:26:25.732Z"
+  },
+  {
+    "estimateRequestId": 3307,
+    "moverId": 225,
+    "isRejected": false,
+    "createdAt": "2024-08-12T08:58:38.684Z"
+  },
+  {
+    "estimateRequestId": 2945,
+    "moverId": 273,
+    "isRejected": false,
+    "createdAt": "2024-11-08T10:49:13.574Z"
+  },
+  {
+    "estimateRequestId": 2593,
+    "moverId": 114,
+    "isRejected": false,
+    "createdAt": "2024-08-21T06:30:56.615Z"
+  },
+  {
+    "estimateRequestId": 2770,
+    "moverId": 273,
+    "isRejected": false,
+    "createdAt": "2024-11-28T00:51:48.322Z"
+  },
+  {
+    "estimateRequestId": 507,
+    "moverId": 17,
+    "isRejected": false,
+    "createdAt": "2024-09-22T07:42:58.255Z"
+  },
+  {
+    "estimateRequestId": 674,
+    "moverId": 230,
+    "isRejected": false,
+    "createdAt": "2024-10-10T17:20:26.251Z"
+  },
+  {
+    "estimateRequestId": 1529,
+    "moverId": 297,
+    "isRejected": true,
+    "rejectionReason": "포장이사가 아닌 일반 이사를 요청하셔서 대응이 어렵습니다.",
+    "createdAt": "2024-08-08T03:09:56.337Z"
+  },
+  {
+    "estimateRequestId": 2174,
+    "moverId": 213,
+    "isRejected": false,
+    "createdAt": "2024-11-14T00:33:17.625Z"
+  },
+  {
+    "estimateRequestId": 1295,
+    "moverId": 303,
+    "isRejected": false,
+    "createdAt": "2024-09-23T17:02:15.691Z"
+  },
+  {
+    "estimateRequestId": 228,
+    "moverId": 154,
+    "isRejected": false,
+    "createdAt": "2024-09-26T18:23:28.184Z"
+  },
+  {
+    "estimateRequestId": 1480,
+    "moverId": 207,
+    "isRejected": false,
+    "createdAt": "2024-08-10T18:56:52.422Z"
+  },
+  {
+    "estimateRequestId": 191,
+    "moverId": 277,
+    "isRejected": false,
+    "createdAt": "2024-10-31T20:44:12.308Z"
+  },
+  {
+    "estimateRequestId": 2281,
+    "moverId": 248,
+    "isRejected": false,
+    "createdAt": "2024-08-20T13:11:04.698Z"
+  },
+  {
+    "estimateRequestId": 3316,
+    "moverId": 305,
+    "isRejected": false,
+    "createdAt": "2024-11-16T18:51:56.786Z"
+  },
+  {
+    "estimateRequestId": 1063,
+    "moverId": 302,
+    "isRejected": true,
+    "rejectionReason": "요청 일정이 지나치게 이른 시간에 설정되었습니다.",
+    "createdAt": "2024-08-19T05:51:42.593Z"
+  },
+  {
+    "estimateRequestId": 942,
+    "moverId": 143,
+    "isRejected": true,
+    "rejectionReason": "특수 장비 요청으로 추가 비용 부담이 큽니다.",
+    "createdAt": "2024-11-08T03:51:50.596Z"
+  },
+  {
+    "estimateRequestId": 803,
+    "moverId": 265,
+    "isRejected": false,
+    "createdAt": "2024-08-12T01:54:19.963Z"
+  },
+  {
+    "estimateRequestId": 759,
+    "moverId": 273,
+    "isRejected": false,
+    "createdAt": "2024-09-02T02:07:57.154Z"
+  },
+  {
+    "estimateRequestId": 2251,
+    "moverId": 230,
+    "isRejected": false,
+    "createdAt": "2024-11-28T04:11:27.713Z"
+  },
+  {
+    "estimateRequestId": 2486,
+    "moverId": 293,
+    "isRejected": false,
+    "createdAt": "2024-08-18T15:51:18.184Z"
+  },
+  {
+    "estimateRequestId": 1263,
+    "moverId": 194,
+    "isRejected": true,
+    "rejectionReason": "작업 도중 고객의 입회가 불가능한 경우입니다.",
+    "createdAt": "2024-08-27T02:39:33.230Z"
+  },
+  {
+    "estimateRequestId": 2106,
+    "moverId": 270,
+    "isRejected": false,
+    "createdAt": "2024-08-25T23:55:29.370Z"
+  },
+  {
+    "estimateRequestId": 2109,
+    "moverId": 151,
+    "isRejected": false,
+    "createdAt": "2024-10-17T12:49:50.230Z"
+  },
+  {
+    "estimateRequestId": 2232,
+    "moverId": 278,
+    "isRejected": false,
+    "createdAt": "2024-09-29T13:59:52.410Z"
+  },
+  {
+    "estimateRequestId": 2312,
+    "moverId": 274,
+    "isRejected": true,
+    "rejectionReason": "고객과의 작업 계약 조건이 충족되지 않았습니다.",
+    "createdAt": "2024-10-08T18:10:39.760Z"
+  },
+  {
+    "estimateRequestId": 2065,
+    "moverId": 201,
+    "isRejected": false,
+    "createdAt": "2024-11-02T22:00:57.797Z"
+  },
+  {
+    "estimateRequestId": 3214,
+    "moverId": 131,
+    "isRejected": false,
+    "createdAt": "2024-09-04T10:00:16.494Z"
+  },
+  {
+    "estimateRequestId": 2642,
+    "moverId": 225,
+    "isRejected": true,
+    "rejectionReason": "건물 구조상 사다리차 진입이 불가능합니다.",
+    "createdAt": "2024-10-05T23:10:23.387Z"
+  },
+  {
+    "estimateRequestId": 49,
+    "moverId": 70,
+    "isRejected": false,
+    "createdAt": "2024-09-07T07:36:51.577Z"
+  },
+  {
+    "estimateRequestId": 3072,
+    "moverId": 230,
+    "isRejected": true,
+    "rejectionReason": "이삿짐의 양이 견적 요청서에 비해 과다합니다.",
+    "createdAt": "2024-09-03T06:31:50.353Z"
+  },
+  {
+    "estimateRequestId": 2844,
+    "moverId": 246,
+    "isRejected": false,
+    "createdAt": "2024-09-30T18:32:40.857Z"
+  },
+  {
+    "estimateRequestId": 2548,
+    "moverId": 277,
+    "isRejected": false,
+    "createdAt": "2024-10-24T06:24:55.460Z"
+  },
+  {
+    "estimateRequestId": 1338,
+    "moverId": 232,
+    "isRejected": true,
+    "rejectionReason": "특수 장비 대여 비용이 과다하여 진행이 어렵습니다.",
+    "createdAt": "2024-08-15T07:01:11.389Z"
+  },
+  {
+    "estimateRequestId": 134,
+    "moverId": 112,
+    "isRejected": false,
+    "createdAt": "2024-08-27T20:13:40.586Z"
+  },
+  {
+    "estimateRequestId": 177,
+    "moverId": 266,
+    "isRejected": false,
+    "createdAt": "2024-10-16T06:04:44.728Z"
+  },
+  {
+    "estimateRequestId": 1750,
+    "moverId": 226,
+    "isRejected": false,
+    "createdAt": "2024-09-28T08:34:28.619Z"
+  },
+  {
+    "estimateRequestId": 1580,
+    "moverId": 227,
+    "isRejected": false,
+    "createdAt": "2024-08-04T09:19:29.433Z"
+  },
+  {
+    "estimateRequestId": 2756,
+    "moverId": 137,
+    "isRejected": true,
+    "rejectionReason": "주변 환경이 위험해 안전 문제 우려가 큽니다.",
+    "createdAt": "2024-09-16T14:12:34.148Z"
+  },
+  {
+    "estimateRequestId": 862,
+    "moverId": 295,
+    "isRejected": true,
+    "rejectionReason": "요청 금액이 작업 난이도에 비해 낮은 경우입니다.",
+    "createdAt": "2024-10-12T23:40:47.476Z"
+  },
+  {
+    "estimateRequestId": 3182,
+    "moverId": 211,
+    "isRejected": false,
+    "createdAt": "2024-11-26T04:01:58.714Z"
+  },
+  {
+    "estimateRequestId": 2366,
+    "moverId": 247,
+    "isRejected": true,
+    "rejectionReason": "요청된 서비스 범위가 일반적인 이사 범위를 초과합니다.",
+    "createdAt": "2024-09-28T04:55:44.070Z"
+  },
+  {
+    "estimateRequestId": 2823,
+    "moverId": 19,
+    "isRejected": false,
+    "createdAt": "2024-11-17T04:25:20.401Z"
+  },
+  {
+    "estimateRequestId": 2904,
+    "moverId": 136,
+    "isRejected": false,
+    "createdAt": "2024-11-07T02:09:29.844Z"
+  },
+  {
+    "estimateRequestId": 2334,
+    "moverId": 287,
+    "isRejected": false,
+    "createdAt": "2024-08-07T06:23:48.569Z"
+  },
+  {
+    "estimateRequestId": 3355,
+    "moverId": 226,
+    "isRejected": false,
+    "createdAt": "2024-10-23T14:08:53.692Z"
+  },
+  {
+    "estimateRequestId": 2045,
+    "moverId": 231,
+    "isRejected": false,
+    "createdAt": "2024-11-09T17:54:49.664Z"
+  },
+  {
+    "estimateRequestId": 2440,
+    "moverId": 237,
+    "isRejected": false,
+    "createdAt": "2024-10-11T04:38:58.919Z"
+  },
+  {
+    "estimateRequestId": 408,
+    "moverId": 305,
+    "isRejected": false,
+    "createdAt": "2024-09-10T15:48:37.655Z"
+  },
+  {
+    "estimateRequestId": 968,
+    "moverId": 76,
+    "isRejected": false,
+    "createdAt": "2024-09-29T04:24:53.650Z"
+  },
+  {
+    "estimateRequestId": 1660,
+    "moverId": 26,
+    "isRejected": false,
+    "createdAt": "2024-11-26T10:51:23.904Z"
+  },
+  {
+    "estimateRequestId": 1327,
+    "moverId": 238,
+    "isRejected": false,
+    "createdAt": "2024-09-07T04:18:58.542Z"
+  },
+  {
+    "estimateRequestId": 3016,
+    "moverId": 233,
+    "isRejected": true,
+    "rejectionReason": "포장이 부족하여 작업이 지연될 가능성이 큽니다.",
+    "createdAt": "2024-08-04T03:27:27.950Z"
+  },
+  {
+    "estimateRequestId": 511,
+    "moverId": 251,
+    "isRejected": false,
+    "createdAt": "2024-09-22T10:12:36.572Z"
+  },
+  {
+    "estimateRequestId": 2875,
+    "moverId": 300,
+    "isRejected": true,
+    "rejectionReason": "고객의 요청 사항이 너무 빈번하게 변경됩니다.",
+    "createdAt": "2024-09-30T03:55:00.857Z"
+  },
+  {
+    "estimateRequestId": 2345,
+    "moverId": 3,
+    "isRejected": true,
+    "rejectionReason": "작업 환경(소음, 진동 등)이 부적합합니다.",
+    "createdAt": "2024-10-01T19:47:08.348Z"
+  },
+  {
+    "estimateRequestId": 681,
+    "moverId": 216,
+    "isRejected": false,
+    "createdAt": "2024-08-27T06:18:48.616Z"
+  },
+  {
+    "estimateRequestId": 908,
+    "moverId": 39,
+    "isRejected": false,
+    "createdAt": "2024-10-29T09:47:55.565Z"
+  },
+  {
+    "estimateRequestId": 209,
+    "moverId": 296,
+    "isRejected": false,
+    "createdAt": "2024-08-03T04:24:47.763Z"
+  },
+  {
+    "estimateRequestId": 1301,
+    "moverId": 255,
+    "isRejected": false,
+    "createdAt": "2024-11-24T20:35:48.929Z"
+  },
+  {
+    "estimateRequestId": 1799,
+    "moverId": 175,
+    "isRejected": false,
+    "createdAt": "2024-08-11T18:12:12.167Z"
+  },
+  {
+    "estimateRequestId": 1253,
+    "moverId": 294,
+    "isRejected": false,
+    "createdAt": "2024-09-09T16:04:58.404Z"
+  },
+  {
+    "estimateRequestId": 747,
+    "moverId": 214,
+    "isRejected": false,
+    "createdAt": "2024-11-27T15:49:35.120Z"
+  },
+  {
+    "estimateRequestId": 153,
+    "moverId": 292,
+    "isRejected": false,
+    "createdAt": "2024-10-04T06:16:52.325Z"
+  },
+  {
+    "estimateRequestId": 672,
+    "moverId": 167,
+    "isRejected": true,
+    "rejectionReason": "운송 거리 초과로 추가 요금 협의가 필요합니다.",
+    "createdAt": "2024-08-13T11:37:48.088Z"
+  },
+  {
+    "estimateRequestId": 2846,
+    "moverId": 206,
+    "isRejected": false,
+    "createdAt": "2024-09-24T14:17:17.549Z"
+  },
+  {
+    "estimateRequestId": 2314,
+    "moverId": 240,
+    "isRejected": false,
+    "createdAt": "2024-11-11T08:50:17.023Z"
+  },
+  {
+    "estimateRequestId": 3385,
+    "moverId": 239,
+    "isRejected": false,
+    "createdAt": "2024-09-16T18:36:00.203Z"
+  },
+  {
+    "estimateRequestId": 2470,
+    "moverId": 273,
+    "isRejected": false,
+    "createdAt": "2024-11-18T03:41:14.526Z"
+  },
+  {
+    "estimateRequestId": 497,
+    "moverId": 266,
+    "isRejected": false,
+    "createdAt": "2024-10-21T13:51:18.658Z"
+  },
+  {
+    "estimateRequestId": 136,
+    "moverId": 271,
+    "isRejected": false,
+    "createdAt": "2024-09-10T10:39:11.020Z"
+  },
+  {
+    "estimateRequestId": 3218,
+    "moverId": 268,
+    "isRejected": true,
+    "rejectionReason": "비용 청구 방식에 대한 오해가 있어 협의가 필요합니다.",
+    "createdAt": "2024-08-18T11:33:02.978Z"
+  },
+  {
+    "estimateRequestId": 1014,
+    "moverId": 182,
+    "isRejected": false,
+    "createdAt": "2024-12-03T17:04:36.644Z"
+  },
+  {
+    "estimateRequestId": 1755,
+    "moverId": 234,
+    "isRejected": false,
+    "createdAt": "2024-11-12T05:28:11.830Z"
+  },
+  {
+    "estimateRequestId": 1877,
+    "moverId": 282,
+    "isRejected": true,
+    "rejectionReason": "다른 업체와의 중복 예약으로 일정이 불확실합니다.",
+    "createdAt": "2024-10-06T13:16:56.580Z"
+  },
+  {
+    "estimateRequestId": 1486,
+    "moverId": 251,
+    "isRejected": false,
+    "createdAt": "2024-11-27T07:47:09.439Z"
+  },
+  {
+    "estimateRequestId": 1754,
+    "moverId": 178,
+    "isRejected": false,
+    "createdAt": "2024-08-25T08:14:43.723Z"
+  },
+  {
+    "estimateRequestId": 3049,
+    "moverId": 272,
+    "isRejected": false,
+    "createdAt": "2024-09-13T19:20:18.139Z"
+  },
+  {
+    "estimateRequestId": 1260,
+    "moverId": 269,
+    "isRejected": true,
+    "rejectionReason": "주차 공간 협소로 차량 대기가 필요합니다.",
+    "createdAt": "2024-10-11T16:35:34.946Z"
+  },
+  {
+    "estimateRequestId": 1683,
+    "moverId": 235,
+    "isRejected": false,
+    "createdAt": "2024-10-31T19:13:39.417Z"
+  },
+  {
+    "estimateRequestId": 3445,
+    "moverId": 265,
+    "isRejected": false,
+    "createdAt": "2024-08-06T12:02:19.581Z"
+  },
+  {
+    "estimateRequestId": 487,
+    "moverId": 219,
+    "isRejected": false,
+    "createdAt": "2024-10-17T01:59:47.840Z"
+  },
+  {
+    "estimateRequestId": 1951,
+    "moverId": 289,
+    "isRejected": true,
+    "rejectionReason": "다른 이사 일정과의 충돌로 스케줄 조정이 어렵습니다.",
+    "createdAt": "2024-08-15T11:50:18.475Z"
+  },
+  {
+    "estimateRequestId": 2405,
+    "moverId": 283,
+    "isRejected": true,
+    "rejectionReason": "의뢰하신 작업 일정이 변경되어 혼란이 예상됩니다.",
+    "createdAt": "2024-08-19T21:35:21.045Z"
+  },
+  {
+    "estimateRequestId": 2831,
+    "moverId": 260,
+    "isRejected": true,
+    "rejectionReason": "이사 경로에 진입 제한 구역이 포함되어 있습니다.",
+    "createdAt": "2024-11-18T17:50:23.317Z"
+  },
+  {
+    "estimateRequestId": 1179,
+    "moverId": 261,
+    "isRejected": false,
+    "createdAt": "2024-08-11T21:17:35.193Z"
+  },
+  {
+    "estimateRequestId": 3011,
+    "moverId": 284,
+    "isRejected": false,
+    "createdAt": "2024-09-25T22:00:15.736Z"
+  },
+  {
+    "estimateRequestId": 731,
+    "moverId": 241,
+    "isRejected": true,
+    "rejectionReason": "건물 관리자와의 협의가 사전에 이루어지지 않았습니다.",
+    "createdAt": "2024-11-16T03:47:44.674Z"
+  },
+  {
+    "estimateRequestId": 1642,
+    "moverId": 272,
+    "isRejected": false,
+    "createdAt": "2024-08-26T07:23:16.797Z"
+  },
+  {
+    "estimateRequestId": 2037,
+    "moverId": 202,
+    "isRejected": false,
+    "createdAt": "2024-11-22T00:43:46.925Z"
+  },
+  {
+    "estimateRequestId": 1953,
+    "moverId": 303,
+    "isRejected": true,
+    "rejectionReason": "운송 시 전용 도로 사용 허가가 필요합니다.",
+    "createdAt": "2024-11-27T06:08:27.628Z"
+  },
+  {
+    "estimateRequestId": 1369,
+    "moverId": 294,
+    "isRejected": true,
+    "rejectionReason": "짐 보관 요청으로 작업 스케줄이 초과됩니다.",
+    "createdAt": "2024-11-11T05:16:20.927Z"
+  },
+  {
+    "estimateRequestId": 3001,
+    "moverId": 275,
+    "isRejected": false,
+    "createdAt": "2024-10-05T07:48:31.117Z"
+  },
+  {
+    "estimateRequestId": 2889,
+    "moverId": 289,
+    "isRejected": false,
+    "createdAt": "2024-10-01T01:16:13.264Z"
+  },
+  {
+    "estimateRequestId": 2408,
+    "moverId": 240,
+    "isRejected": false,
+    "createdAt": "2024-11-27T00:04:36.016Z"
+  },
+  {
+    "estimateRequestId": 340,
+    "moverId": 213,
+    "isRejected": true,
+    "rejectionReason": "거래 조건(선불, 후불 등)이 불명확합니다.",
+    "createdAt": "2024-09-22T03:58:45.008Z"
+  },
+  {
+    "estimateRequestId": 2460,
+    "moverId": 65,
+    "isRejected": true,
+    "rejectionReason": "현장의 안전상 이유로 작업이 불가능합니다.",
+    "createdAt": "2024-10-24T21:59:21.456Z"
+  },
+  {
+    "estimateRequestId": 1941,
+    "moverId": 241,
+    "isRejected": true,
+    "rejectionReason": "이삿짐의 상세 목록이 미제공되었습니다.",
+    "createdAt": "2024-08-14T08:25:11.453Z"
+  },
+  {
+    "estimateRequestId": 3086,
+    "moverId": 251,
+    "isRejected": false,
+    "createdAt": "2024-11-15T16:05:10.558Z"
+  },
+  {
+    "estimateRequestId": 1243,
+    "moverId": 257,
+    "isRejected": false,
+    "createdAt": "2024-09-01T03:01:38.169Z"
+  },
+  {
+    "estimateRequestId": 1689,
+    "moverId": 205,
+    "isRejected": false,
+    "createdAt": "2024-08-08T21:37:09.703Z"
+  },
+  {
+    "estimateRequestId": 510,
+    "moverId": 28,
+    "isRejected": false,
+    "createdAt": "2024-11-28T16:04:37.729Z"
+  },
+  {
+    "estimateRequestId": 1424,
+    "moverId": 284,
+    "isRejected": false,
+    "createdAt": "2024-11-09T20:34:35.579Z"
+  },
+  {
+    "estimateRequestId": 884,
+    "moverId": 82,
+    "isRejected": false,
+    "createdAt": "2024-11-02T12:29:49.779Z"
+  },
+  {
+    "estimateRequestId": 2887,
+    "moverId": 215,
+    "isRejected": true,
+    "rejectionReason": "건물 내 이동 경로가 좁아 작업 지연 예상됩니다.",
+    "createdAt": "2024-11-03T09:22:08.813Z"
+  },
+  {
+    "estimateRequestId": 1245,
+    "moverId": 264,
+    "isRejected": false,
+    "createdAt": "2024-11-02T19:53:24.770Z"
+  },
+  {
+    "estimateRequestId": 2256,
+    "moverId": 206,
+    "isRejected": false,
+    "createdAt": "2024-11-10T23:56:01.832Z"
+  },
+  {
+    "estimateRequestId": 2543,
+    "moverId": 296,
+    "isRejected": false,
+    "createdAt": "2024-10-26T17:46:52.739Z"
+  },
+  {
+    "estimateRequestId": 1044,
+    "moverId": 212,
+    "isRejected": false,
+    "createdAt": "2024-11-21T16:14:39.542Z"
+  },
+  {
+    "estimateRequestId": 1192,
+    "moverId": 188,
+    "isRejected": false,
+    "createdAt": "2024-11-30T10:31:05.951Z"
+  },
+  {
+    "estimateRequestId": 3345,
+    "moverId": 273,
+    "isRejected": true,
+    "rejectionReason": "반입 시 건물 관리자와 협의가 필요합니다.",
+    "createdAt": "2024-11-04T07:57:05.220Z"
+  },
+  {
+    "estimateRequestId": 585,
+    "moverId": 71,
+    "isRejected": false,
+    "createdAt": "2024-11-14T01:39:37.752Z"
+  },
+  {
+    "estimateRequestId": 39,
+    "moverId": 264,
+    "isRejected": true,
+    "rejectionReason": "새로운 작업 요청으로 추가 인력 배치가 필요합니다.",
+    "createdAt": "2024-10-13T11:58:13.482Z"
+  },
+  {
+    "estimateRequestId": 2733,
+    "moverId": 213,
+    "isRejected": true,
+    "rejectionReason": "작업 중 전기, 수도 등 추가 연결 요청이 있습니다.",
+    "createdAt": "2024-10-12T23:13:57.088Z"
+  },
+  {
+    "estimateRequestId": 305,
+    "moverId": 285,
+    "isRejected": true,
+    "rejectionReason": "화물차 주차 허가가 필요합니다.",
+    "createdAt": "2024-09-29T10:39:03.280Z"
+  },
+  {
+    "estimateRequestId": 2513,
+    "moverId": 279,
+    "isRejected": false,
+    "createdAt": "2024-10-06T19:07:37.865Z"
+  },
+  {
+    "estimateRequestId": 1384,
+    "moverId": 203,
+    "isRejected": true,
+    "rejectionReason": "가구가 문이나 창문을 통해 이동하기 어려운 경우입니다.",
+    "createdAt": "2024-10-25T21:46:19.961Z"
+  },
+  {
+    "estimateRequestId": 2191,
+    "moverId": 55,
+    "isRejected": false,
+    "createdAt": "2024-09-22T22:02:15.409Z"
+  }
+]
