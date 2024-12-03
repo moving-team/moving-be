@@ -4,6 +4,24 @@ import customerRepository from '../repositories/customerRepository';
 import { $Enums } from '@prisma/client';
 
 
+
+const getCustomer = async (userId: number) => {
+    const customerData = await customerRepository.findFirstData({ where: { userId: userId }, select: {
+        id: true,
+        userId: true,
+        profileImage: true,
+        serviceType: true,
+        region: true,
+        User: {
+            select: {
+                name: true,
+            }
+        }
+    }});
+
+    return customerData;
+}
+
 const createCustomer = async (userId: number) => {
     const data =  {
         userId : userId,
@@ -51,4 +69,4 @@ const patchCustomerInfo = async (userId: number, data: any) => {
 
 };
 
-export { patchCustomerProfile, patchCustomerInfo,createCustomer };
+export { patchCustomerProfile, patchCustomerInfo,createCustomer, getCustomer };

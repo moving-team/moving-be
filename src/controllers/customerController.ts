@@ -2,6 +2,21 @@ import * as customerService from '../services/customerService';
 import { Request, Response, NextFunction } from 'express';
 
 
+
+const getCustomerController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = (req as any).user as { id: number };
+    const customer = await customerService.getCustomer(id);
+    res.status(200).json(customer);
+  } catch (err) {
+    next(err);
+  }
+}
+
 const patchCustomerProfileController = async (
   req: Request,
   res: Response,
@@ -38,4 +53,4 @@ const patchCustomerInfoController = async (
   
 }
 
-export { patchCustomerProfileController, patchCustomerInfoController };
+export { patchCustomerProfileController, patchCustomerInfoController, getCustomerController };

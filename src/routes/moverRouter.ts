@@ -9,5 +9,15 @@ router
     .route('/profile')
     .all(authenticateToken)
     .patch(uploadImage('profileImage'), moverController.patchMoverProfileController);
-
+router
+    .route('/me')
+    .all(authenticateToken)
+    .get(moverController.getMoverController);
+router
+    .route('/:moverId/detail')
+    .all(authenticateToken)
+    .get(moverController.getMoverDetailController);
+router
+    .route('/list')
+    .get(moverController.getMoverListController);
 export default router;
