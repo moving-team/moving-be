@@ -3,7 +3,143 @@ import favoriteRepository from '../repositories/favoriteRepository';
 import assignedEstimateRequestRepository from '../repositories/assignedEstimateRequestRepository';
 import estimateRequestRepository from '../repositories/estimateRequestRepository';
 import customerRepository from '../repositories/customerRepository';
+import { serviceRegion, serviceType } from '@prisma/client';
 
+
+
+const getMoverList = async ({
+    page,
+    pageSize,
+    keyword,
+    sortBy,
+    sortOrder,
+    selectedServiceType,
+    selectedServiceRegion
+}: {
+    page?: number;
+    pageSize?: number;
+    keyword?: string;
+    sortBy?: 'reviewCount' | 'averageScore' | 'career' | 'confirmationCount';
+    sortOrder?: 'asc' | 'desc';
+    selectedServiceType?: serviceType;
+    selectedServiceRegion?: serviceRegion;
+}) => {
+    // const paginationParams = {
+    //     skip: page ? (page - 1) * (pageSize ?? 10) : 0,
+    //     take: pageSize ?? 10,
+    //     keyword,
+    //     sortBy,
+    //     sortOrder,
+    //     selectedServiceType,
+    //     selectedServiceRegion
+    // };
+    const where = {
+        AND: [
+            keyword ? {
+                nickname: {
+                    contains: keyword
+                }
+            } : {},
+            selectedServiceType ? {
+                serviceType: {
+                    has: selectedServiceType
+                }
+            } : {},
+            selectedServiceRegion ? {
+                serviceRegion: {
+                    has: selectedServiceRegion
+                }
+            } : {}
+        ]
+    };
+    const select = {
+        id: true,
+        userId: true,
+        profileImage: true,
+        nickname: true,
+        career: true,
+        summary: true,
+        confirmationCount: true,
+        serviceType: true,
+        serviceRegion: true,
+        Review: {
+            select: {
+                score: true,
+            }
+        },
+    };
+    const movers = await moverRepository.findManyAllData({
+        where,
+        select
+    });
+
+    const processedMovers = await Promise.all(movers.map(async (mover) => {
+        const favoriteCount = await favoriteRepository.countData({ moverId: mover.id });
+        
+        let averageScore = 0;
+        let reviewCount = 0;
+        
+        if (mover.Review && mover.Review.length > 0) {
+            reviewCount = mover.Review.length;
+            averageScore = Number((mover.Review.reduce((sum, review) => sum + review.score, 0) / reviewCount).toFixed(1));
+        }
+
+        const { Review, ...moverDataWithoutReviews } = mover;
+        
+        return {
+            ...moverDataWithoutReviews,
+            reviewStats: {
+                averageScore,
+                totalReviews: reviewCount
+            },
+            favoriteCount
+        };
+    }));
+
+    
+    if (sortBy && sortOrder) {
+        console.log('Inside sorting block');
+        processedMovers.sort((a, b) => {
+            let valueA, valueB;
+            
+            switch (sortBy) {
+                case 'reviewCount':
+                    console.log('Inside reviewCount case');
+                    valueA = a.reviewStats.totalReviews || 0;
+                    valueB = b.reviewStats.totalReviews || 0;
+                    break;
+                case 'averageScore':
+                    valueA = a.reviewStats.averageScore || 0;
+                    valueB = b.reviewStats.averageScore || 0;
+                    break;
+                case 'career':
+                    valueA = a.career || 0;
+                    valueB = b.career || 0;
+                    break;
+                case 'confirmationCount':
+                    valueA = a.confirmationCount || 0;
+                    valueB = b.confirmationCount || 0;
+                    break;
+                default:
+                    return 0;
+            }
+
+            if (sortOrder === 'asc') {
+                return valueA - valueB;
+            } else {
+                return valueB - valueA;
+            }
+        });
+    }
+
+    return {
+        list: processedMovers,
+        totalCount: movers.length,
+        currentPage: page,
+        totalPages: Math.ceil(movers.length / (pageSize ?? 10))
+    };
+
+}
 
 const getMoverDetail = async (userId: number, moverId: number) => {
     const moverData = await moverRepository.findFirstData({ 
@@ -78,7 +214,7 @@ const getMover = async (userId: number) => {
 const createMover = async (userId: number) => {
     const data = {
         userId : userId,
-        nickname : '',
+        nickname : `mover_${userId}`,
         summary : '',
         description : '',
         career : 0,
@@ -103,4 +239,4 @@ const patchMoverProfile = async (userId: number, updateData: any) => {
     await moverRepository.updateData({ where: { id: moverData.id }, data: patchData });
 }
 
-export { createMover, patchMoverProfile, getMover,getMoverDetail};
+export { createMover, patchMoverProfile, getMover,getMoverDetail, getMoverList};

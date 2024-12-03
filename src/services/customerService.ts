@@ -4,6 +4,7 @@ import customerRepository from '../repositories/customerRepository';
 import { $Enums } from '@prisma/client';
 
 
+
 const getCustomer = async (userId: number) => {
     const customerData = await customerRepository.findFirstData({ where: { userId: userId }, select: {
         id: true,

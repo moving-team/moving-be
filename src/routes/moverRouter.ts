@@ -17,4 +17,7 @@ router
     .route('/:moverId/detail')
     .all(authenticateToken)
     .get(moverController.getMoverDetailController);
+router
+    .route('/list')
+    .get(moverController.getMoverListController);
 export default router;
