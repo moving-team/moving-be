@@ -1,14 +1,30 @@
 {
-  "id": 12,
-  "userId": 10,
+  "id": 13,
+  "userId": 24,
   "profileImage": "",
-  "nickname": "nickname_ju0o0",
-  "career": 29,
-  "summary": "Experienced mover ready to assist!",
-  "description": "I provide high-quality moving services tailored to your needs.",
+  "nickname": "제일",
+  "career": 2,
+  "summary": "고수",
+  "description": "성실과 신의로 최선을 다해 노력하겠습니다.\n더 나은 만족을 위해 고객의 입장을 생각하겠습니다~",
   "serviceType": [],
-  "serviceRegion": [],
+  "serviceRegion": [
+    "GYEONGGI",
+    "INCHEON",
+    "GWANGJU",
+    "JEONNAM",
+    "JEONBUK",
+    "CHUNGNAM",
+    "GYEONGNAM",
+    "SEJONG",
+    "SEOUL",
+    "GYEONGBUK",
+    "ULSAN",
+    "DAEGU",
+    "DAEJEON",
+    "GANGWON",
+    "JEJU"
+  ],
   "User": {
-    "name": "장희준"
+    "name": "강승민"
   }
 }

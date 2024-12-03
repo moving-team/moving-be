@@ -1,37 +1,38 @@
 {
-  "id": 20,
-  "userId": 15,
+  "id": 25,
+  "userId": 24,
   "profileImage": "",
-  "nickname": "",
-  "career": 8,
-  "summary": "",
-  "description": "",
-  "confirmationCount": 45,
+  "nickname": "윤실이",
+  "career": 6,
+  "summary": "싹서비스 3팀 장기현팀장 입니다",
+  "description": "완벽한포장이사 !\n경력20년 경력!\n친절한 서비스 진행!\n1회용 비닐포장재사용!\n깔끔한정리수납!\n고객님이 만족하실때까지 !!",
+  "confirmationCount": 191,
   "serviceType": [
-    "OFFICE",
-    "SMALL"
+    "SMALL",
+    "HOUSE",
+    "OFFICE"
   ],
   "serviceRegion": [
-    "CHUNGNAM",
-    "CHUNGBUK",
-    "GANGWON",
-    "BUSAN",
-    "DAEGU",
-    "JEONBUK",
     "GYEONGNAM",
-    "DAEJEON",
-    "INCHEON",
-    "JEJU",
-    "GYEONGGI",
+    "GWANGJU",
     "ULSAN",
+    "GANGWON",
+    "GYEONGGI",
+    "JEJU",
+    "DAEJEON",
+    "CHUNGBUK",
+    "GYEONGBUK",
     "JEONNAM",
-    "SEOUL",
-    "GYEONGBUK"
+    "JEONBUK",
+    "DAEGU"
   ],
   "reviewStats": {
-    "averageScore": 4.6,
+    "averageScore": 3.7,
     "totalReviews": 100
   },
-  "favorite": 62,
-  "isAssigned": true
+  "favorite": 46,
+  "isAssigned": false,
+  "User": {
+    "name": "이준서"
+  }
 }

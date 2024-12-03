@@ -15,25 +15,27 @@ function readProfileData(profilePath: string): Record<string, any> {
 function generateAndSaveDetail(profilePath: string): void {
   const profileData = readProfileData(profilePath);
 
-  // moverDetail.json 데이터 생성
+  // profile.json 데이터를 활용하여 moverDetail.json 데이터 생성
   const detailData = {
-    id: profileData.id,
-    userId: profileData.userId,
-    profileImage: "",
-    nickname: "",
-    career: Math.floor(Math.random() * 30) + 1,
-    summary: "",
-    description: "",
-    confirmationCount: Math.floor(Math.random() * 200) + 1,
-    serviceType: getServiceTypesArray(),
-    serviceRegion: getRegionArray(),
+    id: profileData.id, // profile.json에서 가져옴
+    userId: profileData.userId, // profile.json에서 가져옴
+    profileImage: profileData.profileImage || "", // profile.json에서 가져오거나 기본값
+    nickname: profileData.nickname || "", // profile.json에서 가져오거나 기본값
+    career: profileData.career || Math.floor(Math.random() * 30) + 1, // profile.json에서 가져오거나 랜덤 생성
+    summary: profileData.summary || "", // profile.json에서 가져오거나 기본값
+    description: profileData.description || "", // profile.json에서 가져오거나 기본값
+    confirmationCount: Math.floor(Math.random() * 200) + 1, // 랜덤 생성
+    serviceType: profileData.serviceType || getServiceTypesArray(), // profile.json에서 가져오거나 랜덤 생성
+    serviceRegion: profileData.serviceRegion || getRegionArray(), // profile.json에서 가져오거나 랜덤 생성
     reviewStats: {
-      averageScore: parseFloat((Math.random() * (5 - 3) + 3).toFixed(1)),
+      averageScore: parseFloat((Math.random() * (5 - 3) + 3).toFixed(1)), // 랜덤 생성
       totalReviews: ReviewTotalCount,
     },
-    favorite: Math.floor(Math.random() * 100) + 1,
-    isAssigned: Math.random() < 0.25,
-
+    favorite: Math.floor(Math.random() * 100) + 1, // 랜덤 생성
+    isAssigned: Math.random() < 0.25, // 랜덤 생성
+    User: {
+      name: profileData.User?.name || "", // profile.json에서 User의 이름 가져옴
+    },
   };
 
   // moverDetail.json 저장 경로 설정

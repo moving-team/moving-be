@@ -1,10 +1,10 @@
 {
-  "id": 42,
+  "id": 31,
   "userId": 41,
   "profileImage": "",
-  "serviceType": "SMALL",
-  "region": "JEONBUK",
+  "serviceType": "HOUSE",
+  "region": "ULSAN",
   "User": {
-    "name": "임준서"
+    "name": "조현우"
   }
 }

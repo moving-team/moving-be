@@ -1,32 +1,37 @@
 {
-  "id": 12,
-  "userId": 10,
+  "id": 13,
+  "userId": 24,
   "profileImage": "",
-  "nickname": "",
-  "career": 4,
-  "summary": "",
-  "description": "",
-  "confirmationCount": 81,
-  "serviceType": [
-    "SMALL",
-    "HOUSE",
-    "OFFICE"
-  ],
+  "nickname": "제일",
+  "career": 2,
+  "summary": "고수",
+  "description": "성실과 신의로 최선을 다해 노력하겠습니다.\n더 나은 만족을 위해 고객의 입장을 생각하겠습니다~",
+  "confirmationCount": 42,
+  "serviceType": [],
   "serviceRegion": [
+    "GYEONGGI",
+    "INCHEON",
+    "GWANGJU",
+    "JEONNAM",
+    "JEONBUK",
     "CHUNGNAM",
     "GYEONGNAM",
-    "GYEONGGI",
-    "JEONNAM",
-    "DAEJEON",
-    "CHUNGBUK",
+    "SEJONG",
     "SEOUL",
+    "GYEONGBUK",
+    "ULSAN",
+    "DAEGU",
+    "DAEJEON",
     "GANGWON",
-    "BUSAN"
+    "JEJU"
   ],
   "reviewStats": {
-    "averageScore": 3,
+    "averageScore": 4.4,
     "totalReviews": 100
   },
-  "favorite": 14,
-  "isAssigned": false
+  "favorite": 42,
+  "isAssigned": false,
+  "User": {
+    "name": "강승민"
+  }
 }

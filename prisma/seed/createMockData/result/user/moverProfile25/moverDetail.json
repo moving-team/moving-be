@@ -1,31 +1,43 @@
 {
-  "id": 10,
-  "userId": 22,
+  "id": 8,
+  "userId": 3,
   "profileImage": "",
-  "nickname": "",
-  "career": 11,
-  "summary": "",
-  "description": "",
-  "confirmationCount": 44,
+  "nickname": "김현균",
+  "career": 6,
+  "summary": "친절한 상담 / 빠른 견적:) / 원룸용달이사 / 사다리차 까지 보유! 감사합니다.",
+  "description": "*견적 외 추가요금 요구하지 않습니다.",
+  "confirmationCount": 118,
   "serviceType": [
-    "SMALL"
+    "SMALL",
+    "OFFICE",
+    "HOUSE"
   ],
   "serviceRegion": [
-    "GANGWON",
+    "SEOUL",
     "SEJONG",
-    "JEJU",
-    "BUSAN",
+    "ULSAN",
+    "GWANGJU",
     "CHUNGNAM",
-    "CHUNGBUK",
+    "JEONBUK",
     "GYEONGBUK",
+    "DAEGU",
+    "GANGWON",
+    "GYEONGGI",
     "INCHEON",
+    "BUSAN",
+    "JEJU",
     "GYEONGNAM",
-    "GWANGJU"
+    "JEONNAM",
+    "DAEJEON",
+    "CHUNGBUK"
   ],
   "reviewStats": {
-    "averageScore": 4.1,
+    "averageScore": 4.3,
     "totalReviews": 100
   },
-  "favorite": 89,
-  "isAssigned": true
+  "favorite": 58,
+  "isAssigned": false,
+  "User": {
+    "name": "신경민"
+  }
 }

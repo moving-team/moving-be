@@ -1,10 +1,10 @@
 {
-  "id": 38,
-  "userId": 45,
+  "id": 42,
+  "userId": 40,
   "profileImage": "",
-  "serviceType": "HOUSE",
-  "region": "ULSAN",
+  "serviceType": "OFFICE",
+  "region": "GWANGJU",
   "User": {
-    "name": "강리나"
+    "name": "장지현"
   }
 }

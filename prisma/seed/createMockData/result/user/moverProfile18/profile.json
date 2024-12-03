@@ -1,24 +1,26 @@
 {
-  "id": 10,
-  "userId": 5,
+  "id": 1,
+  "userId": 21,
   "profileImage": "",
-  "nickname": "nickname_331dz",
-  "career": 2,
-  "summary": "Experienced mover ready to assist!",
-  "description": "I provide high-quality moving services tailored to your needs.",
-  "serviceType": [],
+  "nickname": "부자이사",
+  "career": 12,
+  "summary": "박영두 고수의 부자이사 (투룸 이상), 원룸/소형 이사 서비스",
+  "description": "이사에 관한 모든것을 고객님이 원하시는대로 진행해 드립니다~~\n친절하고 깔끔하게 처리해 드립니다",
+  "serviceType": [
+    "OFFICE",
+    "HOUSE"
+  ],
   "serviceRegion": [
-    "SEOUL",
-    "GYEONGNAM",
-    "JEONNAM",
     "JEJU",
-    "DAEJEON",
-    "JEONBUK",
-    "GYEONGGI",
-    "DAEGU",
-    "INCHEON"
+    "CHUNGNAM",
+    "GWANGJU",
+    "GYEONGBUK",
+    "INCHEON",
+    "JEONNAM",
+    "GANGWON",
+    "GYEONGNAM"
   ],
   "User": {
-    "name": "김건우"
+    "name": "장원준"
   }
 }

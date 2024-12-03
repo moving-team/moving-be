@@ -1,10 +1,10 @@
 {
-  "id": 41,
-  "userId": 45,
+  "id": 48,
+  "userId": 32,
   "profileImage": "",
-  "serviceType": "SMALL",
-  "region": "CHUNGBUK",
+  "serviceType": "OFFICE",
+  "region": "GYEONGBUK",
   "User": {
-    "name": "홍채윤"
+    "name": "이진우"
   }
 }

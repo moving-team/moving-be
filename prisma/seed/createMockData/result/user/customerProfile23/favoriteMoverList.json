@@ -1,109 +1,118 @@
 {
-  "total": 7,
+  "total": 8,
   "list": [
     {
-      "serviceType": [],
-      "isAssigned": true,
-      "nickname": "",
-      "profileImg": "",
-      "comment": "",
-      "score": 5,
-      "reviewCount": 100,
-      "career": 13,
-      "confirmationCount": 79,
-      "favoriteCount": 16
-    },
-    {
       "serviceType": [
         "SMALL"
       ],
       "isAssigned": false,
-      "nickname": "",
+      "nickname": "서민교",
       "profileImg": "",
-      "comment": "",
-      "score": 4,
-      "reviewCount": 100,
-      "career": 26,
-      "confirmationCount": 71,
-      "favoriteCount": 74
-    },
-    {
-      "serviceType": [
-        "SMALL",
-        "HOUSE",
-        "OFFICE"
-      ],
-      "isAssigned": false,
-      "nickname": "",
-      "profileImg": "",
-      "comment": "",
-      "score": 3.3,
-      "reviewCount": 100,
-      "career": 16,
-      "confirmationCount": 78,
-      "favoriteCount": 70
-    },
-    {
-      "serviceType": [
-        "OFFICE",
-        "HOUSE",
-        "SMALL"
-      ],
-      "isAssigned": true,
-      "nickname": "",
-      "profileImg": "",
-      "comment": "",
+      "comment": "서민교 고수의 국내 이사 서비스",
       "score": 4.1,
       "reviewCount": 100,
-      "career": 27,
-      "confirmationCount": 5,
-      "favoriteCount": 41
+      "career": 10,
+      "confirmationCount": 161,
+      "favoriteCount": 80
+    },
+    {
+      "serviceType": [
+        "SMALL"
+      ],
+      "isAssigned": true,
+      "nickname": "양지",
+      "profileImg": "",
+      "comment": "고수의 국내 이사, 이사/입주 청소업체, 건물내부 청소(바닥/계단/화장실), 계단/화장실 청소, 정리수납 컨설팅, 가정이사(투룸 이상), 사무실/상업공간 이사 서비스",
+      "score": 3.5,
+      "reviewCount": 100,
+      "career": 8,
+      "confirmationCount": 157,
+      "favoriteCount": 75
     },
     {
       "serviceType": [
         "SMALL",
-        "HOUSE"
+        "HOUSE",
+        "OFFICE"
       ],
       "isAssigned": false,
-      "nickname": "",
+      "nickname": "염동훈",
       "profileImg": "",
-      "comment": "",
-      "score": 4.7,
-      "reviewCount": 100,
-      "career": 3,
-      "confirmationCount": 107,
-      "favoriteCount": 11
-    },
-    {
-      "serviceType": [
-        "OFFICE",
-        "SMALL"
-      ],
-      "isAssigned": false,
-      "nickname": "",
-      "profileImg": "",
-      "comment": "",
+      "comment": "출장용접 전문",
       "score": 4.6,
       "reviewCount": 100,
-      "career": 8,
-      "confirmationCount": 45,
-      "favoriteCount": 62
+      "career": 11,
+      "confirmationCount": 48,
+      "favoriteCount": 43
     },
     {
       "serviceType": [
-        "HOUSE",
+        "SMALL"
+      ],
+      "isAssigned": true,
+      "nickname": "한진-24",
+      "profileImg": "",
+      "comment": "김종진 고수의 원룸/소형 이사, 용달/화물 운송 서비스",
+      "score": 3.6,
+      "reviewCount": 100,
+      "career": 28,
+      "confirmationCount": 39,
+      "favoriteCount": 87
+    },
+    {
+      "serviceType": [
         "SMALL",
         "OFFICE"
       ],
       "isAssigned": false,
-      "nickname": "",
+      "nickname": "⭐고객평가1위스마트",
       "profileImg": "",
-      "comment": "",
-      "score": 4.3,
+      "comment": "⭐고객평가1위스마트친절이사 윤재근 고수의 가정이사 (투룸 이상), 원룸/소형 이사서비스.",
+      "score": 3.6,
       "reviewCount": 100,
-      "career": 1,
-      "confirmationCount": 99,
-      "favoriteCount": 43
+      "career": 12,
+      "confirmationCount": 131,
+      "favoriteCount": 17
+    },
+    {
+      "serviceType": [
+        "SMALL",
+        "HOUSE",
+        "OFFICE"
+      ],
+      "isAssigned": false,
+      "nickname": "윤실이",
+      "profileImg": "",
+      "comment": "싹서비스 3팀 장기현팀장 입니다",
+      "score": 3.7,
+      "reviewCount": 100,
+      "career": 6,
+      "confirmationCount": 191,
+      "favoriteCount": 46
+    },
+    {
+      "serviceType": [],
+      "isAssigned": false,
+      "nickname": "노종철 상담요망",
+      "profileImg": "",
+      "comment": "호로 장착으로 우천시도 안전합니다",
+      "score": 4.6,
+      "reviewCount": 100,
+      "career": 28,
+      "confirmationCount": 95,
+      "favoriteCount": 81
+    },
+    {
+      "serviceType": [],
+      "isAssigned": false,
+      "nickname": "제일",
+      "profileImg": "",
+      "comment": "고수",
+      "score": 4.4,
+      "reviewCount": 100,
+      "career": 2,
+      "confirmationCount": 42,
+      "favoriteCount": 42
     }
   ]
 }

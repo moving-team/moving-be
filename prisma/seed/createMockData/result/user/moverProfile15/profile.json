@@ -1,32 +1,25 @@
 {
-  "id": 13,
-  "userId": 4,
+  "id": 17,
+  "userId": 18,
   "profileImage": "",
-  "nickname": "nickname_3uxe4",
-  "career": 9,
-  "summary": "Experienced mover ready to assist!",
-  "description": "I provide high-quality moving services tailored to your needs.",
-  "serviceType": [
-    "OFFICE",
-    "HOUSE"
-  ],
+  "nickname": "노종철 상담요망",
+  "career": 28,
+  "summary": "호로 장착으로 우천시도 안전합니다",
+  "description": "반포장 또는 일반이사도 속지 및 담요로 안전하게 운반합니다.",
+  "serviceType": [],
   "serviceRegion": [
-    "INCHEON",
-    "GYEONGNAM",
-    "DAEJEON",
+    "GWANGJU",
+    "SEOUL",
     "GYEONGGI",
     "BUSAN",
-    "ULSAN",
-    "CHUNGBUK",
-    "SEOUL",
-    "JEJU",
-    "GWANGJU",
-    "GYEONGBUK",
+    "DAEJEON",
     "JEONBUK",
+    "SEJONG",
+    "GYEONGNAM",
     "CHUNGNAM",
     "DAEGU"
   ],
   "User": {
-    "name": "최우진"
+    "name": "김원준"
   }
 }

@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { generateName } from "../generate/generateName"; // Mover 이름 생성
 import { getServiceTypes } from "../generate/generateServiceType"; // 서비스 타입 생성
+import { getRandomReview } from "../generate/generateReview";
 
 type WriteReview = {
   serviceType: string;
@@ -24,18 +25,6 @@ type WriteReviewData = {
 // 랜덤 숫자 생성 함수
 function getRandomNumber(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-// 랜덤한 리뷰 내용 생성
-function getRandomReview(): string {
-  const reviews = [
-    "정말 친절하고 좋은 서비스였습니다!",
-    "다소 아쉬운 점도 있었지만 전체적으로 만족합니다.",
-    "신속하고 깔끔한 이사였습니다.",
-    "가격 대비 좋은 서비스였습니다.",
-    "다음에 또 이용하고 싶어요!",
-  ];
-  return reviews[getRandomNumber(0, reviews.length - 1)];
 }
 
 // 랜덤 날짜 생성 함수
@@ -70,7 +59,7 @@ function generateWriteReviewData(
       createAt,
       id: i,
       moverName: moverNames[getRandomNumber(0, moverNames.length - 1)],
-      profileImg: "", // 예시 이미지 URL
+      profileImg: "", 
       movingDate,
       price: getRandomNumber(10, 100) * 10000,
       score: getRandomNumber(3, 5),
@@ -114,7 +103,7 @@ function generateWriteReviewListForCustomerProfiles(
   customerDirectories.forEach((dirName) => {
     const customerDirPath = path.join(customerBasePath, dirName);
     if (fs.existsSync(customerDirPath)) {
-      const randomReviewCount = getRandomNumber(1, 15);
+      const randomReviewCount = getRandomNumber(10, 100);
       const writeReviewData = generateWriteReviewData(
         moverNames,
         randomReviewCount

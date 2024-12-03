@@ -1,29 +1,14 @@
 {
-  "id": 14,
-  "userId": 21,
+  "id": 20,
+  "userId": 22,
   "profileImage": "",
-  "nickname": "nickname_sydhz",
-  "career": 15,
-  "summary": "Experienced mover ready to assist!",
-  "description": "I provide high-quality moving services tailored to your needs.",
-  "serviceType": [
-    "HOUSE",
-    "SMALL"
-  ],
-  "serviceRegion": [
-    "ULSAN",
-    "SEJONG",
-    "SEOUL",
-    "GANGWON",
-    "CHUNGBUK",
-    "JEONNAM",
-    "JEONBUK",
-    "GYEONGBUK",
-    "CHUNGNAM",
-    "JEJU",
-    "GWANGJU"
-  ],
+  "nickname": "이석",
+  "career": 18,
+  "summary": "팔각모익스프레스 포장이사,보관이사,국내이사 직원중 일잘하는 외국인 포함하고 있어요 항상 초심을 잊지 않겠습니다",
+  "description": "저히 팔각모익스프레스 에서는 한번고객님은 영원한고객 이란 마음가짐으로 항상 최선을다하는 기존이삿짐센타의 모범이되는 업체가 되도록 노력하겠습니다. 항상 현장에서 고객님에 소리를 귀담아듣고 항상 직접견적도보고 현장 팀장 으로 책임감을가지고 직접 임하며 팔각모익스프레스 대표겸 작업원 일원인 이석 이라고 합니다 해병대 629기 출신으로 회사명을 해병대의 상징인 팔각모 고품격 포장이사라고 정하고 해병대의 명예를걸고 책임감. 고객감동. 으로 보여드리겠습니다. 고객님 이삿날이 즐거운이삿날이 되도록 포장 하나하나 꼼꼼이 신경써서 가구,가전제품 기타물품 손상이 가지않게 최선을 다하도록 하겠습니다 가족모두 건강하시고 좋은일만 가득하시길 기원합니다 감사합니다",
+  "serviceType": [],
+  "serviceRegion": [],
   "User": {
-    "name": "조진우"
+    "name": "박아은"
   }
 }

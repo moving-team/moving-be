@@ -1,33 +1,32 @@
 {
-  "id": 13,
-  "userId": 4,
+  "id": 17,
+  "userId": 18,
   "profileImage": "",
-  "nickname": "",
-  "career": 1,
-  "summary": "",
-  "description": "",
-  "confirmationCount": 99,
-  "serviceType": [
-    "HOUSE",
-    "SMALL",
-    "OFFICE"
-  ],
+  "nickname": "노종철 상담요망",
+  "career": 28,
+  "summary": "호로 장착으로 우천시도 안전합니다",
+  "description": "반포장 또는 일반이사도 속지 및 담요로 안전하게 운반합니다.",
+  "confirmationCount": 95,
+  "serviceType": [],
   "serviceRegion": [
+    "GWANGJU",
     "SEOUL",
-    "ULSAN",
-    "BUSAN",
     "GYEONGGI",
-    "CHUNGBUK",
-    "INCHEON",
-    "SEJONG",
-    "GYEONGBUK",
+    "BUSAN",
     "DAEJEON",
-    "CHUNGNAM"
+    "JEONBUK",
+    "SEJONG",
+    "GYEONGNAM",
+    "CHUNGNAM",
+    "DAEGU"
   ],
   "reviewStats": {
-    "averageScore": 4.3,
+    "averageScore": 4.6,
     "totalReviews": 100
   },
-  "favorite": 43,
-  "isAssigned": false
+  "favorite": 81,
+  "isAssigned": false,
+  "User": {
+    "name": "김원준"
+  }
 }

@@ -1,28 +1,31 @@
 {
-  "id": 20,
-  "userId": 15,
+  "id": 25,
+  "userId": 24,
   "profileImage": "",
-  "nickname": "nickname_lzedk",
-  "career": 30,
-  "summary": "Experienced mover ready to assist!",
-  "description": "I provide high-quality moving services tailored to your needs.",
+  "nickname": "윤실이",
+  "career": 6,
+  "summary": "싹서비스 3팀 장기현팀장 입니다",
+  "description": "완벽한포장이사 !\n경력20년 경력!\n친절한 서비스 진행!\n1회용 비닐포장재사용!\n깔끔한정리수납!\n고객님이 만족하실때까지 !!",
   "serviceType": [
-    "OFFICE",
-    "HOUSE"
+    "SMALL",
+    "HOUSE",
+    "OFFICE"
   ],
   "serviceRegion": [
-    "DAEGU",
-    "BUSAN",
-    "GYEONGGI",
+    "GYEONGNAM",
+    "GWANGJU",
     "ULSAN",
+    "GANGWON",
+    "GYEONGGI",
     "JEJU",
-    "SEJONG",
+    "DAEJEON",
     "CHUNGBUK",
+    "GYEONGBUK",
     "JEONNAM",
-    "CHUNGNAM",
-    "SEOUL"
+    "JEONBUK",
+    "DAEGU"
   ],
   "User": {
-    "name": "장소율"
+    "name": "이준서"
   }
 }

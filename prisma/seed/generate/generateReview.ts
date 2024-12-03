@@ -1,10 +1,10 @@
-import { reveiwList } from '../dummy/reviewList';
+import { reviewList } from '../dummyList/crawlingReviewList';
 
 let usedReview: string[] = [];
 
 export function getRandomReview(): string {
-  const availableReview = reveiwList.filter(
-    (reivew) => !usedReview.includes(reivew)
+  const availableReview = reviewList.filter(
+    (review) => !usedReview.includes(review)
   );
 
   if (availableReview.length === 0) {

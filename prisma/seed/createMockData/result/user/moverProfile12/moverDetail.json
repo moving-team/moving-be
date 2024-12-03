@@ -1,24 +1,40 @@
 {
-  "id": 6,
-  "userId": 13,
+  "id": 8,
+  "userId": 15,
   "profileImage": "",
-  "nickname": "",
-  "career": 27,
-  "summary": "",
-  "description": "",
-  "confirmationCount": 5,
+  "nickname": "한진-24",
+  "career": 28,
+  "summary": "김종진 고수의 원룸/소형 이사, 용달/화물 운송 서비스",
+  "description": "20년넘는 이사 경력을토대로 고객님의 물건을 보다 안전하고,신속하게 운반해 드리겠으며, 친절하고 편안한 서비스를 제공해 드리겠습니다.\n감사합니다 .",
+  "confirmationCount": 39,
   "serviceType": [
-    "OFFICE",
-    "HOUSE",
     "SMALL"
   ],
   "serviceRegion": [
-    "SEJONG"
+    "ULSAN",
+    "DAEJEON",
+    "GANGWON",
+    "JEJU",
+    "GYEONGBUK",
+    "GWANGJU",
+    "DAEGU",
+    "INCHEON",
+    "BUSAN",
+    "CHUNGNAM",
+    "JEONNAM",
+    "GYEONGGI",
+    "SEOUL",
+    "CHUNGBUK",
+    "JEONBUK",
+    "GYEONGNAM"
   ],
   "reviewStats": {
-    "averageScore": 4.1,
+    "averageScore": 3.6,
     "totalReviews": 100
   },
-  "favorite": 41,
-  "isAssigned": false
+  "favorite": 87,
+  "isAssigned": false,
+  "User": {
+    "name": "장지현"
+  }
 }

@@ -1,36 +1,33 @@
 {
   "id": 25,
-  "userId": 22,
+  "userId": 9,
   "profileImage": "",
-  "nickname": "",
-  "career": 12,
-  "summary": "",
-  "description": "",
-  "confirmationCount": 116,
+  "nickname": "양상현",
+  "career": 8,
+  "summary": "양상현 고수의 짐 보관, 사무실/상업공간 이사, 가정이사 (투룸 이상), 원룸/소형 이사, 용달/화물 운송, 국내 이사 서비스",
+  "description": "일반이사경우 이사1주일전 바구니배달\n이사당일 가전및 가구종류 포자후 진행합니다",
+  "confirmationCount": 200,
   "serviceType": [
-    "OFFICE",
     "SMALL",
-    "HOUSE"
+    "HOUSE",
+    "OFFICE"
   ],
   "serviceRegion": [
     "SEOUL",
+    "BUSAN",
     "GYEONGGI",
-    "DAEGU",
-    "GWANGJU",
-    "JEONBUK",
-    "SEJONG",
-    "JEONNAM",
-    "INCHEON",
-    "JEJU",
-    "CHUNGNAM",
-    "GYEONGBUK",
     "GANGWON",
-    "GYEONGNAM"
+    "JEJU",
+    "DAEJEON",
+    "CHUNGBUK"
   ],
   "reviewStats": {
-    "averageScore": 3.3,
+    "averageScore": 4.1,
     "totalReviews": 100
   },
-  "favorite": 97,
-  "isAssigned": true
+  "favorite": 36,
+  "isAssigned": false,
+  "User": {
+    "name": "서지유"
+  }
 }

@@ -1,10 +1,10 @@
 {
-  "id": 48,
-  "userId": 26,
+  "id": 29,
+  "userId": 37,
   "profileImage": "",
-  "serviceType": "SMALL",
-  "region": "GANGWON",
+  "serviceType": "OFFICE",
+  "region": "JEJU",
   "User": {
-    "name": "강은종"
+    "name": "장하은"
   }
 }

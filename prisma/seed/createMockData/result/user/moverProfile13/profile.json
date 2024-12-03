@@ -1,25 +1,29 @@
 {
-  "id": 14,
-  "userId": 16,
+  "id": 21,
+  "userId": 14,
   "profileImage": "",
-  "nickname": "nickname_4c3kl",
-  "career": 1,
-  "summary": "Experienced mover ready to assist!",
-  "description": "I provide high-quality moving services tailored to your needs.",
+  "nickname": "⭐고객평가1위스마트",
+  "career": 12,
+  "summary": "⭐고객평가1위스마트친절이사 윤재근 고수의 가정이사 (투룸 이상), 원룸/소형 이사서비스.",
+  "description": "이사 하시면서 \"한번 이라도 맘 상하지 않으셧나요?\"차원이 다름을 이사하시며 처음으로 느끼실수 있습니다.고민하지 마세요.\n요즘의 이사는 최소한의 비용도 중요하지만 만족도가 더 중요하지 않을까 합니다.\n\n고객님의 가구와 가전 등등....모든 짐들을 소중히 다루겠습니다.\n예)메트리스커버,장롱커버,쇼파커버,에어컨커버,냉장고커버,세탁기커버,등등 파손이 쉬운 물건들은 에어캡으로 포장후 이동.\n\n\"한번 고객은 영원하다\"라는 말이 있습니다.\n저는 \"한번 고객은 평생 고객이다\"라는 마음가짐 또한 가슴 깊이 새기며 사명감을 가지고 일합니다.\n\n단 하나의 스크렛치 없이 안전하고 만족하게 일하겠습니다.\n\n만약, 파손이나 AS발생 상황시 고객님의 요구조건을 100% 의견수렴 반영하겠습니다.\n예)해당브랜드 수리비 전액지원.",
   "serviceType": [
-    "HOUSE"
+    "SMALL",
+    "OFFICE"
   ],
   "serviceRegion": [
+    "JEJU",
     "GANGWON",
-    "SEJONG",
+    "SEOUL",
     "JEONNAM",
-    "JEONBUK",
-    "BUSAN",
     "CHUNGNAM",
-    "GYEONGBUK",
-    "INCHEON"
+    "ULSAN",
+    "BUSAN",
+    "DAEJEON",
+    "SEJONG",
+    "JEONBUK",
+    "GYEONGGI"
   ],
   "User": {
-    "name": "장채윤"
+    "name": "박서윤"
   }
 }

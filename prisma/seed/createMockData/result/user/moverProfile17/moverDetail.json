@@ -1,35 +1,38 @@
 {
-  "id": 16,
+  "id": 9,
   "userId": 18,
   "profileImage": "",
-  "nickname": "",
-  "career": 24,
-  "summary": "",
-  "description": "",
-  "confirmationCount": 5,
+  "nickname": "짐꺽정이사",
+  "career": 22,
+  "summary": "많은 경험과 노하우로 인한 기분 좋은 이사 서비스를 제공해 드립니다.",
+  "description": "기분 좋은 이사 서비스를 제공해 드리기 위해 항상 최선을 다하고 있으며, 꼼꼼함과 친절함을 기본으로 단 한번의 고객 클레임 없이 이사일을 해오고 있습니다. 또한 고객의 짐이 이동 중 눈, 비 혹은 각종 먼지로부터 오염을 막고자 일반 용달 카고가 아닌 하이탑 차량으로 서비스를 제공해 드리고 있습니다. \n견적문의 주시면 친절히 상담해 드리니 부담없이 연락 주세요.",
+  "confirmationCount": 66,
   "serviceType": [
     "SMALL",
-    "HOUSE",
     "OFFICE"
   ],
   "serviceRegion": [
-    "GYEONGBUK",
-    "JEONNAM",
-    "SEOUL",
-    "CHUNGNAM",
-    "GWANGJU",
-    "SEJONG",
-    "DAEGU",
     "GYEONGGI",
-    "INCHEON",
+    "GWANGJU",
     "ULSAN",
-    "GANGWON",
-    "DAEJEON"
+    "SEOUL",
+    "INCHEON",
+    "GYEONGBUK",
+    "CHUNGBUK",
+    "BUSAN",
+    "DAEJEON",
+    "JEONNAM",
+    "CHUNGNAM",
+    "GYEONGNAM",
+    "JEJU"
   ],
   "reviewStats": {
-    "averageScore": 4.4,
+    "averageScore": 5,
     "totalReviews": 100
   },
-  "favorite": 30,
-  "isAssigned": false
+  "favorite": 79,
+  "isAssigned": false,
+  "User": {
+    "name": "정윤서"
+  }
 }

@@ -1,34 +1,27 @@
 {
-  "id": 22,
-  "userId": 14,
+  "id": 14,
+  "userId": 17,
   "profileImage": "",
-  "nickname": "",
-  "career": 13,
-  "summary": "",
-  "description": "",
-  "confirmationCount": 79,
-  "serviceType": [],
+  "nickname": "서민교",
+  "career": 10,
+  "summary": "서민교 고수의 국내 이사 서비스",
+  "description": "깔끔하고,친절히 일을 합니다.\n가성비가 확실 하며 최대한 고객의 불만사항이 없도록 하겠습니다.",
+  "confirmationCount": 161,
+  "serviceType": [
+    "SMALL"
+  ],
   "serviceRegion": [
-    "GYEONGBUK",
     "SEOUL",
-    "INCHEON",
-    "CHUNGNAM",
-    "GYEONGNAM",
-    "SEJONG",
-    "CHUNGBUK",
-    "GWANGJU",
-    "DAEGU",
-    "JEJU",
-    "BUSAN",
-    "GANGWON",
-    "JEONNAM",
-    "DAEJEON",
-    "JEONBUK"
+    "GYEONGGI",
+    "DAEJEON"
   ],
   "reviewStats": {
-    "averageScore": 5,
+    "averageScore": 4.1,
     "totalReviews": 100
   },
-  "favorite": 16,
-  "isAssigned": false
+  "favorite": 80,
+  "isAssigned": false,
+  "User": {
+    "name": "신서희"
+  }
 }

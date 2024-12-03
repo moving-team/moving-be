@@ -1,24 +1,24 @@
 {
-  "id": 8,
-  "userId": 14,
+  "id": 13,
+  "userId": 17,
   "profileImage": "",
-  "nickname": "",
-  "career": 2,
-  "summary": "",
-  "description": "",
-  "confirmationCount": 27,
-  "serviceType": [
-    "HOUSE",
-    "OFFICE",
-    "SMALL"
-  ],
+  "nickname": "전국",
+  "career": 11,
+  "summary": "꼭한번 전화주세요 평생 고객이 될수있도록 최선을 다하겠습니다 감사합니다 항상 복 많이 받으세용😊",
+  "description": "안녕하세요 고양시 한마음이사입니다 숨고 고객들을 위해 저희회사가 타업체보다 저렴하게 이사진행약속드리겠습니다 시간나실때 한번연락주세용 감사합니다 한마음이사에 이사하시면 다들 부자되실겁니다 🙏",
+  "confirmationCount": 86,
+  "serviceType": [],
   "serviceRegion": [
-    "GWANGJU"
+    "DAEJEON",
+    "GYEONGGI"
   ],
   "reviewStats": {
-    "averageScore": 3.5,
+    "averageScore": 4.6,
     "totalReviews": 100
   },
-  "favorite": 7,
-  "isAssigned": false
+  "favorite": 47,
+  "isAssigned": false,
+  "User": {
+    "name": "홍민혁"
+  }
 }

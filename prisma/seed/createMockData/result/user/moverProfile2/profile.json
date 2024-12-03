@@ -1,23 +1,26 @@
 {
   "id": 25,
-  "userId": 22,
+  "userId": 9,
   "profileImage": "",
-  "nickname": "nickname_jxcaa",
-  "career": 13,
-  "summary": "Experienced mover ready to assist!",
-  "description": "I provide high-quality moving services tailored to your needs.",
+  "nickname": "양상현",
+  "career": 8,
+  "summary": "양상현 고수의 짐 보관, 사무실/상업공간 이사, 가정이사 (투룸 이상), 원룸/소형 이사, 용달/화물 운송, 국내 이사 서비스",
+  "description": "일반이사경우 이사1주일전 바구니배달\n이사당일 가전및 가구종류 포자후 진행합니다",
   "serviceType": [
-    "HOUSE"
+    "SMALL",
+    "HOUSE",
+    "OFFICE"
   ],
   "serviceRegion": [
-    "GYEONGNAM",
     "SEOUL",
-    "CHUNGBUK",
-    "ULSAN",
-    "JEONNAM",
-    "CHUNGNAM"
+    "BUSAN",
+    "GYEONGGI",
+    "GANGWON",
+    "JEJU",
+    "DAEJEON",
+    "CHUNGBUK"
   ],
   "User": {
-    "name": "홍승현"
+    "name": "서지유"
   }
 }

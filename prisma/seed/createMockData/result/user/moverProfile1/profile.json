@@ -1,27 +1,20 @@
 {
-  "id": 22,
-  "userId": 14,
+  "id": 14,
+  "userId": 17,
   "profileImage": "",
-  "nickname": "nickname_smf5b",
+  "nickname": "서민교",
   "career": 10,
-  "summary": "Experienced mover ready to assist!",
-  "description": "I provide high-quality moving services tailored to your needs.",
+  "summary": "서민교 고수의 국내 이사 서비스",
+  "description": "깔끔하고,친절히 일을 합니다.\n가성비가 확실 하며 최대한 고객의 불만사항이 없도록 하겠습니다.",
   "serviceType": [
-    "OFFICE",
-    "SMALL",
-    "HOUSE"
+    "SMALL"
   ],
   "serviceRegion": [
     "SEOUL",
-    "GYEONGBUK",
     "GYEONGGI",
-    "DAEGU",
-    "ULSAN",
-    "INCHEON",
-    "SEJONG",
-    "JEJU"
+    "DAEJEON"
   ],
   "User": {
-    "name": "임소율"
+    "name": "신서희"
   }
 }

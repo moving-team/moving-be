@@ -1,30 +1,34 @@
 {
-  "id": 4,
-  "userId": 1,
+  "id": 1,
+  "userId": 20,
   "profileImage": "",
-  "nickname": "",
-  "career": 18,
-  "summary": "",
-  "description": "",
-  "confirmationCount": 191,
+  "nickname": "최진벽",
+  "career": 11,
+  "summary": "짐승남이사에서 차분하고 깔끔하게 진행해드립니다. 좋은 하루 되세요^^",
+  "description": "- 소형이사(원룸,투룸,오피스텔이사)\n\n- 가정이사\n\n- 사무실이사\n\n- 보관이사 \n\n# 단골이사의 시작은 짐승남이사 입니다^^*",
+  "confirmationCount": 9,
   "serviceType": [
     "HOUSE"
   ],
   "serviceRegion": [
-    "SEOUL",
-    "INCHEON",
-    "JEONNAM",
-    "SEJONG",
-    "ULSAN",
-    "JEJU",
-    "BUSAN",
+    "GANGWON",
     "DAEJEON",
-    "CHUNGNAM"
+    "GWANGJU",
+    "DAEGU",
+    "SEOUL",
+    "GYEONGBUK",
+    "JEJU",
+    "JEONBUK",
+    "CHUNGBUK",
+    "GYEONGGI"
   ],
   "reviewStats": {
-    "averageScore": 4.8,
+    "averageScore": 4.2,
     "totalReviews": 100
   },
-  "favorite": 1,
-  "isAssigned": true
+  "favorite": 61,
+  "isAssigned": false,
+  "User": {
+    "name": "신윤우"
+  }
 }

@@ -1,31 +1,42 @@
 {
-  "id": 3,
-  "userId": 16,
+  "id": 6,
+  "userId": 12,
   "profileImage": "",
-  "nickname": "",
-  "career": 6,
-  "summary": "",
-  "description": "",
-  "confirmationCount": 64,
+  "nickname": "요셉안전이사",
+  "career": 2,
+  "summary": "힘이 장사인 젊은 기사입니다💪 여성분들도 안심하고 이용하실 수 있습니다! 친절, 안전, 신속하게 운송하겠습니다🚛 믿고 맡겨주세요🙂",
+  "description": "힘 센 고수 요셉안전이사입니다💪\n여성분들도 안심하고 이용하실 수 있는 안전한 일반 이사•용달입니다! 부부가 함께 운영하고 있어요~\n원룸 및 소형이사, 화물, 사무실 이사, 투룸 이상 가능합니다.\n친절하게, 안전하게, 신속하게 모시겠습니다!!!!!\n믿고 맡겨주세요~ 감사합니다!!",
+  "confirmationCount": 195,
   "serviceType": [
     "SMALL",
-    "HOUSE",
-    "OFFICE"
+    "HOUSE"
   ],
   "serviceRegion": [
-    "SEOUL",
-    "JEONBUK",
-    "GYEONGBUK",
-    "BUSAN",
-    "CHUNGBUK",
     "GYEONGGI",
+    "JEONBUK",
+    "DAEJEON",
+    "GANGWON",
     "ULSAN",
-    "INCHEON"
+    "BUSAN",
+    "JEONNAM",
+    "SEJONG",
+    "SEOUL",
+    "GYEONGNAM",
+    "DAEGU",
+    "INCHEON",
+    "GWANGJU",
+    "GYEONGBUK",
+    "CHUNGBUK",
+    "JEJU",
+    "CHUNGNAM"
   ],
   "reviewStats": {
-    "averageScore": 3.6,
+    "averageScore": 3.5,
     "totalReviews": 100
   },
-  "favorite": 90,
-  "isAssigned": false
+  "favorite": 11,
+  "isAssigned": false,
+  "User": {
+    "name": "홍동현"
+  }
 }

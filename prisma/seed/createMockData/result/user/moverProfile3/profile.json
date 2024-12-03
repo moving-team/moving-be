@@ -1,21 +1,24 @@
 {
-  "id": 11,
-  "userId": 3,
+  "id": 5,
+  "userId": 24,
   "profileImage": "",
-  "nickname": "nickname_4kp9e",
-  "career": 2,
-  "summary": "Experienced mover ready to assist!",
-  "description": "I provide high-quality moving services tailored to your needs.",
-  "serviceType": [],
+  "nickname": "김기도",
+  "career": 3,
+  "summary": "안녕하세요. 숨고 이사 리뷰 1등 용달빠르기도 대표 김기도입니다.",
+  "description": "안녕하세요\n저는 용달빠르기도 대표 김기도라고합니다\n\n항상 긍정적으로 밝게 일하려 합니다\n만족하실때까지 최대한 일을 마무리 하고 있습니다\n아직 젊은 패기와 성실함을 보셨으면 좋겠습니다\n\n감사합니다",
+  "serviceType": [
+    "OFFICE"
+  ],
   "serviceRegion": [
-    "GANGWON",
+    "JEONNAM",
+    "ULSAN",
+    "SEOUL",
+    "GYEONGGI",
+    "GYEONGNAM",
     "INCHEON",
-    "GWANGJU",
-    "CHUNGNAM",
-    "BUSAN",
-    "ULSAN"
+    "GANGWON"
   ],
   "User": {
-    "name": "오지후"
+    "name": "강아현"
   }
 }

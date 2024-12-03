@@ -1,10 +1,10 @@
 {
-  "id": 36,
-  "userId": 34,
+  "id": 38,
+  "userId": 29,
   "profileImage": "",
-  "serviceType": "OFFICE",
-  "region": "SEOUL",
+  "serviceType": "HOUSE",
+  "region": "CHUNGNAM",
   "User": {
-    "name": "박승진"
+    "name": "김하윤"
   }
 }

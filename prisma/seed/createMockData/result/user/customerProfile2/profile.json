@@ -1,10 +1,10 @@
 {
-  "id": 49,
-  "userId": 43,
+  "id": 32,
+  "userId": 50,
   "profileImage": "",
-  "serviceType": "SMALL",
-  "region": "SEJONG",
+  "serviceType": "OFFICE",
+  "region": "DAEGU",
   "User": {
-    "name": "최다인"
+    "name": "윤예은"
   }
 }

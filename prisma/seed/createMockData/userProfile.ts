@@ -6,6 +6,7 @@ import {
 } from "../generate/generateServiceType";
 import { getRegion, getRegionArray } from "../generate/generateRegion";
 import { generateName } from "../generate/generateName";
+import { getRandomMoverInfo, Mover } from "../generate/generateMoverInfo";
 
 // 생성할 개수 설정
 const createCount = 25; // Mover와 Customer 각각 25명씩
@@ -84,21 +85,22 @@ function generateCustomerProfiles(basePath: string, count: number): void {
 // MoverProfile 생성
 function generateMoverProfiles(basePath: string, count: number): void {
   for (let i = 1; i <= count; i++) {
+    const movingInfo = getRandomMoverInfo()
+
     const profile = {
       id: generateId(1, 25), // Mover ID: 1~25
       userId: generateId(1, 25), // User ID: 1~25
       profileImage: "",
-      nickname: getRandomString("nickname_", 5),
+      nickname: movingInfo.name,
       career: Math.floor(Math.random() * 30) + 1,
-      summary: "Experienced mover ready to assist!",
-      description:
-        "I provide high-quality moving services tailored to your needs.",
+      summary: movingInfo.introduction,
+      description: movingInfo.description,
       serviceType: getServiceTypesArray(),
       serviceRegion: getRegionArray(),
       User: {
-        name: generateName(),
+          name: generateName(),
       },
-    };
+  };
 
     const dirName = `moverProfile${i}`; // e.g., moverProfile1
     const directory = createDirectory(basePath, dirName);

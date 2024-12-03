@@ -1,26 +1,24 @@
 {
-  "id": 18,
-  "userId": 12,
+  "id": 16,
+  "userId": 17,
   "profileImage": "",
-  "nickname": "nickname_ksg23",
-  "career": 14,
-  "summary": "Experienced mover ready to assist!",
-  "description": "I provide high-quality moving services tailored to your needs.",
+  "nickname": "염동훈",
+  "career": 11,
+  "summary": "출장용접 전문",
+  "description": "출장 용접 소방 탱크 보수 전문 \n데크시공 핸드레일 등등 문의 주시면 언제든 성심성의껏 임하겟습니다.",
   "serviceType": [
-    "OFFICE",
-    "HOUSE"
+    "SMALL",
+    "HOUSE",
+    "OFFICE"
   ],
   "serviceRegion": [
-    "DAEJEON",
     "JEONNAM",
-    "CHUNGNAM",
-    "GYEONGNAM",
-    "ULSAN",
-    "GANGWON",
-    "JEJU",
-    "JEONBUK"
+    "SEJONG",
+    "DAEGU",
+    "JEONBUK",
+    "SEOUL"
   ],
   "User": {
-    "name": "한시우"
+    "name": "서재석"
   }
 }

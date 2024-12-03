@@ -1,711 +1,711 @@
 {
   "reviewCount": {
-    "1": 10,
-    "2": 8,
-    "3": 9,
-    "4": 24,
-    "5": 49
+    "1": 11,
+    "2": 12,
+    "3": 7,
+    "4": 25,
+    "5": 45
   },
   "list": [
     {
       "id": 1,
-      "writer": "홍예지",
-      "createAt": "2024-12-01",
+      "writer": "이진주",
+      "createAt": "2024-11-12",
       "score": 4,
-      "content": "It was okay, but could be better."
+      "content": "너무 친절하시고 목포지역에서 이사를 5번넘게 다녔지만 최고로 만족스럽습니다. \n상담부터 끝까지 .. 혹시 빠진물건은 없는지 계속 물어봐주시고 가전제품 포장도 신속정확하게 해주셔서 감사했습니다.\n중요한 날에 좋은분들과 함께 이사해서 기분좋았습니다. 감사합니다 ..^^ \n건강하시고 행복하세요"
     },
     {
       "id": 2,
-      "writer": "조재석",
-      "createAt": "2024-11-05",
+      "writer": "서재석",
+      "createAt": "2024-11-13",
       "score": 4,
-      "content": "Highly recommended! Very professional."
+      "content": "제가 직접 하는 이사가 처음이라서 무척 걱정했는데 꼼꼼하게 정리 잘해 주셨어요..!! 괜한 걱정을 했습니다  덕분에 정말 너무 편하게 이사했어요 ㅎㅎ 다음에도 또 이용할 의향이 있습니다"
     },
     {
       "id": 3,
-      "writer": "강하준",
-      "createAt": "2024-12-02",
-      "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "writer": "한민지",
+      "createAt": "2024-11-09",
+      "score": 1,
+      "content": "처음 견적 받을때, 사장님께서 빠르고 친절하게 상담응해주셨고 무엇보다 합리적인 가격과 신뢰가 가서 이사를 맡기게 되었습니다. 사실 너무 오랫만에 가는 이사라 짐을 정리해서 버리느라고 집이 어수선해서 빨리 이사하고 싶었는데 날짜를 잘 맞춰주시기도 했고, 잔짐이 정말 많아서 걱정했는데 차도 큰차 가져오시고 시종일관 친절하고 웃으며 작업해주셔서 너무 감사했습니다. 상담오신 사장님이 직접오셔서 그것도 너무 마음에 들었고 반포장 이사임에도 최대한 짐들 정리하기 편하게 해주시려고 하고 주방짐들은 여자분이 오셔서 직접 수납까지 해주셨어요. 이사때문에 스트레스 많이 받는다고들 하는데, 스트레스 없이 정말 너무 만족한 이사였습니다. 다음번에 또 이사할 일 생기면 다시 맡길 의향 있습니다. 정말 강추합니다."
     },
     {
       "id": 4,
-      "writer": "신석종",
-      "createAt": "2024-11-09",
+      "writer": "최승민",
+      "createAt": "2024-11-18",
       "score": 1,
-      "content": "Excellent service! Will use again."
+      "content": "오늘 대구 중구에서 구미로 이사왔는데 짐 엄청 빨리 싸주시고, 가격도 합리적이고, 기술이 되게 좋으세요... 오가면서 이야기도 많이 했는데 정말 좋으신 분이라는 게 많이 느껴졌습니다. 일도 정말 잘해주시고 친절하셔서 정말 추천드리고 싶습니다!"
     },
     {
       "id": 5,
-      "writer": "홍다은",
-      "createAt": "2024-11-09",
-      "score": 5,
-      "content": "Excellent service! Will use again."
+      "writer": "신경준",
+      "createAt": "2024-11-20",
+      "score": 1,
+      "content": "가전 이전만이고 가까운 거리라 가격은 싸고 귀찮으셨을텐데 친절히 잘 해 주셨습니다\n설치 후 작동 확인까지 해 주시고...\n다음 이사할 일 생기면 여기에 맡길꺼예요"
     },
     {
       "id": 6,
-      "writer": "조성민",
-      "createAt": "2024-11-30",
-      "score": 4,
-      "content": "Great service and friendly staff!"
+      "writer": "최아은",
+      "createAt": "2024-11-04",
+      "score": 5,
+      "content": "시골집 이사라서 큰짐을 빼는것이 용이하지 않았는데 너무 숙련되이 잘 이동해주셔서   감사했습니다.   사전에 짐쌓을 바구니도 넉넉히 보내주셨고 시간약속은 최고였어요.  오전 7시 30분에 오신다고 전날 연락주셨는데 진짜 딱  그시간에 와주셨구요.  이것저것 새로 이사한곳 설치도 따로 부탁드렸는데 친절하게 해주셨어요.   다음번 또 이용하게 되면 연락드리겠습니다.   "
     },
     {
       "id": 7,
-      "writer": "이윤우",
-      "createAt": "2024-11-14",
-      "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "writer": "김시현",
+      "createAt": "2024-11-08",
+      "score": 4,
+      "content": "시간개념이 명확하시고 매우 친절하십니다. 타 업체 대비 저렴한 가격으로 안전하고 빠르게 배송해주셔서 감사합니다."
     },
     {
       "id": 8,
-      "writer": "장나연",
-      "createAt": "2024-11-12",
-      "score": 5,
-      "content": "It was okay, but could be better."
+      "writer": "강건우",
+      "createAt": "2024-11-27",
+      "score": 2,
+      "content": "다음 이사도 무조건 사장님입니다. ^^ 번창하세요"
     },
     {
       "id": 9,
-      "writer": "임소율",
-      "createAt": "2024-11-08",
-      "score": 2,
-      "content": "Highly recommended! Very professional."
+      "writer": "강가은",
+      "createAt": "2024-11-15",
+      "score": 5,
+      "content": "첨상담했을땐 1톤차 반차정도예상하고 견적뽑고 이사했는데요 한차가 넘게나왔네요ㅠ 그래도 친절히 짐옮겨주시고 추가비용도 많이 안받으셔서 감사해요\n버릴옷이 많았는데 좋은일하신다고 다 챙겨가주셔서 저도 기분좋게 옷정리할수있었습니다..다음이사때도 부탁드려요 감사합니다~^^"
     },
     {
       "id": 10,
-      "writer": "이희준",
-      "createAt": "2024-11-23",
-      "score": 3,
-      "content": "Not satisfied with the overall experience."
+      "writer": "정은서",
+      "createAt": "2024-11-16",
+      "score": 4,
+      "content": "작년에 이사할때도 너무 친절하게 다 도와주셔서 이번에도 이사부탁드렸어요! 제가 일하면서 짐을 싸느라 완벽히 다 싸놓지 못했는데 아내분하고 고수님 두분 다 손이 엄청 빠르셔서 빠른 시간내에 끝낼 수 있었어요 \n짐이 제 생각보다 많았는데 원래 비용에 비해서도 합리적으로 마칠수 있었어서 너무 감사드립니다💜 최고에요👍🏻 다음에 또 이용할게요~"
     },
     {
       "id": 11,
-      "writer": "김윤서",
-      "createAt": "2024-12-02",
+      "writer": "최하은",
+      "createAt": "2024-11-20",
       "score": 1,
-      "content": "It was okay, but could be better."
+      "content": "제 짐을 포장, 손수들어 옮겨주셔서 감사합니다. 포장이사니 당연하겠지요.\n\n견적 외 추가제품에 대해 비용추가는 수용하였지만 업체 실수로 세탁실 열어보지 않은 부담은 제가 했네요.\n\n상황은 이미 차량 한대 출발한 상태에서 세탁실 짐이 남아있었고, 그제서야 일반짐이 너무 많아서 차량에 다 안실렸다며 포터한대 더 부른다고 하셨습니다.\n당시 개인차, 부모님차로 싼타페, 카니발 대기중이였습니다. 미리 얘기해주시면 일반짐 충분히 자차에 실을 수 있는 상황이었음에도 세탁기 싣기위해 포터한대 더 불렀습니다.\n\n짐만 잘 옮겨달라는 생각으로 그냥 진행\n새집 도배 찢김 /\n매트리스 포함 젖은 얼룩 /\n철제 책상 다리면 기스 /\n옷행거 파손 /\n아일랜드 식탁에 아이스박스 올려서 기스 한가득 \n추가해 주셨습니다.\n\n도배 찢김은 이사 중간에 확인하였는데\n말하나 안하나 지켜봤지만 그냥 가셨습니다.\n\n게다가 이사하면서 한숨 한가득, 엘레베이터 밖에서 뒷담화하는 등 친절하진 않으시네요.\n저는 이사하며 사는 전문가가 아닌데, 이사로 정신없었던게 뭘 그리 잘못했나 눈치보였네요.\n\n견적가 대비 13업하여 70결제.. 그나마 2만원은 할인?이라며 가셨습니다\n\n전문이사 부를께요. 제가 죄송합니다"
     },
     {
       "id": 12,
-      "writer": "이민지",
-      "createAt": "2024-11-16",
+      "writer": "이민재",
+      "createAt": "2024-11-10",
       "score": 4,
-      "content": "Highly recommended! Very professional."
+      "content": "긴말이 필요 없네요.\n8분 오셔서 해주셨는데 한분한분 정말 최고였습니다.\n여사님들도 삼촌들도 손발이 척척!!\n예전에 이사 진행 했던 고가의 브랜드 업체보다 좋았습니다.\n이사를 다시 하게 된다면 믇지도 따지지도 않고 팔각모 입니다~"
     },
     {
       "id": 13,
-      "writer": "홍주아",
-      "createAt": "2024-11-26",
-      "score": 5,
-      "content": "Great service and friendly staff!"
+      "writer": "정세호",
+      "createAt": "2024-11-27",
+      "score": 4,
+      "content": "이사전날까지는 너무 제가 문의드린 것에 다 \"예스\" 해주셔서 다소 이상했습니다... ㅎㅎ 보통은 막 이래저래 금액추가내용 같은거 이야기하시고, 금액도 좀 있고 하니까요.\n여기는 초반에 견적도 다른 곳에 비해 저렴한데 너무 예스하셔서 그래서 오히려 걱정도 들었습니다.\n\n이사날 오셔서 시종일관 너무 매너있고 친절하게 해주셔서 감사했습니다. 사다리차 추가가 되고 붙박이 신발장 분해, 조립 때문에 금액이 올랐지만 상황설명도 깔끔하게 인지하시고 제가 신경쓸거 없이 해주시고 또 기타 요구사항을 너무 잘 들어주셔서 견적보다 더 비싸진것이 전혀 아깝지 않았습니다.\n\n여기 사장님들 정말 \"프로의식\" 가지고 일하십니다.\n감사합니다. 너무 매너있으셔서 찐감동 했어요..."
     },
     {
       "id": 14,
-      "writer": "정현석",
-      "createAt": "2024-11-29",
-      "score": 2,
-      "content": "Excellent service! Will use again."
+      "writer": "서건우",
+      "createAt": "2024-11-15",
+      "score": 5,
+      "content": "사장님포함 두분 기사님과  한분 이모님이 오셨는데 친절하고 꼼꼼하게 잘해주셨어요~냉장고 흠집난것도 전 모르고있었는데 양심적으로 말씀해주시고 \n금액도 먼저 빼주시겠다고하셔서 너무 감사했어요.  물론  감사한마음에 그냥 다  드렸지만요~ 덕분에 이사잘해서 다시한번 감사합니다"
     },
     {
       "id": 15,
-      "writer": "최하윤",
-      "createAt": "2024-11-12",
+      "writer": "조석종",
+      "createAt": "2024-11-07",
       "score": 4,
-      "content": "It was okay, but could be better."
+      "content": "이사를 서른번정도 해봤지만\n정말 최악입니다"
     },
     {
       "id": 16,
-      "writer": "서수빈",
-      "createAt": "2024-11-11",
-      "score": 5,
-      "content": "Excellent service! Will use again."
+      "writer": "한채윤",
+      "createAt": "2024-11-18",
+      "score": 2,
+      "content": "생각한 짐은 20박스였나 숨겨진 짐들로 대략 35개정도..그런데도 작업속도도 엄청빠르시구 하나하나 꼼꼼하게 작업해주시구 제 인생 첫 이사였는데 너무 만족스러워서 좋았어요!!\n다음 이사때 또 이용하고싶어요 정말 너무 고생많으셨어요 ㅎㅎ 다들 이사할때 꼭 여기 이용하라고 주변에 말할게요"
     },
     {
       "id": 17,
-      "writer": "윤지후",
-      "createAt": "2024-11-23",
-      "score": 5,
-      "content": "Highly recommended! Very professional."
+      "writer": "오윤우",
+      "createAt": "2024-11-05",
+      "score": 2,
+      "content": "짐이 다 싸고보니 생각보다 너무 많았어서 걱정이었는데 오히려 힘드셨겠다 걱정해주시고 여러모로 너무친절하셨어요 저는 별도움도 못드렸고 역시 고수님답게 빠르고 안전하게 잘 옮겨주셔서 정말 감사했습니다\n덕분에 파손된것없이 안전하게 이사잘했어요\n다음에 이사하게 된다면 또 뵙고싶습니다\n감사드리구 건강하셔요~~^^"
     },
     {
       "id": 18,
-      "writer": "장지아",
-      "createAt": "2024-11-03",
-      "score": 5,
-      "content": "Great service and friendly staff!"
+      "writer": "임채원",
+      "createAt": "2024-11-18",
+      "score": 4,
+      "content": "비용도저렴히잘해주시고작업속도엄청빠르십니다.두세분몱을혼자서다하십니다.넘깔끔히포장도잘해주시고.짜증한번안내시고정말훌륭히해주셨습니다.문형식고수님.담에도이사할때꼬옥부탁드립니다.항상번창하세요~~^^"
     },
     {
       "id": 19,
-      "writer": "정채은",
-      "createAt": "2024-11-25",
+      "writer": "신현성",
+      "createAt": "2024-12-01",
       "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "content": "계단 3층이라 힘드실 법도 한데 묵묵히 그 많은 짐을 다 옮겨주셨어요! 제가 도와드리겠다 했는데도 괜찮다며 혼자서 다 진행하셨어요ㅠ 제가 한건 정말 아무것도 없네요…너무 만족스러운 이사였습니다! 짐 내려놓으실 때도 어디 찍히지않게 아주 조심스럽게 내려놔주시고..다음에 또 이사하게되면 이 고수님께 꼭 부탁드리고 싶습니다! 너무 행복한 이사였어요, 다시 한번 감사드립니다!!"
     },
     {
       "id": 20,
-      "writer": "정나연",
-      "createAt": "2024-11-17",
+      "writer": "임수현",
+      "createAt": "2024-11-10",
       "score": 5,
-      "content": "Highly recommended! Very professional."
+      "content": "짐들 문제없이 잘 옮겨 주셨고 세심하게 신경 써주셨어요. 없어진 물건 깨진 물건 하나 없고 다 한국분들이라서 더 좋더라고요. 의사소통도 아주 편했어요.  \n덕분에 무사히 이사 잘 했습니다. 더욱더 번창하시길 바래요"
     },
     {
       "id": 21,
-      "writer": "박윤희",
-      "createAt": "2024-12-01",
-      "score": 4,
-      "content": "It was okay, but could be better."
+      "writer": "조종민",
+      "createAt": "2024-11-07",
+      "score": 1,
+      "content": "친절하시고 저렴하게 이사완료!"
     },
     {
       "id": 22,
-      "writer": "서유나",
-      "createAt": "2024-11-03",
-      "score": 5,
-      "content": "Excellent service! Will use again."
+      "writer": "강세호",
+      "createAt": "2024-11-23",
+      "score": 3,
+      "content": "사장님 너무너무 신속하고 깔끔하게 짐 옮겨주셔서 감사합니다!"
     },
     {
       "id": 23,
-      "writer": "정강현",
-      "createAt": "2024-11-27",
+      "writer": "한종현",
+      "createAt": "2024-11-26",
       "score": 4,
-      "content": "Great service and friendly staff!"
+      "content": "너무 친절하시고, 합리적인 가격으로 진행되었습니다~ 혼자 오셔서 황토 침대랑 3단 수납장 옮겨주셨는데, 그냥 이사하는 거랑 똑같이 포장 엄청 꼼꼼하게 해주셨습니다~ 절대 후회 안합니다~ 다들 꼭 여기서 하셔요~"
     },
     {
       "id": 24,
-      "writer": "김경민",
-      "createAt": "2024-11-14",
+      "writer": "홍승현",
+      "createAt": "2024-11-05",
       "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "content": "예상보다 짐이 많았는데도 친절하게 잘 해주셨어요\n포장박스도 미리 오셔서 빌려주셨고, 이사 이후에도 짐 정리되기까지 포장박스 회수 기다려 주시는 등 배려심도 많으셨습니다"
     },
     {
       "id": 25,
-      "writer": "한현석",
-      "createAt": "2024-11-11",
-      "score": 4,
-      "content": "Excellent service! Will use again."
+      "writer": "장윤우",
+      "createAt": "2024-11-29",
+      "score": 5,
+      "content": "친절하시고 짐을 빠르게 옮길수일었어요!"
     },
     {
       "id": 26,
-      "writer": "서원준",
-      "createAt": "2024-11-14",
-      "score": 3,
-      "content": "It was okay, but could be better."
+      "writer": "김아현",
+      "createAt": "2024-11-15",
+      "score": 5,
+      "content": "일하시는분들 모두 친절하시고 \n특히 사장님께서는 물건도 다른곳으로 옮겨 주셨습니다.\n가격은 두말할것 없고 적극 추천 드립니다.\n사업 번창 하세요."
     },
     {
       "id": 27,
-      "writer": "김건우",
-      "createAt": "2024-11-23",
-      "score": 5,
-      "content": "Great service and friendly staff!"
+      "writer": "이민혁",
+      "createAt": "2024-11-25",
+      "score": 4,
+      "content": "감사합니다~\n소개많이 해드리겠습니다."
     },
     {
       "id": 28,
-      "writer": "이서진",
-      "createAt": "2024-11-05",
+      "writer": "강현우",
+      "createAt": "2024-11-10",
       "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "content": " 입주청소 때문에 진짜 너무 스트레스 받고 너무 화가 났는데 용달 해주신 고수님들이 너무너무 친절하시고 잘해주셔서 위안이 됐습니다.\n정말 너무 감사하고 괜히 리뷰가 좋은게 아니네요\n평소 리뷰 잘 안 쓰는데 너무 감사하고 잘해주셔서 이렇게 로그인해서 리뷰써요!\n다음에도 꼭 이용하고 싶어요 정말 감사합니다"
     },
     {
       "id": 29,
-      "writer": "홍원준",
-      "createAt": "2024-11-26",
-      "score": 5,
-      "content": "Highly recommended! Very professional."
+      "writer": "김윤아",
+      "createAt": "2024-11-29",
+      "score": 1,
+      "content": "비용견적 상담시부터 하나하나 꼼꼼히 봐주시고 알려주셨어요. 본 이사 때도 꼼꼼히 포장해주고, 이전에 이사할때 제대로 안맞춰서 장농 틀어진거 냉장고 문 틀어진거도 다시 바로 잡아주시고, 문제 생길만한 것들도 다 다시 확인해주셨어요. ㅜ 진짜 너무 감사했습니다. 또 정리의 신들 이신지, 옷들도 이쁘게 다 정리해주셔서, 앞으로도 저렇게 유지하며 살려구요! ㅎㅎ 이모님 그리고 기사님들 모두 너무 유쾌 하셔서 즐겁게 이사 했습니다. 다음에 또 이사하게 되면 무조건 여기서 할꺼에요!!!! "
     },
     {
       "id": 30,
-      "writer": "강우진",
-      "createAt": "2024-11-18",
-      "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "writer": "임지원",
+      "createAt": "2024-11-05",
+      "score": 3,
+      "content": "기사님 먼길 배송감사합니다^^"
     },
     {
       "id": 31,
-      "writer": "최우빈",
-      "createAt": "2024-11-10",
-      "score": 2,
-      "content": "Excellent service! Will use again."
+      "writer": "서은채",
+      "createAt": "2024-11-30",
+      "score": 3,
+      "content": "며칠이 지나서야 리뷰를 남기게 됐네요. 이삿날에도 신속정확하게 해주시고 나중에 부탁드린일도 해주셔서 정말 감사했습니다. 다음에 이사하더라도 또 찾을것 같아요"
     },
     {
       "id": 32,
-      "writer": "박은채",
-      "createAt": "2024-11-30",
-      "score": 1,
-      "content": "Highly recommended! Very professional."
+      "writer": "오영준",
+      "createAt": "2024-11-09",
+      "score": 4,
+      "content": "빠르게 진행해주셨어요!"
     },
     {
       "id": 33,
-      "writer": "임도윤",
-      "createAt": "2024-11-13",
+      "writer": "신다인",
+      "createAt": "2024-11-16",
       "score": 5,
-      "content": "It was okay, but could be better."
+      "content": "감사합니다. 덕분에 이사 편하게 잘했습니다."
     },
     {
       "id": 34,
-      "writer": "박지후",
-      "createAt": "2024-11-24",
-      "score": 1,
-      "content": "Great service and friendly staff!"
+      "writer": "서승민",
+      "createAt": "2024-11-05",
+      "score": 4,
+      "content": "좋은점 선택하는게 최대가 3개라 아쉬울정도로\n모든면에서 감사하고 깔끔하게 일처리 해주셨어요:)\n약속시간도 잘 지켜주시고 미리 연락도 다 해주셔서 안심됐습니다 ! 다음 이사때도 이용하겠습니다 ! 너무 감사합니다!"
     },
     {
       "id": 35,
-      "writer": "조다인",
-      "createAt": "2024-12-02",
-      "score": 1,
-      "content": "It was okay, but could be better."
+      "writer": "박민정",
+      "createAt": "2024-11-26",
+      "score": 4,
+      "content": "감사합니다 매우 친절하신분이셨고 속도도 엄청 빠르시고 꼼꼼하게 해주셔서 덕분에 이사 편하게 잘 진행한것 같습니다 \n완전 강추 합니다 다음 이사할때 재신청 하겠습니다"
     },
     {
       "id": 36,
-      "writer": "김경민",
-      "createAt": "2024-11-08",
-      "score": 5,
-      "content": "Highly recommended! Very professional."
+      "writer": "이지아",
+      "createAt": "2024-11-29",
+      "score": 2,
+      "content": "저희는 리뷰와 업체네임벨류믿고 비교없이 정하고 방문견적 상담했는데 상담부터 맘에들어 진행하게됐습니다. 약속시간보다 일찍와주시고 중간에 저희쪽 문제로 작업이 늦어지게됐는데도 끝까지 친절하게 잘해주셨어요. 아기짐이 있어 걱정했는데 비닐포장으로 꼼꼼하게 잘 해주시고 가전도 안전하게 포장해서 옮겨주셨어요~ 그리고 마지막에 바닥스팀청소까지! 시간이 오래걸려 힘드셨을텐데 마지막까지 웃으면서 마무리해주셔서 넘넘 감사했습니다ㅠㅠ 고민하시는 분들 고민하지말고 맡기셔도 될 것 같아요!!"
     },
     {
       "id": 37,
-      "writer": "한민혁",
-      "createAt": "2024-11-11",
+      "writer": "김세호",
+      "createAt": "2024-11-12",
       "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "content": "이사준비하면서 업체 세 군데를 알아봤는데 일정이 맞고 가장 저렴해서 예약하게 되었습니다.\n상담할 때부터 이사날까지 항상 친절하셨는데, 특히 이사갈 집에서 짐이 늦게 빠져서 두시간 가량 대기해야했는데도 묵묵히 기다려 주셔서 너무 감사했습니다.\n작업 속도도 빨라서 오전 10시에 짐을 모두 빼야한다고 말씀 드렸는데 30분 정도 일찍 완료해주셨습니다.\n주변에 이사 계획 있는 사람에게 추천할 만한 업체입니다."
     },
     {
       "id": 38,
-      "writer": "신소윤",
-      "createAt": "2024-12-01",
-      "score": 1,
-      "content": "Excellent service! Will use again."
+      "writer": "강윤우",
+      "createAt": "2024-11-22",
+      "score": 5,
+      "content": "소문이 나고 후기가 좋은데는 다 이유가 있다!\n솔직히 리뷰남기면 페이백 해주는 곳들이 참 많은것 같은데 손수락님은 전혀요!!\n애초에 합리적인 가격으로 견적주시고 저렴하게 도와주시는것 같습니다^^\n주변 사람들에게 이사업체 추천해달라고 하면 하나같이 손수락님을 이야기해주더라구요\n그래서 저도 검색해보았는데 후기도 다들 너무 좋고 선택 안할 이유가 없었습니다.\n상담도 신속하게 진행되고 전날에도 먼저 연락주시구요 소통이 잘 되서 좋았어요~\n친절하게 설명도 잘 해주시고 파손이나 분실 없이 이사 잘 마무리해주셔서 너무 감사했습니다.\n이전 집이 엘베가 없기도 하고 제가 짐이 많아서 힘드셨을텐데 웃으면서 친절히 옮겨주셔서 온 마음 다해 감사하다고 한번 더 이렇게 후기로 제 마음 전합니다! 건강하세요!"
     },
     {
       "id": 39,
-      "writer": "한서아",
-      "createAt": "2024-11-29",
-      "score": 5,
-      "content": "Great service and friendly staff!"
+      "writer": "최종현",
+      "createAt": "2024-12-01",
+      "score": 4,
+      "content": "모든게 완벽하게 만족합니다."
     },
     {
       "id": 40,
-      "writer": "윤채원",
-      "createAt": "2024-11-06",
+      "writer": "최승현",
+      "createAt": "2024-11-28",
       "score": 5,
-      "content": "Great service and friendly staff!"
+      "content": "너무 친절하시고 다음에도 또 이용하려고요 감사합니다"
     },
     {
       "id": 41,
-      "writer": "임태현",
-      "createAt": "2024-12-01",
-      "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "writer": "정현석",
+      "createAt": "2024-12-03",
+      "score": 3,
+      "content": "최고의 이사 파트너셔요! 덕분에 편하고 기분 좋게 이사했습니다"
     },
     {
       "id": 42,
-      "writer": "윤지윤",
-      "createAt": "2024-11-09",
-      "score": 3,
-      "content": "Excellent service! Will use again."
+      "writer": "홍예지",
+      "createAt": "2024-11-21",
+      "score": 2,
+      "content": "손이 빠르셔서 빨리 진행해주시는 부분이 좋았어요 담에 이사할 때도 이용할게요~~"
     },
     {
       "id": 43,
-      "writer": "윤다은",
-      "createAt": "2024-11-22",
+      "writer": "정석종",
+      "createAt": "2024-11-21",
       "score": 5,
-      "content": "It was okay, but could be better."
+      "content": "시작부터 끝까지 친절하시고 열심히 해주셔서 너무 감사했어요!! 🥹🥹감동,, 방 네 칸에서 세칸 가정이사로 했고 견적받을 때 부터 다른 곳보다 가격이 합리적이고 친절하셨었어요! \n물건 옮기시고 가구 설치해주실 때도 엄청 꼼꼼하게 작업해 주셔서 마음 놓고 옆에서 놀았네요,,,하핫\n세 분이 와 주셨는데 다들 엄청 친절하셨습니다! 제가 20대 여자라 좀 걱정도 있었는데 전혀 문제 없이 이사 잘 마쳤어요. 사장님들 덕분에 잘 마무리했습니다~ 감사합니다~"
     },
     {
       "id": 44,
-      "writer": "박인우",
-      "createAt": "2024-11-19",
-      "score": 2,
-      "content": "Highly recommended! Very professional."
+      "writer": "강아은",
+      "createAt": "2024-11-23",
+      "score": 4,
+      "content": "후기가 좋아서 어느정도 기대하고 맡겼던 한신무빙! \n역시나 7팀이 와주셨고, 말하지 않아도 척척! \n말하지 않은 부분까지 해주셨어요!!\n\n35도 넘어가는 무더위에 에어컨은 설치 안되고...\n너무 힘들셨을텐데 계속 웃으면서 분위기 좋게 만들어주시고 냉장고 뒷판 열어서 먼지가 끼면 불이 날 수 있다며 이삿날 닦아야한다고 다 닦아주시고.... ㅠㅠ\n지방 사시는 엄마가 혹시 지방은 안와주시냐고... 너무너무 좋으시다고 극찬을 하고 가셨어요! \n\n팀웍 너무 좋으셔서 서로 여기! 하면 어! 하고 같이 일하시다 쿨하게 각자 방으로 찢어지시고.. ㅎ\n\n저는 냉장고 수평이 잘 맞아보이는데 갑자기 매의 눈으로 ‘이거 잠깐 다시보자’ 하시면 ‘어 그러네’ 하면서 다시 맞추시고.... 덥고 늦어짐에도 제대로 해주시려는 모습에 감동했어요ㅠㅠ!!! 그리고 이사와보니 특히 아이방.... 말씀 안드렸는데도 봉지 하나하나 꼼꼼하게 포장해주시고 소독도 더 많이 해주시고 가셨어요ㅠㅠ 애기방 커튼은 오늘 먼지 먹었으니 한번 빨아서 걸으라고 알려주시고....\n처음 내집마련해서 이사오면서 정말 좋은분들 만나서 감사하고 행복하게 이사했어요 만약에 또 이사를 가게된다면 꼭 7팀과 함께할래요❤️"
     },
     {
       "id": 45,
-      "writer": "조채윤",
-      "createAt": "2024-11-16",
+      "writer": "강은우",
+      "createAt": "2024-11-05",
       "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "content": "가장 합리적인 가격을 제시해주셨으며, 이사도 충분히 만족할만큼 빠르고 안전하게 옮겨 주셨습니다. 더 좋았던 부분은 저희 집에 엘지 오브제 가전 (워시타워, 냉장고)이 있는데 엘지  서비스 센터를 불렀으면, 정말 비싸게 옮겼을텐데 그 가전들을 아무 사고 없이 안전하게 옮겨 주셨습니다."
     },
     {
       "id": 46,
-      "writer": "서연우",
-      "createAt": "2024-11-15",
+      "writer": "정민혁",
+      "createAt": "2024-11-06",
       "score": 5,
-      "content": "It was okay, but could be better."
+      "content": "친절한상담\n빠른견적\n합리적인가격\n확실한설명\n칼같은작업\n다좋아요! 추천합니다!"
     },
     {
       "id": 47,
-      "writer": "강정우",
-      "createAt": "2024-11-23",
+      "writer": "강다은",
+      "createAt": "2024-12-01",
       "score": 5,
-      "content": "Great service and friendly staff!"
+      "content": "대구에서부산으로짐을옮기는데\n여러곳을찾다가 사장님이랑연결되어 진행하는과정에서 비용,친절한설명 다맘에들었어요~\n혹시업체선정에고민이신분,믿고진행하셔도 완전만족하실것같네요^^"
     },
     {
       "id": 48,
-      "writer": "신혜린",
-      "createAt": "2024-11-14",
-      "score": 5,
-      "content": "Excellent service! Will use again."
+      "writer": "장하준",
+      "createAt": "2024-11-19",
+      "score": 1,
+      "content": "이사 많이 해봤는데 깔끔하고 조심스럽게 운반해주셔서 감사했습니다. "
     },
     {
       "id": 49,
-      "writer": "홍아은",
-      "createAt": "2024-11-29",
-      "score": 3,
-      "content": "Highly recommended! Very professional."
+      "writer": "조우현",
+      "createAt": "2024-11-13",
+      "score": 5,
+      "content": "이사 잘 마쳤습니다~고맙습니다💜"
     },
     {
       "id": 50,
-      "writer": "강건우",
-      "createAt": "2024-11-23",
-      "score": 5,
-      "content": "Highly recommended! Very professional."
+      "writer": "서수아",
+      "createAt": "2024-12-03",
+      "score": 4,
+      "content": "3월 15일 아침 8시에 반포장 이사 도와주셨습니다. 남성 두 분이서 빠르고 확실하게 해주셨습니다. 제가 많이 못 도와드리기도 했고 고생 많이 해주셔서 2만원 더 드렸는데 전혀 아깝지 않네요 번창하세요"
     },
     {
       "id": 51,
-      "writer": "신우진",
-      "createAt": "2024-11-20",
+      "writer": "장민재",
+      "createAt": "2024-11-24",
       "score": 5,
-      "content": "Excellent service! Will use again."
+      "content": "견적도 잘봐주시고  친절한 직원들 덕분에 \n이사 후 정리할 물건들이  별로 없었습니다.\n다음에 이사한다면 또 문의드리고 싶어요~"
     },
     {
       "id": 52,
-      "writer": "김민정",
-      "createAt": "2024-11-29",
-      "score": 4,
-      "content": "Not satisfied with the overall experience."
+      "writer": "오민지",
+      "createAt": "2024-11-16",
+      "score": 5,
+      "content": "저번주 금요일날 이사하고 지금 후기 남깁니다\n개인사정으로 와이프와 아기하고 10개월 동안 떨어져서 살고 이사했습니다. 잠시 떨어져 짐이 많지 않은거 같아서 쉽게 생각했는데 생각보다 짐이 많아서 고수님이 고생하셨어요.  그럼에도 꼼꼼하고 편하고 친절하게 장거리 이사 잘 마무리 해주셔서 감사합니다. \n다음에 원룸 소형 이사 필요하면 무조건 추천입니다^^"
     },
     {
       "id": 53,
-      "writer": "조강현",
-      "createAt": "2024-11-29",
+      "writer": "박태민",
+      "createAt": "2024-11-14",
       "score": 1,
-      "content": "Great service and friendly staff!"
+      "content": "처음 예상했던 짐보다 많이서 우리도 당황했네요.  그래도 끝까지 책임있고 안전한 이사 진행해 주셔서 매우 만족하고 감사하게 생각합니다. 더욱 번창하시길 바랍니다!!!"
     },
     {
       "id": 54,
-      "writer": "홍종민",
-      "createAt": "2024-11-27",
-      "score": 4,
-      "content": "It was okay, but could be better."
+      "writer": "강예지",
+      "createAt": "2024-11-05",
+      "score": 3,
+      "content": "여러모로 다 좋았습니다"
     },
     {
       "id": 55,
-      "writer": "조채윤",
-      "createAt": "2024-11-28",
-      "score": 3,
-      "content": "Great service and friendly staff!"
+      "writer": "김소현",
+      "createAt": "2024-11-24",
+      "score": 5,
+      "content": "너무 깔끔하게 정리해주시고 짐도 엄청 빠르게 잘 옮겨주셔서 감사합니다. 덕분에 새로운 곳에서 즐겁게 시작할수 있을 것 같아요. 오늘 너무 감사합니다!"
     },
     {
       "id": 56,
-      "writer": "홍다윤",
-      "createAt": "2024-11-17",
+      "writer": "박종석",
+      "createAt": "2024-11-14",
       "score": 5,
-      "content": "It was okay, but could be better."
+      "content": "만족입니다!\n경유지가 있었는데도 불구하고 약속한 시간보다도 먼저 오셔서 짐을 친절하게 날라주셨어요!\n\n원룸이사였지만 짐이 좀 되었는데 깔끔하게 해주셔서 감사했습니다"
     },
     {
       "id": 57,
-      "writer": "오다윤",
-      "createAt": "2024-11-07",
-      "score": 4,
-      "content": "Highly recommended! Very professional."
+      "writer": "이정우",
+      "createAt": "2024-11-06",
+      "score": 5,
+      "content": "전보다 좁은 공간으로 이사했지만 소유한 가구들이 잘 배치될 수 있도록 안내해 주셔서 깔끔하게 이사할 수 있었습니다. 이사하시는 분들은 주저하지 마시고 계약 서두르세요! "
     },
     {
       "id": 58,
-      "writer": "김유나",
-      "createAt": "2024-11-05",
-      "score": 4,
-      "content": "Not satisfied with the overall experience."
+      "writer": "홍아린",
+      "createAt": "2024-11-10",
+      "score": 5,
+      "content": "2024.2.6. 허황된 약속은 안 하시고, 정확하게 가능한 것과 불가능한 것, 집주인이 해야할 일 이해되도록 명쾌하게 설명/요청하심 (예: LG워시타워는 LG전자에 분리, 설치 요청해야 함. 이전은 해 주심. 일룸 모션베드 분리, 설치는 자체적으로 가능, 이사 가는 곳에 사다리차 주차 공간은 집주인이 확보해 줄 것 등)\n숨막히게 좁은 집에서 이사 나오는데 모션 베드 두 개 분리하는 일손이 필요해서 성인 남자분 3, 여자분 1분 오셨어요. 발 디딜 틈 없는 상황에서도 다들 강아지 걸리적거린다 안 하시고 예뻐해 주시며 다치지 않게 잘 안고 있으라고 하심.\n넓은 집으로 이사 가서 좋다고 진심으로 축하해 주시고, 추가 요금 전혀 요구하지 않으시고, 너무나 프로페셔널하게 일해 주셨어요. \n뭐든 미심쩍은 거 하나도 없게 소상히 일러 주시는 점 최고!  처음에 1톤 트럭 조그만 거 온다고 하셔서 예약해 놓고 걱정했는데, 오히려 먼저 살던 집 주차장에는 그런 트럭이 더 좋았어요. 이웃에 피해 최소화!!\n여기서는 사장님 성함으로 등록되어 있는데 회사 이름이 \"짐도리.\" 짐도리라고 써있는 노란 트럭 너무 귀여웠어요.\n사장님, 진심으로 감사했습니많이 많이 번창하세요."
     },
     {
       "id": 59,
-      "writer": "장영준",
-      "createAt": "2024-11-15",
-      "score": 4,
-      "content": "Excellent service! Will use again."
+      "writer": "임나연",
+      "createAt": "2024-11-09",
+      "score": 1,
+      "content": "지난달 말에 이사했는데 날씨가 생각보다 더웠는데 정말 팀웍 잘 맞춰서 빠르게 잘 해주셨어요 꼼꼼하시기도 하고 사장님이 젊으신대도 경력이 꽤 되시는거 같네요"
     },
     {
       "id": 60,
-      "writer": "윤동현",
-      "createAt": "2024-11-22",
-      "score": 2,
-      "content": "Excellent service! Will use again."
+      "writer": "윤현준",
+      "createAt": "2024-11-08",
+      "score": 5,
+      "content": "짐이 많았는데 정말순식간에 옮겨주셨어요. 가구 사이벌어진 틈이있었는데 교정도 해주시고..친절하시고 꼼꼼하신 분이셔서 너무너무 좋았습니다. 계단만 있는 5층이라 이사가 막막했는데 진짜 고생하셨는데도 짜증한번 없으시고 웃어주시면서 옮겨주셨어요. 다음번 이사갈때도 선생님께 맡길 예정입니다. 진짜 별5개 넘치도록 만족스러운 이사였습니다.감사합니다~!!"
     },
     {
       "id": 61,
-      "writer": "김현서",
-      "createAt": "2024-11-06",
-      "score": 3,
-      "content": "Highly recommended! Very professional."
+      "writer": "정채은",
+      "createAt": "2024-11-29",
+      "score": 5,
+      "content": "친절하게 잘해 주셔서 감사합니다"
     },
     {
       "id": 62,
-      "writer": "이혜린",
-      "createAt": "2024-11-09",
-      "score": 1,
-      "content": "Not satisfied with the overall experience."
+      "writer": "신은우",
+      "createAt": "2024-11-13",
+      "score": 4,
+      "content": "친절하시고 시간 잘 지키셔서 오셔서 별다른 불편함 못느꼈던 거 같아요 수고하셨습니다."
     },
     {
       "id": 63,
-      "writer": "정은종",
+      "writer": "최채윤",
       "createAt": "2024-11-28",
-      "score": 2,
-      "content": "It was okay, but could be better."
+      "score": 5,
+      "content": "이사후에 확인해보니 자전거 차임벨이 파손 되었네요\n이사간 사장님이 한숨을 좀 쉬는 모습이 불편했습니다"
     },
     {
       "id": 64,
-      "writer": "최진주",
-      "createAt": "2024-11-08",
-      "score": 5,
-      "content": "Great service and friendly staff!"
+      "writer": "조보라",
+      "createAt": "2024-11-18",
+      "score": 4,
+      "content": "너무 착한가격에 친절하시고 ㅜㅜ 운반도 빠르셔요ㅠㅠ 짐 옮길일 있으면 이분한테만 맡기고 싶네요 감사합니다 ㅎㅎ!!"
     },
     {
       "id": 65,
-      "writer": "윤서현",
-      "createAt": "2024-11-10",
-      "score": 4,
-      "content": "Highly recommended! Very professional."
+      "writer": "이태윤",
+      "createAt": "2024-11-25",
+      "score": 5,
+      "content": "빠르고 친절하게 해주셔서 감사합니다"
     },
     {
       "id": 66,
-      "writer": "윤강현",
-      "createAt": "2024-11-19",
+      "writer": "신채은",
+      "createAt": "2024-12-03",
       "score": 5,
-      "content": "Excellent service! Will use again."
+      "content": "사장님 집처럼 꼼꼼하게 뒷 마무리까지 잘해주셔서 정말 감사했습니다!!! \n정실장 이사 진짜 강추입니다⭐️⭐️⭐️⭐️⭐️"
     },
     {
       "id": 67,
-      "writer": "정다연",
-      "createAt": "2024-11-25",
-      "score": 4,
-      "content": "It was okay, but could be better."
+      "writer": "한은비",
+      "createAt": "2024-11-10",
+      "score": 5,
+      "content": "깔끔하게 완벽하게 이사완료 해주셨습니다!\n다음에 이사할때도 부탁드려요~"
     },
     {
       "id": 68,
-      "writer": "김수혁",
-      "createAt": "2024-11-07",
+      "writer": "이영준",
+      "createAt": "2024-11-29",
       "score": 4,
-      "content": "Great service and friendly staff!"
+      "content": "견적부터 이용자 입장을 고려해서 상황에 맞게 절충해 주시더니, 이사 당일엔 엄청난 팀웤에서만 나올 수 있는 일사분란함으로 매우 이른 시간에 마무리 되었습니다. 작업 후엔 딱히 손댈 것이 없을 정도로 완벽합니다. 지저분했던 냉장고랑 싱크대도 깔끔하게 정리가 잘 되어 있네요. 감사합니다. 다음 이사도 예약~"
     },
     {
       "id": 69,
-      "writer": "한다윤",
-      "createAt": "2024-11-07",
+      "writer": "강서희",
+      "createAt": "2024-11-20",
       "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "content": "오늘 이사했는데 손도 정말 빠르시고 친절하셔서 대만족이예요~~ 정말 정말 감사합니다 다음에 이사하면 또 연락 드릴게요~~!!"
     },
     {
       "id": 70,
-      "writer": "이다인",
-      "createAt": "2024-11-25",
+      "writer": "이시현",
+      "createAt": "2024-11-07",
       "score": 5,
-      "content": "Great service and friendly staff!"
+      "content": "처음 상담부터 가장 친절하셨습니다.\n짐이 생각보다 많아서 예상보다 박스가 많아졌는데도 잘 포장해주셨어요. \n혼자 대부분 다 작업해주셔서 너무 죄송했습니다. 이사 잘 마무리하게 도와주셔서 감사합니다!"
     },
     {
       "id": 71,
-      "writer": "장수현",
-      "createAt": "2024-11-12",
-      "score": 1,
-      "content": "Not satisfied with the overall experience."
+      "writer": "임민준",
+      "createAt": "2024-11-27",
+      "score": 5,
+      "content": "화곡동 투룸이사 고수님 통해서 진행했습니다 ! 까다로운 부분도 세심하게 진행해주시고, 새로 티비 및 커튼도 가능한지 검토해주신 다음 설치 해주셔서 너무 감사했어요. 첫 이사여서 걱정했는데 정말 만족스러운 이사였습니다 ~! \n감사합니다 ^^"
     },
     {
       "id": 72,
-      "writer": "이유준",
-      "createAt": "2024-11-11",
-      "score": 1,
-      "content": "Excellent service! Will use again."
+      "writer": "김시우",
+      "createAt": "2024-11-23",
+      "score": 4,
+      "content": "이사도 5시간 내로 진행해주시고\n정말 저희와 소통을 많이해주셨어요\n감사해요 앞으로 더더욱 많이 번창하시길 바랄게요"
     },
     {
       "id": 73,
-      "writer": "서지원",
-      "createAt": "2024-12-02",
+      "writer": "강성준",
+      "createAt": "2024-11-22",
       "score": 5,
-      "content": "It was okay, but could be better."
+      "content": "비도오고 날이 많이 안좋았는데 아침일찍부터 부지런히 움직이셔서 이사도 깔끔하게 빨리 끝나고 일하시는분들 짜증없이 밝은 모습으로 친절하게 응대해주시면서 마무리도 잘해주셨네요\n너무 감사하고 숨은 고수로 인정하며 다음분들께도 적극 추천해드립니다."
     },
     {
       "id": 74,
-      "writer": "신하은",
-      "createAt": "2024-11-16",
+      "writer": "이수빈",
+      "createAt": "2024-11-09",
       "score": 5,
-      "content": "Highly recommended! Very professional."
+      "content": "너무늦기리뷰남기는데\n여자혼자 짐들기힘들다하니 흔쾌히 응해주셨고\n친절했어요 또 이용할거에요~"
     },
     {
       "id": 75,
-      "writer": "정지윤",
-      "createAt": "2024-11-19",
-      "score": 5,
-      "content": "Excellent service! Will use again."
+      "writer": "임연우",
+      "createAt": "2024-11-28",
+      "score": 4,
+      "content": "친절했으면 좋겠고, 편하게 이사하고 싶고, 하나하나 신경 쓰기도 싫고, 꼼꼼하게 짐 정리를 원하는 사람은 이곳에 맡기면 정말 후회 없습니다. 이사하면 콜24이사몰이에요. 정말 추천드립니다. 진짜 후회없는 선택입니다. \n\n생각보다 짐이 너무 많았는데 꼼꼼하게 싸주셨어요.\n이사짐을 옮기는데 갑자기 비가와서 너무 고생 많으셨어요. 이사할 수 있도록 도와주셔서 너무 감사드립니다. "
     },
     {
       "id": 76,
-      "writer": "박채은",
-      "createAt": "2024-11-14",
-      "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "writer": "홍석종",
+      "createAt": "2024-12-01",
+      "score": 4,
+      "content": "냉장고 물건 붙박이장에 둬주셔서 음식 상하고 다흘러서 냄새나고 1주뒤에 방에서계속 냄새나서 알았네요.\n완성도가 떨어져요.포장속도는 빨랐어요"
     },
     {
       "id": 77,
-      "writer": "신승민",
-      "createAt": "2024-11-25",
-      "score": 4,
-      "content": "It was okay, but could be better."
+      "writer": "이건우",
+      "createAt": "2024-11-27",
+      "score": 2,
+      "content": "명절 초입이라 갑자기 이사 결정해서 급하게 연락드렸음에도 친절하고 빠르게 진행해주셔서 너무 감사드립니다. 짐싸고 정리하시는 것도 더운 날씨에도 불구하고 세심하고 꼼꼼하게 진행해 주셔서 주변에도 추천해 드려야겠네요. 다시 한번 감사드립니다~^^"
     },
     {
       "id": 78,
-      "writer": "장수현",
-      "createAt": "2024-11-20",
+      "writer": "윤주원",
+      "createAt": "2024-11-17",
       "score": 4,
-      "content": "Great service and friendly staff!"
+      "content": "덕분에 이사 잘 마쳤어요. 비도 왔었는데 정말 고생 많으셨습니다."
     },
     {
       "id": 79,
-      "writer": "신은비",
-      "createAt": "2024-11-25",
-      "score": 4,
-      "content": "Highly recommended! Very professional."
+      "writer": "김태민",
+      "createAt": "2024-11-21",
+      "score": 1,
+      "content": "저희가 준비가 완벽하지않아서 일반에서 거의 포장이사 진행해주셧는데 너무 친절하게 이사 잘마무리 도와주셧어요:) 너무감사드립니다! 덕분에 이사 잘마쳤습니다! \n\nAmazing service! Super friendly, hard working, great prices and very experienced :) Highly recommend and will use again!"
     },
     {
       "id": 80,
-      "writer": "정인우",
-      "createAt": "2024-11-27",
-      "score": 5,
-      "content": "Highly recommended! Very professional."
+      "writer": "윤윤아",
+      "createAt": "2024-11-08",
+      "score": 3,
+      "content": "이름에 맞게 착한이사 잘했습니다."
     },
     {
       "id": 81,
-      "writer": "임리나",
-      "createAt": "2024-11-26",
-      "score": 2,
-      "content": "Great service and friendly staff!"
+      "writer": "최희준",
+      "createAt": "2024-11-23",
+      "score": 5,
+      "content": "좋은 가격에 시간약속 잘지켜주셨고, 작업속도도 매우 빠르세요 추천합니다~"
     },
     {
       "id": 82,
-      "writer": "한종현",
-      "createAt": "2024-11-23",
+      "writer": "신예은",
+      "createAt": "2024-11-06",
       "score": 5,
-      "content": "Not satisfied with the overall experience."
+      "content": "작업 시간도 빠르게 척척 진행됐고 당일에 연락드렸는데 시간 조정도 빠르게 해주셔서 감사했어요 ㅎ 추천드립니다!!"
     },
     {
       "id": 83,
-      "writer": "정우빈",
-      "createAt": "2024-11-25",
-      "score": 3,
-      "content": "Excellent service! Will use again."
+      "writer": "박예지",
+      "createAt": "2024-11-27",
+      "score": 2,
+      "content": "친절하시고 만족했어요~꾸벅"
     },
     {
       "id": 84,
-      "writer": "오혜린",
-      "createAt": "2024-11-19",
-      "score": 5,
-      "content": "It was okay, but could be better."
+      "writer": "강예준",
+      "createAt": "2024-11-21",
+      "score": 4,
+      "content": "토요일 오전부터 오후까지 깔끔하게 해주셨습니다"
     },
     {
       "id": 85,
-      "writer": "홍지윤",
-      "createAt": "2024-11-22",
+      "writer": "한지윤",
+      "createAt": "2024-11-07",
       "score": 5,
-      "content": "Highly recommended! Very professional."
+      "content": "기사님 너무 친절하시고 꼼꼼하셔서 소형이사 만족스럽게 했습니다!!\n오후시간대에 예약이라 늦은시간까지 고생많으셨습니다! 주변에 추천하고싶을 정도로 좋았습니다:) 감사합니다"
     },
     {
       "id": 86,
-      "writer": "홍우빈",
-      "createAt": "2024-11-10",
+      "writer": "임지아",
+      "createAt": "2024-11-29",
       "score": 5,
-      "content": "It was okay, but could be better."
+      "content": "완벽한 이사였습니다. 사실 이사날 제가 급 몸살이 세게와서 약속 전 오전부터 약먹고 몸 컨트롤을 엄청 했어요ㅠ 제가 약속에 민감하기때문에 최종약속에서 흐트러지거나 미뤄지는걸 너무 싫어해서 미리미리 아프지만 이사할 짐을 미리 챙겨놨어요. 약속한 시간보다 일찍 도착주셨는데 주차이슈때문에 실제로 편한 움직임의 두배정도 힘드셨던거같아요. 저희집 주차가 지하에 위치해있어서 불편하셨던거같은데 도와드리고 싶었지만 저 편하게 해주셨고, 설명도 잘 해주셨어요. \n다른곳보다 가격도 1-2만원 더 저렴했는데 박스제공은 똑같았습니다. 물론 위치나 지리적에따라 다를수도있지만\n충분하게\n제가 짐이 어느정도다, 주방 욕실제품은 전혀 없다 이런 세밀한 조건을 알려드려서 그런거같아요. \n\n기존제한 박스보다 제가 짐이 적게나오기도 했습니다. \n\n무엇보다 너무 친절하세요. \n\n물건이 이렇게 담아지면 어떤지 설명해주셨는데\n\n어차피 짐 옮기고 다시 정리할거라\n잠시 옮겨지는거기때문에 딱히 저는 게의치않았네여\n\n\n\n너무 편리해서 다음에도 저는 여기로 이용하려고 합니다."
     },
     {
       "id": 87,
-      "writer": "정종석",
-      "createAt": "2024-11-14",
-      "score": 3,
-      "content": "Not satisfied with the overall experience."
+      "writer": "박은우",
+      "createAt": "2024-11-05",
+      "score": 4,
+      "content": "엄청 꼼꼼하게 봐주시고 하나하나 섬세하게 포장해주셨어요!\n제가 바로 이사가 아니여서 짐보관했다 이사하는데 진짜 꼼꼼하게 해주셔서 감동! 다음에 또 이용할께요!"
     },
     {
       "id": 88,
-      "writer": "장나래",
-      "createAt": "2024-12-01",
-      "score": 4,
-      "content": "Excellent service! Will use again."
+      "writer": "박지민",
+      "createAt": "2024-11-10",
+      "score": 2,
+      "content": "덕분에 이사 잘 마쳤습니다 감사합니다 !!"
     },
     {
       "id": 89,
-      "writer": "박채원",
-      "createAt": "2024-11-11",
+      "writer": "정지후",
+      "createAt": "2024-12-01",
       "score": 5,
-      "content": "Great service and friendly staff!"
+      "content": "오늘 덕분에 석촌호수 미켈란으로 이사 완료하였습니다 .가족같은 직원 분위기에 역할분담도정해져있어서 빠른 시간 내에 잘 왔습니다 사장님이 경력 또한 화려하셔서 그런지 시간약속부터 철저하시고  이사짐 전문가 느낌이십니다 믿고 선택하셔도 됩니다 오늘따라 석촌호수가 더 빛나네요 감사합니다 "
     },
     {
       "id": 90,
-      "writer": "강은비",
-      "createAt": "2024-11-28",
-      "score": 5,
-      "content": "Great service and friendly staff!"
+      "writer": "김채은",
+      "createAt": "2024-11-12",
+      "score": 2,
+      "content": "덕분에 빠르고 안전하게 이사했습니다\n가구도 상처하나없이 옮겨와서 기분이 상당히 좋네요\n견적냈던 그대로해서 그것도 좋았습니당\n음료하나 드렸는데 두고가셨네요 ㅠㅠ\n다음번에 두배로 드릴게요!"
     },
     {
       "id": 91,
-      "writer": "조원준",
-      "createAt": "2024-12-01",
+      "writer": "윤은비",
+      "createAt": "2024-11-06",
       "score": 5,
-      "content": "It was okay, but could be better."
+      "content": "덕분에 이사 잘 마쳤습니다. 감사합니다.^^"
     },
     {
       "id": 92,
-      "writer": "신현성",
-      "createAt": "2024-11-17",
-      "score": 3,
-      "content": "Excellent service! Will use again."
+      "writer": "조수현",
+      "createAt": "2024-11-15",
+      "score": 5,
+      "content": "2.5톤 트럭이 생각보다 큰 것 도 있는데 엄청 빠르고 깔끔하게 작업하셔서 너무 만족도가 컸습니다"
     },
     {
       "id": 93,
-      "writer": "신서현",
-      "createAt": "2024-11-21",
-      "score": 4,
-      "content": "Highly recommended! Very professional."
+      "writer": "최하준",
+      "createAt": "2024-11-19",
+      "score": 5,
+      "content": "이번에 정릉동으로 일주일 보관 이사를 했어요~~~10군데 넘게 비교견적과 금액도 중요하지만 친절과 서비스도 중요하기에 심사숙고하여 미스터빽 고수님을 통해서 진행 했습니다 친절 하시고 꼼꼼하게 처음부터 끝까지 미소로써 마무리까지 잘 해주셔서 감사합니다 미스터빽 고수님 믿고 맡기셔도 됩니다 200프로 만족합니다 감사합니다 ^^"
     },
     {
       "id": 94,
-      "writer": "윤석종",
-      "createAt": "2024-11-27",
-      "score": 4,
-      "content": "Not satisfied with the overall experience."
+      "writer": "신채원",
+      "createAt": "2024-11-10",
+      "score": 3,
+      "content": "이 업체로 이사 진행하기 너무 잘 한것 같아요!!\n심적으로 심란한 상황인데도 안정감있게 해주셔서 오히려 위로받으며 편하게 진행했어요~\n정말 꼼꼼하셔서 정리와 마무리까지 뭐 하나 불만감 없이 이사했습니다~!\n강아지들 키우고 있어서 먼지와 털들이 엄청 많았는데 다 닦고 털어주시고, 가구 배치도 더 효율적이고 예쁘게 상의해주셔서 또 감동이었습니다!\n가전제품도 전문업체를 부르지 않아도 될 정도로 세심하게 설치해주셨어요~! \n덕분에 유연하게 잘 이사했습니다! 감사합니다~"
     },
     {
       "id": 95,
-      "writer": "장서현",
-      "createAt": "2024-11-07",
-      "score": 2,
-      "content": "Not satisfied with the overall experience."
+      "writer": "장우진",
+      "createAt": "2024-11-13",
+      "score": 1,
+      "content": "별점이 왜 한개부터죠? 0.5개도 아깝네요\n고수님을 잘 설명하는 문장은 왜 고르라하며 왜 안고르니 안넘어가죠? 하.. 그리고 여기 리뷰 다 주작인가요?\n저희가 이사 갈 집이 공사도 있고 하자도 자꾸 발견되어서 여러번 변경하게 된건 죄송합니다\n근데 중간에 사장님네 차도 고장났다고 시간 미뤄지더니 결국 날짜 변경됐죠? 그걸로 저희도 피해봤는데 저희 때문에 본 피해가 더 크다며 오늘 11시에 오기로 해놓고\n갑자기 12시 30분으로 미루더니 점심 먹고 2시에 온다구요? 출근도 못하고 기다린 저희는요?\n그러더니 저희가 불만 내색 했다고 갑자기 안한다고요?\n일 그렇게 하지마세요. 리뷰가 좋길래 했는데 리뷰 믿을게 못된다고 생각이 드네요.\n사장님 덕분에 일정 또 꼬였고 출근도 못하게 되고 참 감사합니다^_^ 오늘 하필 고객센터가 휴무라 다행이라고 생각하세요. 월요일에 고객센터 전화해서 어떻게든 해볼게요. \n일 그렇게 책임감 없이 하세요.\n********거래전 리뷰 확인 꼭 하시길 바라는 마음에, 저희 같은 피해자 더이상 발생하지말라고 남깁니다***********"
     },
     {
       "id": 96,
-      "writer": "최현준",
-      "createAt": "2024-11-20",
-      "score": 5,
-      "content": "Great service and friendly staff!"
+      "writer": "이경준",
+      "createAt": "2024-11-13",
+      "score": 2,
+      "content": "어떤점이 좋았다 설명하기보다 다 너무 완벽하구 신속하게 해주셔서 너무 좋았어요! 가격두 맞춰주시고 감사합니다!"
     },
     {
       "id": 97,
-      "writer": "신지원",
+      "writer": "오보라",
       "createAt": "2024-11-05",
       "score": 5,
-      "content": "It was okay, but could be better."
+      "content": "모두 친절하게 잘 응대해주십니다~!\n덕분에 이사 잘했습니다😊"
     },
     {
       "id": 98,
-      "writer": "한소율",
-      "createAt": "2024-11-16",
-      "score": 4,
-      "content": "Highly recommended! Very professional."
+      "writer": "신윤우",
+      "createAt": "2024-11-24",
+      "score": 5,
+      "content": "왜 3개밖에 선택이 안 되는지 모르겠는데 정말 만족스러웠어요!\n경기도-부산 장거리 이사여서 다른 곳들과 비교해보고 결정했는데, 여기만큼 저렴한 곳이 없었어요!\n이사 날짜가 두 번이나 바뀌었는데도 친절하게 상담해 주시고, 이사 당일에도 너무 꼼꼼하고 신속하게 잘 옮겨주셔서 감사했어요 ㅎㅎ 짐 옮기는 거만 30분 정도? 1시간도 안 걸렸던 것 같아요!\n부산 내려가는 동안 사장님이 먼저 도착하셔서 얼른 달려갈 정도로 시간도 정말 칼 같이 잘 지켜주셨습니다! 침대 프레임이나 매트리스같은 무거운 짐들도 안전하게 잘 옮겨주셨어요!\n다음에 이사할 일 있으면 사장님께 또 의뢰하고 싶을 정도로 너무 만족스러웠습니다 :)\n사장님 번창하세요 🥰"
     },
     {
       "id": 99,
-      "writer": "윤서준",
-      "createAt": "2024-11-24",
-      "score": 5,
-      "content": "Excellent service! Will use again."
+      "writer": "임현우",
+      "createAt": "2024-11-12",
+      "score": 2,
+      "content": "비오는날 이사여서 너무 고생하셨는데\n한시간이나 미리오셔서 현장체크하시고\n친절하지만 전문적으로 차분하면서 꼼꼼허게 잘 진행해주셨어요 이사가 정말\n엄청나게 부담스러운일인데 덕분에 잘 마무리 된거 같아 아주 홀가분했어요\n다음에 또 이사할때도 도와주세요~\n너무 감사했습니다~"
     },
     {
       "id": 100,
-      "writer": "임석종",
-      "createAt": "2024-11-05",
-      "score": 4,
-      "content": "Not satisfied with the overall experience."
+      "writer": "한현준",
+      "createAt": "2024-11-14",
+      "score": 2,
+      "content": "근처로 집기 이동했는데,,\n친절,열씸,깔끔\n120% 만족 했어요 ^^\n번창하시길 바래요 ~~"
     }
   ]
 }

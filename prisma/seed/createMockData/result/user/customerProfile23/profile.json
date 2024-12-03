@@ -1,10 +1,10 @@
 {
-  "id": 26,
-  "userId": 37,
+  "id": 27,
+  "userId": 45,
   "profileImage": "",
-  "serviceType": "HOUSE",
-  "region": "DAEJEON",
+  "serviceType": "OFFICE",
+  "region": "DAEGU",
   "User": {
-    "name": "장석종"
+    "name": "최경민"
   }
 }
