@@ -163,6 +163,46 @@ async function findManyByPaginationData<T extends UserSelectType | undefined>({
   });
 }
 
+//findManyData
+function findManyData<T extends UserSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: UserWhereInputType;
+  select: T;
+  orderBy?: UserOrderByType;
+}): Promise<UserPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: UserWhereInputType;
+  orderBy?: UserOrderByType;
+}): Promise<UserPayload<undefined>[]>;
+
+async function findManyData<T extends UserSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: UserWhereInputType;
+  select?: T;
+  orderBy?: UserOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.user.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.user.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends UserSelectType>({
   where,
@@ -209,4 +249,6 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };
+

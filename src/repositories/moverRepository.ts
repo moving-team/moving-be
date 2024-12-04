@@ -232,6 +232,46 @@ async function findManyAllData<T extends MoverSelectType | undefined>({
   });
 }
 
+//findManyData
+function findManyData<T extends MoverSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: MoverWhereInputType;
+  select: T;
+  orderBy?: MoverOrderByType;
+}): Promise<MoverPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: MoverWhereInputType;
+  orderBy?: MoverOrderByType;
+}): Promise<MoverPayload<undefined>[]>;
+
+async function findManyData<T extends MoverSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: MoverWhereInputType;
+  select?: T;
+  orderBy?: MoverOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.mover.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.mover.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 export default {
   createData,
   findFirstData,
@@ -241,4 +281,5 @@ export default {
   updateData,
   deleteData,
   findManyAllData,
+  findManyData
 };

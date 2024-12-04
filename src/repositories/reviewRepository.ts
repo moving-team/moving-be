@@ -164,6 +164,46 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends ReviewSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: ReviewWhereInputType;
+  select: T;
+  orderBy?: ReviewOrderByType;
+}): Promise<ReviewPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: ReviewWhereInputType;
+  orderBy?: ReviewOrderByType;
+}): Promise<ReviewPayload<undefined>[]>;
+
+async function findManyData<T extends ReviewSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: ReviewWhereInputType;
+  select?: T;
+  orderBy?: ReviewOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.review.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.review.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends ReviewSelectType>({
   where,
@@ -210,4 +250,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };

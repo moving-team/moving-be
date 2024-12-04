@@ -160,6 +160,46 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends MovingInfoSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: MovingInfoWhereInputType;
+  select: T;
+  orderBy?: MovingInfoOrderByType;
+}): Promise<MovingInfoPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: MovingInfoWhereInputType;
+  orderBy?: MovingInfoOrderByType;
+}): Promise<MovingInfoPayload<undefined>[]>;
+
+async function findManyData<T extends MovingInfoSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: MovingInfoWhereInputType;
+  select?: T;
+  orderBy?: MovingInfoOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.movingInfo.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.movingInfo.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends MovingInfoSelectType>({
   where,
@@ -206,4 +246,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };
