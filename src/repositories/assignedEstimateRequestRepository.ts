@@ -176,6 +176,46 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends AssignedEstimateReqSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: AssignedEstimateReqWhereInputType;
+  select: T;
+  orderBy?: AssignedEstimateReqOrderByType;
+}): Promise<AssignedEstimateReqPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: AssignedEstimateReqWhereInputType;
+  orderBy?: AssignedEstimateReqOrderByType;
+}): Promise<AssignedEstimateReqPayload<undefined>[]>;
+
+async function findManyData<T extends AssignedEstimateReqSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: AssignedEstimateReqWhereInputType;
+  select?: T;
+  orderBy?: AssignedEstimateReqOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.assignedEstimateRequest.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.assignedEstimateRequest.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends AssignedEstimateReqSelectType>({
   where,
@@ -222,4 +262,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };

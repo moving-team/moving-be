@@ -161,6 +161,46 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends NotificationSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: NotificationWhereInputType;
+  select: T;
+  orderBy?: NotificationOrderByType;
+}): Promise<NotificationPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: NotificationWhereInputType;
+  orderBy?: NotificationOrderByType;
+}): Promise<NotificationPayload<undefined>[]>;
+
+async function findManyData<T extends NotificationSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: NotificationWhereInputType;
+  select?: T;
+  orderBy?: NotificationOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.notification.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.notification.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends NotificationSelectType>({
   where,
@@ -207,4 +247,6 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };
+

@@ -160,6 +160,46 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends EstimateSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: EstimateWhereInputType;
+  select: T;
+  orderBy?: EstimateOrderByType;
+}): Promise<EstimatePayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: EstimateWhereInputType;
+  orderBy?: EstimateOrderByType;
+}): Promise<EstimatePayload<undefined>[]>;
+
+async function findManyData<T extends EstimateSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: EstimateWhereInputType;
+  select?: T;
+  orderBy?: EstimateOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.estimate.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.estimate.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends EstimateSelectType>({
   where,
@@ -206,4 +246,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };
