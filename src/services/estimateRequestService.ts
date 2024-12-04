@@ -1,12 +1,19 @@
+import estimateRepository from '../repositories/estimateRepository';
 import estimateRequestRepository from '../repositories/estimateRequestRepository';
 import movingInfoRepository from '../repositories/movingInfoRepository';
 import userRepository from '../repositories/userRepository';
 import { CreateEstimateReq } from '../structs/estimateRequest-struct';
-import { createEstimateReqMapper } from './mappers/estimateRequestMapper';
+import { checkIfMovingDateOver } from '../utils/dateUtil';
+import {
+  createEstimateReqMapper,
+  getestimateReqByNoConfirmed,
+} from './mappers/estimateRequestMapper';
 import {
   estimateReqCustomerSelect,
+  estimateReqMovingInfoSelect,
   estimateReqSelect,
 } from './selerts/estimateRequsetSelect';
+import { estimateMoverSelect } from './selerts/estimateSelect';
 import { movinginfoSelect } from './selerts/movingInfoSelect';
 import { userCustomerSelect } from './selerts/userSelect';
 
@@ -85,7 +92,61 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
   };
 }
 
+// 유저-견적 요청 조회
+async function findEstimateReq(userId: number) {
+  const user = await userRepository.findFirstData({
+    where: { id: userId },
+    select: userCustomerSelect,
+  });
+
+  // 유저가 소비자인지 기사인지 확인
+  if (!user?.Customer) {
+    throw new Error('소비자 전용 API 입니다.');
+  }
+
+  const estimateReq = await estimateRequestRepository.findFirstData({
+    where: {
+      customerId: user.Customer.id,
+    },
+    select: estimateReqMovingInfoSelect,
+  });
+
+  // 견적 요청이 있는지 확인
+  if (!estimateReq || !estimateReq.MovingInfo) {
+    throw new Error('견적 요청 내역이 없습니다.');
+  }
+
+  // 이사일이 지났는지 확인
+  const isMoveDateOver = checkIfMovingDateOver(
+    estimateReq.MovingInfo.movingDate
+  );
+
+  if (isMoveDateOver) {
+    throw new Error('견적 요청 내역이 없습니다.');
+  }
+
+  // 확정된 견적이 여부에 따른 response 변경
+  if (!estimateReq.isConfirmed) {
+    return getestimateReqByNoConfirmed(user.name, estimateReq);
+  } else if (estimateReq.isConfirmed) {
+    const confirmedEstimate = await estimateRepository.findFirstData({
+      where: {
+        estimateRequestId: estimateReq.id,
+        status: 'ACCEPTED',
+      },
+      select: estimateMoverSelect,
+    });
+    const resMapper = getestimateReqByNoConfirmed(user.name, estimateReq);
+    return {
+      ...resMapper,
+      nickname: confirmedEstimate?.Mover.nickname,
+      confirmedId: confirmedEstimate?.id,
+    };
+  }
+}
+
 export default {
   createEstimateReq,
   deleteEstimateReq,
+  findEstimateReq,
 };
