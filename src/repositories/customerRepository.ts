@@ -19,6 +19,8 @@ type CustomerWhereUniqueInputType = Prisma.CustomerWhereUniqueInput;
 
 type CustomerUpdateInputType = Prisma.CustomerUpdateInput;
 
+type CustomerOrderByType = Prisma.CustomerOrderByWithRelationInput;
+
 // createData
 function createData<T extends CustomerSelectType>({
   data,
@@ -53,29 +55,36 @@ async function createData<T extends CustomerSelectType | undefined>({
 function findFirstData<T extends CustomerSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: CustomerWhereInputType;
   select: T;
+  orderBy?: CustomerOrderByType;
 }): Promise<CustomerPayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: CustomerWhereInputType;
+  orderBy?: CustomerOrderByType;
 }): Promise<CustomerPayload<undefined> | null>;
 
 async function findFirstData<T extends CustomerSelectType | undefined>({
   where,
   select,
+  orderBy = { createdAt: 'desc' },
 }: {
   where: CustomerWhereInputType;
   select?: T;
+  orderBy?: CustomerOrderByType;
 }) {
   if (select === undefined) {
-    return await prisma.customer.findFirst({ where });
+    return await prisma.customer.findFirst({ where, orderBy });
   }
   return await prisma.customer.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 
@@ -151,6 +160,46 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends CustomerSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: CustomerWhereInputType;
+  select: T;
+  orderBy?: CustomerOrderByType;
+}): Promise<CustomerPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: CustomerWhereInputType;
+  orderBy?: CustomerOrderByType;
+}): Promise<CustomerPayload<undefined>[]>;
+
+async function findManyData<T extends CustomerSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: CustomerWhereInputType;
+  select?: T;
+  orderBy?: CustomerOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.customer.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.customer.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends CustomerSelectType>({
   where,
@@ -197,4 +246,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };
