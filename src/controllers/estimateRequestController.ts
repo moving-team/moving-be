@@ -28,6 +28,7 @@ async function createEstimateReq(
   }
 }
 
+// 견적 요청 삭제 API
 async function deleteEstimateReq(
   req: Request<{ estimateRequestId: string }, {}, {}>,
   res: Response,
@@ -47,7 +48,30 @@ async function deleteEstimateReq(
         id
       );
 
-      res.status(200).send(estimateReq);
+      res.send(estimateReq);
+    }
+
+    throw new Error('다시 시도해 주세요');
+  } catch (err) {
+    return next(err);
+  }
+}
+
+// 유저-견적 요청 조회 API
+async function findEstimateReq(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (
+      req.user &&
+      typeof req.user !== 'string' &&
+      typeof req.user.id === 'number'
+    ) {
+      const { id: userId } = req.user;
+      const estimateReq = await estimateRequestService.findEstimateReq(userId);
+      res.send(estimateReq);
     }
 
     throw new Error('다시 시도해 주세요');
@@ -59,4 +83,5 @@ async function deleteEstimateReq(
 export default {
   createEstimateReq,
   deleteEstimateReq,
+  findEstimateReq,
 };
