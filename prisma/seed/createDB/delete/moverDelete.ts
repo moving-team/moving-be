@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { resetMoverSequence } from '../util/resetSequence';
+import { resetMoverSequence } from '../../util/resetSequence';
 
 const prisma = new PrismaClient();
 

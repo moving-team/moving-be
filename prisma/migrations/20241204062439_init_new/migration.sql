@@ -1,13 +1,27 @@
+-- CreateEnum
+CREATE TYPE "userType" AS ENUM ('CUSTOMER', 'MOVER');
+
+-- CreateEnum
+CREATE TYPE "serviceRegion" AS ENUM ('NULL', 'SEOUL', 'GYEONGGI', 'INCHEON', 'GANGWON', 'CHUNGBUK', 'CHUNGNAM', 'SEJONG', 'DAEJEON', 'JEONBUK', 'JEONNAM', 'GWANGJU', 'GYEONGBUK', 'GYEONGNAM', 'DAEGU', 'ULSAN', 'BUSAN', 'JEJU');
+
+-- CreateEnum
+CREATE TYPE "serviceType" AS ENUM ('SMALL', 'HOUSE', 'OFFICE');
+
+-- CreateEnum
+CREATE TYPE "status" AS ENUM ('WAITING', 'ACCEPTED', 'REJECTED');
+
 -- CreateTable
 CREATE TABLE "user" (
     "id" SERIAL NOT NULL,
-    "user_type" TEXT NOT NULL,
+    "user_type" "userType" NOT NULL,
     "name" VARCHAR(10) NOT NULL,
     "email" VARCHAR(254) NOT NULL,
     "password" VARCHAR(60),
     "provider" TEXT,
     "provider_id" TEXT,
     "phone_number" VARCHAR(11) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "user_pkey" PRIMARY KEY ("id")
 );
@@ -21,9 +35,11 @@ CREATE TABLE "mover" (
     "career" INTEGER NOT NULL,
     "summary" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "service_region" INTEGER[],
-    "service_type" INTEGER[],
+    "service_region" "serviceRegion"[],
+    "service_type" "serviceType"[],
     "confirmation_count" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "mover_pkey" PRIMARY KEY ("id")
 );
@@ -33,8 +49,10 @@ CREATE TABLE "customer" (
     "id" SERIAL NOT NULL,
     "user_id" INTEGER NOT NULL,
     "profile_image" TEXT,
-    "service_type" INTEGER[],
-    "region" INTEGER NOT NULL,
+    "service_type" "serviceType"[],
+    "region" "serviceRegion" NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "customer_pkey" PRIMARY KEY ("id")
 );
@@ -42,10 +60,13 @@ CREATE TABLE "customer" (
 -- CreateTable
 CREATE TABLE "review" (
     "id" SERIAL NOT NULL,
+    "estimate_id" INTEGER NOT NULL,
     "customer_id" INTEGER NOT NULL,
     "mover_id" INTEGER NOT NULL,
     "score" INTEGER NOT NULL,
     "description" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "review_pkey" PRIMARY KEY ("id")
 );
@@ -53,10 +74,12 @@ CREATE TABLE "review" (
 -- CreateTable
 CREATE TABLE "moving_info" (
     "id" SERIAL NOT NULL,
-    "moving_type" INTEGER NOT NULL,
+    "moving_type" "serviceType" NOT NULL,
     "moving_date" TEXT NOT NULL,
     "departure" TEXT NOT NULL,
     "arrival" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "moving_info_pkey" PRIMARY KEY ("id")
 );
@@ -69,6 +92,8 @@ CREATE TABLE "estimate_requests" (
     "comment" TEXT,
     "is_confirmed" BOOLEAN NOT NULL DEFAULT false,
     "is_cancelled" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "estimate_requests_pkey" PRIMARY KEY ("id")
 );
@@ -79,7 +104,8 @@ CREATE TABLE "assigned_estimate_request" (
     "estimate_requests_id" INTEGER NOT NULL,
     "mover_id" INTEGER NOT NULL,
     "is_rejected" BOOLEAN NOT NULL DEFAULT false,
-    "rejection_reason" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "assigned_estimate_request_pkey" PRIMARY KEY ("id")
 );
@@ -92,10 +118,12 @@ CREATE TABLE "estimate" (
     "estimate_requests_id" INTEGER NOT NULL,
     "moving_info_id" INTEGER NOT NULL,
     "is_moving_complete" BOOLEAN NOT NULL DEFAULT false,
-    "status" INTEGER NOT NULL,
+    "status" "status" NOT NULL DEFAULT 'WAITING',
     "is_assigned" BOOLEAN NOT NULL DEFAULT false,
     "price" INTEGER NOT NULL,
     "comment" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "estimate_pkey" PRIMARY KEY ("id")
 );
@@ -105,6 +133,8 @@ CREATE TABLE "favorite" (
     "id" SERIAL NOT NULL,
     "customer_id" INTEGER NOT NULL,
     "mover_id" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "favorite_pkey" PRIMARY KEY ("id")
 );
@@ -117,6 +147,8 @@ CREATE TABLE "notification" (
     "assigned_estimate_request_id" INTEGER NOT NULL,
     "contents" TEXT NOT NULL,
     "is_read" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "notification_pkey" PRIMARY KEY ("id")
 );
@@ -125,13 +157,25 @@ CREATE TABLE "notification" (
 CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "mover_user_id_key" ON "mover"("user_id");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "mover_nickname_key" ON "mover"("nickname");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "customer_user_id_key" ON "customer"("user_id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "review_estimate_id_key" ON "review"("estimate_id");
 
 -- AddForeignKey
 ALTER TABLE "mover" ADD CONSTRAINT "mover_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "customer" ADD CONSTRAINT "customer_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "review" ADD CONSTRAINT "review_estimate_id_fkey" FOREIGN KEY ("estimate_id") REFERENCES "estimate"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "review" ADD CONSTRAINT "review_customer_id_fkey" FOREIGN KEY ("customer_id") REFERENCES "customer"("id") ON DELETE CASCADE ON UPDATE CASCADE;

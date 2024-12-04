@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { resetEstimateSequence } from "../util/resetSequence";
+import { resetEstimateSequence } from "../../util/resetSequence";
 
 const prisma = new PrismaClient();
 
