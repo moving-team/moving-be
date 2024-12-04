@@ -1,10 +1,9 @@
 import { PrismaClient } from '@prisma/client';
-import { getRandomRejectionReason } from '../generate/generateRejectReason';
 import * as fs from 'fs';
 
 const prisma = new PrismaClient();
 
-const createCount = 900;
+const createCount = 1500;
 
 type AssignedEstimateRequest = {
   estimateRequestId: number;
@@ -38,12 +37,10 @@ function getWeightedRandomMoverId(moverIds: number[]): number {
   return weightedMoverIds[randomIndex];
 }
 
-// 랜덤 유니크 ID 선택
-function getRandomUniqueId(availableIds: number[]): number {
+// 랜덤 견적 ID 선택
+function getRandomEstimateRequestId(availableIds: number[]): number {
   const randomIndex = Math.floor(Math.random() * availableIds.length);
-  const selectedId = availableIds[randomIndex];
-  availableIds.splice(randomIndex, 1); // 선택된 ID 제거
-  return selectedId;
+  return availableIds[randomIndex];
 }
 
 async function generateAssignedEstimateRequest(createCount: number): Promise<void> {
@@ -66,16 +63,12 @@ async function generateAssignedEstimateRequest(createCount: number): Promise<voi
     const moverIds = movers.map((mover) => mover.id);
     const availableEstimateRequestIds = estimateRequests.map((req) => req.id);
 
-    // 최대 생성 개수 조정
-    const adjustedCount = Math.min(createCount, availableEstimateRequestIds.length);
-
     // AssignedEstimateRequest 데이터 생성
     const assignedRequests: AssignedEstimateRequest[] = [];
-    for (let i = 0; i < adjustedCount; i++) {
-      const estimateRequestId = getRandomUniqueId(availableEstimateRequestIds); // 유니크 ID 선택
+    for (let i = 0; i < createCount; i++) {
+      const estimateRequestId = getRandomEstimateRequestId(availableEstimateRequestIds); // 랜덤 ID 선택
       const moverId = getWeightedRandomMoverId(moverIds); // 가중치 기반 MoverId 선택
       const isRejected = Math.random() <= 0.25; // 25% 확률로 거절
-      const rejectionReason = isRejected ? getRandomRejectionReason() : undefined;
 
       // 선택된 EstimateRequest의 createdAt 가져오기
       const estimateRequest = estimateRequests.find((req) => req.id === estimateRequestId);
@@ -88,7 +81,6 @@ async function generateAssignedEstimateRequest(createCount: number): Promise<voi
         estimateRequestId,
         moverId,
         isRejected,
-        rejectionReason,
         createdAt: getRandomFutureDate(new Date(estimateRequest.createdAt)),
       });
     }

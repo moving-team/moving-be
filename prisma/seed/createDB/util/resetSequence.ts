@@ -58,3 +58,16 @@ export async function resetMovingInfoSequence(startId: number) {
     console.log('Prisma client disconnected.');
   }
 }
+
+export async function resetEstimateSequence(startId: number) {
+  try {
+    console.log(`Resetting Mover ID sequence to start from ${startId}...`);
+    await prisma.$executeRawUnsafe(`ALTER SEQUENCE estimate_id_seq RESTART WITH ${startId}`);
+    console.log(`Mover ID sequence reset to start from ${startId}.`);
+  } catch (error) {
+    console.error('Error resetting sequence:', error);
+  } finally {
+    await prisma.$disconnect();
+    console.log('Prisma client disconnected.');
+  }
+}
