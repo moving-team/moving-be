@@ -47,7 +47,29 @@ async function deleteEstimateReq(
         id
       );
 
-      res.status(200).send(estimateReq);
+      res.send(estimateReq);
+    }
+
+    throw new Error('다시 시도해 주세요');
+  } catch (err) {
+    return next(err);
+  }
+}
+
+async function findEstimateReq(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (
+      req.user &&
+      typeof req.user !== 'string' &&
+      typeof req.user.id === 'number'
+    ) {
+      const { id: userId } = req.user;
+      const estimateReq = await estimateRequestService.findEstimateReq(userId);
+      res.send(estimateReq);
     }
 
     throw new Error('다시 시도해 주세요');

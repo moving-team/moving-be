@@ -127,8 +127,12 @@ async function findEstimateReq(userId: number) {
 
   // 확정된 견적이 여부에 따른 response 변경
   if (!estimateReq.isConfirmed) {
+    // 확정된 견적이 없을 시
+
     return getestimateReqByNoConfirmed(user.name, estimateReq);
   } else if (estimateReq.isConfirmed) {
+    // 확정된 견적이 있을 시
+
     const confirmedEstimate = await estimateRepository.findFirstData({
       where: {
         estimateRequestId: estimateReq.id,
