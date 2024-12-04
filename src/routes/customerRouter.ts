@@ -16,4 +16,8 @@ router
     .route('/info')
     .all(authenticateToken)
     .patch(customerController.patchCustomerInfoController);
+router
+    .route('/me')
+    .all(authenticateToken)
+    .get(customerController.getCustomerController);
 export default router;
