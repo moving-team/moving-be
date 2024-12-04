@@ -20,6 +20,8 @@ type EstimateReqWhereUniqueInputType = Prisma.EstimateRequestWhereUniqueInput;
 
 type EstimateReqUpdateInputType = Prisma.EstimateRequestUpdateInput;
 
+type EstimateReqOrderByType = Prisma.EstimateRequestOrderByWithRelationInput;
+
 // createData
 function createData<T extends EstimateReqSelectType>({
   data,
@@ -54,29 +56,36 @@ async function createData<T extends EstimateReqSelectType | undefined>({
 function findFirstData<T extends EstimateReqSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: EstimateReqWhereInputType;
   select: T;
+  orderBy?: EstimateReqOrderByType;
 }): Promise<EstimateReqPayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: EstimateReqWhereInputType;
+  orderBy?: EstimateReqOrderByType;
 }): Promise<EstimateReqPayload<undefined> | null>;
 
 async function findFirstData<T extends EstimateReqSelectType | undefined>({
   where,
   select,
+  orderBy = { createdAt: 'desc' },
 }: {
   where: EstimateReqWhereInputType;
   select?: T;
+  orderBy?: EstimateReqOrderByType;
 }) {
   if (select === undefined) {
-    return await prisma.estimateRequest.findFirst({ where });
+    return await prisma.estimateRequest.findFirst({ where, orderBy });
   }
   return await prisma.estimateRequest.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 
@@ -152,6 +161,46 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends EstimateReqSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: EstimateReqWhereInputType;
+  select: T;
+  orderBy?: EstimateReqOrderByType;
+}): Promise<EstimateReqPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: EstimateReqWhereInputType;
+  orderBy?: EstimateReqOrderByType;
+}): Promise<EstimateReqPayload<undefined>[]>;
+
+async function findManyData<T extends EstimateReqSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: EstimateReqWhereInputType;
+  select?: T;
+  orderBy?: EstimateReqOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.estimateRequest.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.estimateRequest.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends EstimateReqSelectType>({
   where,
@@ -198,4 +247,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };
