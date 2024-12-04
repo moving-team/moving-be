@@ -24,6 +24,9 @@ type AssignedEstimateReqWhereUniqueInputType =
 type AssignedEstimateReqUpdateInputType =
   Prisma.AssignedEstimateRequestUpdateInput;
 
+type AssignedEstimateReqOrderByType =
+  Prisma.AssignedEstimateRequestOrderByWithRelationInput;
+
 // createData
 function createData<T extends AssignedEstimateReqSelectType>({
   data,
@@ -58,25 +61,38 @@ async function createData<T extends AssignedEstimateReqSelectType | undefined>({
 function findFirstData<T extends AssignedEstimateReqSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: AssignedEstimateReqWhereInputType;
   select: T;
+  orderBy?: AssignedEstimateReqOrderByType;
 }): Promise<AssignedEstimateReqPayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: AssignedEstimateReqWhereInputType;
+  orderBy?: AssignedEstimateReqOrderByType;
 }): Promise<AssignedEstimateReqPayload<undefined> | null>;
 
 async function findFirstData<
   T extends AssignedEstimateReqSelectType | undefined
->({ where, select }: { where: AssignedEstimateReqWhereInputType; select?: T }) {
+>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: AssignedEstimateReqWhereInputType;
+  select?: T;
+  orderBy?: AssignedEstimateReqOrderByType;
+}) {
   if (select === undefined) {
-    return await prisma.assignedEstimateRequest.findFirst({ where });
+    return await prisma.assignedEstimateRequest.findFirst({ where, orderBy });
   }
   return await prisma.assignedEstimateRequest.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 

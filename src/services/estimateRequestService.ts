@@ -30,6 +30,8 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
     throw error;
   }
 
+  // 이사날이 지난 견적 요청 여부 확인
+
   // 이사 정보 생성
   const { comment, ...rest } = data;
   const movingInfo = await movingInfoRepository.createData({
@@ -92,7 +94,7 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
   };
 }
 
-// 유저-견적 요청 조회
+// 유저-견적 요청 조회 API
 async function findEstimateReq(userId: number) {
   const user = await userRepository.findFirstData({
     where: { id: userId },
@@ -107,8 +109,9 @@ async function findEstimateReq(userId: number) {
   const estimateReq = await estimateRequestRepository.findFirstData({
     where: {
       customerId: user.Customer.id,
+      isCancelled: false,
     },
-    select: estimateReqMovingInfoSelect,
+    select: estimateReqMovingInfoSelect
   });
 
   // 견적 요청이 있는지 확인

@@ -11,14 +11,15 @@ interface MovingInfoPagenationParams extends PagenationParamsByPage {
   where?: Prisma.MovingInfoWhereInput;
 }
 
-type MovingInfoUncheckedCreateInputType =
-  Prisma.MovingInfoUncheckedCreateInput;
+type MovingInfoUncheckedCreateInputType = Prisma.MovingInfoUncheckedCreateInput;
 
 type MovingInfoWhereInputType = Prisma.MovingInfoWhereInput;
 
 type MovingInfoWhereUniqueInputType = Prisma.MovingInfoWhereUniqueInput;
 
 type MovingInfoUpdateInputType = Prisma.MovingInfoUpdateInput;
+
+type MovingInfoOrderByType = Prisma.MovingInfoOrderByWithRelationInput;
 
 // createData
 function createData<T extends MovingInfoSelectType>({
@@ -54,29 +55,36 @@ async function createData<T extends MovingInfoSelectType | undefined>({
 function findFirstData<T extends MovingInfoSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: MovingInfoWhereInputType;
   select: T;
+  orderBy?: MovingInfoOrderByType;
 }): Promise<MovingInfoPayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: MovingInfoWhereInputType;
+  orderBy?: MovingInfoOrderByType;
 }): Promise<MovingInfoPayload<undefined> | null>;
 
 async function findFirstData<T extends MovingInfoSelectType | undefined>({
   where,
   select,
+  orderBy = { createdAt: 'desc' },
 }: {
   where: MovingInfoWhereInputType;
   select?: T;
+  orderBy?: MovingInfoOrderByType;
 }) {
   if (select === undefined) {
-    return await prisma.movingInfo.findFirst({ where });
+    return await prisma.movingInfo.findFirst({ where, orderBy });
   }
   return await prisma.movingInfo.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 

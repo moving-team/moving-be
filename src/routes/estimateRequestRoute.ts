@@ -11,7 +11,8 @@ estimateReqRouter
     authenticateToken,
     validateEstimateReq,
     estimateRequestController.createEstimateReq
-  );
+  )
+  .get(authenticateToken, estimateRequestController.findEstimateReq);
 
 estimateReqRouter
   .route('/:estimateRequestId')

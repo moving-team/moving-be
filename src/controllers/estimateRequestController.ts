@@ -28,6 +28,7 @@ async function createEstimateReq(
   }
 }
 
+// 견적 요청 삭제 API
 async function deleteEstimateReq(
   req: Request<{ estimateRequestId: string }, {}, {}>,
   res: Response,
@@ -56,6 +57,7 @@ async function deleteEstimateReq(
   }
 }
 
+// 유저-견적 요청 조회 API
 async function findEstimateReq(
   req: Request,
   res: Response,
@@ -81,4 +83,5 @@ async function findEstimateReq(
 export default {
   createEstimateReq,
   deleteEstimateReq,
+  findEstimateReq,
 };

@@ -19,6 +19,8 @@ type EstimateWhereUniqueInputType = Prisma.EstimateWhereUniqueInput;
 
 type EstimateUpdateInputType = Prisma.EstimateUpdateInput;
 
+type EstimateOrderByType = Prisma.EstimateOrderByWithRelationInput;
+
 // createData
 function createData<T extends EstimateSelectType>({
   data,
@@ -53,29 +55,36 @@ async function createData<T extends EstimateSelectType | undefined>({
 function findFirstData<T extends EstimateSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: EstimateWhereInputType;
   select: T;
+  orderBy?: EstimateOrderByType;
 }): Promise<EstimatePayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: EstimateWhereInputType;
+  orderBy?: EstimateOrderByType;
 }): Promise<EstimatePayload<undefined> | null>;
 
 async function findFirstData<T extends EstimateSelectType | undefined>({
   where,
   select,
+  orderBy = { createdAt: 'desc' },
 }: {
   where: EstimateWhereInputType;
   select?: T;
+  orderBy?: EstimateOrderByType;
 }) {
   if (select === undefined) {
-    return await prisma.estimate.findFirst({ where });
+    return await prisma.estimate.findFirst({ where, orderBy });
   }
   return await prisma.estimate.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 
