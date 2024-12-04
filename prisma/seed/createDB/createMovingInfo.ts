@@ -1,6 +1,6 @@
 import { serviceType } from '@prisma/client';
-import { getServiceTypes } from '../generate/generateServiceType';
-import { getRandomAddress } from '../generate/generateAddress';
+import { getServiceTypes } from '../generate/getServiceType';
+import { getRandomAddress } from '../generate/getAddress';
 import * as fs from 'fs';
 
 const movingInfoCount = 3500; // 생성할 MovingInfo 수

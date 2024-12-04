@@ -1,8 +1,10 @@
+// 미완
+
 import fs from "fs";
 import path from "path";
-import { getServiceTypes } from '../generate/generateServiceType';
-import { getRandomAddress } from "../generate/generateAddress";
-import { generateName } from "../generate/generateName";
+import { getServiceTypes } from '../generate/getServiceType';
+import { getRandomAddress } from "../generate/getAddress";
+import { generateName } from "../generate/getName";
 
 const createCount = 20;
 

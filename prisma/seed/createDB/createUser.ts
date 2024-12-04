@@ -1,9 +1,9 @@
 import { serviceType, serviceRegion, PrismaClient } from '@prisma/client';
 import { moverList } from '../dummyList/crawlingMoverList';
-import { generateName } from '../generate/generateName';
-import { generateUniquePhoneNumber } from '../generate/generateNumber';
-import { getRegion, getRegionArray } from '../generate/generateRegion';
-import { getWeightedServiceTypesArray, getServiceTypesArray } from '../generate/generateServiceType';
+import { generateName } from '../generate/getName';
+import { generateUniquePhoneNumber } from '../generate/getNumber';
+import { getRegion, getRegionArray } from '../generate/getRegion';
+import { getWeightedServiceTypesArray, getServiceTypesArray } from '../generate/getServiceType';
 import { getBeforeDate } from '../generate/generateDate';
 import * as fs from 'fs';
 import * as bcrypt from 'bcrypt'; // bcrypt 추가
@@ -15,8 +15,8 @@ const prisma = new PrismaClient();
 const saltRounds = 10; // bcrypt saltRounds 설정
 const commonPassword = process.env.COMMON_PASSWORD || 'defaultPassword'; // COMMON_PASSWORD 가져오기
 
-const moverCount = 300; // 생성할 Mover 수
-const customerCount = moverCount * 3; // Customer 수 = Mover의 3배
+const moverCount = 500; // 생성할 Mover 수
+const customerCount = moverCount * 2; // Customer 수 = Mover의 3배
 
 type UserData = {
   userType: 'MOVER' | 'CUSTOMER';
