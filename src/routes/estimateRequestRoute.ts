@@ -13,4 +13,8 @@ estimateReqRouter
     estimateRequestController.createEstimateReq
   );
 
+estimateReqRouter
+  .route('/:estimateRequestId')
+  .delete(authenticateToken, estimateRequestController.deleteEstimateReq);
+
 export default estimateReqRouter;

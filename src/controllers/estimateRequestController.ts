@@ -22,7 +22,35 @@ async function createEstimateReq(
       res.status(201).send(estimateReq);
     }
 
-    throw new Error('로그인 해주세요');
+    throw new Error('다시 시도해 주세요');
+  } catch (err) {
+    return next(err);
+  }
+}
+
+async function deleteEstimateReq(
+  req: Request<{ estimateRequestId: string }, {}, {}>,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (
+      req.user &&
+      typeof req.user !== 'string' &&
+      typeof req.user.id === 'number'
+    ) {
+      const { id: userId } = req.user;
+      const { estimateRequestId } = req.params;
+      const id = Number(estimateRequestId);
+      const estimateReq = await estimateRequestService.deleteEstimateReq(
+        userId,
+        id
+      );
+
+      res.status(200).send(estimateReq);
+    }
+
+    throw new Error('다시 시도해 주세요');
   } catch (err) {
     return next(err);
   }
@@ -30,4 +58,5 @@ async function createEstimateReq(
 
 export default {
   createEstimateReq,
+  deleteEstimateReq,
 };
