@@ -7,14 +7,14 @@ const generateToken = (payload: any, secret: string, expiresIn: string) => {
   return jwt.sign(payload, secret, { expiresIn });
 };
 
-const register = async (data: any,userType : string) => {
+const register = async (data: any, userType: string) => {
   const where = { email: data.email };
 
   if (!data.email || !data.password) {
     throw new Error('이메일 및 패스워드를 입력해주세요.');
   }
-  if(!userType || userType !== 'CUSTOMER' && userType !== 'MOVER') {
-    throw new Error('유저 타입을 확인해주세요.'); 
+  if (!userType || (userType !== 'CUSTOMER' && userType !== 'MOVER')) {
+    throw new Error('유저 타입을 확인해주세요.');
   }
   if (!data.name) {
     throw new Error('이름을 입력해주세요.');
@@ -26,45 +26,48 @@ const register = async (data: any,userType : string) => {
     throw new Error('이미 사용중인 이메일 입니다.');
   }
   data.password = await bcrypt.hash(data.password, 10);
-  data.userType = userType
+  data.userType = userType;
   return await userRepository.createData({ data });
 };
 
 const userLogin = async (data: any) => {
   if (!data.email || !data.password) {
-    throw new Error("이메일 및 패스워드를 입력해주세요.");
+    throw new Error('이메일 및 패스워드를 입력해주세요.');
   }
 
   const user = await userRepository.findFirstData({
     where: { email: data.email },
   });
-  if(!user) {
-    throw new Error("존재하지 않은 이메일 입니다.")
+  if (!user) {
+    throw new Error('존재하지 않은 이메일 입니다.');
   }
 
-  const isValidPassword = await bcrypt.compare(data.password, user.password as string);
+  const isValidPassword = await bcrypt.compare(
+    data.password,
+    user.password as string
+  );
   if (!isValidPassword) {
-    throw new Error("비밀번호가 올바르지 않습니다.");
+    throw new Error('비밀번호가 올바르지 않습니다.');
   }
 
   if (!ACCESS_TOKEN_SECRET || !REFRESH_TOKEN_SECRET) {
-    throw new Error("환경 변수가 설정되지 않았습니다.");
+    throw new Error('환경 변수가 설정되지 않았습니다.');
   }
 
-  const isSecure = process.env.NODE_ENV === "production";
+  const isSecure = process.env.NODE_ENV === 'production';
 
   const cookieOptions = {
     accessToken: {
       httpOnly: true,
       secure: isSecure,
       maxAge: 1000 * 60 * 60,
-      sameSite: "strict",
+      sameSite: 'strict',
     },
     refreshToken: {
       httpOnly: true,
       secure: isSecure,
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      sameSite: "strict",
+      sameSite: 'strict',
     },
   };
 
