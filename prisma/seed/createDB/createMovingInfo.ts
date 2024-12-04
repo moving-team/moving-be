@@ -27,7 +27,14 @@ function generateRandomDate(): Date {
 function calculateMovingDate(createdAt: Date): string {
   const movingDate = new Date(createdAt);
   movingDate.setDate(movingDate.getDate() + 43); // 43일 추가
-  return movingDate.toISOString().split('T')[0]; // YYYY-MM-DD 형식 반환
+
+  // 날짜 요소를 추출
+  const year = movingDate.getFullYear();
+  const month = String(movingDate.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1 필요
+  const day = String(movingDate.getDate()).padStart(2, '0');
+
+  // yyyy. mm. dd 형식으로 반환
+  return `${year}. ${month}. ${day}`;
 }
 
 // 데이터 생성
