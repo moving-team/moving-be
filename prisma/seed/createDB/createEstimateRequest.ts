@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import * as fs from 'fs';
-import { getRandomComment } from '../generate/generateReqComment';
+import { getRandomComment } from '../generate/getReqComment';
 
 const prisma = new PrismaClient();
 
@@ -26,20 +26,15 @@ type EstimateRequest = {
   createdAt: Date;
 };
 
-// Weighted random customer ID selection
-function getWeightedRandomCustomerId(customerIds: number[]): number {
-  const weightedIds: number[] = [];
+// 랜덤 정수 생성 (최소값 포함, 최대값 포함)
+function getRandomInt(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-  customerIds.forEach((id) => {
-    const weight = id > 450 ? 7 : 3; // 가중치 설정
-    for (let i = 0; i < weight; i++) {
-      weightedIds.push(id);
-    }
-  });
-
-  // 가중치가 적용된 배열에서 랜덤하게 ID 선택
-  const randomIndex = Math.floor(Math.random() * weightedIds.length);
-  return weightedIds[randomIndex];
+// 기존 고객 중 임의의 고객 선택
+function getRandomCustomerId(customerIds: number[]): number {
+  const randomIndex = Math.floor(Math.random() * customerIds.length);
+  return customerIds[randomIndex];
 }
 
 async function generateEstimateRequest(): Promise<void> {
@@ -61,28 +56,69 @@ async function generateEstimateRequest(): Promise<void> {
       throw new Error('No MovingInfo or Customer data found in the database.');
     }
 
-    // EstimateRequest 데이터 생성
-    const estimateRequests: EstimateRequest[] = movingInfoData.map((movingInfo) => {
-      const customerId = getWeightedRandomCustomerId(customerIds); // 가중치 기반 랜덤 ID 선택
-      const movingDate = new Date(movingInfo.movingDate); // MovingInfo의 MovingDate 기준
-      const isFuture = movingDate > new Date(); // MovingDate가 미래인지?
-      const isConfirmed =
-        isFuture && Math.random() <= 0.3 ? true : movingDate <= new Date();
+    // 각 customerId별 EstimateRequest 생성 제한 개수 설정
+    const customerEstimateLimits: Map<number, number> = new Map();
+    customerIds.forEach((id) =>
+      customerEstimateLimits.set(id, getRandomInt(1, 15)) // 각 customer는 1~15개의 EstimateRequest를 가짐
+    );
+
+    const estimateRequests: EstimateRequest[] = [];
+    const today = new Date();
+
+    for (const movingInfo of movingInfoData) {
+      let customerId = getRandomCustomerId(customerIds); // 랜덤 고객 선택
+      const movingDate = new Date(movingInfo.movingDate);
+
+      // 고객 ID 순환으로 제한 조건을 무시
+      while (true) {
+        const currentRequestCount = estimateRequests.filter(
+          (req) => req.customerId === customerId
+        ).length;
+
+        // 제한을 초과하지 않았거나 무시할 때 해당 고객에 요청 생성
+        if (
+          currentRequestCount < (customerEstimateLimits.get(customerId) || 0)
+        ) {
+          break;
+        }
+
+        // 제한 초과 시 다른 랜덤 고객 선택
+        customerId = getRandomCustomerId(customerIds);
+      }
+
+      // MovingDate와 현재 날짜를 고려한 상태 결정
+      const isFuture = movingDate > today;
+      const isConfirmed = isFuture
+        ? Math.random() <= 0.2 // 확률적 true
+        : Math.random() <= 0.9; // 확률적 true
       const isCancelled = !isConfirmed && Math.random() <= 0.1;
 
-      return {
+      // 새로운 EstimateRequest 생성
+      estimateRequests.push({
         customerId,
         movingInfoId: movingInfo.id,
         comment: getRandomComment(),
         isConfirmed,
         isCancelled,
         createdAt: movingInfo.createdAt,
-      };
-    });
+      });
+    }
 
     // JSON 파일로 저장
     const filePath = './data/estimateRequest.json';
-    fs.writeFileSync(filePath, JSON.stringify(estimateRequests, null, 2), 'utf-8');
+    fs.writeFileSync(
+      filePath,
+      JSON.stringify(estimateRequests, null, 2),
+      'utf-8'
+    );
+
+    // 로그 추가: 모든 movingInfo 처리 여부 확인
+    console.log(
+      `All MovingInfo processed: ${movingInfoData.length === estimateRequests.length}`
+    );
+    console.log(
+      `Total MovingInfo: ${movingInfoData.length}, Total EstimateRequests: ${estimateRequests.length}`
+    );
 
     console.log(`EstimateRequest data has been saved to ${filePath}`);
   } catch (error) {
@@ -93,4 +129,5 @@ async function generateEstimateRequest(): Promise<void> {
   }
 }
 
+// 데이터 생성 실행
 generateEstimateRequest();

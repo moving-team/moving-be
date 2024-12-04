@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { getRandomReview } from "../generate/generateReview";
+import { getRandomReview } from "../generate/getReview";
 import * as fs from 'fs';
 
 const prisma = new PrismaClient();

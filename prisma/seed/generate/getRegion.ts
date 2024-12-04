@@ -25,7 +25,7 @@ function getRandomValue<T>(array: T[]): T {
 }
 
 function getRandomArray<T>(array: T[], maxSize: number): T[] {
-  const size = Math.max(1, Math.floor(Math.random() * (maxSize + 1))); // 최소 크기 1
+  const size = Math.max(1, Math.floor(Math.random() * (maxSize + 1))); 
   const shuffled = [...array].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, size);
 }

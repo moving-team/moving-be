@@ -4,7 +4,7 @@ import { generateName } from '../generate/getName';
 import { generateUniquePhoneNumber } from '../generate/getNumber';
 import { getRegion, getRegionArray } from '../generate/getRegion';
 import { getWeightedServiceTypesArray, getServiceTypesArray } from '../generate/getServiceType';
-import { getBeforeDate } from '../generate/generateDate';
+import { getBeforeDate } from '../generate/getDate';
 import * as fs from 'fs';
 import * as bcrypt from 'bcrypt'; // bcrypt 추가
 import * as dotenv from 'dotenv'; // dotenv 추가
@@ -18,14 +18,15 @@ const commonPassword = process.env.COMMON_PASSWORD || 'defaultPassword'; // COMM
 const moverCount = 500; // 생성할 Mover 수
 const customerCount = moverCount * 2; // Customer 수 = Mover의 3배
 
-type UserData = {
+export type UserData = {
   userType: 'MOVER' | 'CUSTOMER';
   name: string;
   email: string;
   phoneNumber: string;
   createdAt: Date;
-  password: string; // 비밀번호 추가
+  password: string;
 };
+
 
 type MoverData = {
   userId: number;
@@ -82,7 +83,7 @@ async function generateUsers(): Promise<{
       email: `m${userId}@test.com`,
       phoneNumber: generateUniquePhoneNumber(),
       createdAt: getBeforeDate(),
-      password: hashedPassword, // 해싱된 비밀번호 추가
+      password: hashedPassword, 
     });
 
     movers.push({
@@ -127,7 +128,7 @@ async function generateUsers(): Promise<{
   return { users, movers, customers };
 }
 
-// 저장 함수
+
 function saveDataToJsonFile(data: any, filePath: string): void {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
 }
@@ -135,7 +136,6 @@ function saveDataToJsonFile(data: any, filePath: string): void {
 // 데이터 생성 및 저장
 (async () => {
   const { users, movers, customers } = await generateUsers();
-
   saveDataToJsonFile(users, './data/users.json');
   saveDataToJsonFile(movers, './data/movers.json');
   saveDataToJsonFile(customers, './data/customers.json');
