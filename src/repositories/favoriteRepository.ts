@@ -11,7 +11,7 @@ interface FavoritePagenationParams extends PagenationParamsByPage {
   where?: Prisma.FavoriteWhereInput;
 }
 
-type FavoriteUncheckedCreateInputTrype = Prisma.FavoriteUncheckedCreateInput;
+type FavoriteUncheckedCreateInputType = Prisma.FavoriteUncheckedCreateInput;
 
 type FavoriteWhereInputType = Prisma.FavoriteWhereInput;
 
@@ -19,25 +19,27 @@ type FavoriteWhereUniqueInputType = Prisma.FavoriteWhereUniqueInput;
 
 type FavoriteUpdateInputType = Prisma.FavoriteUpdateInput;
 
+type FavoriteOrderByType = Prisma.FavoriteOrderByWithRelationInput;
+
 // createData
 function createData<T extends FavoriteSelectType>({
   data,
   select,
 }: {
-  data: FavoriteUncheckedCreateInputTrype;
+  data: FavoriteUncheckedCreateInputType;
   select: T;
 }): Promise<FavoritePayload<T>>;
 function createData({
   data,
 }: {
-  data: FavoriteUncheckedCreateInputTrype;
+  data: FavoriteUncheckedCreateInputType;
 }): Promise<FavoritePayload<undefined>>;
 
 async function createData<T extends FavoriteSelectType | undefined>({
   data,
   select,
 }: {
-  data: FavoriteUncheckedCreateInputTrype;
+  data: FavoriteUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {
@@ -53,29 +55,36 @@ async function createData<T extends FavoriteSelectType | undefined>({
 function findFirstData<T extends FavoriteSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: FavoriteWhereInputType;
   select: T;
+  orderBy?: FavoriteOrderByType;
 }): Promise<FavoritePayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: FavoriteWhereInputType;
+  orderBy?: FavoriteOrderByType;
 }): Promise<FavoritePayload<undefined> | null>;
 
 async function findFirstData<T extends FavoriteSelectType | undefined>({
   where,
   select,
+  orderBy = { createdAt: 'desc' },
 }: {
   where: FavoriteWhereInputType;
   select?: T;
+  orderBy?: FavoriteOrderByType;
 }) {
   if (select === undefined) {
-    return await prisma.favorite.findFirst({ where });
+    return await prisma.favorite.findFirst({ where, orderBy });
   }
   return await prisma.favorite.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 
@@ -151,6 +160,47 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends FavoriteSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: FavoriteWhereInputType;
+  select: T;
+  orderBy?: FavoriteOrderByType;
+}): Promise<FavoritePayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: FavoriteWhereInputType;
+  orderBy?: FavoriteOrderByType;
+}): Promise<FavoritePayload<undefined>[]>;
+
+async function findManyData<T extends FavoriteSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: FavoriteWhereInputType;
+  select?: T;
+  orderBy?: FavoriteOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.favorite.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.favorite.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
+
 // updateData
 function updateData<T extends FavoriteSelectType>({
   where,
@@ -197,4 +247,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };

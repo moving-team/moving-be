@@ -11,7 +11,7 @@ interface NotificationPagenationParams extends PagenationParamsByPage {
   where?: Prisma.NotificationWhereInput;
 }
 
-type NotificationUncheckedCreateInputTrype =
+type NotificationUncheckedCreateInputType =
   Prisma.NotificationUncheckedCreateInput;
 
 type NotificationWhereInputType = Prisma.NotificationWhereInput;
@@ -20,25 +20,27 @@ type NotificationWhereUniqueInputType = Prisma.NotificationWhereUniqueInput;
 
 type NotificationUpdateInputType = Prisma.NotificationUpdateInput;
 
+type NotificationOrderByType = Prisma.NotificationOrderByWithRelationInput;
+
 // createData
 function createData<T extends NotificationSelectType>({
   data,
   select,
 }: {
-  data: NotificationUncheckedCreateInputTrype;
+  data: NotificationUncheckedCreateInputType;
   select: T;
 }): Promise<NotificationPayload<T>>;
 function createData({
   data,
 }: {
-  data: NotificationUncheckedCreateInputTrype;
+  data: NotificationUncheckedCreateInputType;
 }): Promise<NotificationPayload<undefined>>;
 
 async function createData<T extends NotificationSelectType | undefined>({
   data,
   select,
 }: {
-  data: NotificationUncheckedCreateInputTrype;
+  data: NotificationUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {
@@ -54,29 +56,36 @@ async function createData<T extends NotificationSelectType | undefined>({
 function findFirstData<T extends NotificationSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: NotificationWhereInputType;
   select: T;
+  orderBy?: NotificationOrderByType;
 }): Promise<NotificationPayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: NotificationWhereInputType;
+  orderBy?: NotificationOrderByType;
 }): Promise<NotificationPayload<undefined> | null>;
 
 async function findFirstData<T extends NotificationSelectType | undefined>({
   where,
   select,
+  orderBy = { createdAt: 'desc' },
 }: {
   where: NotificationWhereInputType;
   select?: T;
+  orderBy?: NotificationOrderByType;
 }) {
   if (select === undefined) {
-    return await prisma.notification.findFirst({ where });
+    return await prisma.notification.findFirst({ where, orderBy });
   }
   return await prisma.notification.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 
@@ -152,6 +161,46 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends NotificationSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: NotificationWhereInputType;
+  select: T;
+  orderBy?: NotificationOrderByType;
+}): Promise<NotificationPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: NotificationWhereInputType;
+  orderBy?: NotificationOrderByType;
+}): Promise<NotificationPayload<undefined>[]>;
+
+async function findManyData<T extends NotificationSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: NotificationWhereInputType;
+  select?: T;
+  orderBy?: NotificationOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.notification.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.notification.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends NotificationSelectType>({
   where,
@@ -198,4 +247,6 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };
+

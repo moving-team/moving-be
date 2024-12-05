@@ -11,7 +11,7 @@ interface EstimatePagenationParams extends PagenationParamsByPage {
   where?: Prisma.EstimateWhereInput;
 }
 
-type EstimateUncheckedCreateInputTrype = Prisma.EstimateUncheckedCreateInput;
+type EstimateUncheckedCreateInputType = Prisma.EstimateUncheckedCreateInput;
 
 type EstimateWhereInputType = Prisma.EstimateWhereInput;
 
@@ -19,25 +19,27 @@ type EstimateWhereUniqueInputType = Prisma.EstimateWhereUniqueInput;
 
 type EstimateUpdateInputType = Prisma.EstimateUpdateInput;
 
+type EstimateOrderByType = Prisma.EstimateOrderByWithRelationInput;
+
 // createData
 function createData<T extends EstimateSelectType>({
   data,
   select,
 }: {
-  data: EstimateUncheckedCreateInputTrype;
+  data: EstimateUncheckedCreateInputType;
   select: T;
 }): Promise<EstimatePayload<T>>;
 function createData({
   data,
 }: {
-  data: EstimateUncheckedCreateInputTrype;
+  data: EstimateUncheckedCreateInputType;
 }): Promise<EstimatePayload<undefined>>;
 
 async function createData<T extends EstimateSelectType | undefined>({
   data,
   select,
 }: {
-  data: EstimateUncheckedCreateInputTrype;
+  data: EstimateUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {
@@ -53,29 +55,36 @@ async function createData<T extends EstimateSelectType | undefined>({
 function findFirstData<T extends EstimateSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: EstimateWhereInputType;
   select: T;
+  orderBy?: EstimateOrderByType;
 }): Promise<EstimatePayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: EstimateWhereInputType;
+  orderBy?: EstimateOrderByType;
 }): Promise<EstimatePayload<undefined> | null>;
 
 async function findFirstData<T extends EstimateSelectType | undefined>({
   where,
   select,
+  orderBy = { createdAt: 'desc' },
 }: {
   where: EstimateWhereInputType;
   select?: T;
+  orderBy?: EstimateOrderByType;
 }) {
   if (select === undefined) {
-    return await prisma.estimate.findFirst({ where });
+    return await prisma.estimate.findFirst({ where, orderBy });
   }
   return await prisma.estimate.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 
@@ -151,6 +160,46 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends EstimateSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: EstimateWhereInputType;
+  select: T;
+  orderBy?: EstimateOrderByType;
+}): Promise<EstimatePayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: EstimateWhereInputType;
+  orderBy?: EstimateOrderByType;
+}): Promise<EstimatePayload<undefined>[]>;
+
+async function findManyData<T extends EstimateSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: EstimateWhereInputType;
+  select?: T;
+  orderBy?: EstimateOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.estimate.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.estimate.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends EstimateSelectType>({
   where,
@@ -197,4 +246,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };

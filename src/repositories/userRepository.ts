@@ -4,15 +4,15 @@ import { Prisma } from '@prisma/client';
 
 type UserSelectType = Prisma.UserSelect;
 
-type UserPayload<T extends UserSelectType | undefined> =
-  Prisma.UserGetPayload<{ select: T }>;
+type UserPayload<T extends UserSelectType | undefined> = Prisma.UserGetPayload<{
+  select: T;
+}>;
 
 interface UserPagenationParams extends PagenationParamsByPage {
   where?: Prisma.UserWhereInput;
 }
 
-type UserUncheckedCreateInputTrype =
-  Prisma.UserUncheckedCreateInput;
+type UserUncheckedCreateInputType = Prisma.UserUncheckedCreateInput;
 
 type UserWhereInputType = Prisma.UserWhereInput;
 
@@ -20,25 +20,27 @@ type UserWhereUniqueInputType = Prisma.UserWhereUniqueInput;
 
 type UserUpdateInputType = Prisma.UserUpdateInput;
 
+type UserOrderByType = Prisma.UserOrderByWithRelationInput;
+
 // createData
 function createData<T extends UserSelectType>({
   data,
   select,
 }: {
-  data: UserUncheckedCreateInputTrype;
+  data: UserUncheckedCreateInputType;
   select: T;
 }): Promise<UserPayload<T>>;
 function createData({
   data,
 }: {
-  data: UserUncheckedCreateInputTrype;
+  data: UserUncheckedCreateInputType;
 }): Promise<UserPayload<undefined>>;
 
 async function createData<T extends UserSelectType | undefined>({
   data,
   select,
 }: {
-  data: UserUncheckedCreateInputTrype;
+  data: UserUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {
@@ -54,29 +56,36 @@ async function createData<T extends UserSelectType | undefined>({
 function findFirstData<T extends UserSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: UserWhereInputType;
   select: T;
+  orderBy?: UserOrderByType;
 }): Promise<UserPayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: UserWhereInputType;
+  orderBy?: UserOrderByType;
 }): Promise<UserPayload<undefined> | null>;
 
 async function findFirstData<T extends UserSelectType | undefined>({
   where,
   select,
+  orderBy = { createdAt: 'desc' },
 }: {
   where: UserWhereInputType;
   select?: T;
+  orderBy?: UserOrderByType;
 }) {
   if (select === undefined) {
-    return await prisma.user.findFirst({ where });
+    return await prisma.user.findFirst({ where, orderBy });
   }
   return await prisma.user.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 
@@ -94,9 +103,13 @@ function findUniqueOrThrowtData({
   where: UserWhereUniqueInputType;
 }): Promise<UserPayload<undefined>>;
 
-async function findUniqueOrThrowtData<
-  T extends UserSelectType | undefined
->({ where, select }: { where: UserWhereUniqueInputType; select?: T }) {
+async function findUniqueOrThrowtData<T extends UserSelectType | undefined>({
+  where,
+  select,
+}: {
+  where: UserWhereUniqueInputType;
+  select?: T;
+}) {
   if (select === undefined) {
     return await prisma.user.findUniqueOrThrow({ where });
   }
@@ -125,9 +138,7 @@ function findManyByPaginationData({
   paginationParams: UserPagenationParams;
 }): Promise<UserPayload<undefined>[]>;
 
-async function findManyByPaginationData<
-  T extends UserSelectType | undefined
->({
+async function findManyByPaginationData<T extends UserSelectType | undefined>({
   paginationParams,
   select,
 }: {
@@ -149,6 +160,46 @@ async function findManyByPaginationData<
     take,
     where,
     select,
+  });
+}
+
+//findManyData
+function findManyData<T extends UserSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: UserWhereInputType;
+  select: T;
+  orderBy?: UserOrderByType;
+}): Promise<UserPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: UserWhereInputType;
+  orderBy?: UserOrderByType;
+}): Promise<UserPayload<undefined>[]>;
+
+async function findManyData<T extends UserSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: UserWhereInputType;
+  select?: T;
+  orderBy?: UserOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.user.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.user.findMany({
+    where,
+    select,
+    orderBy,
   });
 }
 
@@ -198,4 +249,6 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };
+

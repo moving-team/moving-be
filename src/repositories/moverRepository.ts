@@ -11,7 +11,7 @@ interface MoverPagenationParams extends PagenationParamsByPage {
   where?: Prisma.MoverWhereInput;
 }
 
-type MoverUncheckedCreateInputTrype = Prisma.MoverUncheckedCreateInput;
+type MoverUncheckedCreateInputType = Prisma.MoverUncheckedCreateInput;
 
 type MoverWhereInputType = Prisma.MoverWhereInput;
 
@@ -19,25 +19,27 @@ type MoverWhereUniqueInputType = Prisma.MoverWhereUniqueInput;
 
 type MoverUpdateInputType = Prisma.MoverUpdateInput;
 
+type MoverOrderByType = Prisma.MoverOrderByWithRelationInput;
+
 // createData
 function createData<T extends MoverSelectType>({
   data,
   select,
 }: {
-  data: MoverUncheckedCreateInputTrype;
+  data: MoverUncheckedCreateInputType;
   select: T;
 }): Promise<MoverPayload<T>>;
 function createData({
   data,
 }: {
-  data: MoverUncheckedCreateInputTrype;
+  data: MoverUncheckedCreateInputType;
 }): Promise<MoverPayload<undefined>>;
 
 async function createData<T extends MoverSelectType | undefined>({
   data,
   select,
 }: {
-  data: MoverUncheckedCreateInputTrype;
+  data: MoverUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {
@@ -53,29 +55,36 @@ async function createData<T extends MoverSelectType | undefined>({
 function findFirstData<T extends MoverSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: MoverWhereInputType;
   select: T;
+  orderBy?: MoverOrderByType;
 }): Promise<MoverPayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: MoverWhereInputType;
+  orderBy?: MoverOrderByType;
 }): Promise<MoverPayload<undefined> | null>;
 
 async function findFirstData<T extends MoverSelectType | undefined>({
   where,
   select,
+  orderBy = { createdAt: 'desc' },
 }: {
   where: MoverWhereInputType;
   select?: T;
+  orderBy?: MoverOrderByType;
 }) {
   if (select === undefined) {
-    return await prisma.mover.findFirst({ where });
+    return await prisma.mover.findFirst({ where, orderBy });
   }
   return await prisma.mover.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 
@@ -191,6 +200,78 @@ async function deleteData(where: { id: number }): Promise<void> {
   await prisma.mover.delete({ where });
 }
 
+// findManyAllData
+function findManyAllData<T extends MoverSelectType>({
+  where,
+  select,
+}: {
+  where?: MoverWhereInputType;
+  select: T;
+}): Promise<MoverPayload<T>[]>;
+function findManyAllData({
+  where,
+}: {
+  where?: MoverWhereInputType;
+}): Promise<MoverPayload<undefined>[]>;
+
+async function findManyAllData<T extends MoverSelectType | undefined>({
+  where,
+  select,
+}: {
+  where?: MoverWhereInputType;
+  select?: T;
+}) {
+  if (select === undefined) {
+    return await prisma.mover.findMany({
+      where,
+    });
+  }
+  return await prisma.mover.findMany({
+    where,
+    select,
+  });
+}
+
+//findManyData
+function findManyData<T extends MoverSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: MoverWhereInputType;
+  select: T;
+  orderBy?: MoverOrderByType;
+}): Promise<MoverPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: MoverWhereInputType;
+  orderBy?: MoverOrderByType;
+}): Promise<MoverPayload<undefined>[]>;
+
+async function findManyData<T extends MoverSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: MoverWhereInputType;
+  select?: T;
+  orderBy?: MoverOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.mover.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.mover.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 export default {
   createData,
   findFirstData,
@@ -199,4 +280,6 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyAllData,
+  findManyData
 };

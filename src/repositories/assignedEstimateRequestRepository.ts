@@ -12,7 +12,7 @@ interface AssignedEstimateReqPagenationParams extends PagenationParamsByPage {
   where?: Prisma.AssignedEstimateRequestWhereInput;
 }
 
-type AssignedEstimateReqUncheckedCreateInputTrype =
+type AssignedEstimateReqUncheckedCreateInputType =
   Prisma.AssignedEstimateRequestUncheckedCreateInput;
 
 type AssignedEstimateReqWhereInputType =
@@ -24,25 +24,28 @@ type AssignedEstimateReqWhereUniqueInputType =
 type AssignedEstimateReqUpdateInputType =
   Prisma.AssignedEstimateRequestUpdateInput;
 
+type AssignedEstimateReqOrderByType =
+  Prisma.AssignedEstimateRequestOrderByWithRelationInput;
+
 // createData
 function createData<T extends AssignedEstimateReqSelectType>({
   data,
   select,
 }: {
-  data: AssignedEstimateReqUncheckedCreateInputTrype;
+  data: AssignedEstimateReqUncheckedCreateInputType;
   select: T;
 }): Promise<AssignedEstimateReqPayload<T>>;
 function createData({
   data,
 }: {
-  data: AssignedEstimateReqUncheckedCreateInputTrype;
+  data: AssignedEstimateReqUncheckedCreateInputType;
 }): Promise<AssignedEstimateReqPayload<undefined>>;
 
 async function createData<T extends AssignedEstimateReqSelectType | undefined>({
   data,
   select,
 }: {
-  data: AssignedEstimateReqUncheckedCreateInputTrype;
+  data: AssignedEstimateReqUncheckedCreateInputType;
   select?: T;
 }) {
   if (select === undefined) {
@@ -58,25 +61,38 @@ async function createData<T extends AssignedEstimateReqSelectType | undefined>({
 function findFirstData<T extends AssignedEstimateReqSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: AssignedEstimateReqWhereInputType;
   select: T;
+  orderBy?: AssignedEstimateReqOrderByType;
 }): Promise<AssignedEstimateReqPayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: AssignedEstimateReqWhereInputType;
+  orderBy?: AssignedEstimateReqOrderByType;
 }): Promise<AssignedEstimateReqPayload<undefined> | null>;
 
 async function findFirstData<
   T extends AssignedEstimateReqSelectType | undefined
->({ where, select }: { where: AssignedEstimateReqWhereInputType; select?: T }) {
+>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: AssignedEstimateReqWhereInputType;
+  select?: T;
+  orderBy?: AssignedEstimateReqOrderByType;
+}) {
   if (select === undefined) {
-    return await prisma.assignedEstimateRequest.findFirst({ where });
+    return await prisma.assignedEstimateRequest.findFirst({ where, orderBy });
   }
   return await prisma.assignedEstimateRequest.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 
@@ -160,6 +176,46 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends AssignedEstimateReqSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: AssignedEstimateReqWhereInputType;
+  select: T;
+  orderBy?: AssignedEstimateReqOrderByType;
+}): Promise<AssignedEstimateReqPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: AssignedEstimateReqWhereInputType;
+  orderBy?: AssignedEstimateReqOrderByType;
+}): Promise<AssignedEstimateReqPayload<undefined>[]>;
+
+async function findManyData<T extends AssignedEstimateReqSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: AssignedEstimateReqWhereInputType;
+  select?: T;
+  orderBy?: AssignedEstimateReqOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.assignedEstimateRequest.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.assignedEstimateRequest.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends AssignedEstimateReqSelectType>({
   where,
@@ -206,4 +262,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };
