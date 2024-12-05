@@ -3,7 +3,7 @@ import { $Enums } from '@prisma/client';
 export interface MovingInfo {
   id: number;
   movingType: $Enums.serviceType;
-  movingDate: string;
+  movingDate: Date;
   departure: string;
   arrival: string;
 }

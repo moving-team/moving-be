@@ -2,7 +2,7 @@
 CREATE TYPE "userType" AS ENUM ('CUSTOMER', 'MOVER');
 
 -- CreateEnum
-CREATE TYPE "serviceRegion" AS ENUM ('SEOUL', 'GYEONGGI', 'INCHEON', 'GANGWON', 'CHUNGBUK', 'CHUNGNAM', 'SEJONG', 'DAEJEON', 'JEONBUK', 'JEONNAM', 'GWANGJU', 'GYEONGBUK', 'GYEONGNAM', 'DAEGU', 'ULSAN', 'BUSAN', 'JEJU');
+CREATE TYPE "serviceRegion" AS ENUM ('NULL', 'SEOUL', 'GYEONGGI', 'INCHEON', 'GANGWON', 'CHUNGBUK', 'CHUNGNAM', 'SEJONG', 'DAEJEON', 'JEONBUK', 'JEONNAM', 'GWANGJU', 'GYEONGBUK', 'GYEONGNAM', 'DAEGU', 'ULSAN', 'BUSAN', 'JEJU');
 
 -- CreateEnum
 CREATE TYPE "serviceType" AS ENUM ('SMALL', 'HOUSE', 'OFFICE');
@@ -74,8 +74,8 @@ CREATE TABLE "review" (
 -- CreateTable
 CREATE TABLE "moving_info" (
     "id" SERIAL NOT NULL,
-    "moving_type" INTEGER NOT NULL,
-    "moving_date" TEXT NOT NULL,
+    "moving_type" "serviceType" NOT NULL,
+    "moving_date" TIMESTAMP(3) NOT NULL,
     "departure" TEXT NOT NULL,
     "arrival" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -104,7 +104,6 @@ CREATE TABLE "assigned_estimate_request" (
     "estimate_requests_id" INTEGER NOT NULL,
     "mover_id" INTEGER NOT NULL,
     "is_rejected" BOOLEAN NOT NULL DEFAULT false,
-    "rejection_reason" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

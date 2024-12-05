@@ -11,11 +11,15 @@ export function createEstimateReqMapper(
   movingInfo: MovingInfo,
   estimateReq: EstimateReq
 ) {
+  const koreanDateOnly = movingInfo.movingDate.toLocaleDateString('ko-KR', {
+    timeZone: 'Asia/Seoul',
+  });
+
   return {
     id: estimateReq.id,
     name,
     movingType: movingInfo.movingType,
-    movingDate: movingInfo.movingDate,
+    movingDate: koreanDateOnly,
     departure: movingInfo.departure,
     arrival: movingInfo.arrival,
     comment: estimateReq.comment || '',
