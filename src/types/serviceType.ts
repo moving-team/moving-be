@@ -24,8 +24,8 @@ export interface EstimateReqWithMovingInfo extends EstimateReq {
   MovingInfo: MovingInfo;
 }
 
-export interface EstimateReqWithMovingInfoAndDate extends EstimateReqWithDate {
-  MovingInfo: MovingInfo;
+export interface MovingInfoWithEstimateReqAndhDate extends MovingInfo {
+  EstimateRequest: EstimateReqWithDate[];
 }
 
 export interface Estimate {

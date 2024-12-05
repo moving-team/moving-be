@@ -7,7 +7,7 @@ import reviewRepository from '../repositories/reviewRepository';
 import userRepository from '../repositories/userRepository';
 import { CreateEstimateReq } from '../structs/estimateRequest-struct';
 import { EstimateWithMover } from '../types/serviceType';
-import { checkIfMovingDateOver } from '../utils/dateUtil';
+import { todayUTC } from '../utils/dateUtil';
 import {
   createEstimateReqMapper,
   findEstimateReqListByCustomerAndCancelMapper,
@@ -18,11 +18,13 @@ import { customerSelect } from './selerts/customerSelect';
 import {
   estimateReqCustomerSelect,
   estimateReqMovingInfoSelect,
-  estimateReqMovingInfoWithDateSelect,
   estimateReqSelect,
 } from './selerts/estimateRequsetSelect';
 import { estimateMoverSelect, estimateSelect } from './selerts/estimateSelect';
-import { movinginfoSelect } from './selerts/movingInfoSelect';
+import {
+  movingInfoEstimateReqWithDateSelect,
+  movingInfoSelect,
+} from './selerts/movingInfoSelect';
 import { reviewSelect } from './selerts/reviewSelert';
 import { userCustomerSelect } from './selerts/userSelect';
 
@@ -54,7 +56,7 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
       ...rest,
       movingDate: new Date(movingDate).toISOString(),
     },
-    select: movinginfoSelect,
+    select: movingInfoSelect,
   });
 
   console.log(movingInfo);
@@ -155,12 +157,11 @@ async function findEstimateReq(userId: number) {
     throw new Error('견적 요청 내역이 없습니다.');
   }
 
-  const today = new Date();
-  const todayUTC = today.toISOString();
+  const today = todayUTC();
 
   const movingInfo = await movingInfoRepository.findFirstData({
     where: {
-      movingDate: { gte: todayUTC },
+      movingDate: { gte: today },
       EstimateRequest: {
         every: { id: estimateReq.id },
       },
@@ -203,107 +204,126 @@ async function findEstimateReqListByCustomer(
   skip: number,
   pageSize: number
 ) {
-  // const customer = await customerRepository.findFirstData({
-  //   where: { userId },
-  //   select: customerSelect,
-  // });
-  // // 소비자인지 확인
-  // if (!customer) {
-  //   throw new Error('소비자 전용 API 입니다.');
-  // }
-  // // 총 갯수 확인
-  // const total = await estimateRequestRepository.countData({
-  //   customerId: customer.id,
-  // });
-  // const estimateReqList =
-  //   await estimateRequestRepository.findManyByPaginationData({
-  //     paginationParams: {
-  //       orderBy: { createdAt: 'desc' },
-  //       skip,
-  //       take: pageSize,
-  //       where: { customerId: customer.id },
-  //     },
-  //     select: estimateReqMovingInfoWithDateSelect,
-  //   });
-  // const newList = await Promise.all(
-  //   estimateReqList.map(async (estimateReq) => {
-  //     // 확정된 견적 요청일 때
-  //     if (estimateReq.isConfirmed) {
-  //       const estimate = (await estimateRepository.findFirstData({
-  //         where: {
-  //           estimateRequestId: estimateReq.id,
-  //           status: 'ACCEPTED',
-  //         },
-  //         select: estimateMoverSelect,
-  //       })) as EstimateWithMover;
-  //       // 총 리뷰 수 확인
-  //       const totalReviews = await reviewRepository.countData({
-  //         moverId: estimate.Mover.id,
-  //       });
-  //       let totalScore: number = 0;
-  //       // 리뷰가 1개 이상일 시 리뷰 점수 총합 획득
-  //       if (totalReviews !== 0) {
-  //         const reviewList = await reviewRepository.findManyData({
-  //           where: { moverId: estimate.Mover.id },
-  //           select: reviewSelect,
-  //         });
-  //         totalScore = reviewList.reduce(
-  //           (sum, review) => sum + review.score,
-  //           0
-  //         );
-  //       }
-  //       // 리뷰 평균 점수
-  //       const averageScore = Math.round((totalScore / totalReviews) * 10) / 10;
-  //       // 총 확정 갯수
-  //       const totalConfirmed = await estimateRepository.countData({
-  //         moverId: estimate.Mover.id,
-  //         status: 'ACCEPTED',
-  //       });
-  //       // 찜된 횟수
-  //       const totalFavorite = await favoriteRepository.countData({
-  //         moverId: estimate.Mover.id,
-  //       });
-  //       const favorite = await favoriteRepository.findFirstData({
-  //         where: {
-  //           moverId: estimate.Mover.id,
-  //           customerId: customer.id,
-  //         },
-  //       });
-  //       // 찜 여부
-  //       let isFavorite = false;
-  //       if (favorite) {
-  //         isFavorite = true;
-  //       }
-  //       return findEstimateReqListByCustomerAndConfirmedMapper(
-  //         estimateReq,
-  //         estimate,
-  //         averageScore,
-  //         totalReviews,
-  //         totalConfirmed,
-  //         totalFavorite,
-  //         isFavorite
-  //       );
-  //     }
-  //     // 취소된 견적 요청일 때
-  //     if (estimateReq.isCancelled) {
-  //       return findEstimateReqListByCustomerAndCancelMapper(estimateReq);
-  //     }
-  //     const isMoveDateOver = checkIfMovingDateOver(
-  //       estimateReq.MovingInfo.movingDate
-  //     );
-  //     // 이사일이 지난 견적일 때
-  //     if (isMoveDateOver) {
-  //       return findEstimateReqListByCustomerAndCancelMapper(estimateReq);
-  //     }
-  //     // 이사일이 안지나고 확정또는 취소가 안된 견적 요청일 때
-  //     return false;
-  //   })
-  // );
-  // const finalList = newList.filter((item) => item !== false);
-  // return {
-  //   total,
-  //   list: finalList,
-  // };
+  const customer = await customerRepository.findFirstData({
+    where: { userId },
+    select: customerSelect,
+  });
+
+  // 소비자인지 확인
+  if (!customer) {
+    throw new Error('소비자 전용 API 입니다.');
+  }
+
+  const today = todayUTC();
+
+  const movingInfoWhere = {
+    AND: [
+      {
+        EstimateRequest: { every: { customerId: customer.id } },
+      },
+      {
+        OR: [
+          { EstimateRequest: { some: { isCancelled: true } } },
+          { EstimateRequest: { some: { isConfirmed: true } } },
+          { movingDate: { lt: today } },
+        ],
+      },
+    ],
+  };
+
+  // 총 갯수 확인
+  const total = await movingInfoRepository.countData(movingInfoWhere);
+
+  const movingInfoList = await movingInfoRepository.findManyByPaginationData({
+    paginationParams: {
+      orderBy: { createdAt: 'desc' },
+      skip,
+      take: pageSize,
+      where: movingInfoWhere,
+    },
+    select: movingInfoEstimateReqWithDateSelect,
+  });
+
+  console.log(movingInfoList);
+  const newList = await Promise.all(
+    movingInfoList.map(async (movingInfo) => {
+      const estimateReq = movingInfo.EstimateRequest[0];
+
+      // 확정된 견적 요청일 때
+      if (estimateReq.isConfirmed) {
+        const estimate = (await estimateRepository.findFirstData({
+          where: {
+            estimateRequestId: estimateReq.id,
+            status: 'ACCEPTED',
+          },
+          select: estimateMoverSelect,
+        })) as EstimateWithMover;
+
+        // 총 리뷰 수 확인
+        const totalReviews = await reviewRepository.countData({
+          moverId: estimate.Mover.id,
+        });
+        let totalScore: number = 0;
+
+        // 리뷰가 1개 이상일 시 리뷰 점수 총합 획득
+        if (totalReviews !== 0) {
+          const reviewList = await reviewRepository.findManyData({
+            where: { moverId: estimate.Mover.id },
+            select: reviewSelect,
+          });
+          totalScore = reviewList.reduce(
+            (sum, review) => sum + review.score,
+            0
+          );
+        }
+
+        // 리뷰 평균 점수
+        const averageScore = Math.round((totalScore / totalReviews) * 10) / 10;
+
+        // 총 확정 갯수
+        const totalConfirmed = await estimateRepository.countData({
+          moverId: estimate.Mover.id,
+          status: 'ACCEPTED',
+        });
+
+        // 찜된 횟수
+        const totalFavorite = await favoriteRepository.countData({
+          moverId: estimate.Mover.id,
+        });
+
+        const favorite = await favoriteRepository.findFirstData({
+          where: {
+            moverId: estimate.Mover.id,
+            customerId: customer.id,
+          },
+        });
+
+        // 찜 여부
+        let isFavorite = false;
+        if (favorite) {
+          isFavorite = true;
+        }
+
+        return findEstimateReqListByCustomerAndConfirmedMapper(
+          movingInfo,
+          estimate,
+          averageScore,
+          totalReviews,
+          totalConfirmed,
+          totalFavorite,
+          isFavorite
+        );
+      }
+
+      // 취소된 견적 요청 또는 이사일이 지난 견적일 때
+      return findEstimateReqListByCustomerAndCancelMapper(movingInfo);
+    })
+  );
+
+  return {
+    total,
+    list: newList,
+  };
 }
 
 export default {

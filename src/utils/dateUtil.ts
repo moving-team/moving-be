@@ -1,33 +1,16 @@
-export function checkIfMovingDateOver(movingDate: string) {
-  // 현재 날짜
+export function todayUTC() {
   const today = new Date();
-  const koreanDate = today.toLocaleDateString('ko-KR', {
+  const koreanTimeString = today.toLocaleString('ko-KR', {
     timeZone: 'Asia/Seoul',
   });
-  const [year, month, day] = koreanDate
+  const [year, month, day] = koreanTimeString
     .split('.')
     .map((part) => parseInt(part.trim(), 10));
+  const paddedMonth = String(month).padStart(2, '0');
+  const paddedDay = String(day).padStart(2, '0');
 
-  // 이사 날짜
-  const [movingInfoYear, movingInfoMonth, movingInfoDay] = movingDate
-    .split('.')
-    .map((part) => parseInt(part, 10));
-
-  // 이사일이 지났는지 확인
-  if (year > movingInfoYear) {
-    // 연도가 지났을 때
-    return true;
-  } else if (year === movingInfoYear && month > movingInfoMonth) {
-    // 달이 지났을 때
-    return true;
-  } else if (
-    year === movingInfoYear &&
-    month === movingInfoMonth &&
-    day > movingInfoDay
-  ) {
-    // 일이 지났을때
-    return true;
-  }
-
-  return false
+  const newtoday = new Date(
+    `${year}-${paddedMonth}-${paddedDay}T00:00:00+09:00`
+  );
+  return newtoday.toISOString();
 }
