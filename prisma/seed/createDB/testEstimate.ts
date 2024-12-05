@@ -73,19 +73,18 @@ async function testCustomerEstimates() {
           ([estimateRequestIdA], [estimateRequestIdB]) => {
             const movingInfoIdA = estimateRequestMap.get(parseInt(estimateRequestIdA, 10))?.movingInfoId;
             const movingInfoIdB = estimateRequestMap.get(parseInt(estimateRequestIdB, 10))?.movingInfoId;
-        
+
             const movingDateA = movingInfoIdA
-              ? movingInfoMap.get(movingInfoIdA)?.movingDate || ''
-              : '';
+              ? movingInfoMap.get(movingInfoIdA)?.movingDate
+              : undefined;
             const movingDateB = movingInfoIdB
-              ? movingInfoMap.get(movingInfoIdB)?.movingDate || ''
-              : '';
-        
-            return new Date(movingDateA.replace(/\./g, '-').trim()).getTime() -
-                   new Date(movingDateB.replace(/\./g, '-').trim()).getTime();
+              ? movingInfoMap.get(movingInfoIdB)?.movingDate
+              : undefined;
+
+            return (movingDateA?.getTime() || 0) - (movingDateB?.getTime() || 0);
           }
         );
-        
+
         // 그룹화된 데이터 출력
         sortedEntries.forEach(([estimateRequestId, relatedEstimates]) => {
           const relatedRequest = estimateRequestMap.get(parseInt(estimateRequestId, 10));

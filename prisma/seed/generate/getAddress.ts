@@ -21,4 +21,5 @@ export function getRandomAddress(): string {
   return selectedAddress;
 }
 
-console.log(getRandomAddress());
+// 테스트
+// console.log(getRandomAddress());

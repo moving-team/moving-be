@@ -21,4 +21,5 @@ export function getRandomComment(): string {
   return selectedComment;
 }
 
-console.log(getRandomComment());
+// 테스트
+// console.log(getRandomComment());

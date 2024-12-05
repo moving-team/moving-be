@@ -35,23 +35,20 @@ async function generateAssignedEstimateRequests(): Promise<void> {
 
     // 각 EstimateRequest에 대해 처리
     for (const estimateRequest of estimateRequests) {
-      // MovingDate와 CreatedAt 파싱
-      const movingDate = new Date(
-        estimateRequest.MovingInfo.movingDate.replace(/\./g, '-').trim()
-      );
-      const createdAt = new Date(estimateRequest.createdAt);
+      const movingDate = estimateRequest.MovingInfo.movingDate;
+      const createdAt = estimateRequest.createdAt;
 
       // 생성할 AssignedEstimateRequest 개수
-      const numRequests = Math.floor(Math.random() * 15) + 1;
+      const numRequests = Math.floor(Math.random() * 8) + 1;
 
       // 랜덤으로 Mover 선택 및 데이터 생성
       for (let i = 0; i < numRequests; i++) {
         const randomMover = movers[Math.floor(Math.random() * movers.length)];
         const assignmentKey = `${estimateRequest.id}-${randomMover.id}`;
 
-        // 중복 확인
+        // 중복 확인 // 이미 존재하는 조합은 건너뜀
         if (existingAssignments.has(assignmentKey)) {
-          continue; // 이미 존재하는 조합은 건너뜀
+          continue; 
         }
 
         // Random createdAt between EstimateRequest createdAt and movingDate - 1 day

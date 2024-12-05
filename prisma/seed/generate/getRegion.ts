@@ -40,5 +40,6 @@ export function getRegionArray(): string[] {
   return getRandomArray(regions, regions.length);
 }
 
-console.log(getRegion());
-console.log(getRegionArray());
+// 테스트
+// console.log(getRegion());
+// console.log(getRegionArray());

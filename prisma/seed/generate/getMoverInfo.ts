@@ -29,11 +29,11 @@ export function getRandomMoverInfo(): Mover {
 }
 
 // 테스트
-const test = getRandomMoverInfo();
-if (test) {
-  console.log(test.name);
-  console.log(test.introduction);
-  console.log(test.description);
-} else {
-  console.error("No data returned from getRandomMoverInfo.");
-}
+// const test = getRandomMoverInfo();
+// if (test) {
+//   console.log(test.name);
+//   console.log(test.introduction);
+//   console.log(test.description);
+// } else {
+//   console.error("No data returned from getRandomMoverInfo.");
+// }

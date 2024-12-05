@@ -20,4 +20,5 @@ export function getRandomRejectionReason(): string {
   return selectedReason;
 }
 
-console.log(getRandomRejectionReason());
+// 테스트
+// console.log(getRandomRejectionReason());

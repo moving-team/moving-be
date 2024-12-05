@@ -5,34 +5,24 @@ const prisma = new PrismaClient();
 async function findEligibleCustomers(): Promise<number[]> {
   const today = new Date();
 
-  // DB에서 모든 조건 후보군 조회
+  // DB에서 모든 조건 후보군 조회 및 필터링
   const allCustomers = await prisma.estimateRequest.findMany({
     where: {
       isConfirmed: false, // isConfirmed가 false
-    },
-    select: {
-      customerId: true,
       MovingInfo: {
-        select: {
-          movingDate: true, // movingDate를 문자열로 가져옴
+        movingDate: {
+          gt: today, // movingDate가 현재 날짜보다 미래
         },
       },
     },
-  });
-
-  // movingDate가 현재 날짜보다 미래인 경우 필터링
-  const eligibleCustomers = allCustomers.filter((req) => {
-    const movingDateString = req.MovingInfo?.movingDate;
-    if (!movingDateString) return false; // movingDate가 없는 경우 제외
-
-    // 문자열을 Date 객체로 변환
-    const movingDate = new Date(movingDateString.replace(/\./g, '-').trim());
-    return movingDate > today;
+    select: {
+      customerId: true,
+    },
   });
 
   // 중복 제거 후 customerId 반환
   const uniqueCustomerIds = Array.from(
-    new Set(eligibleCustomers.map((req) => req.customerId))
+    new Set(allCustomers.map((req) => req.customerId))
   );
 
   console.log(
@@ -50,7 +40,7 @@ async function findCustomerMovingDates(customerId: number) {
     select: {
       MovingInfo: {
         select: {
-          movingDate: true, // movingDate를 문자열로 가져옴
+          movingDate: true, // movingDate를 Date 객체로 가져옴
         },
       },
     },
@@ -62,14 +52,12 @@ async function findCustomerMovingDates(customerId: number) {
     const movingDates = customerMovingDates
       .map((entry) => entry.MovingInfo?.movingDate)
       .filter(Boolean) // null 또는 undefined 제거
-      .sort((a, b) => {
-        // 문자열 날짜를 Date 객체로 변환 후 비교
-        const dateA = new Date(a!.replace(/\./g, '-').trim());
-        const dateB = new Date(b!.replace(/\./g, '-').trim());
-        return dateB.getTime() - dateA.getTime(); // 내림차순 정렬
-      });
+      .sort((a, b) => b!.getTime() - a!.getTime()); // Date 객체로 내림차순 정렬
 
-    console.log(`customerId ${customerId}의 MovingDate 목록 (내림차순):`, movingDates);
+    console.log(
+      `customerId ${customerId}의 MovingDate 목록 (내림차순):`,
+      movingDates
+    );
   }
 }
 

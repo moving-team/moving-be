@@ -4,7 +4,6 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -131,7 +130,7 @@ model Review {
 model MovingInfo {
   id         Int         @id @default(autoincrement())
   movingType serviceType @map("moving_type")
-  movingDate String      @map("moving_date")
+  movingDate DateTime    @map("moving_date")
   departure  String
   arrival    String
   createdAt  DateTime    @default(now())

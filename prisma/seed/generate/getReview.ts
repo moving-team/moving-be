@@ -21,4 +21,5 @@ export function getRandomReview(): string {
   return selectedReview;
 }
 
-console.log(getRandomReview());
+// 테스트
+// console.log(getRandomReview());

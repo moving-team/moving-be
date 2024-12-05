@@ -19,4 +19,4 @@ export function generateUniquePhoneNumber(): string {
   return phoneNumber;
 }
 
-console.log(generateUniquePhoneNumber());
+// console.log(generateUniquePhoneNumber());

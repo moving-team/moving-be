@@ -4,7 +4,6 @@ import { generateName } from '../generate/getName';
 import { generateUniquePhoneNumber } from '../generate/getNumber';
 import { getRegion, getRegionArray } from '../generate/getRegion';
 import { getWeightedServiceTypesArray, getServiceTypesArray } from '../generate/getServiceType';
-import { getBeforeDate } from '../generate/getDate';
 import * as fs from 'fs';
 import * as bcrypt from 'bcrypt'; // bcrypt 추가
 import * as dotenv from 'dotenv'; // dotenv 추가
@@ -12,11 +11,11 @@ import * as dotenv from 'dotenv'; // dotenv 추가
 dotenv.config(); // .env 파일 로드
 
 const prisma = new PrismaClient();
-const saltRounds = 10; // bcrypt saltRounds 설정
-const commonPassword = process.env.COMMON_PASSWORD || 'defaultPassword'; // COMMON_PASSWORD 가져오기
+const saltRounds = 10; 
+const commonPassword = process.env.COMMON_PASSWORD || 'defaultPassword'; 
 
-const moverCount = 500; // 생성할 Mover 수
-const customerCount = moverCount * 2; // Customer 수 = Mover의 3배
+const moverCount = 300; // 생성할 Mover 수
+const customerCount = 1500; // customer 수
 
 export type UserData = {
   userType: 'MOVER' | 'CUSTOMER';
@@ -44,6 +43,24 @@ type CustomerData = {
   region: serviceRegion;
   serviceType: serviceType[];
 };
+
+// 날짜 생성
+function getBeforeDate(): Date {
+  const startDate = new Date('2022-01-01T00:00:00');
+  const endDate = new Date('2023-12-31T23:59:59');
+  if (startDate >= endDate) {
+    throw new Error('startDate must be earlier than endDate');
+  }
+
+  const startTimestamp = startDate.getTime();
+  const endTimestamp = endDate.getTime();
+
+  const randomTimestamp = Math.floor(
+    Math.random() * (endTimestamp - startTimestamp + 1) + startTimestamp
+  );
+
+  return new Date(randomTimestamp);
+}
 
 // 데이터 생성
 async function generateUsers(): Promise<{

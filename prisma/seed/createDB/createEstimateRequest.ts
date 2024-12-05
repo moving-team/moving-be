@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 // MovingInfo 데이터 타입
 type MovingInfo = {
   id: number;
-  movingDate: string;
+  movingDate: Date; // DateTime으로 변경
   createdAt: Date;
 };
 
@@ -59,15 +59,15 @@ async function generateEstimateRequest(): Promise<void> {
     // 각 customerId별 EstimateRequest 생성 제한 개수 설정
     const customerEstimateLimits: Map<number, number> = new Map();
     customerIds.forEach((id) =>
-      customerEstimateLimits.set(id, getRandomInt(1, 15)) // 각 customer는 1~15개의 EstimateRequest를 가짐
+      customerEstimateLimits.set(id, getRandomInt(1, 20))
     );
 
     const estimateRequests: EstimateRequest[] = [];
     const today = new Date();
 
-    for (const movingInfo of movingInfoData) {
+    for (let i = 0; i < movingInfoData.length; i++) {
+      const movingInfo = movingInfoData[i];
       let customerId = getRandomCustomerId(customerIds); // 랜덤 고객 선택
-      const movingDate = new Date(movingInfo.movingDate);
 
       // 고객 ID 순환으로 제한 조건을 무시
       while (true) {
@@ -87,10 +87,10 @@ async function generateEstimateRequest(): Promise<void> {
       }
 
       // MovingDate와 현재 날짜를 고려한 상태 결정
-      const isFuture = movingDate > today;
+      const isFuture = movingInfo.movingDate > today;
       const isConfirmed = isFuture
         ? Math.random() <= 0.2 // 확률적 true
-        : Math.random() <= 0.9; // 확률적 true
+        : Math.random() <= 0.97; // 확률적 true
       const isCancelled = !isConfirmed && Math.random() <= 0.1;
 
       // 새로운 EstimateRequest 생성
@@ -102,6 +102,11 @@ async function generateEstimateRequest(): Promise<void> {
         isCancelled,
         createdAt: movingInfo.createdAt,
       });
+
+      // 누적 생성 갯수 출력
+      process.stdout.write(
+        `Processing: ${i + 1}/${movingInfoData.length} EstimateRequests\r`
+      );
     }
 
     // JSON 파일로 저장
@@ -114,7 +119,9 @@ async function generateEstimateRequest(): Promise<void> {
 
     // 로그 추가: 모든 movingInfo 처리 여부 확인
     console.log(
-      `All MovingInfo processed: ${movingInfoData.length === estimateRequests.length}`
+      `\nAll MovingInfo processed: ${
+        movingInfoData.length === estimateRequests.length
+      }`
     );
     console.log(
       `Total MovingInfo: ${movingInfoData.length}, Total EstimateRequests: ${estimateRequests.length}`
