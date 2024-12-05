@@ -1,23 +1,10 @@
-import { $Enums } from '@prisma/client';
-
-interface MovingInfo {
-  id: number;
-  movingType: $Enums.serviceType;
-  movingDate: string;
-  departure: string;
-  arrival: string;
-}
-
-interface EstimateReq {
-  id: number;
-  comment: string | null;
-  isConfirmed: boolean;
-  isCancelled: boolean;
-}
-
-interface EstimateReqWithMovingInfo extends EstimateReq {
-  MovingInfo: MovingInfo;
-}
+import {
+  EstimateReq,
+  EstimateReqWithMovingInfo,
+  EstimateReqWithMovingInfoAndDate,
+  EstimateWithMover,
+  MovingInfo,
+} from '../../types/serviceType';
 
 export function createEstimateReqMapper(
   name: string,
@@ -35,7 +22,7 @@ export function createEstimateReqMapper(
   };
 }
 
-export function getestimateReqByNoConfirmed(
+export function getestimateReqByNoConfirmedMapper(
   name: string,
   estimateReq: EstimateReqWithMovingInfo
 ) {
@@ -48,5 +35,52 @@ export function getestimateReqByNoConfirmed(
     arrival: estimateReq.MovingInfo.arrival,
     comment: estimateReq.comment,
     isConfirmed: estimateReq.isConfirmed,
+  };
+}
+
+export function findEstimateReqListByCustomerAndConfirmedMapper(
+  estimateReq: EstimateReqWithMovingInfoAndDate,
+  estimate: EstimateWithMover,
+  averageScore: number,
+  totalReviews: number,
+  totalConfirmed: number,
+  favorite: number,
+  isFavorite: boolean
+) {
+  return {
+    id: estimateReq.id,
+    isConfirmed: estimateReq.isConfirmed,
+    isCancelled: estimateReq.isCancelled,
+    summary: estimate.Mover.summary,
+    profileImage: estimate.Mover.profileImage,
+    nickname: estimate.Mover.nickname,
+    reviewStats: {
+      averageScore,
+      totalReviews,
+    },
+    career: estimate.Mover.career,
+    totalConfirmed,
+    favorite,
+    isFavorite,
+    movingDate: estimateReq.MovingInfo.movingDate,
+    departure: estimateReq.MovingInfo.departure,
+    arrival: estimateReq.MovingInfo.arrival,
+    price: estimate.price,
+  };
+}
+
+export function findEstimateReqListByCustomerAndCancelMapper(
+  estimateReq: EstimateReqWithMovingInfoAndDate
+) {
+  return {
+    id: estimateReq.id,
+    isConfirmed: estimateReq.isConfirmed,
+    isCancelled: estimateReq.isCancelled,
+    movingType: estimateReq.MovingInfo.movingType,
+    movingDate: estimateReq.MovingInfo.movingDate,
+    departure: estimateReq.MovingInfo.departure,
+    arrival: estimateReq.MovingInfo.arrival,
+    comment: estimateReq.comment,
+    createAt: estimateReq.createdAt,
   };
 }

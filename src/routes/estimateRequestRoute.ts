@@ -5,17 +5,15 @@ import { authenticateToken } from '../middlewares/authMiddleware';
 
 const estimateReqRouter = express.Router();
 
-estimateReqRouter
-  .route('/')
-  .post(
-    authenticateToken,
-    validateEstimateReq,
-    estimateRequestController.createEstimateReq
-  )
-  .get(authenticateToken, estimateRequestController.findEstimateReq);
+estimateReqRouter.use(authenticateToken);
 
 estimateReqRouter
-  .route('/:estimateRequestId')
-  .delete(authenticateToken, estimateRequestController.deleteEstimateReq);
+  .post('/', validateEstimateReq, estimateRequestController.createEstimateReq)
+  .get('/', authenticateToken, estimateRequestController.findEstimateReq)
+  .get(
+    '/customer/list',
+    estimateRequestController.findEstimateReqListByCustomer
+  )
+  .delete('/:estimateRequestId', estimateRequestController.deleteEstimateReq);
 
 export default estimateReqRouter;
