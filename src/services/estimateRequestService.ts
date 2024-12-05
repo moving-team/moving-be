@@ -39,8 +39,16 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
     throw error;
   }
 
-  // 이사 정보 생성
   const { comment, movingDate, ...rest } = data;
+
+  const movingDateTime = new Date(movingDate).getTime() + 1000 * 60 * 60 * 24;
+  const todayDateTime = new Date().getTime();
+
+  if (movingDateTime < todayDateTime) {
+    throw new Error('이미 지난 날짜입니다.');
+  }
+
+  // 이사 정보 생성
   const movingInfo = await movingInfoRepository.createData({
     data: {
       ...rest,
