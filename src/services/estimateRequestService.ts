@@ -61,7 +61,7 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
   return createEstimateReqMapper(user.name, movingInfo, estimateReq);
 }
 
-// 견적 요청 삭제 API (견적에 status 수정하는 로직 추가)
+// 견적 요청 삭제 API 
 async function deleteEstimateReq(userId: number, estimateRequestId: number) {
   const estimateReq = await estimateRequestRepository.findFirstData({
     where: { id: estimateRequestId },
@@ -310,4 +310,5 @@ export default {
   createEstimateReq,
   deleteEstimateReq,
   findEstimateReq,
+  findEstimateReqListByCustomer
 };

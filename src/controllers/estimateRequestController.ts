@@ -80,6 +80,40 @@ async function findEstimateReq(
   }
 }
 
+// 유저-견적 요청 리스트 조회
+async function findEstimateReqListByCustomer(
+  req: Request<{}, {}, {}, { page?: string; pageSize?: string }>,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (
+      req.user &&
+      typeof req.user !== 'string' &&
+      typeof req.user.id === 'number'
+    ) {
+      const { id: userId } = req.user;
+      const { page = '1', pageSize = '4' } = req.query;
+      const pageNum = parseInt(page, 10) || 1;
+      const pageSizeNum = parseInt(pageSize, 10) || 4;
+      const skip = pageNum * pageSizeNum;
+
+      const estimateReqList =
+        await estimateRequestService.findEstimateReqListByCustomer(
+          userId,
+          skip,
+          pageSizeNum
+        );
+
+      res.send(estimateReqList);
+    }
+
+    throw new Error('다시 시도해 주세요');
+  } catch (err) {
+    return next(err);
+  }
+}
+
 export default {
   createEstimateReq,
   deleteEstimateReq,
