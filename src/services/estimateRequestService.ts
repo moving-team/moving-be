@@ -65,103 +65,128 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
 
 // 견적 요청 삭제 API
 async function deleteEstimateReq(userId: number, estimateRequestId: number) {
-  // const estimateReq = await estimateRequestRepository.findFirstData({
-  //   where: { id: estimateRequestId },
-  //   select: estimateReqCustomerSelect,
-  // });
-  // const user = await userRepository.findUniqueOrThrowtData({
-  //   where: { id: userId },
-  //   select: userCustomerSelect,
-  // });
-  // // 견적 요청 유무 확인
-  // if (!estimateReq) {
-  //   throw new Error('존재하지 않는 견적 요청입니다.');
-  // } else if (estimateReq.isCancelled) {
-  //   throw new Error('이미 취소된 요청입니다.');
-  // }
-  // // 권한 확인
-  // if (user.Customer && user.Customer.id !== estimateReq?.Customer.id) {
-  //   throw new Error('권한이 없습니다.');
-  // }
-  // // 취소 여부 수정
-  // const deleteEstimateReq = await estimateRequestRepository.updateData({
-  //   where: { id: estimateRequestId },
-  //   data: { isCancelled: true },
-  //   select: estimateReqSelect,
-  // });
-  // // 취소 여부가 변경이 안됐을 때
-  // if (!deleteEstimateReq.isCancelled) {
-  //   throw new Error('다시 시도해 주세요.');
-  // }
-  // // 해당 요청에 보낸 견적 조회
-  // const estimateList = await estimateRepository.findManyData({
-  //   where: { estimateRequestId },
-  //   select: estimateSelect,
-  // });
-  // // 견적 상태 수정
-  // Promise.all(
-  //   estimateList.map(async (estimate) => {
-  //     await estimateRepository.updateData({
-  //       where: { id: estimate.id },
-  //       data: { status: 'REJECTED' },
-  //       select: estimateSelect,
-  //     });
-  //   })
-  // );
-  // return {
-  //   id: deleteEstimateReq.id,
-  //   isCancelled: deleteEstimateReq.isCancelled,
-  // };
+  const estimateReq = await estimateRequestRepository.findFirstData({
+    where: { id: estimateRequestId },
+    select: estimateReqCustomerSelect,
+  });
+
+  const user = await userRepository.findUniqueOrThrowtData({
+    where: { id: userId },
+    select: userCustomerSelect,
+  });
+
+  // 견적 요청 유무 확인
+  if (!estimateReq) {
+    throw new Error('존재하지 않는 견적 요청입니다.');
+  } else if (estimateReq.isCancelled) {
+    throw new Error('이미 취소된 요청입니다.');
+  }
+
+  // 권한 확인
+  if (user.Customer && user.Customer.id !== estimateReq.Customer.id) {
+    throw new Error('권한이 없습니다.');
+  }
+
+  // 취소 여부 수정
+  const deleteEstimateReq = await estimateRequestRepository.updateData({
+    where: { id: estimateRequestId },
+    data: { isCancelled: true },
+    select: estimateReqSelect,
+  });
+
+  // 취소 여부가 변경이 안됐을 때
+  if (!deleteEstimateReq.isCancelled) {
+    throw new Error('다시 시도해 주세요.');
+  }
+
+  // 해당 요청에 보낸 견적 조회
+  const estimateList = await estimateRepository.findManyData({
+    where: { estimateRequestId },
+    select: estimateSelect,
+  });
+
+  // 견적 상태 수정
+  Promise.all(
+    estimateList.map(async (estimate) => {
+      await estimateRepository.updateData({
+        where: { id: estimate.id },
+        data: { status: 'REJECTED' },
+        select: estimateSelect,
+      });
+    })
+  );
+
+  return {
+    id: deleteEstimateReq.id,
+    isCancelled: deleteEstimateReq.isCancelled,
+  };
 }
 
 // 유저-견적 요청 조회 API
 async function findEstimateReq(userId: number) {
-  // const user = await userRepository.findFirstData({
-  //   where: { id: userId },
-  //   select: userCustomerSelect,
-  // });
-  // // 유저가 소비자인지 기사인지 확인
-  // if (!user?.Customer) {
-  //   throw new Error('소비자 전용 API 입니다.');
-  // }
-  // const estimateReq = await estimateRequestRepository.findFirstData({
-  //   where: {
-  //     customerId: user.Customer.id,
-  //     isCancelled: false,
-  //   },
-  //   select: estimateReqMovingInfoSelect,
-  // });
-  // // 견적 요청이 있는지 확인
-  // if (!estimateReq || !estimateReq.MovingInfo) {
-  //   throw new Error('견적 요청 내역이 없습니다.');
-  // }
-  // // 이사일이 지났는지 확인
-  // const isMoveDateOver = checkIfMovingDateOver(
-  //   estimateReq.MovingInfo.movingDate
-  // );
-  // if (isMoveDateOver) {
-  //   throw new Error('견적 요청 내역이 없습니다.');
-  // }
-  // // 확정된 견적이 여부에 따른 response 변경
-  // if (!estimateReq.isConfirmed) {
-  //   // 확정된 견적이 없을 시
-  //   return getestimateReqByNoConfirmedMapper(user.name, estimateReq);
-  // } else if (estimateReq.isConfirmed) {
-  //   // 확정된 견적이 있을 시
-  //   const confirmedEstimate = await estimateRepository.findFirstData({
-  //     where: {
-  //       estimateRequestId: estimateReq.id,
-  //       status: 'ACCEPTED',
-  //     },
-  //     select: estimateMoverSelect,
-  //   });
-  //   const resMapper = getestimateReqByNoConfirmedMapper(user.name, estimateReq);
-  //   return {
-  //     ...resMapper,
-  //     nickname: confirmedEstimate?.Mover.nickname,
-  //     confirmedId: confirmedEstimate?.id,
-  //   };
-  // }
+  const user = await userRepository.findFirstData({
+    where: { id: userId },
+    select: userCustomerSelect,
+  });
+
+  // 유저가 소비자인지 기사인지 확인
+  if (!user?.Customer) {
+    throw new Error('소비자 전용 API 입니다.');
+  }
+
+  const estimateReq = await estimateRequestRepository.findFirstData({
+    where: {
+      customerId: user.Customer.id,
+      isCancelled: false,
+    },
+    select: estimateReqMovingInfoSelect,
+  });
+
+  // 견적 요청이 있는지 확인
+  if (!estimateReq || !estimateReq.MovingInfo) {
+    throw new Error('견적 요청 내역이 없습니다.');
+  }
+
+  const today = new Date();
+  const todayUTC = today.toISOString();
+
+  const movingInfo = await movingInfoRepository.findFirstData({
+    where: {
+      movingDate: { gte: todayUTC },
+      EstimateRequest: {
+        every: { id: estimateReq.id },
+      },
+    },
+  });
+
+  // 이사일이 지났는지 확인
+  if (!movingInfo) {
+    throw new Error('견적 요청 내역이 없습니다.');
+  }
+
+  // 확정된 견적이 여부에 따른 response 변경
+  if (!estimateReq.isConfirmed) {
+    // 확정된 견적이 없을 시
+
+    return getestimateReqByNoConfirmedMapper(user.name, estimateReq);
+  } else if (estimateReq.isConfirmed) {
+    // 확정된 견적이 있을 시
+
+    const confirmedEstimate = await estimateRepository.findFirstData({
+      where: {
+        estimateRequestId: estimateReq.id,
+        status: 'ACCEPTED',
+      },
+      select: estimateMoverSelect,
+    });
+
+    const resMapper = getestimateReqByNoConfirmedMapper(user.name, estimateReq);
+    return {
+      ...resMapper,
+      nickname: confirmedEstimate?.Mover.nickname,
+      confirmedId: confirmedEstimate?.id,
+    };
+  }
 }
 
 // 유저-견적 요청 리스트 조회

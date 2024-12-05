@@ -13,7 +13,10 @@ export function createEstimateReqMapper(
 ) {
   const koreanDateOnly = movingInfo.movingDate.toLocaleDateString('ko-KR', {
     timeZone: 'Asia/Seoul',
-  });
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).replace(/\//g, '.');
 
   return {
     id: estimateReq.id,
@@ -30,11 +33,18 @@ export function getestimateReqByNoConfirmedMapper(
   name: string,
   estimateReq: EstimateReqWithMovingInfo
 ) {
+  const koreanDateOnly = estimateReq.MovingInfo.movingDate.toLocaleDateString('ko-KR', {
+    timeZone: 'Asia/Seoul',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).replace(/\//g, '.');
+
   return {
     id: estimateReq.id,
     name,
     movingType: estimateReq.MovingInfo.movingType,
-    movingDate: estimateReq.MovingInfo.movingDate,
+    movingDate: koreanDateOnly,
     departure: estimateReq.MovingInfo.departure,
     arrival: estimateReq.MovingInfo.arrival,
     comment: estimateReq.comment,
