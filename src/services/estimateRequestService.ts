@@ -1,24 +1,29 @@
 import customerRepository from '../repositories/customerRepository';
 import estimateRepository from '../repositories/estimateRepository';
 import estimateRequestRepository from '../repositories/estimateRequestRepository';
-import moverRepository from '../repositories/moverRepository';
+import favoriteRepository from '../repositories/favoriteRepository';
 import movingInfoRepository from '../repositories/movingInfoRepository';
 import reviewRepository from '../repositories/reviewRepository';
 import userRepository from '../repositories/userRepository';
 import { CreateEstimateReq } from '../structs/estimateRequest-struct';
+import { EstimateWithMover } from '../types/serviceType';
 import { checkIfMovingDateOver } from '../utils/dateUtil';
 import {
   createEstimateReqMapper,
-  getestimateReqByNoConfirmed,
+  findEstimateReqListByCustomerAndCancelMapper,
+  findEstimateReqListByCustomerAndConfirmedMapper,
+  getestimateReqByNoConfirmedMapper,
 } from './mappers/estimateRequestMapper';
 import { customerSelect } from './selerts/customerSelect';
 import {
   estimateReqCustomerSelect,
   estimateReqMovingInfoSelect,
+  estimateReqMovingInfoWithDateSelect,
   estimateReqSelect,
 } from './selerts/estimateRequsetSelect';
 import { estimateMoverSelect } from './selerts/estimateSelect';
 import { movinginfoSelect } from './selerts/movingInfoSelect';
+import { reviewSelect } from './selerts/reviewSelert';
 import { userCustomerSelect } from './selerts/userSelect';
 
 // 견적 요청 작성 API
@@ -56,7 +61,7 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
   return createEstimateReqMapper(user.name, movingInfo, estimateReq);
 }
 
-// 견적 요청 삭제 API
+// 견적 요청 삭제 API (견적에 status 수정하는 로직 추가)
 async function deleteEstimateReq(userId: number, estimateRequestId: number) {
   const estimateReq = await estimateRequestRepository.findFirstData({
     where: { id: estimateRequestId },
@@ -136,7 +141,7 @@ async function findEstimateReq(userId: number) {
   if (!estimateReq.isConfirmed) {
     // 확정된 견적이 없을 시
 
-    return getestimateReqByNoConfirmed(user.name, estimateReq);
+    return getestimateReqByNoConfirmedMapper(user.name, estimateReq);
   } else if (estimateReq.isConfirmed) {
     // 확정된 견적이 있을 시
 
@@ -147,7 +152,7 @@ async function findEstimateReq(userId: number) {
       },
       select: estimateMoverSelect,
     });
-    const resMapper = getestimateReqByNoConfirmed(user.name, estimateReq);
+    const resMapper = getestimateReqByNoConfirmedMapper(user.name, estimateReq);
     return {
       ...resMapper,
       nickname: confirmedEstimate?.Mover.nickname,
@@ -185,47 +190,103 @@ async function findEstimateReqListByCustomer(
         take: pageSize,
         where: { customerId: customer.id },
       },
-      select: estimateReqMovingInfoSelect,
+      select: estimateReqMovingInfoWithDateSelect,
     });
 
-  const newList = estimateReqList.map(async (estimateReq) => {
-    // 확정된 견적 요청일 때
-    if (estimateReq.isConfirmed) {
-      const estimate = await estimateRepository.findFirstData({
-        where: {
-          estimateRequestId: estimateReq.id,
+  const newList = await Promise.all(
+    estimateReqList.map(async (estimateReq) => {
+      // 확정된 견적 요청일 때
+      if (estimateReq.isConfirmed) {
+        const estimate = (await estimateRepository.findFirstData({
+          where: {
+            estimateRequestId: estimateReq.id,
+            status: 'ACCEPTED',
+          },
+          select: estimateMoverSelect,
+        })) as EstimateWithMover;
+
+        // 총 리뷰 수 확인
+        const totalReviews = await reviewRepository.countData({
+          moverId: estimate.Mover.id,
+        });
+        let totalScore: number = 0;
+
+        // 리뷰가 1개 이상일 시 리뷰 점수 총합 획득
+        if (totalReviews !== 0) {
+          const reviewList = await reviewRepository.findManyData({
+            where: { moverId: estimate.Mover.id },
+            select: reviewSelect,
+          });
+
+          totalScore = reviewList.reduce(
+            (sum, review) => sum + review.score,
+            0
+          );
+        }
+
+        // 리뷰 평균 점수
+        const averageScore = Math.round((totalScore / totalReviews) * 10) / 10;
+
+        // 총 확정 갯수
+        const totalConfirmed = await estimateRepository.countData({
+          moverId: estimate.Mover.id,
           status: 'ACCEPTED',
-        },
-        select: estimateMoverSelect,
-      });
+        });
 
-      const reviewList = await reviewRepository
+        // 찜된 횟수
+        const totalFavorite = await favoriteRepository.countData({
+          moverId: estimate.Mover.id,
+        });
 
-      const totalConfirmed = await estimateRepository.countData({
-        moverId: estimate?.Mover.id,
-        status: 'ACCEPTED',
-      });
+        const favorite = await favoriteRepository.findFirstData({
+          where: {
+            moverId: estimate.Mover.id,
+            customerId: customer.id,
+          },
+        });
 
-      // "id": "견적 요청 ID",                      estimateReq
-      // "isConfirmed": "확정된 요청인지 확인(true)", estimateReq
-      // "isCancelled": "취소 여부 (false)",        estimateReq
-      // "summary": "한 줄 소개",                   estimate.mover
-      // "profileImage": "프로필 이미지 URL",       estimate.mover
-      // "nickname": "기사 별명",                   estimate.mover
-      // "reviewStats": { // 리뷰 내용
-      //   "averageScore": "총 별점",,
-      //   "totalReviews": "리뷰 갯수",
-      // },
-      // "career": "기사님 경력",                   estimate.mover
-      // "totalConfirmed": "총 확정 갯수",          totalConfirmed
-      // "favorite": "기사님이 찜된 횟수",
-      // "isFavorite": "찜 여부 (true , false)",
-      // "movingDate": "이사 날짜 (예시, 2024. 11. 28)", estimateReq
-      // "departure": "출발지",                         estimateReq
-      // "arrival": "도착지"                            estimateReq
-      // "price": "견적가",                             estimate
-    }
-  });
+        // 찜 여부
+        let isFavorite = false;
+        if (favorite) {
+          isFavorite = true;
+        }
+
+        return findEstimateReqListByCustomerAndConfirmedMapper(
+          estimateReq,
+          estimate,
+          averageScore,
+          totalReviews,
+          totalConfirmed,
+          totalFavorite,
+          isFavorite
+        );
+      }
+
+      // 취소된 견적 요청일 때
+      if (estimateReq.isCancelled) {
+        return findEstimateReqListByCustomerAndCancelMapper(estimateReq);
+      }
+
+      const isMoveDateOver = checkIfMovingDateOver(
+        estimateReq.MovingInfo.movingDate
+      );
+
+      // 이사일이 지난 견적일 때
+      if (isMoveDateOver) {
+        return findEstimateReqListByCustomerAndCancelMapper(estimateReq);
+      }
+
+      // 이사일이 안지나고 확정또는 취소가 안된 견적 요청일 때
+      return false;
+    })
+  );
+
+  const finalList = newList.filter((item) => item !== false);
+
+  return {
+    total,
+    list: finalList,
+  };
 }
 
 export default {
