@@ -94,9 +94,9 @@ async function findEstimateReqListByCustomer(
     ) {
       const { id: userId } = req.user;
       const { page = '1', pageSize = '4' } = req.query;
-      const pageNum = parseInt(page, 10) || 1;
+      const pageNum = parseInt(page, 10)  || 1;
       const pageSizeNum = parseInt(pageSize, 10) || 4;
-      const skip = pageNum * pageSizeNum;
+      const skip = (pageNum - 1) * pageSizeNum;
 
       const estimateReqList =
         await estimateRequestService.findEstimateReqListByCustomer(
@@ -118,4 +118,5 @@ export default {
   createEstimateReq,
   deleteEstimateReq,
   findEstimateReq,
+  findEstimateReqListByCustomer,
 };
