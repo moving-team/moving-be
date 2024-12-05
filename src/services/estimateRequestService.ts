@@ -21,7 +21,7 @@ import {
   estimateReqMovingInfoWithDateSelect,
   estimateReqSelect,
 } from './selerts/estimateRequsetSelect';
-import { estimateMoverSelect } from './selerts/estimateSelect';
+import { estimateMoverSelect, estimateSelect } from './selerts/estimateSelect';
 import { movinginfoSelect } from './selerts/movingInfoSelect';
 import { reviewSelect } from './selerts/reviewSelert';
 import { userCustomerSelect } from './selerts/userSelect';
@@ -96,6 +96,23 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
   if (!deleteEstimateReq.isCancelled) {
     throw new Error('다시 시도해 주세요.');
   }
+
+  // 해당 요청에 보낸 견적 조회
+  const estimateList = await estimateRepository.findManyData({
+    where: { estimateRequestId },
+    select: estimateSelect,
+  });
+
+  // 견적 상태 수정
+  Promise.all(
+    estimateList.map(async (estimate) => {
+      await estimateRepository.updateData({
+        where: { id: estimate.id },
+        data: { status: 'REJECTED' },
+        select: estimateSelect,
+      });
+    })
+  );
 
   return {
     id: deleteEstimateReq.id,
