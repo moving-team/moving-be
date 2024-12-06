@@ -7,6 +7,7 @@ import userRouter from './routes/userRouter';
 import customerRouter from './routes/customerRouter';
 import cookieParser from 'cookie-parser';
 import moverRouter from './routes/moverRouter';
+import reviewRouter from './routes/reviewRouter';
 const app = express();
 app.use(cookieParser());
 
@@ -16,6 +17,7 @@ app.use('/user', userRouter);
 app.use('/customer', customerRouter);
 app.use('/mover', moverRouter);
 app.use('/estimateReq', estimateReqRouter);
+app.use('/review', reviewRouter);
 
 app.use(errorHandler);
 
