@@ -33,7 +33,7 @@ import { userCustomerSelect } from './selerts/userSelect';
 import moverRepository from '../repositories/moverRepository';
 import { moverSelect } from './selerts/moverSelect';
 
-interface PagenationQuery {
+export interface PagenationQuery {
   type?: $Enums.serviceType | $Enums.serviceType[];
   isAssigned?: string;
   order?: 'move' | 'request';
@@ -217,7 +217,7 @@ async function findEstimateReq(userId: number) {
   }
 }
 
-// 유저-견적 요청 리스트 조회 (생성일자 mapper)
+// 유저-견적 요청 리스트 조회 API (생성일자 mapper)
 async function findEstimateReqListByCustomer(
   userId: number,
   skip: number,
