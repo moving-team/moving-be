@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import userRepository from '../repositories/userRepository';
 import customerRepository from '../repositories/customerRepository';
+import estimateRequestRepository from '../repositories/estimateRequestRepository';
 import { $Enums } from '@prisma/client';
 
 
@@ -19,7 +20,22 @@ const getCustomer = async (userId: number) => {
         }
     }});
 
-    return customerData;
+
+    const estimateReqConfirmed = await estimateRequestRepository.findFirstData({ where: { customerId: customerData?.id, isConfirmed: false } });
+    const isConfirmed = !estimateReqConfirmed;
+
+
+    const list = {
+        id: customerData?.id,
+        userId: customerData?.userId,
+        profileImage: customerData?.profileImage,
+        serviceType: customerData?.serviceType,
+        region: customerData?.region,
+        name: customerData?.User?.name,
+        isConfirmed,
+    }
+
+    return list;
 }
 
 const createCustomer = async (userId: number) => {
