@@ -52,3 +52,27 @@ export interface Mover {
 export interface EstimateWithMover extends Estimate {
   Mover: Mover;
 }
+
+export interface FindEstimateReqListByMoverType {
+  movingType: $Enums.serviceType;
+  movingDate: Date;
+  departure: string;
+  arrival: string;
+  id: number;
+  EstimateRequest: {
+    comment: string | null;
+    id: number;
+    createdAt: Date;
+    updatedAt: Date;
+    Customer: {
+      User: {
+        name: string;
+      };
+    };
+    isConfirmed: boolean;
+    isCancelled: boolean;
+    AssignedEstimateRequest: {
+      id: number;
+    }[];
+  }[];
+}

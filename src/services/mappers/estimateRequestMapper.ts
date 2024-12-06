@@ -1,7 +1,9 @@
+import { $Enums } from '@prisma/client';
 import {
   EstimateReq,
   EstimateReqWithMovingInfo,
   EstimateWithMover,
+  FindEstimateReqListByMoverType,
   MovingInfo,
   MovingInfoWithEstimateReqAndhDate,
 } from '../../types/serviceType';
@@ -95,5 +97,26 @@ export function findEstimateReqListByCustomerAndCancelMapper(
     arrival: movingInfo.arrival,
     comment: estimateReq.comment,
     createAt: estimateReq.createdAt,
+  };
+}
+
+export function findEstimateReqListByMoverMapper(
+  movingInfoList: FindEstimateReqListByMoverType
+) {
+  const estimateReq = movingInfoList.EstimateRequest[0];
+  const name = movingInfoList.EstimateRequest[0].Customer.User.name;
+  const AssignedEstimateReq =
+    movingInfoList.EstimateRequest[0].AssignedEstimateRequest.length;
+  const isAssigned = AssignedEstimateReq === 0 ? false : true;
+  return {
+    id: estimateReq.id,
+    name,
+    movingType: movingInfoList.movingType,
+    movingDate: changeMovingDate(movingInfoList.movingDate),
+    departure: movingInfoList.departure,
+    arrival: movingInfoList.arrival,
+    comment: estimateReq.comment,
+    isAssigned,
+    createAt: changeMovingDate(estimateReq.createdAt)
   };
 }

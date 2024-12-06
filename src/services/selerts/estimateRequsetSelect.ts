@@ -1,5 +1,4 @@
-import { dmmfToRuntimeDataModel } from '@prisma/client/runtime/library';
-import { customerSelect } from './customerSelect';
+import { customerSelect} from './customerSelect';
 import { movingInfoSelect } from './movingInfoSelect';
 
 export const estimateReqSelect = {
@@ -13,7 +12,7 @@ export const estimateReqWithDateSelect = {
   ...estimateReqSelect,
   createdAt: true,
   updatedAt: true,
-}
+};
 
 export const estimateReqMovingInfoSelect = {
   ...estimateReqSelect,

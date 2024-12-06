@@ -1,5 +1,5 @@
 import prisma from '../config/prisma';
-import { PagenationParamsByPage } from '../types/repositoryType';
+import { MovingInfoPagenationParamsByPage } from '../types/repositoryType';
 import { Prisma } from '@prisma/client';
 
 type MovingInfoSelectType = Prisma.MovingInfoSelect;
@@ -7,7 +7,7 @@ type MovingInfoSelectType = Prisma.MovingInfoSelect;
 type MovingInfoPayload<T extends MovingInfoSelectType | undefined> =
   Prisma.MovingInfoGetPayload<{ select: T }>;
 
-interface MovingInfoPagenationParams extends PagenationParamsByPage {
+interface MovingInfoPagenationParams extends MovingInfoPagenationParamsByPage {
   where?: Prisma.MovingInfoWhereInput;
 }
 
@@ -246,5 +246,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
-  findManyData
+  findManyData,
 };
