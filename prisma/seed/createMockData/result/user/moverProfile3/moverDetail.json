@@ -1,0 +1,31 @@
+{
+  "id": 5,
+  "userId": 24,
+  "profileImage": "",
+  "nickname": "김기도",
+  "career": 3,
+  "summary": "안녕하세요. 숨고 이사 리뷰 1등 용달빠르기도 대표 김기도입니다.",
+  "description": "안녕하세요\n저는 용달빠르기도 대표 김기도라고합니다\n\n항상 긍정적으로 밝게 일하려 합니다\n만족하실때까지 최대한 일을 마무리 하고 있습니다\n아직 젊은 패기와 성실함을 보셨으면 좋겠습니다\n\n감사합니다",
+  "confirmationCount": 79,
+  "serviceType": [
+    "OFFICE"
+  ],
+  "serviceRegion": [
+    "JEONNAM",
+    "ULSAN",
+    "SEOUL",
+    "GYEONGGI",
+    "GYEONGNAM",
+    "INCHEON",
+    "GANGWON"
+  ],
+  "reviewStats": {
+    "averageScore": 4.9,
+    "totalReviews": 100
+  },
+  "favorite": 69,
+  "isAssigned": false,
+  "User": {
+    "name": "강아현"
+  }
+}

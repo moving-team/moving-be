@@ -1,0 +1,377 @@
+[
+  {
+    "id": 14,
+    "userId": 17,
+    "profileImage": "",
+    "nickname": "서민교",
+    "career": 10,
+    "summary": "서민교 고수의 국내 이사 서비스",
+    "description": "깔끔하고,친절히 일을 합니다.\n가성비가 확실 하며 최대한 고객의 불만사항이 없도록 하겠습니다.",
+    "serviceType": "SMALL",
+    "serviceRegion": "SEOUL, GYEONGGI, DAEJEON",
+    "reviewStats": {
+      "averageScore": 4.1,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 23,
+    "userId": 25,
+    "profileImage": "",
+    "nickname": "양지",
+    "career": 8,
+    "summary": "고수의 국내 이사, 이사/입주 청소업체, 건물내부 청소(바닥/계단/화장실), 계단/화장실 청소, 정리수납 컨설팅, 가정이사(투룸 이상), 사무실/상업공간 이사 서비스",
+    "description": "근명이사청소입니다.\n눈에 보이는 먼지 안보이는 먼지\n구석구석 깨끗하게 청소해드립니다.",
+    "serviceType": "SMALL",
+    "serviceRegion": "JEJU, DAEJEON, BUSAN, GWANGJU, GYEONGBUK, GANGWON, GYEONGNAM, INCHEON, ULSAN, GYEONGGI, CHUNGNAM",
+    "reviewStats": {
+      "averageScore": 3.5,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 16,
+    "userId": 17,
+    "profileImage": "",
+    "nickname": "염동훈",
+    "career": 11,
+    "summary": "출장용접 전문",
+    "description": "출장 용접 소방 탱크 보수 전문 \n데크시공 핸드레일 등등 문의 주시면 언제든 성심성의껏 임하겟습니다.",
+    "serviceType": "SMALL, HOUSE, OFFICE",
+    "serviceRegion": "JEONNAM, SEJONG, DAEGU, JEONBUK, SEOUL",
+    "reviewStats": {
+      "averageScore": 4.6,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 8,
+    "userId": 15,
+    "profileImage": "",
+    "nickname": "한진-24",
+    "career": 28,
+    "summary": "김종진 고수의 원룸/소형 이사, 용달/화물 운송 서비스",
+    "description": "20년넘는 이사 경력을토대로 고객님의 물건을 보다 안전하고,신속하게 운반해 드리겠으며, 친절하고 편안한 서비스를 제공해 드리겠습니다.\n감사합니다 .",
+    "serviceType": "SMALL",
+    "serviceRegion": "ULSAN, DAEJEON, GANGWON, JEJU, GYEONGBUK, GWANGJU, DAEGU, INCHEON, BUSAN, CHUNGNAM, JEONNAM, GYEONGGI, SEOUL, CHUNGBUK, JEONBUK, GYEONGNAM",
+    "reviewStats": {
+      "averageScore": 3.6,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 21,
+    "userId": 14,
+    "profileImage": "",
+    "nickname": "⭐고객평가1위스마트",
+    "career": 12,
+    "summary": "⭐고객평가1위스마트친절이사 윤재근 고수의 가정이사 (투룸 이상), 원룸/소형 이사서비스.",
+    "description": "이사 하시면서 \"한번 이라도 맘 상하지 않으셧나요?\"차원이 다름을 이사하시며 처음으로 느끼실수 있습니다.고민하지 마세요.\n요즘의 이사는 최소한의 비용도 중요하지만 만족도가 더 중요하지 않을까 합니다.\n\n고객님의 가구와 가전 등등....모든 짐들을 소중히 다루겠습니다.\n예)메트리스커버,장롱커버,쇼파커버,에어컨커버,냉장고커버,세탁기커버,등등 파손이 쉬운 물건들은 에어캡으로 포장후 이동.\n\n\"한번 고객은 영원하다\"라는 말이 있습니다.\n저는 \"한번 고객은 평생 고객이다\"라는 마음가짐 또한 가슴 깊이 새기며 사명감을 가지고 일합니다.\n\n단 하나의 스크렛치 없이 안전하고 만족하게 일하겠습니다.\n\n만약, 파손이나 AS발생 상황시 고객님의 요구조건을 100% 의견수렴 반영하겠습니다.\n예)해당브랜드 수리비 전액지원.",
+    "serviceType": "SMALL, OFFICE",
+    "serviceRegion": "JEJU, GANGWON, SEOUL, JEONNAM, CHUNGNAM, ULSAN, BUSAN, DAEJEON, SEJONG, JEONBUK, GYEONGGI",
+    "reviewStats": {
+      "averageScore": 3.6,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 25,
+    "userId": 24,
+    "profileImage": "",
+    "nickname": "윤실이",
+    "career": 6,
+    "summary": "싹서비스 3팀 장기현팀장 입니다",
+    "description": "완벽한포장이사 !\n경력20년 경력!\n친절한 서비스 진행!\n1회용 비닐포장재사용!\n깔끔한정리수납!\n고객님이 만족하실때까지 !!",
+    "serviceType": "SMALL, HOUSE, OFFICE",
+    "serviceRegion": "GYEONGNAM, GWANGJU, ULSAN, GANGWON, GYEONGGI, JEJU, DAEJEON, CHUNGBUK, GYEONGBUK, JEONNAM, JEONBUK, DAEGU",
+    "reviewStats": {
+      "averageScore": 3.7,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 17,
+    "userId": 18,
+    "profileImage": "",
+    "nickname": "노종철 상담요망",
+    "career": 28,
+    "summary": "호로 장착으로 우천시도 안전합니다",
+    "description": "반포장 또는 일반이사도 속지 및 담요로 안전하게 운반합니다.",
+    "serviceType": "N/A",
+    "serviceRegion": "GWANGJU, SEOUL, GYEONGGI, BUSAN, DAEJEON, JEONBUK, SEJONG, GYEONGNAM, CHUNGNAM, DAEGU",
+    "reviewStats": {
+      "averageScore": 4.6,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 13,
+    "userId": 24,
+    "profileImage": "",
+    "nickname": "제일",
+    "career": 2,
+    "summary": "고수",
+    "description": "성실과 신의로 최선을 다해 노력하겠습니다.\n더 나은 만족을 위해 고객의 입장을 생각하겠습니다~",
+    "serviceType": "N/A",
+    "serviceRegion": "GYEONGGI, INCHEON, GWANGJU, JEONNAM, JEONBUK, CHUNGNAM, GYEONGNAM, SEJONG, SEOUL, GYEONGBUK, ULSAN, DAEGU, DAEJEON, GANGWON, JEJU",
+    "reviewStats": {
+      "averageScore": 4.4,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 9,
+    "userId": 18,
+    "profileImage": "",
+    "nickname": "짐꺽정이사",
+    "career": 22,
+    "summary": "많은 경험과 노하우로 인한 기분 좋은 이사 서비스를 제공해 드립니다.",
+    "description": "기분 좋은 이사 서비스를 제공해 드리기 위해 항상 최선을 다하고 있으며, 꼼꼼함과 친절함을 기본으로 단 한번의 고객 클레임 없이 이사일을 해오고 있습니다. 또한 고객의 짐이 이동 중 눈, 비 혹은 각종 먼지로부터 오염을 막고자 일반 용달 카고가 아닌 하이탑 차량으로 서비스를 제공해 드리고 있습니다. \n견적문의 주시면 친절히 상담해 드리니 부담없이 연락 주세요.",
+    "serviceType": "SMALL, OFFICE",
+    "serviceRegion": "GYEONGGI, GWANGJU, ULSAN, SEOUL, INCHEON, GYEONGBUK, CHUNGBUK, BUSAN, DAEJEON, JEONNAM, CHUNGNAM, GYEONGNAM, JEJU",
+    "reviewStats": {
+      "averageScore": 5,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 1,
+    "userId": 21,
+    "profileImage": "",
+    "nickname": "부자이사",
+    "career": 12,
+    "summary": "박영두 고수의 부자이사 (투룸 이상), 원룸/소형 이사 서비스",
+    "description": "이사에 관한 모든것을 고객님이 원하시는대로 진행해 드립니다~~\n친절하고 깔끔하게 처리해 드립니다",
+    "serviceType": "OFFICE, HOUSE",
+    "serviceRegion": "JEJU, CHUNGNAM, GWANGJU, GYEONGBUK, INCHEON, JEONNAM, GANGWON, GYEONGNAM",
+    "reviewStats": {
+      "averageScore": 4.3,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 10,
+    "userId": 16,
+    "profileImage": "",
+    "nickname": "❤️J",
+    "career": 3,
+    "summary": "💚처음하신 이사든 열번하신 이사든 한결같이 처음 만난 그모습 그대로 서비스를 제공하겠습니다💚 한번 고객은 영원한 고객님입니다🙏",
+    "description": "❤️이사경력 14년에 인천 토박이 “JS이사몰” 인사드립니다❤️\n\n✔️신속·정확✔️양심적✔️합리적✔️친절✔️젊은패기\n\n브랜드업체 못지않은, 브랜드업체 버금가는 “JS이사몰”입니다🚚\n이사에서 제일 중요한 3가지만 기억하세요💥\n\n(✅️↓↓'상세설명 더보기'를 눌러 주세요↓↓✅️)\n\n\n\n-------------------------------------------------------------------\n📌Chapter1. [이사전용차량]📌\n☑ 호루 차량은 고객님의 프라이버시도 지킬수 있는 이삿짐 전용 1톤탑차 차량으로 우천시에도 고객님의 짐이 손상될 우려가 없는 차량입니다.\n☑ 가구가 많거나 무거운 짐이 있어도 척척 리프트로 실어 올리 수 있습니다. \n-------------------------------------------------------------------\n📌Chapter2. [전문적인 포장방법]📌\n☑ 고가의 가전과 가구는 전용커버 및 완충재로 2중포장합니다.\n☑ 유리/주방용품은 깨지지 않도록 에어켑으로 포장후 바구니에 별도포장합니다.\n☑ 냉동식품은 아이스박스에 담어 음식변질을 막습니다.\n☑ 의류, 이불 등은 새비닐로 1차포장 후 박스에 재차 담아 2중포장으로 오염을 방지할 수 있습니다.\n-------------------------------------------------------------------\n📌Chapter3. [체계적인 시스템]📌\n☑ 도착지에서는 실내 바닥 보양작업 후, 덧신을 착용합니다.\n☑ 블라인드, 커튼, 시계 등 탈부착 서비스로 해드립니다.\n☑ 에어컨 탈착을 서비스로 해드립니다. (설치제외)\n☑ 원하는 자리에 가구 조립 및 배치를 해드립니다.\n☑ A급 이사전문 직원고용, 외국인직원 없습니다.\n☑ 세금계산서, 현금영수증발행(부가세별도) 가능합니다.\n-------------------------------------------------------------------\n\n🔥인천 전체 리뷰 만점 1등🔥(이 되고싶습니다!)\n☑ 이사는 전문성을 위해 1가지만 작업합니다. 원룸/오피스텔/소형이사만!\n☑ 제가 직접 상담 작업까지 해드리는 실명제이사 이며 수수료만 받고 다른이사업체에 넘기는 일은 일체하지 않습니다.\n☑ 고용 횟수에 비해 리뷰가 많아 의심되시나요? 👉 고용 횟수는 '숨고페이'로 결제하시는 분들만 인정 됩니다! 개별결제(이체) 진행하시는 분들은 고용에 카운트 되지 않습니다.\n\n✅️대표인삿말✅️\n모든 물품을 내짐처럼 소중히 생각하며 정성을 다하겠습니다.\n견적이 비싸다고 생각드시면 언제든지 조정해서 합리적인 가격으로 진행할 수 있도록 노력하겠습니다 ⋅⌣⋅ \n실력을 바탕으로 기분좋은 하루를 선사해드리겠습니다❤️\n📌 추가금에 슬퍼하지 마세요. (단, 견적에 포함되어 있지 않은 짐량 & 이동거리 & 작업조건 등에 따라 추가비용이 발생할 수 있습니다.)\n\n📌숨고 어플은 답변이 늦을 수 있으니 문의 사항은 문자,전화로 부탁 드립니다. 부재시 최대한 빠르게 콜백해 드리겠습니다.\n✅️“JS이사몰” 대표 : 유진석 O1O-6440-2451✅️\n❤️상담후 금액을 확정 합니다 편하게 연락주시기 바랍니다!❤️",
+    "serviceType": "HOUSE, OFFICE",
+    "serviceRegion": "N/A",
+    "reviewStats": {
+      "averageScore": 4.6,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 25,
+    "userId": 9,
+    "profileImage": "",
+    "nickname": "양상현",
+    "career": 8,
+    "summary": "양상현 고수의 짐 보관, 사무실/상업공간 이사, 가정이사 (투룸 이상), 원룸/소형 이사, 용달/화물 운송, 국내 이사 서비스",
+    "description": "일반이사경우 이사1주일전 바구니배달\n이사당일 가전및 가구종류 포자후 진행합니다",
+    "serviceType": "SMALL, HOUSE, OFFICE",
+    "serviceRegion": "SEOUL, BUSAN, GYEONGGI, GANGWON, JEJU, DAEJEON, CHUNGBUK",
+    "reviewStats": {
+      "averageScore": 4.1,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 19,
+    "userId": 20,
+    "profileImage": "",
+    "nickname": "현대이사서비스",
+    "career": 6,
+    "summary": "가정 이사 보관이사 소형이사 젊은 팀원들로 이루어져 늘 최선을 다하는 현대이사서비스(기흥점)입니다",
+    "description": "가정이사 전문업체로서 최선을다해 거짓없는 양심으로 운영하는 업체입니다\n늘 고객의 마음에서 움직일수 있도록 \n노력하겠습니다 감사합니다",
+    "serviceType": "N/A",
+    "serviceRegion": "INCHEON, GYEONGGI, SEOUL",
+    "reviewStats": {
+      "averageScore": 3.8,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 3,
+    "userId": 1,
+    "profileImage": "",
+    "nickname": "전국용달화물",
+    "career": 24,
+    "summary": "안녕하세요 전국 용달운송 및 소형 이사를 전문으로 하고 있습니다. 합리적인 비용으로 고객님께서 만족하실 수 있도록 보답해 드리겠습니다",
+    "description": "☆ 이사의 서비스 종류에 대해 알려드릴께요 ☆\n\n[ 차량만 이용하는 이사 ]\n고객님이 직접 이삿짐 포장후 1층에 내려놓으시면 고수가 차에 실은 후 도착지 1층에 내려드리는 단순 운송 서비스 입니다.\n\n[ 일반이사 ]\n고객님이 직접 이삿짐을 포장해 놓으시면 고수가 단독 또는 고객님과 함께 출발지 방에서 도착지 방까지 이삿짐을 옮겨 드리는 서비스입니다.\n큰가구나 가전은 분해 및 설치해드립니다.\n\n[ 반포장이사 ]\n고수가 이사자재를 준비해가며 고수단독 또는 고객님과 함께 포장 및 운송을 해드리는 서비스이며 도착지에서 정리는 고객님이 하시는 이사서비스 입니다.\n큰가구나 가전은 분해 및 설치해드립니다.\n\n[ 포장이사 ]\n고수가 출발지 및 도착지에서 포장 및 정리까지 해드리는 이사서비스입니다.\n\n[ 보관이사 ]\n이사날짜와 입주날짜가 맞지 않거나 장기간 출장 등 기타 사정으로 인해 이삿짐을 임시로 보관해야 할때 이삿짐을 전용 컨테이너에 안전하게 보관해 드리는 서비스입니다.",
+    "serviceType": "N/A",
+    "serviceRegion": "INCHEON",
+    "reviewStats": {
+      "averageScore": 3.9,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 16,
+    "userId": 13,
+    "profileImage": "",
+    "nickname": "바로이사",
+    "career": 16,
+    "summary": "고수의 국내 이사, 용달/화물 운송, 원룸/소형 이사, 가정이사(투룸 이상), 사무실/상업공간 이사 서비스",
+    "description": "안녕하세요, 고객님! 😊 이사 전문 바로이사입니다. \n정식 허가업체 ✅ | 합리적인 착한 가격 💰 | A/S 빠른 보상 ⏱️ | 파손 보험 가입! 📋\n\n1. 서비스 종류\n다양한 옵션: 운송만, 반포장, 포장 서비스 등 고객님께 맞춤형 선택을 도와드립니다.\n2. 사전 상담\n상세 견적 제공: 짐의 양, 거리, 요청 사항을 고려하여 상담 후 정확한 견적을 안내해 드립니다.\n3. 전문가 팀\n경험이 풍부한 기사님: 이사 전날 기사님을 안내해 드리며, 안전하게 짐을 운반합니다.\n4. 안전 및 보상\n파손 보험 제공: 짐 손상 시 빠른 보상이 가능하니 안심하세요!\n궁금한 점이 있으면 언제든지 문의해 주세요! 고객님의 이사가 즐거운 경험이 되도록 최선을 다하겠습니다. 감사합니다! ❤️",
+    "serviceType": "OFFICE, HOUSE, SMALL",
+    "serviceRegion": "SEJONG, GANGWON, INCHEON, ULSAN, CHUNGBUK, BUSAN, GYEONGNAM, GWANGJU",
+    "reviewStats": {
+      "averageScore": 4,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 20,
+    "userId": 22,
+    "profileImage": "",
+    "nickname": "이석",
+    "career": 18,
+    "summary": "팔각모익스프레스 포장이사,보관이사,국내이사 직원중 일잘하는 외국인 포함하고 있어요 항상 초심을 잊지 않겠습니다",
+    "description": "저히 팔각모익스프레스 에서는 한번고객님은 영원한고객 이란 마음가짐으로 항상 최선을다하는 기존이삿짐센타의 모범이되는 업체가 되도록 노력하겠습니다. 항상 현장에서 고객님에 소리를 귀담아듣고 항상 직접견적도보고 현장 팀장 으로 책임감을가지고 직접 임하며 팔각모익스프레스 대표겸 작업원 일원인 이석 이라고 합니다 해병대 629기 출신으로 회사명을 해병대의 상징인 팔각모 고품격 포장이사라고 정하고 해병대의 명예를걸고 책임감. 고객감동. 으로 보여드리겠습니다. 고객님 이삿날이 즐거운이삿날이 되도록 포장 하나하나 꼼꼼이 신경써서 가구,가전제품 기타물품 손상이 가지않게 최선을 다하도록 하겠습니다 가족모두 건강하시고 좋은일만 가득하시길 기원합니다 감사합니다",
+    "serviceType": "N/A",
+    "serviceRegion": "N/A",
+    "reviewStats": {
+      "averageScore": 4.6,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 1,
+    "userId": 20,
+    "profileImage": "",
+    "nickname": "최진벽",
+    "career": 11,
+    "summary": "짐승남이사에서 차분하고 깔끔하게 진행해드립니다. 좋은 하루 되세요^^",
+    "description": "- 소형이사(원룸,투룸,오피스텔이사)\n\n- 가정이사\n\n- 사무실이사\n\n- 보관이사 \n\n# 단골이사의 시작은 짐승남이사 입니다^^*",
+    "serviceType": "HOUSE",
+    "serviceRegion": "GANGWON, DAEJEON, GWANGJU, DAEGU, SEOUL, GYEONGBUK, JEJU, JEONBUK, CHUNGBUK, GYEONGGI",
+    "reviewStats": {
+      "averageScore": 4.2,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 8,
+    "userId": 3,
+    "profileImage": "",
+    "nickname": "김현균",
+    "career": 6,
+    "summary": "친절한 상담 / 빠른 견적:) / 원룸용달이사 / 사다리차 까지 보유! 감사합니다.",
+    "description": "*견적 외 추가요금 요구하지 않습니다.",
+    "serviceType": "SMALL, OFFICE, HOUSE",
+    "serviceRegion": "SEOUL, SEJONG, ULSAN, GWANGJU, CHUNGNAM, JEONBUK, GYEONGBUK, DAEGU, GANGWON, GYEONGGI, INCHEON, BUSAN, JEJU, GYEONGNAM, JEONNAM, DAEJEON, CHUNGBUK",
+    "reviewStats": {
+      "averageScore": 4.3,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 5,
+    "userId": 24,
+    "profileImage": "",
+    "nickname": "김기도",
+    "career": 3,
+    "summary": "안녕하세요. 숨고 이사 리뷰 1등 용달빠르기도 대표 김기도입니다.",
+    "description": "안녕하세요\n저는 용달빠르기도 대표 김기도라고합니다\n\n항상 긍정적으로 밝게 일하려 합니다\n만족하실때까지 최대한 일을 마무리 하고 있습니다\n아직 젊은 패기와 성실함을 보셨으면 좋겠습니다\n\n감사합니다",
+    "serviceType": "OFFICE",
+    "serviceRegion": "JEONNAM, ULSAN, SEOUL, GYEONGGI, GYEONGNAM, INCHEON, GANGWON",
+    "reviewStats": {
+      "averageScore": 4.9,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 5,
+    "userId": 2,
+    "profileImage": "",
+    "nickname": "힘 찬 이 사",
+    "career": 21,
+    "summary": "힘찬이사는 원투룸. 가정이사, 사무실이사, 용달/화물운송을 전문으로하고있습니다. 13년이상의 경력과 친절한서비스로 고객님의재산을 옮겨드립니다.",
+    "description": "안녕하세요.고객님 힘찬이사입니다.\n이사짐 13년 경력의 노하우로\n고객님의 재산을 안전하게 옮겨드리겠습니다.\n원룸, 투룸이사, 가정이사를\n주 업무로 일을하고 있습니다.\n1. 친절한 서비스로 응대 하겠습니다.\n2. 고객이 ok 할때까지 최선을 \n 다 하겠습니다.\n3. 합리적인 가격으로 견적발송\n 하겠습니다.\n이사는 이사전문가에게 맡겨주세요!",
+    "serviceType": "SMALL, HOUSE",
+    "serviceRegion": "GANGWON, INCHEON, CHUNGBUK, SEJONG, JEJU, GYEONGGI",
+    "reviewStats": {
+      "averageScore": 4.8,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 12,
+    "userId": 8,
+    "profileImage": "",
+    "nickname": "인하개인화물/1톤.",
+    "career": 5,
+    "summary": "안녕하세요 고객님^^ 1톤 포터 \"리프트\" 장착된 차량입니다 차량* : 인천85아2754 인하개인(용달)화물 소형이사 전문 문경환 입니다",
+    "description": "안녕하세요^^ 개인(용달)화물 문경환 입니다.\n제 차량은 1톤 포터II 트럭 리프트장착된 차량입니다.\n화믈을 안전하게, 운송하는것은 기본이며 내 일처럼 친절하고 깔끔하게 일 해 드립니다\n\n1. 단순화물운반\n2. 원룸/학생 용달,일반,반포장이사\n3. 가전제품 인수 이동 설치\n TV, 냉장고, 세탁기, 건조기 외\n4. 가구 인수 이동 설치\n 침대, 쇼파, 식탁, 화장대, 서랍장, 책상 외\n5.수입화물 출고및 배송\n 인천항/인천공항 수입물품 출고및 배송",
+    "serviceType": "N/A",
+    "serviceRegion": "GANGWON, ULSAN, SEJONG, CHUNGBUK, BUSAN, SEOUL, GWANGJU, GYEONGGI, DAEGU, GYEONGBUK, JEONBUK, CHUNGNAM, GYEONGNAM, DAEJEON, INCHEON",
+    "reviewStats": {
+      "averageScore": 3.5,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 10,
+    "userId": 21,
+    "profileImage": "",
+    "nickname": "다옮겨드림이사서비스",
+    "career": 1,
+    "summary": "🟥이사/용달/화물운송/가구가전조립설치/생활서비스 🟥 ♥️고객님에게 만족스러운 서비스를 제공해드리겠습니다. 언제든지 문의주십시요. ^^♥️",
+    "description": "==전지역시내시외원투룸이사,일반이사,포장이사.가정이사.사무실이사.각종이사문의,상가폐업정리문의, 퀵서비스,용달화물,방옮기기,방이사,터미널탁송및배송,심부름,음식배달,무거운짐운반,가구가전•안마의자•런닝머신•오토바이•운동기구•의료기기조립설치운송운반,블라인드•커튼•행거설치해체=\n\n#광주용달 #광주용달이사 #광주1톤호로용달 #광주가구옮기기 #광주1톤리프트용달 #광주원룸이사 #광주이사 #광주일반이사 #광주반포장이사 #광주포장이사 #광주퀵서비스 #광주투룸이사 #광주이사견적문의 #광주용달원룸이사 #광주원룸용달이사 #광주소형이사 #광주오피스텔이사 #광주학생이사 #광주기숙사이사 #광주고시원이사 #광주상가이사 #광주사무실이사 \n#광주이사짐센터 #광주이삿짐센터\n#광주용달화물 #광주주택이사 #광주가정이사 #광주오토바이퀵서비스\n#광주용달화물운송 #광주리프트용달 #광주1톤용달이사 #광주1톤트럭이사\n#광주안마의자용달운송이전설치\n#광주흙침대소파용달운송이전설치배치\n#광주돌침대소파용달운송이전설치배치\n#광주가전가구용달운송이전설치\n#광주런닝머신용달운송이전설치\n#광주세탁기건조기냉장고용달운송이전설치배치 #광주장농이전설치배치 #광주장농용달운송이전설치배치\n#광주장롱이전설치배치\n#광주장롱용달운송이전설치배치\n#광주소파용달운송이전설치배치\n#광주드럼통돌이세탁기용달운송이전설치배치 #광주폐기물처리신고운반\n#광주스타일러의류청정기용달운이전설치\n#광주리클라이너소파용달운송이전설치\n#광주퀵서비스 #광주광역시퀵서비스",
+    "serviceType": "N/A",
+    "serviceRegion": "DAEGU, ULSAN, GYEONGGI, JEJU, CHUNGNAM, GYEONGNAM, CHUNGBUK, SEJONG",
+    "reviewStats": {
+      "averageScore": 4.2,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 13,
+    "userId": 17,
+    "profileImage": "",
+    "nickname": "전국",
+    "career": 11,
+    "summary": "꼭한번 전화주세요 평생 고객이 될수있도록 최선을 다하겠습니다 감사합니다 항상 복 많이 받으세용😊",
+    "description": "안녕하세요 고양시 한마음이사입니다 숨고 고객들을 위해 저희회사가 타업체보다 저렴하게 이사진행약속드리겠습니다 시간나실때 한번연락주세용 감사합니다 한마음이사에 이사하시면 다들 부자되실겁니다 🙏",
+    "serviceType": "N/A",
+    "serviceRegion": "DAEJEON, GYEONGGI",
+    "reviewStats": {
+      "averageScore": 4.6,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 6,
+    "userId": 12,
+    "profileImage": "",
+    "nickname": "요셉안전이사",
+    "career": 2,
+    "summary": "힘이 장사인 젊은 기사입니다💪 여성분들도 안심하고 이용하실 수 있습니다! 친절, 안전, 신속하게 운송하겠습니다🚛 믿고 맡겨주세요🙂",
+    "description": "힘 센 고수 요셉안전이사입니다💪\n여성분들도 안심하고 이용하실 수 있는 안전한 일반 이사•용달입니다! 부부가 함께 운영하고 있어요~\n원룸 및 소형이사, 화물, 사무실 이사, 투룸 이상 가능합니다.\n친절하게, 안전하게, 신속하게 모시겠습니다!!!!!\n믿고 맡겨주세요~ 감사합니다!!",
+    "serviceType": "SMALL, HOUSE",
+    "serviceRegion": "GYEONGGI, JEONBUK, DAEJEON, GANGWON, ULSAN, BUSAN, JEONNAM, SEJONG, SEOUL, GYEONGNAM, DAEGU, INCHEON, GWANGJU, GYEONGBUK, CHUNGBUK, JEJU, CHUNGNAM",
+    "reviewStats": {
+      "averageScore": 3.5,
+      "totalReviews": 100
+    }
+  },
+  {
+    "id": 4,
+    "userId": 5,
+    "profileImage": "",
+    "nickname": "조성진",
+    "career": 18,
+    "summary": "조성진 고수의 이사에관한모든것을해결해드립니다",
+    "description": "이사경력20년이넘는 경력자들이운영하는이사업체입니다\n한번믿고 이사를해보시고 만족하실때까지 성심성의있게서비스를제공해드리겠습니다",
+    "serviceType": "HOUSE",
+    "serviceRegion": "DAEJEON",
+    "reviewStats": {
+      "averageScore": 4.4,
+      "totalReviews": 100
+    }
+  }
+]

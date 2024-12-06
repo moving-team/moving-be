@@ -1,0 +1,10 @@
+{
+  "id": 42,
+  "userId": 40,
+  "profileImage": "",
+  "serviceType": "OFFICE",
+  "region": "GWANGJU",
+  "User": {
+    "name": "장지현"
+  }
+}
