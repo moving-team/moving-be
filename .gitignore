@@ -1,4 +1,6 @@
 .env
 node_modules
 dist
+.prettierrc
+temp
 test.http
