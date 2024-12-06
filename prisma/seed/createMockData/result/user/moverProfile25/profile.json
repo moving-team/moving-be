@@ -1,0 +1,36 @@
+{
+  "id": 8,
+  "userId": 3,
+  "profileImage": "",
+  "nickname": "김현균",
+  "career": 6,
+  "summary": "친절한 상담 / 빠른 견적:) / 원룸용달이사 / 사다리차 까지 보유! 감사합니다.",
+  "description": "*견적 외 추가요금 요구하지 않습니다.",
+  "serviceType": [
+    "SMALL",
+    "OFFICE",
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "SEOUL",
+    "SEJONG",
+    "ULSAN",
+    "GWANGJU",
+    "CHUNGNAM",
+    "JEONBUK",
+    "GYEONGBUK",
+    "DAEGU",
+    "GANGWON",
+    "GYEONGGI",
+    "INCHEON",
+    "BUSAN",
+    "JEJU",
+    "GYEONGNAM",
+    "JEONNAM",
+    "DAEJEON",
+    "CHUNGBUK"
+  ],
+  "User": {
+    "name": "신경민"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": 13,
+  "userId": 24,
+  "profileImage": "",
+  "nickname": "제일",
+  "career": 2,
+  "summary": "고수",
+  "description": "성실과 신의로 최선을 다해 노력하겠습니다.\n더 나은 만족을 위해 고객의 입장을 생각하겠습니다~",
+  "serviceType": [],
+  "serviceRegion": [
+    "GYEONGGI",
+    "INCHEON",
+    "GWANGJU",
+    "JEONNAM",
+    "JEONBUK",
+    "CHUNGNAM",
+    "GYEONGNAM",
+    "SEJONG",
+    "SEOUL",
+    "GYEONGBUK",
+    "ULSAN",
+    "DAEGU",
+    "DAEJEON",
+    "GANGWON",
+    "JEJU"
+  ],
+  "User": {
+    "name": "강승민"
+  }
+}

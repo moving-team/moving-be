@@ -1,0 +1,63 @@
+{
+  "total": 4,
+  "list": [
+    {
+      "serviceType": [
+        "SMALL"
+      ],
+      "isAssigned": false,
+      "nickname": "서민교",
+      "profileImg": "",
+      "comment": "서민교 고수의 국내 이사 서비스",
+      "score": 4.1,
+      "reviewCount": 100,
+      "career": 10,
+      "confirmationCount": 161,
+      "favoriteCount": 80
+    },
+    {
+      "serviceType": [
+        "SMALL"
+      ],
+      "isAssigned": false,
+      "nickname": "양지",
+      "profileImg": "",
+      "comment": "고수의 국내 이사, 이사/입주 청소업체, 건물내부 청소(바닥/계단/화장실), 계단/화장실 청소, 정리수납 컨설팅, 가정이사(투룸 이상), 사무실/상업공간 이사 서비스",
+      "score": 3.5,
+      "reviewCount": 100,
+      "career": 8,
+      "confirmationCount": 157,
+      "favoriteCount": 75
+    },
+    {
+      "serviceType": [
+        "SMALL",
+        "HOUSE",
+        "OFFICE"
+      ],
+      "isAssigned": true,
+      "nickname": "염동훈",
+      "profileImg": "",
+      "comment": "출장용접 전문",
+      "score": 4.6,
+      "reviewCount": 100,
+      "career": 11,
+      "confirmationCount": 48,
+      "favoriteCount": 43
+    },
+    {
+      "serviceType": [
+        "SMALL"
+      ],
+      "isAssigned": false,
+      "nickname": "한진-24",
+      "profileImg": "",
+      "comment": "김종진 고수의 원룸/소형 이사, 용달/화물 운송 서비스",
+      "score": 3.6,
+      "reviewCount": 100,
+      "career": 28,
+      "confirmationCount": 39,
+      "favoriteCount": 87
+    }
+  ]
+}

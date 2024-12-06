@@ -1,0 +1,30 @@
+{
+  "id": 12,
+  "userId": 8,
+  "profileImage": "",
+  "nickname": "인하개인화물/1톤.",
+  "career": 5,
+  "summary": "안녕하세요 고객님^^ 1톤 포터 \"리프트\" 장착된 차량입니다 차량* : 인천85아2754 인하개인(용달)화물 소형이사 전문 문경환 입니다",
+  "description": "안녕하세요^^ 개인(용달)화물 문경환 입니다.\n제 차량은 1톤 포터II 트럭 리프트장착된 차량입니다.\n화믈을 안전하게, 운송하는것은 기본이며 내 일처럼 친절하고 깔끔하게 일 해 드립니다\n\n1. 단순화물운반\n2. 원룸/학생 용달,일반,반포장이사\n3. 가전제품 인수 이동 설치\n TV, 냉장고, 세탁기, 건조기 외\n4. 가구 인수 이동 설치\n 침대, 쇼파, 식탁, 화장대, 서랍장, 책상 외\n5.수입화물 출고및 배송\n 인천항/인천공항 수입물품 출고및 배송",
+  "serviceType": [],
+  "serviceRegion": [
+    "GANGWON",
+    "ULSAN",
+    "SEJONG",
+    "CHUNGBUK",
+    "BUSAN",
+    "SEOUL",
+    "GWANGJU",
+    "GYEONGGI",
+    "DAEGU",
+    "GYEONGBUK",
+    "JEONBUK",
+    "CHUNGNAM",
+    "GYEONGNAM",
+    "DAEJEON",
+    "INCHEON"
+  ],
+  "User": {
+    "name": "오우빈"
+  }
+}

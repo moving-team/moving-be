@@ -1,0 +1,25 @@
+{
+  "id": 19,
+  "userId": 20,
+  "profileImage": "",
+  "nickname": "현대이사서비스",
+  "career": 6,
+  "summary": "가정 이사 보관이사 소형이사 젊은 팀원들로 이루어져 늘 최선을 다하는 현대이사서비스(기흥점)입니다",
+  "description": "가정이사 전문업체로서 최선을다해 거짓없는 양심으로 운영하는 업체입니다\n늘 고객의 마음에서 움직일수 있도록 \n노력하겠습니다 감사합니다",
+  "confirmationCount": 24,
+  "serviceType": [],
+  "serviceRegion": [
+    "INCHEON",
+    "GYEONGGI",
+    "SEOUL"
+  ],
+  "reviewStats": {
+    "averageScore": 3.8,
+    "totalReviews": 100
+  },
+  "favorite": 30,
+  "isAssigned": false,
+  "User": {
+    "name": "조재원"
+  }
+}

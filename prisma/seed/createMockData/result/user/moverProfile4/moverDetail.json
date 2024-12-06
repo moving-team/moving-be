@@ -1,0 +1,31 @@
+{
+  "id": 5,
+  "userId": 2,
+  "profileImage": "",
+  "nickname": "힘 찬 이 사",
+  "career": 21,
+  "summary": "힘찬이사는 원투룸. 가정이사, 사무실이사, 용달/화물운송을 전문으로하고있습니다. 13년이상의 경력과 친절한서비스로 고객님의재산을 옮겨드립니다.",
+  "description": "안녕하세요.고객님 힘찬이사입니다.\n이사짐 13년 경력의 노하우로\n고객님의 재산을 안전하게 옮겨드리겠습니다.\n원룸, 투룸이사, 가정이사를\n주 업무로 일을하고 있습니다.\n1. 친절한 서비스로 응대 하겠습니다.\n2. 고객이 ok 할때까지 최선을 \n 다 하겠습니다.\n3. 합리적인 가격으로 견적발송\n 하겠습니다.\n이사는 이사전문가에게 맡겨주세요!",
+  "confirmationCount": 182,
+  "serviceType": [
+    "SMALL",
+    "HOUSE"
+  ],
+  "serviceRegion": [
+    "GANGWON",
+    "INCHEON",
+    "CHUNGBUK",
+    "SEJONG",
+    "JEJU",
+    "GYEONGGI"
+  ],
+  "reviewStats": {
+    "averageScore": 4.8,
+    "totalReviews": 100
+  },
+  "favorite": 28,
+  "isAssigned": false,
+  "User": {
+    "name": "강하준"
+  }
+}
