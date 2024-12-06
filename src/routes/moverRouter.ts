@@ -20,4 +20,9 @@ router
 router
     .route('/list')
     .get(moverController.getMoverListController);
+router
+    .route('/info')
+    .all(authenticateToken)
+    .patch(moverController.patchMoverInfoController);
+
 export default router;
