@@ -3,7 +3,7 @@ import { $Enums } from '@prisma/client';
 export interface MovingInfo {
   id: number;
   movingType: $Enums.serviceType;
-  movingDate: string;
+  movingDate: Date;
   departure: string;
   arrival: string;
 }
@@ -24,8 +24,8 @@ export interface EstimateReqWithMovingInfo extends EstimateReq {
   MovingInfo: MovingInfo;
 }
 
-export interface EstimateReqWithMovingInfoAndDate extends EstimateReqWithDate {
-  MovingInfo: MovingInfo;
+export interface MovingInfoWithEstimateReqAndhDate extends MovingInfo {
+  EstimateRequest: EstimateReqWithDate[];
 }
 
 export interface Estimate {
