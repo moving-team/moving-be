@@ -1,10 +1,21 @@
 import {
   EstimateReq,
   EstimateReqWithMovingInfo,
-  EstimateReqWithMovingInfoAndDate,
   EstimateWithMover,
   MovingInfo,
+  MovingInfoWithEstimateReqAndhDate,
 } from '../../types/serviceType';
+
+function changeMovingDate(movingDate: Date) {
+  return movingDate
+    .toLocaleDateString('ko-KR', {
+      timeZone: 'Asia/Seoul',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    })
+    .replace(/\//g, '.');
+}
 
 export function createEstimateReqMapper(
   name: string,
@@ -15,7 +26,7 @@ export function createEstimateReqMapper(
     id: estimateReq.id,
     name,
     movingType: movingInfo.movingType,
-    movingDate: movingInfo.movingDate,
+    movingDate: changeMovingDate(movingInfo.movingDate),
     departure: movingInfo.departure,
     arrival: movingInfo.arrival,
     comment: estimateReq.comment || '',
@@ -30,7 +41,7 @@ export function getestimateReqByNoConfirmedMapper(
     id: estimateReq.id,
     name,
     movingType: estimateReq.MovingInfo.movingType,
-    movingDate: estimateReq.MovingInfo.movingDate,
+    movingDate: changeMovingDate(estimateReq.MovingInfo.movingDate),
     departure: estimateReq.MovingInfo.departure,
     arrival: estimateReq.MovingInfo.arrival,
     comment: estimateReq.comment,
@@ -39,7 +50,7 @@ export function getestimateReqByNoConfirmedMapper(
 }
 
 export function findEstimateReqListByCustomerAndConfirmedMapper(
-  estimateReq: EstimateReqWithMovingInfoAndDate,
+  movingInfo: MovingInfoWithEstimateReqAndhDate,
   estimate: EstimateWithMover,
   averageScore: number,
   totalReviews: number,
@@ -47,6 +58,7 @@ export function findEstimateReqListByCustomerAndConfirmedMapper(
   favorite: number,
   isFavorite: boolean
 ) {
+  const estimateReq = movingInfo.EstimateRequest[0];
   return {
     id: estimateReq.id,
     isConfirmed: estimateReq.isConfirmed,
@@ -62,24 +74,25 @@ export function findEstimateReqListByCustomerAndConfirmedMapper(
     totalConfirmed,
     favorite,
     isFavorite,
-    movingDate: estimateReq.MovingInfo.movingDate,
-    departure: estimateReq.MovingInfo.departure,
-    arrival: estimateReq.MovingInfo.arrival,
+    movingDate: changeMovingDate(movingInfo.movingDate),
+    departure: movingInfo.departure,
+    arrival: movingInfo.arrival,
     price: estimate.price,
   };
 }
 
 export function findEstimateReqListByCustomerAndCancelMapper(
-  estimateReq: EstimateReqWithMovingInfoAndDate
+  movingInfo: MovingInfoWithEstimateReqAndhDate
 ) {
+  const estimateReq = movingInfo.EstimateRequest[0];
   return {
     id: estimateReq.id,
     isConfirmed: estimateReq.isConfirmed,
     isCancelled: estimateReq.isCancelled,
-    movingType: estimateReq.MovingInfo.movingType,
-    movingDate: estimateReq.MovingInfo.movingDate,
-    departure: estimateReq.MovingInfo.departure,
-    arrival: estimateReq.MovingInfo.arrival,
+    movingType: movingInfo.movingType,
+    movingDate: changeMovingDate(movingInfo.movingDate),
+    departure: movingInfo.departure,
+    arrival: movingInfo.arrival,
     comment: estimateReq.comment,
     createAt: estimateReq.createdAt,
   };

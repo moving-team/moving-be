@@ -7,7 +7,7 @@ import reviewRepository from '../repositories/reviewRepository';
 import userRepository from '../repositories/userRepository';
 import { CreateEstimateReq } from '../structs/estimateRequest-struct';
 import { EstimateWithMover } from '../types/serviceType';
-import { checkIfMovingDateOver } from '../utils/dateUtil';
+import { todayUTC } from '../utils/dateUtil';
 import {
   createEstimateReqMapper,
   findEstimateReqListByCustomerAndCancelMapper,
@@ -18,11 +18,13 @@ import { customerSelect } from './selerts/customerSelect';
 import {
   estimateReqCustomerSelect,
   estimateReqMovingInfoSelect,
-  estimateReqMovingInfoWithDateSelect,
   estimateReqSelect,
 } from './selerts/estimateRequsetSelect';
 import { estimateMoverSelect, estimateSelect } from './selerts/estimateSelect';
-import { movinginfoSelect } from './selerts/movingInfoSelect';
+import {
+  movingInfoEstimateReqWithDateSelect,
+  movingInfoSelect,
+} from './selerts/movingInfoSelect';
 import { reviewSelect } from './selerts/reviewSelert';
 import { userCustomerSelect } from './selerts/userSelect';
 
@@ -39,15 +41,25 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
     throw error;
   }
 
-  // 이사날이 지난 견적 요청 여부 확인
+  const { comment, movingDate, ...rest } = data;
+
+  const movingDateTime = new Date(movingDate).getTime() + 1000 * 60 * 60 * 24;
+  const todayDateTime = new Date().getTime();
+
+  if (movingDateTime < todayDateTime) {
+    throw new Error('이미 지난 날짜입니다.');
+  }
 
   // 이사 정보 생성
-  const { comment, ...rest } = data;
   const movingInfo = await movingInfoRepository.createData({
-    data: rest,
-    select: movinginfoSelect,
+    data: {
+      ...rest,
+      movingDate: new Date(movingDate).toISOString(),
+    },
+    select: movingInfoSelect,
   });
 
+  console.log(movingInfo);
   // 견적 요청 생성
   const estimateReq = await estimateRequestRepository.createData({
     data: {
@@ -81,7 +93,7 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
   }
 
   // 권한 확인
-  if (user.Customer && user.Customer.id !== estimateReq?.Customer.id) {
+  if (user.Customer && user.Customer.id !== estimateReq.Customer.id) {
     throw new Error('권한이 없습니다.');
   }
 
@@ -145,12 +157,19 @@ async function findEstimateReq(userId: number) {
     throw new Error('견적 요청 내역이 없습니다.');
   }
 
-  // 이사일이 지났는지 확인
-  const isMoveDateOver = checkIfMovingDateOver(
-    estimateReq.MovingInfo.movingDate
-  );
+  const today = todayUTC();
 
-  if (isMoveDateOver) {
+  const movingInfo = await movingInfoRepository.findFirstData({
+    where: {
+      movingDate: { gte: today },
+      EstimateRequest: {
+        every: { id: estimateReq.id },
+      },
+    },
+  });
+
+  // 이사일이 지났는지 확인
+  if (!movingInfo) {
     throw new Error('견적 요청 내역이 없습니다.');
   }
 
@@ -169,6 +188,7 @@ async function findEstimateReq(userId: number) {
       },
       select: estimateMoverSelect,
     });
+
     const resMapper = getestimateReqByNoConfirmedMapper(user.name, estimateReq);
     return {
       ...resMapper,
@@ -194,24 +214,41 @@ async function findEstimateReqListByCustomer(
     throw new Error('소비자 전용 API 입니다.');
   }
 
+  const today = todayUTC();
+
+  const movingInfoWhere = {
+    AND: [
+      {
+        EstimateRequest: { every: { customerId: customer.id } },
+      },
+      {
+        OR: [
+          { EstimateRequest: { some: { isCancelled: true } } },
+          { EstimateRequest: { some: { isConfirmed: true } } },
+          { movingDate: { lt: today } },
+        ],
+      },
+    ],
+  };
+
   // 총 갯수 확인
-  const total = await estimateRequestRepository.countData({
-    customerId: customer.id,
+  const total = await movingInfoRepository.countData(movingInfoWhere);
+
+  const movingInfoList = await movingInfoRepository.findManyByPaginationData({
+    paginationParams: {
+      orderBy: { createdAt: 'desc' },
+      skip,
+      take: pageSize,
+      where: movingInfoWhere,
+    },
+    select: movingInfoEstimateReqWithDateSelect,
   });
 
-  const estimateReqList =
-    await estimateRequestRepository.findManyByPaginationData({
-      paginationParams: {
-        orderBy: { createdAt: 'desc' },
-        skip,
-        take: pageSize,
-        where: { customerId: customer.id },
-      },
-      select: estimateReqMovingInfoWithDateSelect,
-    });
-
+  console.log(movingInfoList);
   const newList = await Promise.all(
-    estimateReqList.map(async (estimateReq) => {
+    movingInfoList.map(async (movingInfo) => {
+      const estimateReq = movingInfo.EstimateRequest[0];
+
       // 확정된 견적 요청일 때
       if (estimateReq.isConfirmed) {
         const estimate = (await estimateRepository.findFirstData({
@@ -234,7 +271,6 @@ async function findEstimateReqListByCustomer(
             where: { moverId: estimate.Mover.id },
             select: reviewSelect,
           });
-
           totalScore = reviewList.reduce(
             (sum, review) => sum + review.score,
             0
@@ -269,7 +305,7 @@ async function findEstimateReqListByCustomer(
         }
 
         return findEstimateReqListByCustomerAndConfirmedMapper(
-          estimateReq,
+          movingInfo,
           estimate,
           averageScore,
           totalReviews,
@@ -279,30 +315,14 @@ async function findEstimateReqListByCustomer(
         );
       }
 
-      // 취소된 견적 요청일 때
-      if (estimateReq.isCancelled) {
-        return findEstimateReqListByCustomerAndCancelMapper(estimateReq);
-      }
-
-      const isMoveDateOver = checkIfMovingDateOver(
-        estimateReq.MovingInfo.movingDate
-      );
-
-      // 이사일이 지난 견적일 때
-      if (isMoveDateOver) {
-        return findEstimateReqListByCustomerAndCancelMapper(estimateReq);
-      }
-
-      // 이사일이 안지나고 확정또는 취소가 안된 견적 요청일 때
-      return false;
+      // 취소된 견적 요청 또는 이사일이 지난 견적일 때
+      return findEstimateReqListByCustomerAndCancelMapper(movingInfo);
     })
   );
 
-  const finalList = newList.filter((item) => item !== false);
-
   return {
     total,
-    list: finalList,
+    list: newList,
   };
 }
 
