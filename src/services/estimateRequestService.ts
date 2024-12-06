@@ -1,3 +1,4 @@
+import { $Enums } from '@prisma/client';
 import customerRepository from '../repositories/customerRepository';
 import estimateRepository from '../repositories/estimateRepository';
 import estimateRequestRepository from '../repositories/estimateRequestRepository';
@@ -6,6 +7,7 @@ import movingInfoRepository from '../repositories/movingInfoRepository';
 import reviewRepository from '../repositories/reviewRepository';
 import userRepository from '../repositories/userRepository';
 import { CreateEstimateReq } from '../structs/estimateRequest-struct';
+import { PagenationParamsByPage } from '../types/repositoryType';
 import { EstimateWithMover } from '../types/serviceType';
 import { todayUTC } from '../utils/dateUtil';
 import {
@@ -27,6 +29,17 @@ import {
 } from './selerts/movingInfoSelect';
 import { reviewSelect } from './selerts/reviewSelert';
 import { userCustomerSelect } from './selerts/userSelect';
+import moverRepository from '../repositories/moverRepository';
+import { moverSelect } from './selerts/moverSelect';
+
+interface PagenationQuery {
+  type: $Enums.serviceType | $Enums.serviceType[];
+  isAssigned: string;
+  order: 'move' | 'request';
+  keyWord: string;
+  page: string;
+  pageSize: string;
+}
 
 // 견적 요청 작성 API
 async function createEstimateReq(userId: number, data: CreateEstimateReq) {
@@ -324,6 +337,87 @@ async function findEstimateReqListByCustomer(
     total,
     list: newList,
   };
+}
+
+// 기사-견적 요청 리스트 조회 API
+async function findEstimateReqListByMover(
+  userId: number,
+  query: PagenationQuery
+) {
+  const { type, isAssigned, order, keyWord, page, pageSize } = query;
+
+  const movingType = Array.isArray(type) ? type : [type];
+
+  const mover = await moverRepository.findFirstData({
+    where: { userId },
+    select: moverSelect,
+  });
+
+  // 기사인지 확인
+  if (!mover) {
+    throw new Error('기사 전용 API 입니다.');
+  }
+
+  // 지정 견적 요청 관련 조회 필터 
+  // const validEstimateRequestFilter = {
+  //   isConfirmed: false,
+  //   isCancelled: false,
+  //   AssignedEstimateRequest: {
+  //     every: {
+  //       moverId: mover.id,
+  //       isRejected: false,
+  //     },
+  //   },
+  // };
+
+  // const assignList = await estimateRequestRepository.findManyData({
+  //   where: validEstimateRequestFilter,
+  //   select: estimateReqMovingInfoSelect,
+  // });
+
+  // const validAssign: number[] = assignList.map((item) => {
+  //   const isMoveDateOver = checkIfMovingDateOver(item.MovingInfo.movingDate);
+
+  //   if (isMoveDateOver) {
+  //     return 0;
+  //   } else {
+  //     return 1;
+  //   }
+  // });
+
+  // // 이사일이 안지난 지정 견적 요청 갯수
+  // const assign = validAssign.reduce((sum, curr) => sum + curr, 0);
+
+  // if (isAssigned === 'true') {
+  //   // isAssigned가 true일 때
+
+  //   // 이사일이 안지난 small 견적 요청 갯수
+  //   const small = await countValidMovingtype(
+  //     'SMALL',
+  //     validEstimateRequestFilter
+  //   );
+
+  //   // 이사일이 안지난 house 견적 요청 갯수
+  //   const house = await countValidMovingtype(
+  //     'HOUSE',
+  //     validEstimateRequestFilter
+  //   );
+
+  //   // 이사일이 안지난 office 견적 요청 갯수
+  //   const office = await countValidMovingtype(
+  //     'OFFICE',
+  //     validEstimateRequestFilter
+  //   );
+
+  //   const estimateReqList =
+  //     await estimateRequestRepository.findManyByCursorPagenationData();
+  // }
+
+  // isAssigned에 따른 레포지토리 선택
+  // type 과 order, keyWord 에 맞추어 옵션 추가
+  // 소형, 사무실, 하우스 이사 갯수 확인
+  // isAssigned가 false일떄 지정견적 요청 여부 확인해서 맨 앞으로
+  //
 }
 
 export default {

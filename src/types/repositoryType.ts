@@ -1,5 +1,3 @@
-import { Prisma } from "@prisma/client";
-
 type Sort = "asc" | "desc";
 
 export interface CreatedAtOrder {
