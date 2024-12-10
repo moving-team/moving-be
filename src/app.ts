@@ -7,6 +7,7 @@ import userRouter from './routes/userRouter';
 import customerRouter from './routes/customerRouter';
 import cookieParser from 'cookie-parser';
 import moverRouter from './routes/moverRouter';
+import favoriteRouter from './routes/favoriteRouter';
 import { USER_URL, USER_URL2, SC_URL } from './config/env';
 import morgan from 'morgan';
 const app = express();
@@ -27,6 +28,7 @@ app.use('/user', userRouter);
 app.use('/customer', customerRouter);
 app.use('/mover', moverRouter);
 app.use('/estimateReq', estimateReqRouter);
+app.use('/favorite', favoriteRouter)
 
 app.use(errorHandler);
 
