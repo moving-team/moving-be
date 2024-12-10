@@ -28,7 +28,7 @@
     "typescript": "^5.7.2"
   },
   "scripts": {
-    "start": "node disc/app.js",
+    "start": "node dist/app.js",
     "dev": "nodemon --watch src --exec ts-node --files ./src/app.ts",
     "build": "tsc"
   }

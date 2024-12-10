@@ -54,7 +54,7 @@ const userLogin = async (data: any) => {
     throw new Error('환경 변수가 설정되지 않았습니다.');
   }
 
-  const isSecure = process.env.NODE_ENV === 'production';
+  const isSecure = process.env.NODE_ENV === 'production' || false;
 
   const cookieOptions = {
     accessToken: {
