@@ -9,12 +9,11 @@ const generateToken = (payload: any, secret: string, expiresIn: string) => {
 
 const register = async (data: any, userType: string) => {
   const where = { email: data.email };
-
-  if (!data.email || !data.password) {
-    throw new Error('이메일 및 패스워드를 입력해주세요.');
-  }
   if (!userType || (userType !== 'CUSTOMER' && userType !== 'MOVER')) {
     throw new Error('유저 타입을 확인해주세요.');
+  }
+  if (!data.email || !data.password) {
+    throw new Error('이메일 및 패스워드를 입력해주세요.');
   }
   if (!data.name) {
     throw new Error('이름을 입력해주세요.');
@@ -23,15 +22,26 @@ const register = async (data: any, userType: string) => {
     throw new Error('전화번호를 입력해주세요.');
   }
   if (await userRepository.findFirstData({ where })) {
-    throw new Error('이미 사용중인 이메일 입니다.');
+    const response : any = {
+      error : {
+        message: '이미 사용중인 이메일 입니다.',
+        status: 404,
+      },
+      user : null
+    };
+    return response;
   }
   data.password = await bcrypt.hash(data.password, 10);
   data.userType = userType;
-  return await userRepository.createData({ data });
+  
+  const response = {
+    error: null,
+    user : await userRepository.createData({ data })
+  }
+  return response;
 };
 
 const userLogin = async (data: any) => {
-  let response: any;
   if (!data.email || !data.password) {
     throw new Error('이메일 및 패스워드를 입력해주세요.');
   }
@@ -40,7 +50,7 @@ const userLogin = async (data: any) => {
     where: { email: data.email },
   });
   if (!user) {
-    response = {
+    const response : any = {
       message: '존재하지 않은 이메일 입니다.',
       status: 404,
     };
@@ -51,7 +61,7 @@ const userLogin = async (data: any) => {
       user.password as string
     );
     if (!isValidPassword) {
-      response = {
+      const response : any = {
         message: '비밀번호가 올바르지 않습니다.',
         status: 404,
       };
