@@ -7,7 +7,11 @@ import movingInfoRepository from '../repositories/movingInfoRepository';
 import reviewRepository from '../repositories/reviewRepository';
 import userRepository from '../repositories/userRepository';
 import { CreateEstimateReq } from '../structs/estimateRequest-struct';
-import { EstimateWithMover } from '../types/serviceType';
+import {
+  EstimateWithMover,
+  FindEstimateReqListByMoverType,
+  MovingInfoWithEstimateReqAndhDate,
+} from '../types/serviceType';
 import { todayUTC } from '../utils/dateUtil';
 import {
   createEstimateReqMapper,
@@ -182,7 +186,7 @@ async function findEstimateReq(userId: number) {
     where: {
       movingDate: { gte: today },
       EstimateRequest: {
-        every: { id: estimateReq.id },
+        id: estimateReq.id,
       },
     },
   });
@@ -238,12 +242,12 @@ async function findEstimateReqListByCustomer(
   const movingInfoWhere = {
     AND: [
       {
-        EstimateRequest: { every: { customerId: customer.id } },
+        EstimateRequest: { customerId: customer.id },
       },
       {
         OR: [
-          { EstimateRequest: { some: { isCancelled: true } } },
-          { EstimateRequest: { some: { isConfirmed: true } } },
+          { EstimateRequest: { isCancelled: true } },
+          { EstimateRequest: { isConfirmed: true } },
           { movingDate: { lt: today } },
         ],
       },
@@ -266,10 +270,10 @@ async function findEstimateReqListByCustomer(
   console.log(movingInfoList);
   const newList = await Promise.all(
     movingInfoList.map(async (movingInfo) => {
-      const estimateReq = movingInfo.EstimateRequest[0];
+      const estimateReq = movingInfo.EstimateRequest;
 
       // 확정된 견적 요청일 때
-      if (estimateReq.isConfirmed) {
+      if (estimateReq && estimateReq.isConfirmed) {
         const estimate = (await estimateRepository.findFirstData({
           where: {
             estimateRequestId: estimateReq.id,
@@ -318,24 +322,26 @@ async function findEstimateReqListByCustomer(
         });
 
         // 찜 여부
-        let isFavorite = false;
+        let isLiked = false;
         if (favorite) {
-          isFavorite = true;
+          isLiked = true;
         }
 
         return findEstimateReqListByCustomerAndConfirmedMapper(
-          movingInfo,
+          movingInfo as MovingInfoWithEstimateReqAndhDate,
           estimate,
           averageScore,
           totalReviews,
           totalConfirmed,
           totalFavorite,
-          isFavorite
+          isLiked
         );
       }
 
       // 취소된 견적 요청 또는 이사일이 지난 견적일 때
-      return findEstimateReqListByCustomerAndCancelMapper(movingInfo);
+      return findEstimateReqListByCustomerAndCancelMapper(
+        movingInfo as MovingInfoWithEstimateReqAndhDate
+      );
     })
   );
 
@@ -345,7 +351,7 @@ async function findEstimateReqListByCustomer(
   };
 }
 
-// 기사-견적 요청 리스트 조회 API
+// 기사-견적 요청 리스트 조회 API (기사님 서비스 지역만 보여지게)
 async function findEstimateReqListByMover(
   userId: number,
   query: PagenationQuery
@@ -386,6 +392,16 @@ async function findEstimateReqListByMover(
 
   const today = todayUTC();
 
+  // keyWord 여부에 따른 지역 필터 변경
+  let regionFilter: Prisma.MovingInfoWhereInput = {
+    departure: { in: ['서울특별시 양천구 안양천로657 (신정동)', '인천관역시'] },
+  };
+  if (keyWord !== '') {
+    regionFilter = {
+      OR: [{ departure: keWordFilter }, { arrival: keWordFilter }],
+    };
+  }
+
   // 견적 요청 관련 조회 필터
   const validEstimateRequestFilter = {
     isConfirmed: false,
@@ -409,15 +425,14 @@ async function findEstimateReqListByMover(
         movingDate: { gte: today },
         movingType: { in: movingType },
         EstimateRequest: {
-          every: {
-            ...validEstimateRequestFilter,
-            AssignedEstimateRequest: { some: {} }, // AssignedEstimateRequest가 존재해야 함
-          },
+          ...validEstimateRequestFilter,
+          AssignedEstimateRequest: { some: {} }, // AssignedEstimateRequest가 존재해야 함
         },
       },
       {
-        EstimateRequest: { every: { ...validAssignedEstimateRequestFilter } },
+        EstimateRequest: { ...validAssignedEstimateRequestFilter },
       },
+      regionFilter,
     ],
   });
 
@@ -427,14 +442,17 @@ async function findEstimateReqListByMover(
     // movingType에 따른 카운트
     async function totalCount(movingType: $Enums.serviceType[]) {
       return await movingInfoRepository.countData({
-        movingDate: { gte: today },
-        movingType: { in: movingType },
-        EstimateRequest: {
-          every: {
-            ...validEstimateRequestFilter,
-            ...validAssignedEstimateRequestFilter, // AssignedEstimateRequest가 없을 시 true
+        AND: [
+          {
+            movingDate: { gte: today },
+            movingType: { in: movingType },
+            EstimateRequest: {
+              ...validEstimateRequestFilter,
+              ...validAssignedEstimateRequestFilter, // AssignedEstimateRequest가 없을 시 true
+            },
           },
-        },
+          regionFilter,
+        ],
       });
     }
 
@@ -450,21 +468,11 @@ async function findEstimateReqListByMover(
           movingDate: { gte: today },
           movingType: { in: movingType },
           EstimateRequest: {
-            every: {
-              ...validEstimateRequestFilter,
-              ...validAssignedEstimateRequestFilter,
-            },
+            ...validEstimateRequestFilter,
+            ...validAssignedEstimateRequestFilter,
           },
         },
-        {
-          OR: [{ departure: keWordFilter }, { arrival: keWordFilter }],
-        },
-      ],
-      orderBy: [
-        {
-          AssignedEstimateRequest: { _count: 'desc' }, // `AssignedEstimateRequest`가 있는 경우 우선적으로 나오도록 설정
-        },
-        orderBy,
+        regionFilter,
       ],
     };
 
@@ -472,7 +480,12 @@ async function findEstimateReqListByMover(
     const estimateReqList = await movingInfoRepository.findManyByPaginationData(
       {
         paginationParams: {
-          orderBy,
+          orderBy: [
+            {
+              EstimateRequest: { AssignedEstimateRequest: { _count: 'desc' } },
+            },
+            orderBy,
+          ],
           skip,
           take,
           where: estimateReqListWhere,
@@ -482,7 +495,9 @@ async function findEstimateReqListByMover(
     );
 
     const list = estimateReqList.map((movingInfo) => {
-      return findEstimateReqListByMoverMapper(movingInfo);
+      return findEstimateReqListByMoverMapper(
+        movingInfo as FindEstimateReqListByMoverType
+      );
     });
 
     return {
@@ -504,19 +519,16 @@ async function findEstimateReqListByMover(
             movingDate: { gte: today },
             movingType: { in: movingType },
             EstimateRequest: {
-              every: {
-                ...validEstimateRequestFilter,
-                AssignedEstimateRequest: { some: {} }, // AssignedEstimateRequest가 존재해야 함
-              },
+              ...validEstimateRequestFilter,
+              AssignedEstimateRequest: { some: {} }, // AssignedEstimateRequest가 존재해야 함
             },
           },
           {
-            EstimateRequest: {
-              every: { ...validAssignedEstimateRequestFilter },
-            },
+            EstimateRequest: { ...validAssignedEstimateRequestFilter },
           },
+          regionFilter,
         ],
-      });
+      }); 
     }
 
     const small = await totalCount(['SMALL']);
@@ -530,18 +542,14 @@ async function findEstimateReqListByMover(
           movingDate: { gte: today },
           movingType: { in: movingType },
           EstimateRequest: {
-            every: {
-              ...validEstimateRequestFilter,
-              AssignedEstimateRequest: { some: {} }, // AssignedEstimateRequest가 존재해야 함
-            },
+            ...validEstimateRequestFilter,
+            AssignedEstimateRequest: { some: {} }, // AssignedEstimateRequest가 존재해야 함
           },
         },
         {
-          EstimateRequest: { every: { ...validAssignedEstimateRequestFilter } },
+          EstimateRequest: { ...validAssignedEstimateRequestFilter },
         },
-        {
-          OR: [{ departure: keWordFilter }, { arrival: keWordFilter }],
-        },
+        regionFilter,
       ],
     };
 
@@ -559,7 +567,9 @@ async function findEstimateReqListByMover(
     );
 
     const list = estimateReqList.map((movingInfo) => {
-      return findEstimateReqListByMoverMapper(movingInfo);
+      return findEstimateReqListByMoverMapper(
+        movingInfo as FindEstimateReqListByMoverType
+      );
     });
 
     return {

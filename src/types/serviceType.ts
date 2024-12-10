@@ -25,7 +25,7 @@ export interface EstimateReqWithMovingInfo extends EstimateReq {
 }
 
 export interface MovingInfoWithEstimateReqAndhDate extends MovingInfo {
-  EstimateRequest: EstimateReqWithDate[];
+  EstimateRequest: EstimateReqWithDate;
 }
 
 export interface Estimate {
@@ -74,5 +74,5 @@ export interface FindEstimateReqListByMoverType {
     AssignedEstimateRequest: {
       id: number;
     }[];
-  }[];
+  };
 }

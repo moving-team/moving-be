@@ -60,7 +60,7 @@ export function findEstimateReqListByCustomerAndConfirmedMapper(
   favorite: number,
   isFavorite: boolean
 ) {
-  const estimateReq = movingInfo.EstimateRequest[0];
+  const estimateReq = movingInfo.EstimateRequest;
   return {
     id: estimateReq.id,
     isConfirmed: estimateReq.isConfirmed,
@@ -86,7 +86,7 @@ export function findEstimateReqListByCustomerAndConfirmedMapper(
 export function findEstimateReqListByCustomerAndCancelMapper(
   movingInfo: MovingInfoWithEstimateReqAndhDate
 ) {
-  const estimateReq = movingInfo.EstimateRequest[0];
+  const estimateReq = movingInfo.EstimateRequest;
   return {
     id: estimateReq.id,
     isConfirmed: estimateReq.isConfirmed,
@@ -103,10 +103,10 @@ export function findEstimateReqListByCustomerAndCancelMapper(
 export function findEstimateReqListByMoverMapper(
   movingInfoList: FindEstimateReqListByMoverType
 ) {
-  const estimateReq = movingInfoList.EstimateRequest[0];
-  const name = movingInfoList.EstimateRequest[0].Customer.User.name;
+  const estimateReq = movingInfoList.EstimateRequest;
+  const name = movingInfoList.EstimateRequest.Customer.User.name;
   const AssignedEstimateReq =
-    movingInfoList.EstimateRequest[0].AssignedEstimateRequest.length;
+    movingInfoList.EstimateRequest.AssignedEstimateRequest.length;
   const isAssigned = AssignedEstimateReq === 0 ? false : true;
   return {
     id: estimateReq.id,

@@ -136,7 +136,7 @@ model MovingInfo {
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
 
-  EstimateRequest EstimateRequest[]
+  EstimateRequest EstimateRequest?
   Estimate        Estimate[]
 
   @@map("moving_info")
@@ -147,7 +147,7 @@ model EstimateRequest {
   Customer     Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
   customerId   Int        @map("customer_id")
   MovingInfo   MovingInfo @relation(fields: [movingInfoId], references: [id], onDelete: Cascade)
-  movingInfoId Int        @map("moving_info_id")
+  movingInfoId Int        @unique @map("moving_info_id")
   comment      String?
   isConfirmed  Boolean    @default(false) @map("is_confirmed")
   isCancelled  Boolean    @default(false) @map("is_cancelled")
