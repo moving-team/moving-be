@@ -36,6 +36,9 @@ import { reviewSelect } from './selerts/reviewSelert';
 import { userCustomerSelect } from './selerts/userSelect';
 import moverRepository from '../repositories/moverRepository';
 import { moverSelect } from './selerts/moverSelect';
+import {
+  RESION,
+} from '../contents/region';
 
 export interface PagenationQuery {
   type?: $Enums.serviceType | $Enums.serviceType[];
@@ -393,10 +396,24 @@ async function findEstimateReqListByMover(
   const today = todayUTC();
 
   // keyWord 여부에 따른 지역 필터 변경
-  let regionFilter: Prisma.MovingInfoWhereInput = {
-    departure: { in: ['서울특별시 양천구 안양천로657 (신정동)', '인천관역시'] },
-  };
-  if (keyWord !== '') {
+  let regionFilter: Prisma.MovingInfoWhereInput;
+
+  if (keyWord === '') {
+    const regionList = mover.serviceRegion.map(
+      (item) => RESION[item]
+    );
+
+    regionFilter = {
+      OR: regionList.map((region) => {
+        return {
+          departure: {
+            contains: region,
+            mode: 'insensitive',
+          },
+        };
+      }),
+    };
+  } else {
     regionFilter = {
       OR: [{ departure: keWordFilter }, { arrival: keWordFilter }],
     };
@@ -528,7 +545,7 @@ async function findEstimateReqListByMover(
           },
           regionFilter,
         ],
-      }); 
+      });
     }
 
     const small = await totalCount(['SMALL']);
