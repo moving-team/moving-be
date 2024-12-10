@@ -375,19 +375,19 @@ async function findEstimateReqListByMover(
     validIsAssigned = isAssigned;
   }
   let region = keyWord;
-  if (keyWord === '서울특별시') {
+  if (keyWord === '서울특별시' || keyWord === '서울시') {
     region = '서울';
   } else if (keyWord === '경기도') {
     region = '경기';
   } else if (keyWord === '인천광역시') {
     region = '인천';
-  } else if (keyWord === '강원도') {
+  } else if (keyWord === '강원도' || keyWord === '강원특별자치도') {
     region = '강원';
   } else if (keyWord === '충청북도') {
     region = '충북';
   } else if (keyWord === '충청남도') {
     region = '충남';
-  } else if (keyWord === '세종특별자치시') {
+  } else if (keyWord === '세종특별자치시' || keyWord === '세종시') {
     region = '세종';
   } else if (keyWord === '대전광역시') {
     region = '대전';
@@ -407,7 +407,7 @@ async function findEstimateReqListByMover(
     region = '울산';
   } else if (keyWord === '부산광역시') {
     region = '부산';
-  } else if (keyWord === '제주특별자치도') {
+  } else if (keyWord === '제주특별자치도' || keyWord === '제주도') {
     region = '제주';
   }
 
