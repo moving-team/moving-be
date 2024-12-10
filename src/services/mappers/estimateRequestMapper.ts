@@ -1,4 +1,3 @@
-import { $Enums } from '@prisma/client';
 import {
   EstimateReq,
   EstimateReqWithMovingInfo,
@@ -17,6 +16,18 @@ function changeMovingDate(movingDate: Date) {
       day: '2-digit',
     })
     .replace(/\//g, '.');
+}
+
+function changeRegion(region: string) {
+  if (region.slice(0, 2) === '세종') {
+    const parts = region.split(' ');
+    return parts[1] === '세종시'
+      ? `세종 ${parts[2]}`
+      : `세종 ${parts[1]}`;
+  } else {
+    const parts = region.split(' ');
+    return `${parts[0]} ${parts[1]}`
+  }
 }
 
 export function createEstimateReqMapper(
@@ -77,8 +88,8 @@ export function findEstimateReqListByCustomerAndConfirmedMapper(
     favorite,
     isFavorite,
     movingDate: changeMovingDate(movingInfo.movingDate),
-    departure: movingInfo.departure,
-    arrival: movingInfo.arrival,
+    departure: changeRegion(movingInfo.departure),
+    arrival: changeRegion(movingInfo.arrival),
     price: estimate.price,
   };
 }
@@ -93,8 +104,8 @@ export function findEstimateReqListByCustomerAndCancelMapper(
     isCancelled: estimateReq.isCancelled,
     movingType: movingInfo.movingType,
     movingDate: changeMovingDate(movingInfo.movingDate),
-    departure: movingInfo.departure,
-    arrival: movingInfo.arrival,
+    departure: changeRegion(movingInfo.departure),
+    arrival: changeRegion(movingInfo.arrival),
     comment: estimateReq.comment,
     createAt: estimateReq.createdAt,
   };
@@ -113,10 +124,10 @@ export function findEstimateReqListByMoverMapper(
     name,
     movingType: movingInfoList.movingType,
     movingDate: changeMovingDate(movingInfoList.movingDate),
-    departure: movingInfoList.departure,
-    arrival: movingInfoList.arrival,
+    departure: changeRegion(movingInfoList.departure),
+    arrival: changeRegion(movingInfoList.arrival),
     comment: estimateReq.comment,
     isAssigned,
-    createAt: changeMovingDate(estimateReq.createdAt)
+    createAt: changeMovingDate(estimateReq.createdAt),
   };
 }
