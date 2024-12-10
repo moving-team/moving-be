@@ -11,14 +11,15 @@ interface ReviewPagenationParams extends PagenationParamsByPage {
   where?: Prisma.ReviewWhereInput;
 }
 
-type ReviewUncheckedCreateInputType =
-  Prisma.ReviewUncheckedCreateInput;
+type ReviewUncheckedCreateInputType = Prisma.ReviewUncheckedCreateInput;
 
 type ReviewWhereInputType = Prisma.ReviewWhereInput;
 
 type ReviewWhereUniqueInputType = Prisma.ReviewWhereUniqueInput;
 
 type ReviewUpdateInputType = Prisma.ReviewUpdateInput;
+
+type ReviewOrderByType = Prisma.ReviewOrderByWithRelationInput;
 
 // createData
 function createData<T extends ReviewSelectType>({
@@ -54,29 +55,36 @@ async function createData<T extends ReviewSelectType | undefined>({
 function findFirstData<T extends ReviewSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: ReviewWhereInputType;
   select: T;
+  orderBy?: ReviewOrderByType;
 }): Promise<ReviewPayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: ReviewWhereInputType;
+  orderBy?: ReviewOrderByType;
 }): Promise<ReviewPayload<undefined> | null>;
 
 async function findFirstData<T extends ReviewSelectType | undefined>({
   where,
   select,
+  orderBy = { createdAt: 'desc' },
 }: {
   where: ReviewWhereInputType;
   select?: T;
+  orderBy?: ReviewOrderByType;
 }) {
   if (select === undefined) {
-    return await prisma.review.findFirst({ where });
+    return await prisma.review.findFirst({ where, orderBy });
   }
   return await prisma.review.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 
@@ -94,9 +102,13 @@ function findUniqueOrThrowtData({
   where: ReviewWhereUniqueInputType;
 }): Promise<ReviewPayload<undefined>>;
 
-async function findUniqueOrThrowtData<
-  T extends ReviewSelectType | undefined
->({ where, select }: { where: ReviewWhereUniqueInputType; select?: T }) {
+async function findUniqueOrThrowtData<T extends ReviewSelectType | undefined>({
+  where,
+  select,
+}: {
+  where: ReviewWhereUniqueInputType;
+  select?: T;
+}) {
   if (select === undefined) {
     return await prisma.review.findUniqueOrThrow({ where });
   }
@@ -152,6 +164,46 @@ async function findManyByPaginationData<
   });
 }
 
+//findManyData
+function findManyData<T extends ReviewSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: ReviewWhereInputType;
+  select: T;
+  orderBy?: ReviewOrderByType;
+}): Promise<ReviewPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: ReviewWhereInputType;
+  orderBy?: ReviewOrderByType;
+}): Promise<ReviewPayload<undefined>[]>;
+
+async function findManyData<T extends ReviewSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: ReviewWhereInputType;
+  select?: T;
+  orderBy?: ReviewOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.review.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.review.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 // updateData
 function updateData<T extends ReviewSelectType>({
   where,
@@ -198,4 +250,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
+  findManyData
 };

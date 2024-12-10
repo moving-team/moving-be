@@ -1,0 +1,191 @@
+{
+  "total": 13,
+  "list": [
+    {
+      "serviceType": [
+        "SMALL"
+      ],
+      "isAssigned": false,
+      "nickname": "서민교",
+      "profileImg": "",
+      "comment": "서민교 고수의 국내 이사 서비스",
+      "score": 4.1,
+      "reviewCount": 100,
+      "career": 10,
+      "confirmationCount": 161,
+      "favoriteCount": 80
+    },
+    {
+      "serviceType": [
+        "SMALL"
+      ],
+      "isAssigned": false,
+      "nickname": "양지",
+      "profileImg": "",
+      "comment": "고수의 국내 이사, 이사/입주 청소업체, 건물내부 청소(바닥/계단/화장실), 계단/화장실 청소, 정리수납 컨설팅, 가정이사(투룸 이상), 사무실/상업공간 이사 서비스",
+      "score": 3.5,
+      "reviewCount": 100,
+      "career": 8,
+      "confirmationCount": 157,
+      "favoriteCount": 75
+    },
+    {
+      "serviceType": [
+        "SMALL",
+        "HOUSE",
+        "OFFICE"
+      ],
+      "isAssigned": false,
+      "nickname": "염동훈",
+      "profileImg": "",
+      "comment": "출장용접 전문",
+      "score": 4.6,
+      "reviewCount": 100,
+      "career": 11,
+      "confirmationCount": 48,
+      "favoriteCount": 43
+    },
+    {
+      "serviceType": [
+        "SMALL"
+      ],
+      "isAssigned": false,
+      "nickname": "한진-24",
+      "profileImg": "",
+      "comment": "김종진 고수의 원룸/소형 이사, 용달/화물 운송 서비스",
+      "score": 3.6,
+      "reviewCount": 100,
+      "career": 28,
+      "confirmationCount": 39,
+      "favoriteCount": 87
+    },
+    {
+      "serviceType": [
+        "SMALL",
+        "OFFICE"
+      ],
+      "isAssigned": false,
+      "nickname": "⭐고객평가1위스마트",
+      "profileImg": "",
+      "comment": "⭐고객평가1위스마트친절이사 윤재근 고수의 가정이사 (투룸 이상), 원룸/소형 이사서비스.",
+      "score": 3.6,
+      "reviewCount": 100,
+      "career": 12,
+      "confirmationCount": 131,
+      "favoriteCount": 17
+    },
+    {
+      "serviceType": [
+        "SMALL",
+        "HOUSE",
+        "OFFICE"
+      ],
+      "isAssigned": false,
+      "nickname": "윤실이",
+      "profileImg": "",
+      "comment": "싹서비스 3팀 장기현팀장 입니다",
+      "score": 3.7,
+      "reviewCount": 100,
+      "career": 6,
+      "confirmationCount": 191,
+      "favoriteCount": 46
+    },
+    {
+      "serviceType": [],
+      "isAssigned": false,
+      "nickname": "노종철 상담요망",
+      "profileImg": "",
+      "comment": "호로 장착으로 우천시도 안전합니다",
+      "score": 4.6,
+      "reviewCount": 100,
+      "career": 28,
+      "confirmationCount": 95,
+      "favoriteCount": 81
+    },
+    {
+      "serviceType": [],
+      "isAssigned": true,
+      "nickname": "제일",
+      "profileImg": "",
+      "comment": "고수",
+      "score": 4.4,
+      "reviewCount": 100,
+      "career": 2,
+      "confirmationCount": 42,
+      "favoriteCount": 42
+    },
+    {
+      "serviceType": [
+        "SMALL",
+        "OFFICE"
+      ],
+      "isAssigned": false,
+      "nickname": "짐꺽정이사",
+      "profileImg": "",
+      "comment": "많은 경험과 노하우로 인한 기분 좋은 이사 서비스를 제공해 드립니다.",
+      "score": 5,
+      "reviewCount": 100,
+      "career": 22,
+      "confirmationCount": 66,
+      "favoriteCount": 79
+    },
+    {
+      "serviceType": [
+        "OFFICE",
+        "HOUSE"
+      ],
+      "isAssigned": false,
+      "nickname": "부자이사",
+      "profileImg": "",
+      "comment": "박영두 고수의 부자이사 (투룸 이상), 원룸/소형 이사 서비스",
+      "score": 4.3,
+      "reviewCount": 100,
+      "career": 12,
+      "confirmationCount": 195,
+      "favoriteCount": 57
+    },
+    {
+      "serviceType": [
+        "HOUSE",
+        "OFFICE"
+      ],
+      "isAssigned": false,
+      "nickname": "❤️J",
+      "profileImg": "",
+      "comment": "💚처음하신 이사든 열번하신 이사든 한결같이 처음 만난 그모습 그대로 서비스를 제공하겠습니다💚 한번 고객은 영원한 고객님입니다🙏",
+      "score": 4.6,
+      "reviewCount": 100,
+      "career": 3,
+      "confirmationCount": 69,
+      "favoriteCount": 90
+    },
+    {
+      "serviceType": [
+        "SMALL",
+        "HOUSE",
+        "OFFICE"
+      ],
+      "isAssigned": false,
+      "nickname": "양상현",
+      "profileImg": "",
+      "comment": "양상현 고수의 짐 보관, 사무실/상업공간 이사, 가정이사 (투룸 이상), 원룸/소형 이사, 용달/화물 운송, 국내 이사 서비스",
+      "score": 4.1,
+      "reviewCount": 100,
+      "career": 8,
+      "confirmationCount": 200,
+      "favoriteCount": 36
+    },
+    {
+      "serviceType": [],
+      "isAssigned": false,
+      "nickname": "현대이사서비스",
+      "profileImg": "",
+      "comment": "가정 이사 보관이사 소형이사 젊은 팀원들로 이루어져 늘 최선을 다하는 현대이사서비스(기흥점)입니다",
+      "score": 3.8,
+      "reviewCount": 100,
+      "career": 6,
+      "confirmationCount": 24,
+      "favoriteCount": 30
+    }
+  ]
+}

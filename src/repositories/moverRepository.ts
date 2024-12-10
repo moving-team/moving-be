@@ -19,6 +19,8 @@ type MoverWhereUniqueInputType = Prisma.MoverWhereUniqueInput;
 
 type MoverUpdateInputType = Prisma.MoverUpdateInput;
 
+type MoverOrderByType = Prisma.MoverOrderByWithRelationInput;
+
 // createData
 function createData<T extends MoverSelectType>({
   data,
@@ -53,29 +55,36 @@ async function createData<T extends MoverSelectType | undefined>({
 function findFirstData<T extends MoverSelectType>({
   where,
   select,
+  orderBy,
 }: {
   where: MoverWhereInputType;
   select: T;
+  orderBy?: MoverOrderByType;
 }): Promise<MoverPayload<T> | null>;
 function findFirstData({
   where,
+  orderBy,
 }: {
   where: MoverWhereInputType;
+  orderBy?: MoverOrderByType;
 }): Promise<MoverPayload<undefined> | null>;
 
 async function findFirstData<T extends MoverSelectType | undefined>({
   where,
   select,
+  orderBy = { createdAt: 'desc' },
 }: {
   where: MoverWhereInputType;
   select?: T;
+  orderBy?: MoverOrderByType;
 }) {
   if (select === undefined) {
-    return await prisma.mover.findFirst({ where });
+    return await prisma.mover.findFirst({ where, orderBy });
   }
   return await prisma.mover.findFirst({
     where,
     select,
+    orderBy,
   });
 }
 
@@ -191,7 +200,6 @@ async function deleteData(where: { id: number }): Promise<void> {
   await prisma.mover.delete({ where });
 }
 
-
 // findManyAllData
 function findManyAllData<T extends MoverSelectType>({
   where,
@@ -224,6 +232,46 @@ async function findManyAllData<T extends MoverSelectType | undefined>({
   });
 }
 
+//findManyData
+function findManyData<T extends MoverSelectType>({
+  where,
+  select,
+  orderBy,
+}: {
+  where: MoverWhereInputType;
+  select: T;
+  orderBy?: MoverOrderByType;
+}): Promise<MoverPayload<T>[]>;
+function findManyData({
+  where,
+  orderBy,
+}: {
+  where: MoverWhereInputType;
+  orderBy?: MoverOrderByType;
+}): Promise<MoverPayload<undefined>[]>;
+
+async function findManyData<T extends MoverSelectType | undefined>({
+  where,
+  select,
+  orderBy = { createdAt: 'desc' },
+}: {
+  where: MoverWhereInputType;
+  select?: T;
+  orderBy?: MoverOrderByType;
+}) {
+  if (select === undefined) {
+    return await prisma.mover.findMany({
+      where,
+      orderBy,
+    });
+  }
+  return await prisma.mover.findMany({
+    where,
+    select,
+    orderBy,
+  });
+}
+
 export default {
   createData,
   findFirstData,
@@ -233,4 +281,5 @@ export default {
   updateData,
   deleteData,
   findManyAllData,
+  findManyData
 };
