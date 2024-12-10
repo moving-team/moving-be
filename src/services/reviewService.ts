@@ -130,22 +130,16 @@ export async function getMyReviews(customerId: number, skip: number, take: numbe
   // 리뷰 목록 데이터 형식화
   const formattedReviews = myReviews.map((review) => ({
     reviewId: review.id,
-    mover: {
-      moverId: review.Mover.id,
-      moverName: review.Mover.nickname,
-      profileImg: review.Mover.profileImage || '',
-    },
-    review: {
-      score: review.score,
-      content: review.description,
-      createAt: review.createdAt,
-    },
-    estimate: {
-      price: review.Estimate?.price,
-      isAssigned: review.Estimate.isAssigned,
-      movingType: review.Estimate.MovingInfo.movingType,
-      movingDate: review.Estimate.MovingInfo.movingDate,
-    }
+    moverId: review.Mover.id,
+    moverName: review.Mover.nickname,
+    profileImg: review.Mover.profileImage || '',
+    score: review.score,
+    content: review.description,
+    createAt: review.createdAt,
+    price: review.Estimate?.price,
+    isAssigned: review.Estimate.isAssigned,
+    movingType: review.Estimate.MovingInfo.movingType,
+    movingDate: review.Estimate.MovingInfo.movingDate,
   }));
 
   return {
