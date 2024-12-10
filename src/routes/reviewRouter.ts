@@ -1,5 +1,5 @@
 import express from 'express';
-import { getReviewsHandler, createReviewHandler } from '../controllers/reviewController';
+import { getReviewsHandler, createReviewHandler, getMyReviewsHandler } from '../controllers/reviewController';
 import { authenticateToken } from '../middlewares/authMiddleware';
 
 const reviewRouter = express.Router();
@@ -14,5 +14,11 @@ reviewRouter
     .route('/')
     .all(authenticateToken)
     .post(createReviewHandler);
+
+// 내 리뷰 목록 조회
+reviewRouter
+    .route('/review/me')
+    .all(authenticateToken)
+    .get(getMyReviewsHandler)
 
 export default reviewRouter;
