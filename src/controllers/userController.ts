@@ -51,11 +51,9 @@ const loginController = async (
     if(data.accessToken && data.refreshToken){
       res.cookie("accessToken", data.accessToken, {
         ...data.cookieOptions.accessToken,
-        sameSite: "strict",
       });
       res.cookie("refreshToken", data.refreshToken, {
         ...data.cookieOptions.refreshToken,
-        sameSite: "strict",
       });
       res.status(201).json("로그인 성공");
     }else{
