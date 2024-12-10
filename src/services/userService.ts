@@ -1,7 +1,7 @@
 import userRepository from '../repositories/userRepository';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } from '../config/env';
+import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET,NODE_ENV } from '../config/env';
 
 const generateToken = (payload: any, secret: string, expiresIn: string) => {
   return jwt.sign(payload, secret, { expiresIn });
