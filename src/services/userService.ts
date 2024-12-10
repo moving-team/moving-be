@@ -71,13 +71,13 @@ const userLogin = async (data: any) => {
 
   const cookieOptions = {
     accessToken: {
-      httpOnly: true,
+      httpOnly: NODE_ENV === 'production' ? true : false,
       secure: isSecure,
       maxAge: 1000 * 60 * 60,
       sameSite: 'strict',
     },
     refreshToken: {
-      httpOnly: true,
+      httpOnly: NODE_ENV === 'production' ? true : false,
       secure: isSecure,
       maxAge: 1000 * 60 * 60 * 24 * 7,
       sameSite: 'strict',
