@@ -7,6 +7,11 @@ const generateToken = (payload: any, secret: string, expiresIn: string) => {
   return jwt.sign(payload, secret, { expiresIn });
 };
 
+
+const getUser = async (id: number) => {
+  return await userRepository.findFirstData({ where: { id } });
+}
+
 const register = async (data: any, userType: string) => {
   const where = { email: data.email };
   if (!userType || (userType !== 'CUSTOMER' && userType !== 'MOVER')) {
@@ -74,13 +79,13 @@ const userLogin = async (data: any) => {
       httpOnly: NODE_ENV === 'production' ? true : false,
       secure: isSecure,
       maxAge: 1000 * 60 * 60,
-      sameSite: 'strict',
+      sameSite: 'none',
     },
     refreshToken: {
       httpOnly: NODE_ENV === 'production' ? true : false,
       secure: isSecure,
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      sameSite: 'strict',
+      sameSite: 'none',
       },
     };
 
@@ -104,4 +109,4 @@ const userLogin = async (data: any) => {
   
 };
 
-export { register, userLogin };
+export { register, userLogin, getUser };
