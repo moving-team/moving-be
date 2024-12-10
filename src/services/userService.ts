@@ -74,13 +74,13 @@ const userLogin = async (data: any) => {
       httpOnly: NODE_ENV === 'production' ? true : false,
       secure: isSecure,
       maxAge: 1000 * 60 * 60,
-      sameSite: 'strict',
+      sameSite: 'none',
     },
     refreshToken: {
       httpOnly: NODE_ENV === 'production' ? true : false,
       secure: isSecure,
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      sameSite: 'strict',
+      sameSite: 'none',
       },
     };
 
