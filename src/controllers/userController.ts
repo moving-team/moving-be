@@ -10,16 +10,21 @@ const registerController = async (
 ) => {
   const {userType} = req.query
   try {
-    const user = await userService.register(req.body,userType as string);
+    const {user,error} = await userService.register(req.body,userType as string);
     
-    if (user.userType === 'CUSTOMER') {
-      await customerService.createCustomer(user.id);
-    } else if (user.userType === 'MOVER') {
-      await moverService.createMover(user.id);
-    } else {
-      res.status(400).json('회원가입 실패');
+    if(!user && error){
+      res.status(404).json(error)
+    }else{
+      if (user.userType === 'CUSTOMER') {
+        await customerService.createCustomer(user.id);
+      } else if (user.userType === 'MOVER') {
+        await moverService.createMover(user.id);
+      } else {
+        res.status(400).json('회원가입 실패');
+      }
+      res.status(201).json('회원가입 성공');
     }
-    res.status(201).json('회원가입 성공');
+
   } catch (err) {
     next(err);
   }
@@ -31,18 +36,22 @@ const loginController = async (
   next: NextFunction
 ) => {
   try {
-    const user = await userService.userLogin(req.body);
-
-    res.cookie("accessToken", user.accessToken, {
-      ...user.cookieOptions.accessToken,
-      sameSite: "strict",
-    });
-    res.cookie("refreshToken", user.refreshToken, {
-      ...user.cookieOptions.refreshToken,
-      sameSite: "strict",
-    });
-
-    res.status(201).json("로그인 성공");
+    const data = await userService.userLogin(req.body);
+    
+    if(data.accessToken && data.refreshToken){
+      res.cookie("accessToken", data.accessToken, {
+        ...data.cookieOptions.accessToken,
+        sameSite: "strict",
+      });
+      res.cookie("refreshToken", data.refreshToken, {
+        ...data.cookieOptions.refreshToken,
+        sameSite: "strict",
+      });
+      res.status(201).json("로그인 성공");
+    }else{
+      res.status(404).json(data);
+    }
+    
   } catch (err) {
     next(err);
   }
