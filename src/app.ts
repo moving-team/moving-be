@@ -13,10 +13,9 @@ const app = express();
 app.use(cookieParser());
 app.use(morgan('dev'));
 
-app.use(cors());
 app.use(
     cors({
-      origin: [USER_URL, USER_URL2, SC_URL],
+      origin: ["http://localhost:3000", "http://localhost:3001", "http://localhost:3002"],
       credentials: true,
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       preflightContinue: false,
