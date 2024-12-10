@@ -52,7 +52,7 @@ const userLogin = async (data: any) => {
   if (!user) {
     const response : any = {
       message: '존재하지 않은 이메일 입니다.',
-      status: 404,
+      type: "email",
     };
     return response;
   } else {
@@ -63,7 +63,7 @@ const userLogin = async (data: any) => {
     if (!isValidPassword) {
       const response : any = {
         message: '비밀번호가 올바르지 않습니다.',
-        status: 404,
+        type: "password",
       };
       return response;
     }
