@@ -1,7 +1,7 @@
 import userRepository from '../repositories/userRepository';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } from '../config/env';
+import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET,NODE_ENV} from '../config/env';
 
 const generateToken = (payload: any, secret: string, expiresIn: string) => {
   return jwt.sign(payload, secret, { expiresIn });
@@ -71,13 +71,13 @@ const userLogin = async (data: any) => {
 
   const cookieOptions = {
     accessToken: {
-      httpOnly: true,
+      httpOnly: NODE_ENV === 'production' ? true : false,
       secure: isSecure,
       maxAge: 1000 * 60 * 60,
       sameSite: 'strict',
     },
     refreshToken: {
-      httpOnly: true,
+      httpOnly: NODE_ENV === 'production' ? true : false,
       secure: isSecure,
       maxAge: 1000 * 60 * 60 * 24 * 7,
       sameSite: 'strict',
