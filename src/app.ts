@@ -8,8 +8,10 @@ import customerRouter from './routes/customerRouter';
 import cookieParser from 'cookie-parser';
 import moverRouter from './routes/moverRouter';
 import { USER_URL, USER_URL2, SC_URL } from './config/env';
+import morgan from 'morgan';
 const app = express();
 app.use(cookieParser());
+app.use(morgan('dev'));
 
 app.use(cors());
 app.use(
