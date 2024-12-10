@@ -50,7 +50,7 @@ export async function createReviewHandler(
 
 // 내 리뷰 가져오기
 export async function getMyReviewsHandler(
-  req: Request,
+  req: Request<{}, {}, {}, { page?: string; pageSize?: string }>,
   res: Response,
   next: NextFunction
 ) {
@@ -61,9 +61,9 @@ export async function getMyReviewsHandler(
 
     const customerId = req.user.id; // 토큰에서 사용자 ID 가져오기
 
-    const { page = '1', pageSize = '10' } = req.query; // 쿼리로 페이지네이션 정보 가져오기
-    const pageNum = parseInt(String(page), 10) || 1; 
-    const pageSizeNum = parseInt(String(pageSize), 10) || 10; 
+    const { page = '1', pageSize = '10' } = req.query; // 쿼리에서 정보 가져오기
+    const pageNum = parseInt(page, 10) || 1; 
+    const pageSizeNum = parseInt(pageSize, 10) || 10; 
     const skip = (pageNum - 1) * pageSizeNum; 
 
     // Service 불러오기

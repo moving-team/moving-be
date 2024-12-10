@@ -8,11 +8,15 @@ import customerRouter from './routes/customerRouter';
 import cookieParser from 'cookie-parser';
 import moverRouter from './routes/moverRouter';
 import reviewRouter from './routes/reviewRouter';
+// import { unifiedLogger } from './middlewares/logger'; // 개발 중 사용했던 로깅 주석 처리
+
 const app = express();
 app.use(cookieParser());
-
 app.use(cors());
 app.use(express.json());
+
+// app.use(unifiedLogger); // 개발 중 사용했던 로깅 주석 처리
+
 app.use('/user', userRouter);
 app.use('/customer', customerRouter);
 app.use('/mover', moverRouter);
