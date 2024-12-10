@@ -3,6 +3,16 @@ import { Request, Response, NextFunction } from 'express';
 import * as customerService from '../services/customerService';
 import * as moverService from '../services/moverService';
 
+const getUserController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = (req as any).user as { id: number };
+  const user = await userService.getUser(id);
+  res.status(200).json(user);
+}
+
 const registerController = async (
   req: Request,
   res: Response,
@@ -69,4 +79,4 @@ const logoutController = async (
     .json('로그아웃 성공');
 };
 
-export default { registerController, loginController, logoutController };
+export default { registerController, loginController, logoutController, getUserController };
