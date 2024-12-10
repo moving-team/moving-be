@@ -81,6 +81,7 @@ const userLogin = async (data: any) => {
       maxAge: 1000 * 60 * 60,
       sameSite: 'none',
     },
+    
     refreshToken: {
       httpOnly: NODE_ENV === 'production' ? true : false,
       secure: isSecure,
@@ -99,6 +100,9 @@ const userLogin = async (data: any) => {
       REFRESH_TOKEN_SECRET,
       `${cookieOptions.refreshToken.maxAge / 1000}s`
     );
+
+    console.log(cookieOptions,"쿠키 테스트트트트트트트")
+
     return {
       user,
       accessToken,
