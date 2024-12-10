@@ -15,7 +15,7 @@ export const RESION: { [key in $Enums.serviceRegion]: string } = {
   GWANGJU: '광주',
   GYEONGBUK: '경북',
   GYEONGNAM: '경남',
-  DAEGU: '대전',
+  DAEGU: '대구',
   ULSAN: '울산',
   BUSAN: '부산',
   JEJU: '제주',

@@ -22,6 +22,7 @@ async function createEstimateReq(
         req.body
       );
       res.status(201).send(estimateReq);
+      return;
     }
 
     throw new Error('다시 시도해 주세요');
@@ -51,6 +52,7 @@ async function deleteEstimateReq(
       );
 
       res.send(estimateReq);
+      return;
     }
 
     throw new Error('다시 시도해 주세요');
@@ -74,6 +76,7 @@ async function findEstimateReq(
       const { id: userId } = req.user;
       const estimateReq = await estimateRequestService.findEstimateReq(userId);
       res.send(estimateReq);
+      return;
     }
 
     throw new Error('다시 시도해 주세요');
@@ -108,6 +111,7 @@ async function findEstimateReqListByCustomer(
         );
 
       res.send(estimateReqList);
+      return;
     }
 
     throw new Error('다시 시도해 주세요');
@@ -135,6 +139,7 @@ async function findEstimateReqListByMover(
           req.query
         );
       res.send(estimateReqList);
+      return;
     }
     throw new Error('다시 시도해 주세요');
   } catch (err) {

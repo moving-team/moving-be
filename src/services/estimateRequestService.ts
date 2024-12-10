@@ -36,9 +36,7 @@ import { reviewSelect } from './selerts/reviewSelert';
 import { userCustomerSelect } from './selerts/userSelect';
 import moverRepository from '../repositories/moverRepository';
 import { moverSelect } from './selerts/moverSelect';
-import {
-  RESION,
-} from '../contents/region';
+import { RESION } from '../contents/region';
 
 export interface PagenationQuery {
   type?: $Enums.serviceType | $Enums.serviceType[];
@@ -85,7 +83,6 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
     select: movingInfoSelect,
   });
 
-  console.log(movingInfo);
   // 견적 요청 생성
   const estimateReq = await estimateRequestRepository.createData({
     data: {
@@ -270,7 +267,6 @@ async function findEstimateReqListByCustomer(
     select: movingInfoEstimateReqWithDateSelect,
   });
 
-  console.log(movingInfoList);
   const newList = await Promise.all(
     movingInfoList.map(async (movingInfo) => {
       const estimateReq = movingInfo.EstimateRequest;
@@ -354,7 +350,7 @@ async function findEstimateReqListByCustomer(
   };
 }
 
-// 기사-견적 요청 리스트 조회 API (기사님 서비스 지역만 보여지게)
+// 기사-견적 요청 리스트 조회 API
 async function findEstimateReqListByMover(
   userId: number,
   query: PagenationQuery
@@ -374,14 +370,51 @@ async function findEstimateReqListByMover(
   const skip = (pageNum - 1) * take;
   const orderBy: Prisma.MovingInfoOrderByWithAggregationInput =
     order === 'request' ? { createdAt: 'asc' } : { movingDate: 'asc' };
-  const keWordFilter: KeyWordFilter = {
-    contains: keyWord,
-    mode: 'insensitive',
-  };
   let validIsAssigned = 'true';
   if (isAssigned === 'true' || isAssigned === 'false') {
     validIsAssigned = isAssigned;
   }
+  let region = keyWord;
+  if (keyWord === '서울특별시') {
+    region = '서울';
+  } else if (keyWord === '경기도') {
+    region = '경기';
+  } else if (keyWord === '인천광역시') {
+    region = '인천';
+  } else if (keyWord === '강원도') {
+    region = '강원';
+  } else if (keyWord === '충청북도') {
+    region = '충북';
+  } else if (keyWord === '충청남도') {
+    region = '충남';
+  } else if (keyWord === '세종특별자치시') {
+    region = '세종';
+  } else if (keyWord === '대전광역시') {
+    region = '대전';
+  } else if (keyWord === '전라북도') {
+    region = '전북';
+  } else if (keyWord === '전라남도') {
+    region = '전남';
+  } else if (keyWord === '광주광역시') {
+    region = '광주';
+  } else if (keyWord === '경상북도') {
+    region = '경북';
+  } else if (keyWord === '경상남도') {
+    region = '경남';
+  } else if (keyWord === '대구광역시') {
+    region = '대구';
+  } else if (keyWord === '울산광역시') {
+    region = '울산';
+  } else if (keyWord === '부산광역시') {
+    region = '부산';
+  } else if (keyWord === '제주특별자치도') {
+    region = '제주';
+  }
+
+  const keWordFilter: KeyWordFilter = {
+    contains: region,
+    mode: 'insensitive',
+  };
 
   const mover = await moverRepository.findFirstData({
     where: { userId },
@@ -399,9 +432,7 @@ async function findEstimateReqListByMover(
   let regionFilter: Prisma.MovingInfoWhereInput;
 
   if (keyWord === '') {
-    const regionList = mover.serviceRegion.map(
-      (item) => RESION[item]
-    );
+    const regionList = mover.serviceRegion.map((item) => RESION[item]);
 
     regionFilter = {
       OR: regionList.map((region) => {
