@@ -31,18 +31,22 @@ const loginController = async (
   next: NextFunction
 ) => {
   try {
-    const user = await userService.userLogin(req.body);
-
-    res.cookie("accessToken", user.accessToken, {
-      ...user.cookieOptions.accessToken,
-      sameSite: "strict",
-    });
-    res.cookie("refreshToken", user.refreshToken, {
-      ...user.cookieOptions.refreshToken,
-      sameSite: "strict",
-    });
-
-    res.status(201).json("로그인 성공");
+    const data = await userService.userLogin(req.body);
+    
+    if(data.accessToken && data.refreshToken){
+      res.cookie("accessToken", data.accessToken, {
+        ...data.cookieOptions.accessToken,
+        sameSite: "strict",
+      });
+      res.cookie("refreshToken", data.refreshToken, {
+        ...data.cookieOptions.refreshToken,
+        sameSite: "strict",
+      });
+      res.status(201).json("로그인 성공");
+    }else{
+      res.status(404).json(data);
+    }
+    
   } catch (err) {
     next(err);
   }

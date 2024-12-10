@@ -31,6 +31,7 @@ const register = async (data: any, userType: string) => {
 };
 
 const userLogin = async (data: any) => {
+  let response: any;
   if (!data.email || !data.password) {
     throw new Error('이메일 및 패스워드를 입력해주세요.');
   }
@@ -39,22 +40,24 @@ const userLogin = async (data: any) => {
     where: { email: data.email },
   });
   if (!user) {
-    throw new Error('존재하지 않은 이메일 입니다.');
-  }
-
-  const isValidPassword = await bcrypt.compare(
-    data.password,
-    user.password as string
-  );
-  if (!isValidPassword) {
-    throw new Error('비밀번호가 올바르지 않습니다.');
-  }
-
-  if (!ACCESS_TOKEN_SECRET || !REFRESH_TOKEN_SECRET) {
-    throw new Error('환경 변수가 설정되지 않았습니다.');
-  }
-
-  const isSecure = process.env.NODE_ENV === 'production' || false;
+    response = {
+      message: '존재하지 않은 이메일 입니다.',
+      status: 404,
+    };
+    return response;
+  } else {
+    const isValidPassword = await bcrypt.compare(
+      data.password,
+      user.password as string
+    );
+    if (!isValidPassword) {
+      response = {
+        message: '비밀번호가 올바르지 않습니다.',
+        status: 404,
+      };
+      return response;
+    }
+    const isSecure = process.env.NODE_ENV === 'production' || false;
 
   const cookieOptions = {
     accessToken: {
@@ -68,26 +71,27 @@ const userLogin = async (data: any) => {
       secure: isSecure,
       maxAge: 1000 * 60 * 60 * 24 * 7,
       sameSite: 'strict',
-    },
-  };
+      },
+    };
 
-  const accessToken = generateToken(
-    { id: user.id },
-    ACCESS_TOKEN_SECRET,
-    `${cookieOptions.accessToken.maxAge / 1000}s`
-  );
-  const refreshToken = generateToken(
-    { id: user.id },
-    REFRESH_TOKEN_SECRET,
-    `${cookieOptions.refreshToken.maxAge / 1000}s`
-  );
-
-  return {
-    user,
-    accessToken,
-    refreshToken,
-    cookieOptions,
-  };
+    const accessToken = generateToken(
+      { id: user.id },
+      ACCESS_TOKEN_SECRET,
+      `${cookieOptions.accessToken.maxAge / 1000}s`
+    );
+    const refreshToken = generateToken(
+      { id: user.id },
+      REFRESH_TOKEN_SECRET,
+      `${cookieOptions.refreshToken.maxAge / 1000}s`
+    );
+    return {
+      user,
+      accessToken,
+      refreshToken,
+      cookieOptions,
+    };
+  }
+  
 };
 
 export { register, userLogin };
