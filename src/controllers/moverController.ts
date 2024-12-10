@@ -75,4 +75,18 @@ const patchMoverProfileController = async (
   res.status(200).json({ message: '수정 완료' });
 }
 
-export { patchMoverProfileController, getMoverController,getMoverDetailController, getMoverListController };
+const patchMoverInfoController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try{
+    const { id } = (req as any).user as { id: number };
+    await moverService.patchMoverInfo(id, req.body);
+    res.status(200).json({ message: '수정 완료' });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export { patchMoverProfileController, getMoverController,getMoverDetailController, getMoverListController, patchMoverInfoController };
