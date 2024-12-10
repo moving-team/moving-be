@@ -34,8 +34,8 @@ export async function getReviews(moverId: number, skip: number, take: number) {
 
   // 리뷰 목록 데이터 포맷팅
   const formattedReviews = reviews.map((review) => ({
-    id: review.id,
-    writer: review.Customer?.User.name,
+    reviewId: review.id,
+    customerName: review.Customer?.User.name,
     createAt: review.createdAt,
     score: review.score,
     content: review.description,
@@ -49,6 +49,7 @@ export async function getReviews(moverId: number, skip: number, take: number) {
     },
   };
 }
+
 
 // POST Review
 export async function createReview(input: CreateReviewInput) {
@@ -128,7 +129,7 @@ export async function getMyReviews(customerId: number, skip: number, take: numbe
 
   // 리뷰 목록 데이터 형식화
   const formattedReviews = myReviews.map((review) => ({
-    id: review.id,
+    reviewId: review.id,
     mover: {
       moverId: review.Mover.id,
       moverName: review.Mover.nickname,

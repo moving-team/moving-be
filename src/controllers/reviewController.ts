@@ -27,7 +27,7 @@ export async function getReviewsHandler(
 
 // 리뷰 작성 API
 export async function createReviewHandler(
-  req: Request<{}, {}, { estimateId: number; moverId: number; score: number; description: string }>,
+  req: Request<{}, {}, { estimateId: number; moverId: number; score: number; content: string }>,
   res: Response,
   next: NextFunction
 ) {
@@ -36,7 +36,7 @@ export async function createReviewHandler(
       throw new Error('인증된 사용자만 리뷰를 작성할 수 있습니다.');
     }
     const customerId = req.user.id; // customoerID 가져오기
-    const { estimateId, moverId, score, description } = req.body; // req body 가져오기
+    const { estimateId, moverId, score, content: description } = req.body; // req body 가져오기
 
     // Service 불러오기
     const newReview = await createReview({ customerId, estimateId, moverId, score, description });
