@@ -17,4 +17,10 @@ router
   .route('/logout')
   .post(userController.logoutController);
 
+router
+  .route('/me')
+  .all(authenticateToken)
+  .get(userController.getUserController);
+
+
 export default router;
