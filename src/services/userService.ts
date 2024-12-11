@@ -101,7 +101,6 @@ const userLogin = async (data: any) => {
       `${cookieOptions.refreshToken.maxAge / 1000}s`
     );
 
-    console.log(cookieOptions,"쿠키 테스트트트트트트트")
 
     return {
       user,
