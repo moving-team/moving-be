@@ -24,6 +24,7 @@ import { customerSelect } from './selerts/customerSelect';
 import {
   estimateReqCustomerSelect,
   estimateReqMovingInfoSelect,
+  estimateReqMovingInfoWithDateSelect,
   estimateReqSelect,
 } from './selerts/estimateRequsetSelect';
 import { estimateMoverSelect, estimateSelect } from './selerts/estimateSelect';
@@ -52,17 +53,36 @@ type KeyWordFilter = {
   mode: 'insensitive';
 };
 
-// 견적 요청 작성 API (이미 만든 견적 요청 여부 확인 로직 추가 필요)
+// 견적 요청 작성 API
 async function createEstimateReq(userId: number, data: CreateEstimateReq) {
   const user = await userRepository.findUniqueOrThrowtData({
     where: { id: userId },
     select: userCustomerSelect,
   });
 
-  // 소비자 프로필 유무 확인
-  if (!user.Customer || user.Customer?.region === 'NULL') {
+  if (!user.Customer) {
+    throw new Error('소비자 전용 API 입니다');
+  } else if (user.Customer.region === 'NULL') {
+    // 소비자 프로필 유무 확인
     const error = new Error('프로필을 등록 해주세요');
     throw error;
+  }
+
+  const today = todayUTC();
+
+  const checkEstimateReq = await estimateRequestRepository.findFirstData({
+    where: {
+      customerId: user.Customer.id,
+      isConfirmed: false,
+      isCancelled: false,
+      MovingInfo: {
+        movingDate: { gte: today },
+      },
+    },
+  });
+
+  if (checkEstimateReq) {
+    throw new Error('이미 견적을 요청하셨습니다.');
   }
 
   const { comment, movingDate, ...rest } = data;
@@ -150,7 +170,7 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
   );
 
   return {
-    id: deleteEstimateReq.id,
+    estimateReqId: deleteEstimateReq.id,
     isCancelled: deleteEstimateReq.isCancelled,
   };
 }
@@ -172,7 +192,7 @@ async function findEstimateReq(userId: number) {
       customerId: user.Customer.id,
       isCancelled: false,
     },
-    select: estimateReqMovingInfoSelect,
+    select: estimateReqMovingInfoWithDateSelect,
   });
 
   // 견적 요청이 있는지 확인
@@ -215,13 +235,13 @@ async function findEstimateReq(userId: number) {
     const resMapper = getestimateReqByNoConfirmedMapper(user.name, estimateReq);
     return {
       ...resMapper,
-      nickname: confirmedEstimate?.Mover.nickname,
-      confirmedId: confirmedEstimate?.id,
+      moverName: confirmedEstimate?.Mover.nickname,
+      estimateId: confirmedEstimate?.id,
     };
   }
 }
 
-// 유저-견적 요청 리스트 조회 API (생성일자 mapper)
+// 유저-견적 요청 리스트 조회 API
 async function findEstimateReqListByCustomer(
   userId: number,
   skip: number,
@@ -321,9 +341,9 @@ async function findEstimateReqListByCustomer(
         });
 
         // 찜 여부
-        let isLiked = false;
+        let isFavorite = false;
         if (favorite) {
-          isLiked = true;
+          isFavorite = true;
         }
 
         return findEstimateReqListByCustomerAndConfirmedMapper(
@@ -333,7 +353,7 @@ async function findEstimateReqListByCustomer(
           totalReviews,
           totalConfirmed,
           totalFavorite,
-          isLiked
+          isFavorite
         );
       }
 
@@ -391,7 +411,7 @@ async function findEstimateReqListByMover(
     region = '세종';
   } else if (keyWord === '대전광역시') {
     region = '대전';
-  } else if (keyWord === '전라북도') {
+  } else if (keyWord === '전라북도' || keyWord === '전북특별자치도 ') {
     region = '전북';
   } else if (keyWord === '전라남도') {
     region = '전남';

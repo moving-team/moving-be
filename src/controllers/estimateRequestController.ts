@@ -12,20 +12,19 @@ async function createEstimateReq(
 ) {
   try {
     if (
-      req.user &&
-      typeof req.user !== 'string' &&
-      typeof req.user.id === 'number'
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
     ) {
-      const { id: userId } = req.user;
-      const estimateReq = await estimateRequestService.createEstimateReq(
-        userId,
-        req.body
-      );
-      res.status(201).send(estimateReq);
-      return;
+      throw new Error('다시 시도해 주세요');
     }
 
-    throw new Error('다시 시도해 주세요');
+    const { id: userId } = req.user;
+    const estimateReq = await estimateRequestService.createEstimateReq(
+      userId,
+      req.body
+    );
+    res.status(201).send(estimateReq);
   } catch (err) {
     return next(err);
   }
@@ -39,23 +38,22 @@ async function deleteEstimateReq(
 ) {
   try {
     if (
-      req.user &&
-      typeof req.user !== 'string' &&
-      typeof req.user.id === 'number'
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
     ) {
-      const { id: userId } = req.user;
-      const { estimateRequestId } = req.params;
-      const id = Number(estimateRequestId);
-      const estimateReq = await estimateRequestService.deleteEstimateReq(
-        userId,
-        id
-      );
-
-      res.send(estimateReq);
-      return;
+      throw new Error('다시 시도해 주세요');
     }
 
-    throw new Error('다시 시도해 주세요');
+    const { id: userId } = req.user;
+    const { estimateRequestId } = req.params;
+    const id = Number(estimateRequestId);
+    const estimateReq = await estimateRequestService.deleteEstimateReq(
+      userId,
+      id
+    );
+
+    res.send(estimateReq);
   } catch (err) {
     return next(err);
   }
@@ -69,17 +67,16 @@ async function findEstimateReq(
 ) {
   try {
     if (
-      req.user &&
-      typeof req.user !== 'string' &&
-      typeof req.user.id === 'number'
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
     ) {
-      const { id: userId } = req.user;
-      const estimateReq = await estimateRequestService.findEstimateReq(userId);
-      res.send(estimateReq);
-      return;
+      throw new Error('다시 시도해 주세요');
     }
 
-    throw new Error('다시 시도해 주세요');
+    const { id: userId } = req.user;
+    const estimateReq = await estimateRequestService.findEstimateReq(userId);
+    res.send(estimateReq);
   } catch (err) {
     return next(err);
   }
@@ -93,28 +90,28 @@ async function findEstimateReqListByCustomer(
 ) {
   try {
     if (
-      req.user &&
-      typeof req.user !== 'string' &&
-      typeof req.user.id === 'number'
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
     ) {
-      const { id: userId } = req.user;
-      const { page = '1', pageSize = '4' } = req.query;
-      const pageNum = parseInt(page, 10) || 1;
-      const pageSizeNum = parseInt(pageSize, 10) || 4;
-      const skip = (pageNum - 1) * pageSizeNum;
-
-      const estimateReqList =
-        await estimateRequestService.findEstimateReqListByCustomer(
-          userId,
-          skip,
-          pageSizeNum
-        );
-
-      res.send(estimateReqList);
-      return;
+      throw new Error('다시 시도해 주세요');
     }
 
-    throw new Error('다시 시도해 주세요');
+    const { id: userId } = req.user;
+    const { page = '1', pageSize = '4' } = req.query;
+    const pageNum = parseInt(page, 10) || 1;
+    const pageSizeNum = parseInt(pageSize, 10) || 4;
+    const skip = (pageNum - 1) * pageSizeNum;
+
+    const estimateReqList =
+      await estimateRequestService.findEstimateReqListByCustomer(
+        userId,
+        skip,
+        pageSizeNum
+      );
+
+    res.send(estimateReqList);
+    return;
   } catch (err) {
     return next(err);
   }
@@ -128,20 +125,20 @@ async function findEstimateReqListByMover(
 ) {
   try {
     if (
-      req.user &&
-      typeof req.user !== 'string' &&
-      typeof req.user.id === 'number'
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
     ) {
-      const { id: userId } = req.user;
-      const estimateReqList =
-        await estimateRequestService.findEstimateReqListByMover(
-          userId,
-          req.query
-        );
-      res.send(estimateReqList);
-      return;
+      throw new Error('다시 시도해 주세요');
     }
-    throw new Error('다시 시도해 주세요');
+
+    const { id: userId } = req.user;
+    const estimateReqList =
+      await estimateRequestService.findEstimateReqListByMover(
+        userId,
+        req.query
+      );
+    res.send(estimateReqList);
   } catch (err) {
     return next(err);
   }
