@@ -71,8 +71,18 @@ const logoutController = async (
   next: NextFunction
 ) => {
   res
-    .clearCookie('accessToken')
-    .clearCookie('refreshToken')
+    .clearCookie('accessToken',{
+      httpOnly: NODE_ENV === 'production' ? true : false,
+      secure: true,
+      maxAge: 1000 * 60 * 60,
+      sameSite: "none",
+    },)
+    .clearCookie('refreshToken',{
+      httpOnly: NODE_ENV === 'production' ? true : false,
+      secure: true,
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      sameSite: "none",
+    },)
     .status(200)
     .json('로그아웃 성공');
 };
