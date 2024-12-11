@@ -65,7 +65,7 @@ async function findReceivedEstimateList(userId: number, estimateReqId: number) {
 
   const customer = user.Customer;
 
-  const list = Promise.all(
+  const list = await Promise.all(
     newEstimateList.map(async (estimate) => {
       // 리뷰 평점 및 갯수
       const { averageScore, totalReviews } = await getMoverReviewStats(
