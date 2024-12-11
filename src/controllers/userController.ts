@@ -2,6 +2,7 @@ import * as userService from '../services/userService';
 import { Request, Response, NextFunction } from 'express';
 import * as customerService from '../services/customerService';
 import * as moverService from '../services/moverService';
+import { NODE_ENV } from '../config/env';
 
 const getUserController = async (
   req: Request,
