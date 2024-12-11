@@ -2,6 +2,7 @@ import * as userService from '../services/userService';
 import { Request, Response, NextFunction } from 'express';
 import * as customerService from '../services/customerService';
 import * as moverService from '../services/moverService';
+import { NODE_ENV } from '../config/env';
 
 const getUserController = async (
   req: Request,
@@ -51,11 +52,9 @@ const loginController = async (
     if(data.accessToken && data.refreshToken){
       res.cookie("accessToken", data.accessToken, {
         ...data.cookieOptions.accessToken,
-        sameSite: "strict",
       });
       res.cookie("refreshToken", data.refreshToken, {
         ...data.cookieOptions.refreshToken,
-        sameSite: "strict",
       });
       res.status(201).json("로그인 성공");
     }else{
@@ -73,8 +72,20 @@ const logoutController = async (
   next: NextFunction
 ) => {
   res
-    .clearCookie('accessToken')
-    .clearCookie('refreshToken')
+    .clearCookie('accessToken',{
+      httpOnly: NODE_ENV === 'production' ? true : false,
+      secure: true,
+      expires: new Date(0),
+      maxAge: 0,
+      sameSite: "none",
+    },)
+    .clearCookie('refreshToken',{
+      httpOnly: NODE_ENV === 'production' ? true : false,
+      secure: true,
+      expires: new Date(0),
+      maxAge: 0,
+      sameSite: "none",
+    },)
     .status(200)
     .json('로그아웃 성공');
 };
