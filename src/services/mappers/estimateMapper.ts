@@ -3,7 +3,6 @@ import {
   EstimateReqWithMovingInfoAndDate,
   EstimateWithMover,
   MovingInfo,
-  MovingInfoWithCustomerName,
 } from '../../types/serviceType';
 import { changeMovingDate, changeRegion } from '../../utils/mapperUtil';
 
@@ -59,7 +58,7 @@ export function findReceivedEstimateListMapper(
 
 export function findConfirmedEstimateListMapper(
   movingInfo: MovingInfo,
-  estimate: Estimate
+  estimate: Estimate,
   customerName: string
 ) {
   return {
