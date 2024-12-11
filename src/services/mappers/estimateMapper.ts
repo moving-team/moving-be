@@ -1,8 +1,11 @@
 import {
+  Estimate,
   EstimateReqWithMovingInfoAndDate,
   EstimateWithMover,
+  MovingInfo,
+  MovingInfoWithCustomerName,
 } from '../../types/serviceType';
-import { changeMovingDate } from '../../utils/mapperUtil';
+import { changeMovingDate, changeRegion } from '../../utils/mapperUtil';
 
 export function estimateReqInfoMapper(
   estimateReq: EstimateReqWithMovingInfoAndDate
@@ -50,6 +53,24 @@ export function findReceivedEstimateListMapper(
     confirmationCount,
     favoriteCount,
     isFavorite,
+    price: estimate.price,
+  };
+}
+
+export function findConfirmedEstimateListMapper(
+  movingInfo: MovingInfo,
+  estimate: Estimate
+  customerName: string
+) {
+  return {
+    estimateId: estimate.id,
+    isMoveDateOver: estimate.isMovingComplete,
+    movingType: movingInfo.movingType,
+    isAssigned: estimate.isAssigned,
+    customerName,
+    movingDate: changeMovingDate(movingInfo.movingDate),
+    departure: changeRegion(movingInfo.departure),
+    arrival: changeRegion(movingInfo.arrival),
     price: estimate.price,
   };
 }

@@ -13,3 +13,8 @@ export const estimateMoverSelect = {
   ...estimateSelect,
   Mover: { select: moverSelect },
 };
+
+export const estimateWithMoverIdSelect = {
+  ...estimateSelect,
+  moverId: true,
+};

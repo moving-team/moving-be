@@ -1,6 +1,6 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from '@prisma/client';
 
-type Sort = "asc" | "desc";
+type Sort = 'asc' | 'desc';
 
 export interface CreatedAtOrder {
   createdAt?: Sort;
@@ -16,6 +16,13 @@ export interface PagenationParamsByPage extends PagenationParams {
 }
 
 export interface MovingInfoPagenationParamsByPage extends PagenationParams {
-  orderBy?: any
+  orderBy?: any;
+  skip?: number;
+}
+
+export interface EstimatePagenationParamsByPage extends PagenationParams {
+  orderBy?:
+    | Prisma.EstimateOrderByWithAggregationInput
+    | Prisma.EstimateOrderByWithAggregationInput[];
   skip?: number;
 }

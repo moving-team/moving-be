@@ -1,4 +1,5 @@
 import { estimateReqWithDateSelect } from './estimateRequsetSelect';
+import { estimateWithMoverIdSelect } from './estimateSelect';
 
 export const movingInfoSelect = {
   id: true,
@@ -11,6 +12,26 @@ export const movingInfoSelect = {
 export const movingInfoEstimateReqWithDateSelect = {
   ...movingInfoSelect,
   EstimateRequest: { select: estimateReqWithDateSelect },
+};
+export const movingInfoEstimateWithMoverIdSelect = {
+  ...movingInfoSelect,
+  Estimate: { select: estimateWithMoverIdSelect },
+};
+
+export const movingInfoEstimateUserNameWithMoverIdSelect = {
+  ...movingInfoSelect,
+  Estimate: { select: estimateWithMoverIdSelect },
+  EstimateRequest: {
+    select: {
+      Customer: {
+        select: {
+          User: {
+            select: { name: true },
+          },
+        },
+      },
+    },
+  },
 };
 
 export const movingInfoEstimateReqUserNameWithDateSelect = {
