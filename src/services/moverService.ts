@@ -97,13 +97,11 @@ const getMoverList = async ({
 
     
     if (sortBy && sortOrder) {
-        console.log('Inside sorting block');
         processedMovers.sort((a, b) => {
             let valueA, valueB;
             
             switch (sortBy) {
                 case 'reviewCount':
-                    console.log('Inside reviewCount case');
                     valueA = a.reviewStats.totalReviews || 0;
                     valueB = b.reviewStats.totalReviews || 0;
                     break;
