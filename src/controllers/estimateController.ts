@@ -45,9 +45,9 @@ async function findConfirmedEstimateList(
 
     const { id: userId } = req.user;
     const { page = '1', pageSize = '8' } = req.query;
-    const pageSizeNum = parseInt(pageSize) || 8;
-    const skip = parseInt(page) || 1;
-    const take = (skip - 1) * pageSizeNum;
+    const pageNum = parseInt(page) || 1;
+    const take = parseInt(pageSize) || 8;
+    const skip = (pageNum - 1) * take;
 
     const estimate = await estimateService.findConfirmedEstimateList(
       userId,

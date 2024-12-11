@@ -21,8 +21,6 @@ export interface MovingInfoPagenationParamsByPage extends PagenationParams {
 }
 
 export interface EstimatePagenationParamsByPage extends PagenationParams {
-  orderBy?:
-    | Prisma.EstimateOrderByWithAggregationInput
-    | Prisma.EstimateOrderByWithAggregationInput[];
+  orderBy?: any;
   skip?: number;
 }

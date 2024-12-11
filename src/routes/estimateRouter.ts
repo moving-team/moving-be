@@ -6,9 +6,8 @@ const estimateRouter = express.Router();
 
 estimateRouter.use(authenticateToken);
 
-estimateRouter.get(
-  '/:estimateRequestId',
-  estimateController.findReceivedEstimateList
-);
+estimateRouter
+  .get('/confirmed', estimateController.findConfirmedEstimateList)
+  .get('/:estimateRequestId', estimateController.findReceivedEstimateList);
 
-export default estimateRouter
+export default estimateRouter;

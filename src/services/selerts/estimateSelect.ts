@@ -1,4 +1,5 @@
 import { moverSelect } from './moverSelect';
+import { movingInfoSelect } from './movingInfoSelect';
 
 export const estimateSelect = {
   id: true,
@@ -17,4 +18,14 @@ export const estimateMoverSelect = {
 export const estimateWithMoverIdSelect = {
   ...estimateSelect,
   moverId: true,
+};
+
+export const estimateWithMovinInfoAndcustomerNameSelect = {
+  ...estimateSelect,
+  MovingInfo: { select: movingInfoSelect },
+  Customer: {
+    select: {
+      User: { select: { name: true } },
+    },
+  },
 };

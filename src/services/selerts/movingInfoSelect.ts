@@ -18,22 +18,6 @@ export const movingInfoEstimateWithMoverIdSelect = {
   Estimate: { select: estimateWithMoverIdSelect },
 };
 
-export const movingInfoEstimateUserNameWithMoverIdSelect = {
-  ...movingInfoSelect,
-  Estimate: { select: estimateWithMoverIdSelect },
-  EstimateRequest: {
-    select: {
-      Customer: {
-        select: {
-          User: {
-            select: { name: true },
-          },
-        },
-      },
-    },
-  },
-};
-
 export const movingInfoEstimateReqUserNameWithDateSelect = {
   ...movingInfoSelect,
   EstimateRequest: {

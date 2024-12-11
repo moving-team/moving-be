@@ -13,9 +13,11 @@ import {
   findReceivedEstimateListMapper,
 } from './mappers/estimateMapper';
 import { estimateReqMovingInfoWithDateSelect } from './selerts/estimateRequsetSelect';
-import { estimateMoverSelect } from './selerts/estimateSelect';
+import {
+  estimateMoverSelect,
+  estimateWithMovinInfoAndcustomerNameSelect,
+} from './selerts/estimateSelect';
 import { moverSelect } from './selerts/moverSelect';
-import { movingInfoEstimateUserNameWithMoverIdSelect } from './selerts/movingInfoSelect';
 import { userCustomerSelect } from './selerts/userSelect';
 
 // 유저-받았던 견적 리스트 조회 API
@@ -124,40 +126,32 @@ async function findConfirmedEstimateList(
     status: 'ACCEPTED',
   });
 
-  // 기사가 보낸 확정된 견적 조회(페이지네이션, movingInfo 추가)
-  const estimateList = await movingInfoRepository.findManyByPaginationData({
+  // 기사가 보낸 확정된 견적 조회
+  const estimateList = await estimateRepository.findManyByPaginationData({
     paginationParams: {
       orderBy: [
-        { Estimate: { isMovingComplete: 'asc' } },
-        { movingDate: 'asc' },
+        {
+          isMovingComplete: 'asc',
+        },
+        {
+          MovingInfo: { movingDate: 'asc' },
+        },
       ],
       skip,
       take,
       where: {
-        Estimate: {
-          some: {
-            moverId: mover.id,
-            status: 'ACCEPTED', // 해당 조건
-          },
-        },
+        moverId: mover.id,
+        status: 'ACCEPTED',
       },
     },
-    select: movingInfoEstimateUserNameWithMoverIdSelect,
+    select: estimateWithMovinInfoAndcustomerNameSelect,
   });
 
-  console.log({ estimateList });
+  const list = estimateList.map((estimate) => {
+    const { MovingInfo, Customer, ...rest } = estimate;
+    const customerName = Customer.User.name;
 
-  const list = estimateList.map((movingInfo) => {
-    const { Estimate: list, EstimateRequest, ...rest } = movingInfo;
-    const customerName = EstimateRequest?.Customer.User.name || '불명';
-
-    // 필요 없는 배열 제거
-    const estimate = list.filter(
-      (estimate) =>
-        estimate.moverId === mover.id && estimate.status === 'ACCEPTED'
-    );
-    console.log({ estimate });
-    return findConfirmedEstimateListMapper(rest, estimate[0], customerName);
+    return findConfirmedEstimateListMapper(MovingInfo, rest, customerName);
   });
 
   return {
