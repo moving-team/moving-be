@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser';
 import moverRouter from './routes/moverRouter';
 import favoriteRouter from './routes/favoriteRouter';
 import reviewRouter from './routes/reviewRouter';
-// import { unifiedLogger } from './middlewares/logger'; // 개발 중 사용했던 로깅 주석 처리
+import { unifiedLogger } from './middlewares/logger'; // 개발 중 사용했던 로깅 주석 처리
 import { USER_URL, USER_URL2, SC_URL } from './config/env';
 import morgan from 'morgan';
 const app = express();
@@ -27,7 +27,7 @@ app.use(
   );
 app.use(express.json());
 
-// app.use(unifiedLogger); // 개발 중 사용했던 로깅 주석 처리
+app.use(unifiedLogger); // 개발 중 사용했던 로깅 주석 처리
 
 app.use('/user', userRouter);
 app.use('/customer', customerRouter);
