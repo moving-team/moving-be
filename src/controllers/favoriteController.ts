@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { toggleFavorite } from '../services/favoriteService';
+import { toggleFavorite, getFavoriteMovers } from '../services/favoriteService';
 
 export async function toggleFavoriteHandler(
   req: Request<{}, {}, { moverId: number }>,
@@ -19,5 +19,33 @@ export async function toggleFavoriteHandler(
     res.status(200).json(result);
   } catch (err) {
     next(err); 
+  }
+}
+
+export async function getFavoriteMoversHandler(
+  req: Request<{}, {}, {}, { page?: string; pageSize?: string }>,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    // 사용자 인증 정보 확인
+    if (!req.user || typeof req.user === 'string') {
+      throw new Error('인증된 사용자만 접근 가능합니다.');
+    }
+    const customerId = req.user.id;
+
+    // 페이지네이션 정보 가져오기
+    const { page = '1', pageSize = '10' } = req.query;
+    const pageNum = parseInt(page, 10) || 1;
+    const pageSizeNum = parseInt(pageSize, 10) || 10;
+    const skip = (pageNum - 1) * pageSizeNum;
+
+    // 서비스 호출
+    const result = await getFavoriteMovers(customerId, skip, pageSizeNum);
+
+    // 결과 응답
+    res.status(200).json(result);
+  } catch (err) {
+    next(err);
   }
 }

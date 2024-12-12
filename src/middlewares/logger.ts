@@ -20,11 +20,11 @@ export const requestLogger = (req: Request, res: Response, next: NextFunction): 
   };
 
   // Express 스택에서 라우터/미들웨어 추적
-  const stack = (req.app._router.stack || []).filter((layer: any) => layer.handle); // 실행 가능한 핸들러만 필터링
-  stack.forEach(trackMiddleware);
+  // const stack = (req.app._router.stack || []).filter((layer: any) => layer.handle); // 실행 가능한 핸들러만 필터링
+  // stack.forEach(trackMiddleware);
 
-  console.log('미들웨어 스택:');
-  middlewareSequence.forEach((item) => console.log(`  ${item}`));
+  // console.log('미들웨어 스택:');
+  // middlewareSequence.forEach((item) => console.log(`  ${item}`));
 
   // 응답 완료 후 로깅
   res.on('finish', () => {

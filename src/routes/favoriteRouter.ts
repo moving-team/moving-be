@@ -1,5 +1,5 @@
 import express from 'express';
-import { toggleFavoriteHandler } from '../controllers/favoriteController';
+import { toggleFavoriteHandler, getFavoriteMoversHandler  } from '../controllers/favoriteController';
 import { authenticateToken } from '../middlewares/authMiddleware';
 
 const favoriteRouter = express.Router();
@@ -9,5 +9,11 @@ favoriteRouter
     .route('')
     .all(authenticateToken)
     .post(toggleFavoriteHandler)
+
+// 찜 list
+favoriteRouter
+    .route('/me')
+    .all(authenticateToken)
+    .get(getFavoriteMoversHandler)
 
 export default favoriteRouter;
