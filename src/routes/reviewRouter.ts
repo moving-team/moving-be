@@ -4,17 +4,17 @@ import { authenticateToken } from '../middlewares/authMiddleware';
 
 const reviewRouter = express.Router();
 
+// 리뷰 작성 (auth 토큰으로 접근 보호)
+reviewRouter
+    .route('')
+    .all(authenticateToken)
+    .post(createReviewHandler);
+
 // 내 리뷰 목록 조회
 reviewRouter
     .route('/me')
     .all(authenticateToken)
     .get(getMyReviewsHandler)
-
-// 리뷰 작성 (auth 토큰으로 접근 보호)
-reviewRouter
-    .route('/')
-    .all(authenticateToken)
-    .post(createReviewHandler);
 
 // 리뷰 목록 조회 // 동적 라우터가 먼저 라우팅 되는 문제가 있었음
 reviewRouter
