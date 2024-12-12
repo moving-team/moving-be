@@ -14,6 +14,7 @@ estimateReqRouter
     '/customer/list',
     estimateRequestController.findEstimateReqListByCustomer
   )
+  .get('/mover/list', estimateRequestController.findEstimateReqListByMover)
   .delete('/:estimateRequestId', estimateRequestController.deleteEstimateReq);
 
 export default estimateReqRouter;

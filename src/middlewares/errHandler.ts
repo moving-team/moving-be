@@ -17,6 +17,8 @@ function errorHandler(
 ) {
   let status: number;
 
+  console.log(error)
+
   if (
     error.name === 'StructError' ||
     error instanceof Prisma.PrismaClientValidationError ||

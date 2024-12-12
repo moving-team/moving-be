@@ -1,4 +1,4 @@
-import { estimateReqWithDateSelect } from "./estimateRequsetSelect";
+import { estimateReqWithDateSelect } from './estimateRequsetSelect';
 
 export const movingInfoSelect = {
   id: true,
@@ -10,6 +10,27 @@ export const movingInfoSelect = {
 
 export const movingInfoEstimateReqWithDateSelect = {
   ...movingInfoSelect,
-  EstimateRequest: {select: estimateReqWithDateSelect
-  }
-}
+  EstimateRequest: { select: estimateReqWithDateSelect },
+};
+
+export const movingInfoEstimateReqUserNameWithDateSelect = {
+  ...movingInfoSelect,
+  EstimateRequest: {
+    select: {
+      id: true,
+      comment: true,
+      isConfirmed: true,
+      isCancelled: true,
+      createdAt: true,
+      updatedAt: true,
+      AssignedEstimateRequest: { select: { id: true } },
+      Customer: {
+        select: {
+          User: {
+            select: { name: true },
+          },
+        },
+      },
+    },
+  },
+};

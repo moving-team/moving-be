@@ -7,10 +7,16 @@ export interface CreatedAtOrder {
 }
 
 export interface PagenationParams {
-  orderBy?: CreatedAtOrder;
   take?: number;
 }
+
 export interface PagenationParamsByPage extends PagenationParams {
+  orderBy?: CreatedAtOrder;
+  skip?: number;
+}
+
+export interface MovingInfoPagenationParamsByPage extends PagenationParams {
+  orderBy?: any
   skip?: number;
 }
 

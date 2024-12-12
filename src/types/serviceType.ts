@@ -24,8 +24,12 @@ export interface EstimateReqWithMovingInfo extends EstimateReq {
   MovingInfo: MovingInfo;
 }
 
+export interface EstimateReqWithMovingInfoAndDate extends EstimateReqWithDate {
+  MovingInfo: MovingInfo;
+}
+
 export interface MovingInfoWithEstimateReqAndhDate extends MovingInfo {
-  EstimateRequest: EstimateReqWithDate[];
+  EstimateRequest: EstimateReqWithDate;
 }
 
 export interface Estimate {
@@ -53,6 +57,30 @@ export interface EstimateWithMover extends Estimate {
   Mover: Mover;
 }
 
+export interface FindEstimateReqListByMoverType {
+  movingType: $Enums.serviceType;
+  movingDate: Date;
+  departure: string;
+  arrival: string;
+  id: number;
+  EstimateRequest: {
+    comment: string | null;
+    id: number;
+    createdAt: Date;
+    updatedAt: Date;
+    Customer: {
+      User: {
+        name: string;
+      };
+    };
+    isConfirmed: boolean;
+    isCancelled: boolean;
+    AssignedEstimateRequest: {
+      id: number;
+    }[];
+  };
+}
+
 // 리뷰 서비스 타입 추가
 export interface ReviewStats {
   totalReviews: number;
@@ -66,3 +94,4 @@ export interface CreateReviewInput {
   score: number;
   description: string;
 }
+
