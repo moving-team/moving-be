@@ -46,8 +46,8 @@ type CustomerData = {
 
 // 날짜 생성
 function getBeforeDate(): Date {
-  const startDate = new Date('2022-01-01T00:00:00');
-  const endDate = new Date('2023-12-31T23:59:59');
+  const startDate = new Date('2021-01-01T00:00:00');
+  const endDate = new Date('2022-12-31T23:59:59');
   if (startDate >= endDate) {
     throw new Error('startDate must be earlier than endDate');
   }

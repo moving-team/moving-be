@@ -21,6 +21,16 @@ type ReviewUpdateInputType = Prisma.ReviewUpdateInput;
 
 type ReviewOrderByType = Prisma.ReviewOrderByWithRelationInput;
 
+
+
+type AggregateResults = {
+  _sum?: Prisma.ReviewSumAggregateOutputType;
+  _avg?: Prisma.ReviewAvgAggregateOutputType;
+  _count?: Prisma.ReviewCountAggregateOutputType;
+  _min?: Prisma.ReviewMinAggregateOutputType;
+  _max?: Prisma.ReviewMaxAggregateOutputType;
+};
+
 // createData
 function createData<T extends ReviewSelectType>({
   data,
@@ -241,6 +251,33 @@ async function updateData<T extends ReviewSelectType | undefined>({
 async function deleteData(where: { id: number }): Promise<void> {
   await prisma.review.delete({ where });
 }
+// aggregate 사용
+async function aggregateData({
+  where,
+  _sum,
+  _count,
+  _avg,
+  _min,
+  _max,
+}: {
+  where: Prisma.ReviewWhereInput;
+  _sum?: Prisma.ReviewSumAggregateInputType;
+  _count?: Prisma.ReviewCountAggregateInputType;
+  _avg?: Prisma.ReviewAvgAggregateInputType;
+  _min?: Prisma.ReviewMinAggregateInputType;
+  _max?: Prisma.ReviewMaxAggregateInputType;
+}): Promise<AggregateResults> {
+  const aggregateOptions: Prisma.ReviewAggregateArgs = {
+    where,
+    ...(!!_sum && { _sum }),
+    ...(!!_count && { _count }),
+    ...(!!_avg && { _avg }),
+    ...(!!_min && { _min }),
+    ...(!!_max && { _max }),
+  };
+
+  return await prisma.review.aggregate(aggregateOptions) as AggregateResults;
+}
 
 export default {
   createData,
@@ -250,5 +287,6 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
-  findManyData
+  findManyData,
+  aggregateData,
 };
