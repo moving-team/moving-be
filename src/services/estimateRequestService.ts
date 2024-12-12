@@ -2,9 +2,7 @@ import { $Enums, Prisma } from '@prisma/client';
 import customerRepository from '../repositories/customerRepository';
 import estimateRepository from '../repositories/estimateRepository';
 import estimateRequestRepository from '../repositories/estimateRequestRepository';
-import favoriteRepository from '../repositories/favoriteRepository';
 import movingInfoRepository from '../repositories/movingInfoRepository';
-import reviewRepository from '../repositories/reviewRepository';
 import userRepository from '../repositories/userRepository';
 import { CreateEstimateReq } from '../structs/estimateRequest-struct';
 import {
@@ -23,7 +21,6 @@ import {
 import { customerSelect } from './selects/customerSelect';
 import {
   estimateReqCustomerSelect,
-  estimateReqMovingInfoSelect,
   estimateReqMovingInfoWithDateSelect,
   estimateReqSelect,
 } from './selects/estimateRequsetSelect';
@@ -33,11 +30,14 @@ import {
   movingInfoEstimateReqWithDateSelect,
   movingInfoSelect,
 } from './selects/movingInfoSelect';
-import { reviewSelect } from './selects/reviewSelect';
 import { userCustomerSelect } from './selects/userSelect';
 import moverRepository from '../repositories/moverRepository';
 import { moverSelect } from './selects/moverSelect';
 import { RESION } from '../contents/region';
+import {
+  getMoverFavoriteStats,
+  getMoverReviewStats,
+} from '../utils/moverUtile';
 
 export interface PagenationQuery {
   type?: $Enums.serviceType | $Enums.serviceType[];
@@ -301,58 +301,30 @@ async function findEstimateReqListByCustomer(
           select: estimateMoverSelect,
         })) as EstimateWithMover;
 
-        // 총 리뷰 수 확인
-        const totalReviews = await reviewRepository.countData({
-          moverId: estimate.Mover.id,
-        });
-        let totalScore: number = 0;
-
-        // 리뷰가 1개 이상일 시 리뷰 점수 총합 획득
-        if (totalReviews !== 0) {
-          const reviewList = await reviewRepository.findManyData({
-            where: { moverId: estimate.Mover.id },
-            select: reviewSelect,
-          });
-          totalScore = reviewList.reduce(
-            (sum, review) => sum + review.score,
-            0
-          );
-        }
-
-        // 리뷰 평균 점수
-        const averageScore = Math.round((totalScore / totalReviews) * 10) / 10;
+        // 리뷰 평점 및 갯수
+        const { averageScore, totalReviews } = await getMoverReviewStats(
+          estimate.Mover.id
+        );
 
         // 총 확정 갯수
-        const totalConfirmed = await estimateRepository.countData({
+        const confirmationCount = await estimateRepository.countData({
           moverId: estimate.Mover.id,
           status: 'ACCEPTED',
         });
 
-        // 찜된 횟수
-        const totalFavorite = await favoriteRepository.countData({
-          moverId: estimate.Mover.id,
-        });
-
-        const favorite = await favoriteRepository.findFirstData({
-          where: {
-            moverId: estimate.Mover.id,
-            customerId: customer.id,
-          },
-        });
-
-        // 찜 여부
-        let isFavorite = false;
-        if (favorite) {
-          isFavorite = true;
-        }
+        // 찜 갯수 및 찜 여부
+        const { favoriteCount, isFavorite } = await getMoverFavoriteStats(
+          estimate.Mover.id,
+          customer.id
+        );
 
         return findEstimateReqListByCustomerAndConfirmedMapper(
           movingInfo as MovingInfoWithEstimateReqAndhDate,
           estimate,
           averageScore,
           totalReviews,
-          totalConfirmed,
-          totalFavorite,
+          confirmationCount,
+          favoriteCount,
           isFavorite
         );
       }

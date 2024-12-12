@@ -9,7 +9,7 @@ estimateReqRouter.use(authenticateToken);
 
 estimateReqRouter
   .post('/', validateEstimateReq, estimateRequestController.createEstimateReq)
-  .get('/', authenticateToken, estimateRequestController.findEstimateReq)
+  .get('/', estimateRequestController.findEstimateReq)
   .get(
     '/customer/list',
     estimateRequestController.findEstimateReqListByCustomer
