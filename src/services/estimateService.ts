@@ -160,7 +160,15 @@ async function findConfirmedEstimateList(
   };
 }
 
+// 기사-보냈 견적 리스트 조회 API
+async function findSentEstimateList(
+  userId: number,
+  skip: number,
+  take: number
+) {}
+
 export default {
   findReceivedEstimateList,
   findConfirmedEstimateList,
+  findSentEstimateList,
 };
