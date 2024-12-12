@@ -20,12 +20,19 @@ export const estimateWithMoverIdSelect = {
   moverId: true,
 };
 
-export const estimateWithMovinInfoAndcustomerNameSelect = {
+export const estimateWithMovingInfoAndcustomerNameSelect = {
   ...estimateSelect,
   MovingInfo: { select: movingInfoSelect },
   Customer: {
     select: {
       User: { select: { name: true } },
     },
+  },
+};
+
+export const estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect = {
+  ...estimateWithMovingInfoAndcustomerNameSelect,
+  EstimateRequest: {
+    select: { isConfirmed: true },
   },
 };

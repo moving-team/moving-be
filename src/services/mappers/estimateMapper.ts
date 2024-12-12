@@ -4,6 +4,7 @@ import {
   EstimateWithMover,
   MovingInfo,
 } from '../../types/serviceType';
+import { todayUTC } from '../../utils/dateUtil';
 import { changeMovingDate, changeRegion } from '../../utils/mapperUtil';
 
 export function estimateReqInfoMapper(
@@ -66,6 +67,41 @@ export function findConfirmedEstimateListMapper(
     isMoveDateOver: estimate.isMovingComplete,
     movingType: movingInfo.movingType,
     isAssigned: estimate.isAssigned,
+    customerName,
+    movingDate: changeMovingDate(movingInfo.movingDate),
+    departure: changeRegion(movingInfo.departure),
+    arrival: changeRegion(movingInfo.arrival),
+    price: estimate.price,
+  };
+}
+
+export function findSentEstimateListMapper(
+  movingInfo: MovingInfo,
+  estimate: Estimate,
+  customerName: string,
+  isReqConfirmed: boolean,
+  today: string
+) {
+  const movingDate = new Date(movingInfo.movingDate).getTime();
+  const todayGetTime = new Date(today).getTime();
+
+  let isConfirmed = false;
+  let isMoveDateOver = false;
+  if (estimate.status === 'ACCEPTED') {
+    isConfirmed = true;
+  }
+  console.log({ id: estimate.id, movingDate, today: todayGetTime });
+  if (movingDate < todayGetTime) {
+    isMoveDateOver = true;
+  }
+  
+  return {
+    estimateId: estimate.id,
+    movingType: movingInfo.movingType,
+    isAssigned: estimate.isAssigned,
+    isConfirmed,
+    isReqConfirmed,
+    isMoveDateOver,
     customerName,
     movingDate: changeMovingDate(movingInfo.movingDate),
     departure: changeRegion(movingInfo.departure),

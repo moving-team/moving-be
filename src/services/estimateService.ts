@@ -1,8 +1,10 @@
+import { Prisma } from '@prisma/client';
 import estimateRepository from '../repositories/estimateRepository';
 import estimateRequestRepository from '../repositories/estimateRequestRepository';
 import moverRepository from '../repositories/moverRepository';
-import movingInfoRepository from '../repositories/movingInfoRepository';
 import userRepository from '../repositories/userRepository';
+import { EstimateWithMovingInfoAndcustomerNameAndIsConfirmed } from '../types/serviceType';
+import { todayUTC } from '../utils/dateUtil';
 import {
   getMoverFavoriteStats,
   getMoverReviewStats,
@@ -11,16 +13,18 @@ import {
   estimateReqInfoMapper,
   findConfirmedEstimateListMapper,
   findReceivedEstimateListMapper,
+  findSentEstimateListMapper,
 } from './mappers/estimateMapper';
 import { estimateReqMovingInfoWithDateSelect } from './selerts/estimateRequsetSelect';
 import {
   estimateMoverSelect,
-  estimateWithMovinInfoAndcustomerNameSelect,
+  estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+  estimateWithMovingInfoAndcustomerNameSelect,
 } from './selerts/estimateSelect';
 import { moverSelect } from './selerts/moverSelect';
 import { userCustomerSelect } from './selerts/userSelect';
 
-// 유저-받았던 견적 리스트 조회 API
+// 유저-받았던 견적 리스트 조회 API(최적화 필요)
 async function findReceivedEstimateList(userId: number, estimateReqId: number) {
   const user = await userRepository.findFirstData({
     where: { id: userId },
@@ -104,7 +108,7 @@ async function findReceivedEstimateList(userId: number, estimateReqId: number) {
   return { info, list };
 }
 
-// 기사-확정된 견적 리스트 조회 API
+// 기사-확정된 견적 리스트 조회 API(최적화 필요)
 async function findConfirmedEstimateList(
   userId: number,
   skip: number,
@@ -144,7 +148,7 @@ async function findConfirmedEstimateList(
         status: 'ACCEPTED',
       },
     },
-    select: estimateWithMovinInfoAndcustomerNameSelect,
+    select: estimateWithMovingInfoAndcustomerNameSelect,
   });
 
   const list = estimateList.map((estimate) => {
@@ -165,7 +169,128 @@ async function findSentEstimateList(
   userId: number,
   skip: number,
   take: number
-) {}
+) {
+  const mover = await moverRepository.findFirstData({
+    where: { userId },
+    select: moverSelect,
+  });
+
+  // 기사인지 확인
+  if (!mover) {
+    throw new Error('기사 전용 API 입니다.');
+  }
+
+  const today = todayUTC();
+
+  const whereEntity: Prisma.EstimateWhereInput = {
+    moverId: mover.id,
+    status: { in: ['ACCEPTED', 'WAITING'] },
+  };
+
+  const [total, movingUpcomingCount] = await Promise.all([
+    // 총 리스트 갯수
+    estimateRepository.countData(whereEntity),
+
+    // 이사일이 안지난 리스트 수
+    estimateRepository.countData({
+      ...whereEntity,
+      MovingInfo: { movingDate: { gte: today } },
+    }),
+  ]);
+
+  const movingUpcomingOrderBy = [
+    {
+      status: 'asc',
+    },
+    {
+      MovingInfo: { movingDate: 'asc' },
+    },
+  ];
+
+  let estimateList: EstimateWithMovingInfoAndcustomerNameAndIsConfirmed[];
+  if (movingUpcomingCount >= skip + take) {
+    estimateList = await estimateRepository.findManyByPaginationData({
+      paginationParams: {
+        orderBy: movingUpcomingOrderBy,
+        skip,
+        take,
+        where: {
+          ...whereEntity,
+          MovingInfo: { movingDate: { gte: today } },
+        },
+      },
+      select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+    });
+  } else if (movingUpcomingCount > skip && movingUpcomingCount < skip + take) {
+    const movingUpcomingTake = movingUpcomingCount - skip;
+    const movingOverTake = take - movingUpcomingTake;
+
+    const [movingUpcomingList, movingOverList] = await Promise.all([
+      // movingUpcomingList
+      estimateRepository.findManyByPaginationData({
+        paginationParams: {
+          orderBy: movingUpcomingOrderBy,
+          skip,
+          take: movingUpcomingTake,
+          where: {
+            ...whereEntity,
+            MovingInfo: { movingDate: { gte: today } },
+          },
+        },
+        select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+      }),
+
+      // movingOverList
+      estimateRepository.findManyByPaginationData({
+        paginationParams: {
+          orderBy: { MovingInfo: { movingDate: 'asc' } },
+          skip: 0,
+          take: movingOverTake,
+          where: {
+            ...whereEntity,
+            MovingInfo: { movingDate: { lt: today } },
+          },
+        },
+        select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+      }),
+    ]);
+
+    estimateList = [...movingUpcomingList, ...movingOverList];
+  } else {
+    const movingOverSkip = skip - movingUpcomingCount;
+
+    estimateList = await estimateRepository.findManyByPaginationData({
+      paginationParams: {
+        orderBy: { MovingInfo: { movingDate: 'asc' } },
+        skip: movingOverSkip,
+        take,
+        where: {
+          ...whereEntity,
+          MovingInfo: { movingDate: { lt: today } },
+        },
+      },
+      select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+    });
+  }
+
+  const list = estimateList.map((estimate) => {
+    const { MovingInfo, Customer, EstimateRequest, ...rest } = estimate;
+    const cutomerName = Customer.User.name;
+    const isReqConfirmed = EstimateRequest.isConfirmed;
+    return findSentEstimateListMapper(
+      MovingInfo,
+      rest,
+      cutomerName,
+      isReqConfirmed,
+      today
+    );
+  });
+
+  return {
+    total,
+    list,
+  };
+}
 
 export default {
   findReceivedEstimateList,
