@@ -27,15 +27,10 @@ const getMoverList = async ({
     selectedServiceType?: serviceType;
     selectedServiceRegion?: serviceRegion;
 }) => {
-    // const paginationParams = {
-    //     skip: page ? (page - 1) * (pageSize ?? 10) : 0,
-    //     take: pageSize ?? 10,
-    //     keyword,
-    //     sortBy,
-    //     sortOrder,
-    //     selectedServiceType,
-    //     selectedServiceRegion
-    // };
+    const paginationParams = {
+        skip: page ? (page - 1) * (pageSize ?? 10) : 0,
+        take: pageSize ?? 10,
+    };
     const where = {
         AND: [
             keyword ? {
@@ -73,7 +68,8 @@ const getMoverList = async ({
     };
     const movers = await moverRepository.findManyAllData({
         where,
-        select
+        select,
+        ...paginationParams
     });
 
     const processedMovers = await Promise.all(movers.map(async (mover) => {
@@ -101,13 +97,11 @@ const getMoverList = async ({
 
     
     if (sortBy && sortOrder) {
-        console.log('Inside sorting block');
         processedMovers.sort((a, b) => {
             let valueA, valueB;
             
             switch (sortBy) {
                 case 'reviewCount':
-                    console.log('Inside reviewCount case');
                     valueA = a.reviewStats.totalReviews || 0;
                     valueB = b.reviewStats.totalReviews || 0;
                     break;
