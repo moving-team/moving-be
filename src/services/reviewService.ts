@@ -1,23 +1,14 @@
 import reviewRepository from '../repositories/reviewRepository';
 import { calculateReviewStats } from '../utils/reviewUtil'
 import { CreateReviewInput } from '../types/serviceType';
+import { reviewSelect, myReviewSelect } from './selerts/reviewSelect';
 
 // GET Review
 export async function getReviews(moverId: number, skip: number, take: number) {
   // 리뷰 목록 가져오기
   const reviews = await reviewRepository.findManyByPaginationData({
     paginationParams: { skip, take, where: { moverId } },
-    select: {
-      id: true,
-      score: true,
-      description: true,
-      createdAt: true,
-      Customer: {
-        select: {
-          User: { select: { name: true } },
-        },
-      },
-    },
+    select: reviewSelect,
   });
 
   // 리뷰 통계 계산
@@ -90,44 +81,20 @@ export async function createReview(input: CreateReviewInput) {
 export async function getMyReviews(customerId: number, skip: number, take: number) {
   // 사용자 작성 리뷰 목록 조회
   const myReviews = await reviewRepository.findManyByPaginationData({
-    
     paginationParams: { skip, take, where: { customerId } },
-    select: {
-      id: true,
-      score: true,
-      description: true,
-      createdAt: true,
-      Mover: {
-        select: {
-          id: true,
-          nickname: true,
-          profileImage: true,
-        },
-      },
-      Estimate: {
-        select: {
-          isAssigned: true,
-          price: true,
-          MovingInfo: {
-            select: {
-              movingDate: true,
-              movingType: true,
-            },
-          },
-        },
-      },
-    },
+    select: myReviewSelect,
   });
 
-  console.log(myReviews)
 
-  // 전체 리뷰 수 조회 (페이지네이션 총 갯수 계산)
-  const totalReviews = myReviews.length
+  // 전체 리뷰 개수 가져오기
+  const totalReviews = await reviewRepository.countData({
+    customerId,
+  });
 
   // 다음 페이지 여부 확인
   const hasNextPage = skip + take < totalReviews;
 
-  // 리뷰 목록 데이터 형식화
+  // 리뷰 목록 데이터 매핑
   const formattedReviews = myReviews.map((review) => ({
     reviewId: review.id,
     moverId: review.Mover.id,

@@ -242,6 +242,32 @@ async function deleteData(where: { id: number }): Promise<void> {
   await prisma.review.delete({ where });
 }
 
+// aggregate 사용
+async function aggregateData({
+  where,
+  _sum,
+  _count,
+  _avg,
+  _min,
+  _max,
+}: {
+  where: ReviewWhereInputType;
+  _sum?: Prisma.ReviewSumAggregateInputType;
+  _count?: Prisma.ReviewCountAggregateInputType;
+  _avg?: Prisma.ReviewAvgAggregateInputType;
+  _min?: Prisma.ReviewMinAggregateInputType;
+  _max?: Prisma.ReviewMaxAggregateInputType;
+}) {
+  return await prisma.review.aggregate({
+    where,
+    _sum,
+    _count,
+    _avg,
+    _min,
+    _max,
+  });
+}
+
 export default {
   createData,
   findFirstData,
@@ -250,5 +276,6 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
-  findManyData
+  findManyData,
+  aggregateData,
 };
