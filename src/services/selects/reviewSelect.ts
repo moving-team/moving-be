@@ -2,8 +2,7 @@ export const reviewSelect = {
   id: true,
   score: true,
   description: true,
-  createdAt: true,
-}
+};
 
 export const reviewListSelect = {
   id: true,
