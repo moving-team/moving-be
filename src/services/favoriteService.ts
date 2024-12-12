@@ -9,12 +9,10 @@ export async function toggleFavorite(customerId: number, moverId: number) {
 
   if (existingFavorite) { // 데이터 삭제
     await favoriteRepository.deleteData({ id: existingFavorite.id });
-    return { isFavorite: false }; // 상태 반환이 필요할지??
   } else { // 데이터 생성
 
     await favoriteRepository.createData({
       data: { customerId, moverId },
     });
-    return { isFavorite: true }; // 상태 반환이 필요할지??
   }
 }
