@@ -3,6 +3,13 @@ export const reviewSelect = {
   score: true,
   description: true,
   createdAt: true,
+}
+
+export const reviewListSelect = {
+  id: true,
+  score: true,
+  description: true,
+  createdAt: true,
   Customer: {
     select: {
       User: { select: { name: true } },
