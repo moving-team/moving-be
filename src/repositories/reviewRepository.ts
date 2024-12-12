@@ -279,40 +279,6 @@ async function aggregateData({
   return await prisma.review.aggregate(aggregateOptions) as AggregateResults;
 }
 
-// async function aggregateData({
-//   where,
-//   _sum,
-//   _count,
-//   _avg,
-//   _min,
-//   _max,
-// }: {
-//   where: ReviewWhereInputType;
-//   _sum?: Prisma.ReviewSumAggregateInputType;
-//   _count?: Prisma.ReviewCountAggregateInputType;
-//   _avg?: Prisma.ReviewAvgAggregateInputType;
-//   _min?: Prisma.ReviewMinAggregateInputType;
-//   _max?: Prisma.ReviewMaxAggregateInputType;
-// }) {
-//   // 기본 옵션
-//   const aggregateOptions = { where };
-
-//   // 동적으로 옵션 추가
-//   Object.assign(
-//     aggregateOptions,
-//     _sum && { _sum },
-//     _count && { _count },
-//     _avg && { _avg },
-//     _min && { _min },
-//     _max && { _max }
-//   );
-
-//   console.log('aggregateData params:', aggregateOptions);
-
-//   return await prisma.review.aggregate(aggregateOptions);
-
-// }
-
 export default {
   createData,
   findFirstData,
