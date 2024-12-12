@@ -72,8 +72,10 @@ const getMoverList = async ({
         ...paginationParams
     });
 
+
     const processedMovers = await Promise.all(movers.map(async (mover) => {
         const favoriteCount = await favoriteRepository.countData({ moverId: mover.id });
+
         
         let averageScore = 0;
         let reviewCount = 0;
@@ -83,10 +85,12 @@ const getMoverList = async ({
             averageScore = Number((mover.Review.reduce((sum, review) => sum + review.score, 0) / reviewCount).toFixed(1));
         }
 
-        const { Review, ...moverDataWithoutReviews } = mover;
+        const { Review, profileImage, nickname, ...moverDataWithoutReviews } = mover;
         
         return {
             ...moverDataWithoutReviews,
+            profileImg : profileImage,
+            moverName : nickname,
             reviewStats: {
                 averageScore,
                 totalReviews: reviewCount
@@ -171,10 +175,12 @@ const getMoverDetail = async (userId: number, moverId: number) => {
         const avgScore = reviews.reduce((sum, review) => sum + review.score, 0) / reviews.length;
         const reviewCount = reviews.length;
         
-        const { Review, ...moverDataWithoutReviews } = moverData;
+        const { Review, profileImage, nickname, ...moverDataWithoutReviews } = moverData;
         
         return {
             ...moverDataWithoutReviews,
+            profileImg : profileImage,
+            moverName : nickname,
             reviewStats: {
                 averageScore: avgScore,
                 totalReviews: reviewCount
@@ -205,8 +211,18 @@ const getMover = async (userId: number) => {
             }
         }
     }});
-    return moverData;
-}
+    if(moverData){
+        const { profileImage, nickname, ...moverDataWithoutReviews } = moverData;
+        return {
+            ...moverDataWithoutReviews,
+            profileImg : profileImage,
+            moverName : nickname,
+        };
+    }else{
+        throw new Error("프로필 없음");
+    }
+};
+
 
 const createMover = async (userId: number) => {
     const data = {
