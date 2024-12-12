@@ -200,7 +200,7 @@ async function findSentEstimateList(
 
   const movingUpcomingOrderBy = [
     {
-      status: 'asc',
+      status: 'desc',
     },
     {
       MovingInfo: { movingDate: 'asc' },
@@ -277,6 +277,7 @@ async function findSentEstimateList(
     const { MovingInfo, Customer, EstimateRequest, ...rest } = estimate;
     const cutomerName = Customer.User.name;
     const isReqConfirmed = EstimateRequest.isConfirmed;
+    
     return findSentEstimateListMapper(
       MovingInfo,
       rest,
