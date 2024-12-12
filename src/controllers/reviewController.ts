@@ -1,7 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { getReviews } from '../services/reviewService';
-import { createReview } from '../services/reviewService';
-import { getMyReviews } from '../services/reviewService';
+import { getReviews, createReview, getMyReviews } from '../services/reviewService';
 
 // 리뷰 목록 및 통계 데이터를 반환
 export async function getReviewsHandler(
