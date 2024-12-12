@@ -14,19 +14,19 @@ import {
   findEstimateReqListByCustomerAndConfirmedMapper,
   getestimateReqByNoConfirmedMapper,
 } from './mappers/estimateRequestMapper';
-import { customerSelect } from './selerts/customerSelect';
+import { customerSelect } from './selects/customerSelect';
 import {
   estimateReqCustomerSelect,
   estimateReqMovingInfoSelect,
   estimateReqSelect,
-} from './selerts/estimateRequsetSelect';
-import { estimateMoverSelect, estimateSelect } from './selerts/estimateSelect';
+} from './selects/estimateRequsetSelect';
+import { estimateMoverSelect, estimateSelect } from './selects/estimateSelect';
 import {
   movingInfoEstimateReqWithDateSelect,
   movingInfoSelect,
-} from './selerts/movingInfoSelect';
-import { reviewSelect } from './selerts/reviewSelert';
-import { userCustomerSelect } from './selerts/userSelect';
+} from './selects/movingInfoSelect';
+import { reviewSelect } from './selects/reviewSelect';
+import { userCustomerSelect } from './selects/userSelect';
 
 // 견적 요청 작성 API
 async function createEstimateReq(userId: number, data: CreateEstimateReq) {
