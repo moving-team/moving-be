@@ -34,9 +34,9 @@ export const authenticateToken = async (
 
       res.cookie('accessToken', newAccessToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: true,
         maxAge: 1000 * 60 * 60, 
-        sameSite: 'strict',
+        sameSite: 'none',
       });
 
       req.user = user;

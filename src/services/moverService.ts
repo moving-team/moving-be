@@ -3,7 +3,10 @@ import favoriteRepository from '../repositories/favoriteRepository';
 import assignedEstimateRequestRepository from '../repositories/assignedEstimateRequestRepository';
 import estimateRequestRepository from '../repositories/estimateRequestRepository';
 import customerRepository from '../repositories/customerRepository';
+import userRepository from '../repositories/userRepository';
 import { serviceRegion, serviceType } from '@prisma/client';
+import bcrypt from 'bcrypt';
+
 
 
 
@@ -24,15 +27,10 @@ const getMoverList = async ({
     selectedServiceType?: serviceType;
     selectedServiceRegion?: serviceRegion;
 }) => {
-    // const paginationParams = {
-    //     skip: page ? (page - 1) * (pageSize ?? 10) : 0,
-    //     take: pageSize ?? 10,
-    //     keyword,
-    //     sortBy,
-    //     sortOrder,
-    //     selectedServiceType,
-    //     selectedServiceRegion
-    // };
+    const paginationParams = {
+        skip: page ? (page - 1) * (pageSize ?? 10) : 0,
+        take: pageSize ?? 10,
+    };
     const where = {
         AND: [
             keyword ? {
@@ -70,7 +68,8 @@ const getMoverList = async ({
     };
     const movers = await moverRepository.findManyAllData({
         where,
-        select
+        select,
+        ...paginationParams
     });
 
     const processedMovers = await Promise.all(movers.map(async (mover) => {
@@ -98,13 +97,11 @@ const getMoverList = async ({
 
     
     if (sortBy && sortOrder) {
-        console.log('Inside sorting block');
         processedMovers.sort((a, b) => {
             let valueA, valueB;
             
             switch (sortBy) {
                 case 'reviewCount':
-                    console.log('Inside reviewCount case');
                     valueA = a.reviewStats.totalReviews || 0;
                     valueB = b.reviewStats.totalReviews || 0;
                     break;
@@ -239,4 +236,22 @@ const patchMoverProfile = async (userId: number, updateData: any) => {
     await moverRepository.updateData({ where: { id: moverData.id }, data: patchData });
 }
 
-export { createMover, patchMoverProfile, getMover,getMoverDetail, getMoverList};
+const patchMoverInfo = async (userId: number, data: any) => {
+    const userData = await userRepository.findFirstData({ where: { id: userId } });
+    if(!userData) {
+        throw new Error("유저 정보 없음");
+    }
+    const isPasswordMatch = await bcrypt.compare(data.usedPassword, userData.password as string);
+    if (!isPasswordMatch) {
+        throw new Error("비밀번호가 일치하지 않아요");
+    }
+    const newHashedPassword = await bcrypt.hash(data.newPassword, 10);
+    const patchData = {
+        name: data.name,
+        phoneNumber: data.phoneNumber,
+        password: newHashedPassword,
+    }
+    return await userRepository.updateData({ where: { id: userData.id }, data: patchData });
+}
+
+export { createMover, patchMoverProfile, getMover,getMoverDetail, getMoverList, patchMoverInfo};
