@@ -15,16 +15,16 @@ import {
   findReceivedEstimateListMapper,
   findSentEstimateListMapper,
 } from './mappers/estimateMapper';
-import { estimateReqMovingInfoWithDateSelect } from './selerts/estimateRequsetSelect';
+import { estimateReqMovingInfoWithDateSelect } from './selects/estimateRequsetSelect';
 import {
   estimateMoverSelect,
   estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
   estimateWithMovingInfoAndcustomerNameSelect,
-} from './selerts/estimateSelect';
-import { moverSelect } from './selerts/moverSelect';
-import { userCustomerSelect } from './selerts/userSelect';
+} from './selects/estimateSelect';
+import { moverSelect } from './selects/moverSelect';
+import { userCustomerSelect } from './selects/userSelect';
 
-// 유저-받았던 견적 리스트 조회 API(최적화 필요)
+// 유저-받았던 견적 리스트 조회 API
 async function findReceivedEstimateList(userId: number, estimateReqId: number) {
   const user = await userRepository.findFirstData({
     where: { id: userId },
@@ -36,23 +36,25 @@ async function findReceivedEstimateList(userId: number, estimateReqId: number) {
     throw new Error('소비자 전용 API 입니다.');
   }
 
-  const estimateReq = await estimateRequestRepository.findFirstData({
-    where: {
-      id: estimateReqId,
-      customerId: user.Customer.id,
-    },
-    select: estimateReqMovingInfoWithDateSelect,
-  });
+  const [estimateReq, estimateList] = await Promise.all([
+    estimateRequestRepository.findFirstData({
+      where: {
+        id: estimateReqId,
+        customerId: user.Customer.id,
+      },
+      select: estimateReqMovingInfoWithDateSelect,
+    }),
+
+    estimateRepository.findManyData({
+      where: { estimateRequestId: estimateReqId },
+      select: estimateMoverSelect,
+    }),
+  ]);
 
   // 견적 요청이 존재하는지 확인
   if (!estimateReq) {
     throw new Error('존재하지 않는 견적 요청입니다.');
   }
-
-  const estimateList = await estimateRepository.findManyData({
-    where: { estimateRequestId: estimateReqId },
-    select: estimateMoverSelect,
-  });
 
   const info = estimateReqInfoMapper(estimateReq);
 
@@ -64,15 +66,15 @@ async function findReceivedEstimateList(userId: number, estimateReqId: number) {
     };
   }
 
-  const AcceptedEstimate = estimateList.filter(
+  const acceptedEstimate = estimateList.filter(
     (estimate) => estimate.status === 'ACCEPTED'
   );
-  const WaitingEstimateList = estimateList.filter(
+  const waitingEstimateList = estimateList.filter(
     (estimate) => estimate.status !== 'ACCEPTED'
   );
 
   // 확정된 견적 먼저
-  const newEstimateList = [...AcceptedEstimate, ...WaitingEstimateList];
+  const newEstimateList = [...acceptedEstimate, ...waitingEstimateList];
 
   const customer = user.Customer;
 
@@ -108,7 +110,7 @@ async function findReceivedEstimateList(userId: number, estimateReqId: number) {
   return { info, list };
 }
 
-// 기사-확정된 견적 리스트 조회 API(최적화 필요)
+// 기사-확정된 견적 리스트 조회 API
 async function findConfirmedEstimateList(
   userId: number,
   skip: number,
@@ -124,32 +126,34 @@ async function findConfirmedEstimateList(
     throw new Error('기사 전용 API 입니다.');
   }
 
-  // 기사가 보낸 확정된 견적 카운트
-  const total = await estimateRepository.countData({
-    moverId: mover.id,
-    status: 'ACCEPTED',
-  });
+  const [total, estimateList] = await Promise.all([
+    // 기사가 보낸 확정된 견적 카운트
+    estimateRepository.countData({
+      moverId: mover.id,
+      status: 'ACCEPTED',
+    }),
 
-  // 기사가 보낸 확정된 견적 조회
-  const estimateList = await estimateRepository.findManyByPaginationData({
-    paginationParams: {
-      orderBy: [
-        {
-          isMovingComplete: 'asc',
+    // 기사가 보낸 확정된 견적 조회
+    estimateRepository.findManyByPaginationData({
+      paginationParams: {
+        orderBy: [
+          {
+            isMovingComplete: 'asc',
+          },
+          {
+            MovingInfo: { movingDate: 'asc' },
+          },
+        ],
+        skip,
+        take,
+        where: {
+          moverId: mover.id,
+          status: 'ACCEPTED',
         },
-        {
-          MovingInfo: { movingDate: 'asc' },
-        },
-      ],
-      skip,
-      take,
-      where: {
-        moverId: mover.id,
-        status: 'ACCEPTED',
       },
-    },
-    select: estimateWithMovingInfoAndcustomerNameSelect,
-  });
+      select: estimateWithMovingInfoAndcustomerNameSelect,
+    }),
+  ]);
 
   const list = estimateList.map((estimate) => {
     const { MovingInfo, Customer, ...rest } = estimate;
@@ -277,7 +281,7 @@ async function findSentEstimateList(
     const { MovingInfo, Customer, EstimateRequest, ...rest } = estimate;
     const cutomerName = Customer.User.name;
     const isReqConfirmed = EstimateRequest.isConfirmed;
-    
+
     return findSentEstimateListMapper(
       MovingInfo,
       rest,

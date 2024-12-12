@@ -19,14 +19,18 @@ app.use(cookieParser());
 app.use(cors());
 app.use(morgan('dev'));
 app.use(
-    cors({
-      origin: ["http://localhost:3000", "http://localhost:3001", "http://localhost:3002"],
-      credentials: true,
-      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-      preflightContinue: false,
-      optionsSuccessStatus: 204,
-    })
-  );
+  cors({
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'http://localhost:3002',
+    ],
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  })
+);
 app.use(express.json());
 
 app.use(unifiedLogger); // 개발 중 사용했던 로깅 주석 처리
@@ -36,7 +40,7 @@ app.use('/customer', customerRouter);
 app.use('/mover', moverRouter);
 app.use('/estimateReq', estimateReqRouter);
 app.use('/estimate', estimateRouter);
-app.use('/favorite', favoriteRouter)
+app.use('/favorite', favoriteRouter);
 app.use('/review', reviewRouter);
 
 app.use(errorHandler);
