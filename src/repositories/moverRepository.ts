@@ -204,31 +204,47 @@ async function deleteData(where: { id: number }): Promise<void> {
 function findManyAllData<T extends MoverSelectType>({
   where,
   select,
+  skip,
+  take,
 }: {
   where?: MoverWhereInputType;
   select: T;
+  skip?: number;
+  take?: number;
 }): Promise<MoverPayload<T>[]>;
 function findManyAllData({
-  where,
+      where,
+  skip,
+  take,
 }: {
   where?: MoverWhereInputType;
+  skip?: number;
+  take?: number;
 }): Promise<MoverPayload<undefined>[]>;
 
 async function findManyAllData<T extends MoverSelectType | undefined>({
   where,
   select,
+  skip,
+  take,
 }: {
   where?: MoverWhereInputType;
   select?: T;
+  skip?: number;
+  take?: number;
 }) {
   if (select === undefined) {
     return await prisma.mover.findMany({
       where,
+      skip,
+      take,
     });
   }
   return await prisma.mover.findMany({
     where,
     select,
+    skip,
+    take,
   });
 }
 

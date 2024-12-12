@@ -18,21 +18,21 @@ import {
   findEstimateReqListByMoverMapper,
   getestimateReqByNoConfirmedMapper,
 } from './mappers/estimateRequestMapper';
-import { customerSelect } from './selerts/customerSelect';
+import { customerSelect } from './selects/customerSelect';
 import {
   estimateReqCustomerSelect,
   estimateReqMovingInfoWithDateSelect,
   estimateReqSelect,
-} from './selerts/estimateRequsetSelect';
-import { estimateMoverSelect, estimateSelect } from './selerts/estimateSelect';
+} from './selects/estimateRequsetSelect';
+import { estimateMoverSelect, estimateSelect } from './selects/estimateSelect';
 import {
   movingInfoEstimateReqUserNameWithDateSelect,
   movingInfoEstimateReqWithDateSelect,
   movingInfoSelect,
-} from './selerts/movingInfoSelect';
-import { userCustomerSelect } from './selerts/userSelect';
+} from './selects/movingInfoSelect';
+import { userCustomerSelect } from './selects/userSelect';
 import moverRepository from '../repositories/moverRepository';
-import { moverSelect } from './selerts/moverSelect';
+import { moverSelect } from './selects/moverSelect';
 import { RESION } from '../contents/region';
 import {
   getMoverFavoriteStats,

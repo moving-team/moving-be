@@ -9,3 +9,12 @@ export const moverSelect = {
   serviceType: true,
   confirmationCount: true,
 };
+
+export const favoriteMoverSelect = {
+    id: true,
+    nickname: true,
+    profileImage: true,
+    career: true,
+    confirmationCount: true,
+    serviceType: true,
+}

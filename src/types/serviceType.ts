@@ -93,3 +93,18 @@ export interface FindEstimateReqListByMoverType {
     }[];
   };
 }
+
+// 리뷰 서비스 타입 추가
+export interface ReviewStats {
+  totalReviews: number;
+  reviewCount: Record<1 | 2 | 3 | 4 | 5, number>;
+}
+
+export interface CreateReviewInput {
+  customerId: number;
+  estimateId: number;
+  moverId: number;
+  score: number;
+  description: string;
+}
+
