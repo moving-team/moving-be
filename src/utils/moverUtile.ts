@@ -1,6 +1,6 @@
 import favoriteRepository from '../repositories/favoriteRepository';
 import reviewRepository from '../repositories/reviewRepository';
-import { reviewSelect } from '../services/selerts/reviewSelert';
+import { reviewSelect } from '../services/selects/reviewSelect';
 
 export async function getMoverReviewStats(moverId: number) {
   // 총 리뷰 수 확인

@@ -12,13 +12,13 @@ import {
   findConfirmedEstimateListMapper,
   findReceivedEstimateListMapper,
 } from './mappers/estimateMapper';
-import { estimateReqMovingInfoWithDateSelect } from './selerts/estimateRequsetSelect';
+import { estimateReqMovingInfoWithDateSelect } from './selects/estimateRequsetSelect';
 import {
   estimateMoverSelect,
   estimateWithMovinInfoAndcustomerNameSelect,
-} from './selerts/estimateSelect';
-import { moverSelect } from './selerts/moverSelect';
-import { userCustomerSelect } from './selerts/userSelect';
+} from './selects/estimateSelect';
+import { moverSelect } from './selects/moverSelect';
+import { userCustomerSelect } from './selects/userSelect';
 
 // 유저-받았던 견적 리스트 조회 API
 async function findReceivedEstimateList(userId: number, estimateReqId: number) {
