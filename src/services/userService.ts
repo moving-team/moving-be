@@ -9,7 +9,11 @@ const generateToken = (payload: any, secret: string, expiresIn: string) => {
 
 
 const getUser = async (id: number) => {
-  return await userRepository.findFirstData({ where: { id } });
+  const userData = await userRepository.findFirstData({ where: { id } });
+  if(!userData)
+  throw new Error("유저 없음");
+  const { password, ...userDataWithoutPassword } = userData;
+  return userDataWithoutPassword;
 }
 
 const register = async (data: any, userType: string) => {

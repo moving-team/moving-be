@@ -28,10 +28,10 @@ const getCustomer = async (userId: number) => {
     const list = {
         id: customerData?.id,
         userId: customerData?.userId,
-        profileImage: customerData?.profileImage,
+        profileImg: customerData?.profileImage,
         serviceType: customerData?.serviceType,
         region: customerData?.region,
-        name: customerData?.User?.name,
+        customername: customerData?.User?.name,
         isConfirmed,
     }
 
