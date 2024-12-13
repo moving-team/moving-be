@@ -6,23 +6,24 @@ import { uploadImage } from '../middlewares/uploadMiddleware';
 const router = express.Router();
 
 router
-    .route('/profile')
-    .all(authenticateToken)
-    .patch(uploadImage('profileImage'), moverController.patchMoverProfileController);
+  .route('/profile')
+  .all(authenticateToken)
+  .patch(
+    uploadImage('profileImage'),
+    moverController.patchMoverProfileController
+  );
 router
-    .route('/me')
-    .all(authenticateToken)
-    .get(moverController.getMoverController);
+  .route('/me')
+  .all(authenticateToken)
+  .get(moverController.getMoverController);
 router
-    .route('/:moverId/detail')
-    .all(authenticateToken)
-    .get(moverController.getMoverDetailController);
+  .route('/:moverId/detail')
+  .all(authenticateToken)
+  .get(moverController.getMoverDetailController);
+router.route('/list').get(moverController.getMoverListController);
 router
-    .route('/list')
-    .get(moverController.getMoverListController);
-router
-    .route('/info')
-    .all(authenticateToken)
-    .patch(moverController.patchMoverInfoController);
+  .route('/info')
+  .all(authenticateToken)
+  .patch(moverController.patchMoverInfoController);
 
 export default router;

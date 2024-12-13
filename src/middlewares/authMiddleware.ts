@@ -12,13 +12,13 @@ export const authenticateToken = async (
 
   if (!accessToken && !refreshToken) {
     res.status(401).json({ message: '인증 토큰이 없습니다.' });
-    return; 
+    return;
   }
 
   try {
     const user = jwt.verify(accessToken, ACCESS_TOKEN_SECRET);
     req.user = user;
-    next(); 
+    next();
   } catch (err) {
     if (!refreshToken) {
       res.clearCookie('accessToken');
@@ -35,7 +35,7 @@ export const authenticateToken = async (
       res.cookie('accessToken', newAccessToken, {
         httpOnly: true,
         secure: true,
-        maxAge: 1000 * 60 * 60, 
+        maxAge: 1000 * 60 * 60,
         sameSite: 'none',
       });
 

@@ -213,7 +213,7 @@ function findManyAllData<T extends MoverSelectType>({
   take?: number;
 }): Promise<MoverPayload<T>[]>;
 function findManyAllData({
-      where,
+  where,
   skip,
   take,
 }: {
@@ -297,5 +297,5 @@ export default {
   updateData,
   deleteData,
   findManyAllData,
-  findManyData
+  findManyData,
 };
