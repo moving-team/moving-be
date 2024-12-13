@@ -12,20 +12,23 @@ const getUserController = async (
   const { id } = (req as any).user as { id: number };
   const user = await userService.getUser(id);
   res.status(200).json(user);
-}
+};
 
 const registerController = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const {userType} = req.query
+  const { userType } = req.query;
   try {
-    const {user,error} = await userService.register(req.body,userType as string);
-    
-    if(!user && error){
-      res.status(404).json(error)
-    }else{
+    const { user, error } = await userService.register(
+      req.body,
+      userType as string
+    );
+
+    if (!user && error) {
+      res.status(404).json(error);
+    } else {
       if (user.userType === 'CUSTOMER') {
         await customerService.createCustomer(user.id);
       } else if (user.userType === 'MOVER') {
@@ -35,7 +38,6 @@ const registerController = async (
       }
       res.status(201).json('회원가입 성공');
     }
-
   } catch (err) {
     next(err);
   }
@@ -48,19 +50,18 @@ const loginController = async (
 ) => {
   try {
     const data = await userService.userLogin(req.body);
-    
-    if(data.accessToken && data.refreshToken){
-      res.cookie("accessToken", data.accessToken, {
+
+    if (data.accessToken && data.refreshToken) {
+      res.cookie('accessToken', data.accessToken, {
         ...data.cookieOptions.accessToken,
       });
-      res.cookie("refreshToken", data.refreshToken, {
+      res.cookie('refreshToken', data.refreshToken, {
         ...data.cookieOptions.refreshToken,
       });
-      res.status(201).json("로그인 성공");
-    }else{
+      res.status(201).json('로그인 성공');
+    } else {
       res.status(404).json(data);
     }
-    
   } catch (err) {
     next(err);
   }
@@ -72,22 +73,27 @@ const logoutController = async (
   next: NextFunction
 ) => {
   res
-    .clearCookie('accessToken',{
+    .clearCookie('accessToken', {
       httpOnly: NODE_ENV === 'production' ? true : false,
       secure: true,
       expires: new Date(0),
       maxAge: 0,
-      sameSite: "none",
-    },)
-    .clearCookie('refreshToken',{
+      sameSite: 'none',
+    })
+    .clearCookie('refreshToken', {
       httpOnly: NODE_ENV === 'production' ? true : false,
       secure: true,
       expires: new Date(0),
       maxAge: 0,
-      sameSite: "none",
-    },)
+      sameSite: 'none',
+    })
     .status(200)
     .json('로그아웃 성공');
 };
 
-export default { registerController, loginController, logoutController, getUserController };
+export default {
+  registerController,
+  loginController,
+  logoutController,
+  getUserController,
+};

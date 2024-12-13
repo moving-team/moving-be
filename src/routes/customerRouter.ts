@@ -6,18 +6,18 @@ import { uploadImage } from '../middlewares/uploadMiddleware';
 const router = express.Router();
 
 router
-    .route('/profile')
-    .all(authenticateToken)
-    .patch(
-        uploadImage('profileImage'), 
-        customerController.patchCustomerProfileController
-    );
+  .route('/profile')
+  .all(authenticateToken)
+  .patch(
+    uploadImage('profileImage'),
+    customerController.patchCustomerProfileController
+  );
 router
-    .route('/info')
-    .all(authenticateToken)
-    .patch(customerController.patchCustomerInfoController);
+  .route('/info')
+  .all(authenticateToken)
+  .patch(customerController.patchCustomerInfoController);
 router
-    .route('/me')
-    .all(authenticateToken)
-    .get(customerController.getCustomerController);
+  .route('/me')
+  .all(authenticateToken)
+  .get(customerController.getCustomerController);
 export default router;
