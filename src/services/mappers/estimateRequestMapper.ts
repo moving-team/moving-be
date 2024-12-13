@@ -1,6 +1,5 @@
 import {
   EstimateReq,
-  EstimateReqWithMovingInfo,
   EstimateReqWithMovingInfoAndDate,
   EstimateWithMover,
   FindEstimateReqListByMoverType,

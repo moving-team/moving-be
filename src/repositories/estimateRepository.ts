@@ -168,14 +168,14 @@ function findManyData<T extends EstimateSelectType>({
 }: {
   where: EstimateWhereInputType;
   select: T;
-  orderBy?: EstimateOrderByType;
+  orderBy?: EstimateOrderByType[] | EstimateOrderByType;
 }): Promise<EstimatePayload<T>[]>;
 function findManyData({
   where,
   orderBy,
 }: {
   where: EstimateWhereInputType;
-  orderBy?: EstimateOrderByType;
+  orderBy?: EstimateOrderByType[] | EstimateOrderByType;
 }): Promise<EstimatePayload<undefined>[]>;
 
 async function findManyData<T extends EstimateSelectType | undefined>({
@@ -185,7 +185,7 @@ async function findManyData<T extends EstimateSelectType | undefined>({
 }: {
   where: EstimateWhereInputType;
   select?: T;
-  orderBy?: EstimateOrderByType;
+  orderBy?: EstimateOrderByType[] | EstimateOrderByType;
 }) {
   if (select === undefined) {
     return await prisma.estimate.findMany({
