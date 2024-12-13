@@ -91,8 +91,33 @@ async function findSentEstimateList(
     return next(err);
   }
 }
+
+// 유저-대기중인 견적 조회 API
+async function findWatingEstimateList(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
+    ) {
+      throw new Error('다시 시도해 주세요');
+    }
+
+    const { id: userId } = req.user;
+    const estimate = await estimateService.findWatingEstimateList(userId);
+    res.send(estimate);
+  } catch (err) {
+    return next(err);
+  }
+}
+
 export default {
   findReceivedEstimateList,
   findConfirmedEstimateList,
   findSentEstimateList,
+  findWatingEstimateList,
 };
