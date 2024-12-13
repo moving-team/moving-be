@@ -59,7 +59,40 @@ async function findConfirmedEstimateList(
     return next(err);
   }
 }
+
+// 기사-보냈 견적 리스트 조회 API
+async function findSentEstimateList(
+  req: Request<{}, {}, {}, { page?: string; pageSize?: string }>,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
+    ) {
+      throw new Error('다시 시도해 주세요');
+    }
+
+    const { id: userId } = req.user;
+    const { page = '1', pageSize = '8' } = req.query;
+    const pageNum = parseInt(page) || 1;
+    const take = parseInt(pageSize) || 8;
+    const skip = (pageNum - 1) * take;
+
+    const estimate = await estimateService.findSentEstimateList(
+      userId,
+      skip,
+      take
+    );
+    res.send(estimate);
+  } catch (err) {
+    return next(err);
+  }
+}
 export default {
   findReceivedEstimateList,
   findConfirmedEstimateList,
+  findSentEstimateList,
 };

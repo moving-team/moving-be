@@ -118,15 +118,17 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
 
 // 견적 요청 삭제 API
 async function deleteEstimateReq(userId: number, estimateRequestId: number) {
-  const estimateReq = await estimateRequestRepository.findFirstData({
-    where: { id: estimateRequestId },
-    select: estimateReqCustomerSelect,
-  });
+  const [estimateReq, user] = await Promise.all([
+    estimateRequestRepository.findFirstData({
+      where: { id: estimateRequestId },
+      select: estimateReqCustomerSelect,
+    }),
 
-  const user = await userRepository.findUniqueOrThrowtData({
-    where: { id: userId },
-    select: userCustomerSelect,
-  });
+    userRepository.findUniqueOrThrowtData({
+      where: { id: userId },
+      select: userCustomerSelect,
+    }),
+  ]);
 
   // 견적 요청 유무 확인
   if (!estimateReq) {
@@ -275,17 +277,20 @@ async function findEstimateReqListByCustomer(
   };
 
   // 총 갯수 확인
-  const total = await movingInfoRepository.countData(movingInfoWhere);
+  const [total, movingInfoList] = await Promise.all([
+    // 총 갯수 확인
+    movingInfoRepository.countData(movingInfoWhere),
 
-  const movingInfoList = await movingInfoRepository.findManyByPaginationData({
-    paginationParams: {
-      orderBy: { createdAt: 'desc' },
-      skip,
-      take: pageSize,
-      where: movingInfoWhere,
-    },
-    select: movingInfoEstimateReqWithDateSelect,
-  });
+    movingInfoRepository.findManyByPaginationData({
+      paginationParams: {
+        orderBy: { createdAt: 'desc' },
+        skip,
+        take: pageSize,
+        where: movingInfoWhere,
+      },
+      select: movingInfoEstimateReqWithDateSelect,
+    }),
+  ]);
 
   const newList = await Promise.all(
     movingInfoList.map(async (movingInfo) => {
@@ -301,22 +306,22 @@ async function findEstimateReqListByCustomer(
           select: estimateMoverSelect,
         })) as EstimateWithMover;
 
-        // 리뷰 평점 및 갯수
-        const { averageScore, totalReviews } = await getMoverReviewStats(
-          estimate.Mover.id
-        );
+        const [reviewStats, confirmationCount, favorite] = await Promise.all([
+          // 리뷰 평점 및 갯수
+          getMoverReviewStats(estimate.Mover.id),
 
-        // 총 확정 갯수
-        const confirmationCount = await estimateRepository.countData({
-          moverId: estimate.Mover.id,
-          status: 'ACCEPTED',
-        });
+          // 총 확정 갯수
+          estimateRepository.countData({
+            moverId: estimate.Mover.id,
+            status: 'ACCEPTED',
+          }),
 
-        // 찜 갯수 및 찜 여부
-        const { favoriteCount, isFavorite } = await getMoverFavoriteStats(
-          estimate.Mover.id,
-          customer.id
-        );
+          // 찜 갯수 및 찜 여부
+          getMoverFavoriteStats(estimate.Mover.id, customer.id),
+        ]);
+
+        const { totalReviews, averageScore } = reviewStats;
+        const { favoriteCount, isFavorite } = favorite;
 
         return findEstimateReqListByCustomerAndConfirmedMapper(
           movingInfo as MovingInfoWithEstimateReqAndhDate,
@@ -496,10 +501,12 @@ async function findEstimateReqListByMover(
       });
     }
 
-    const total = await totalCount(movingType);
-    const small = await totalCount(['SMALL']);
-    const house = await totalCount(['HOUSE']);
-    const office = await totalCount(['OFFICE']);
+    const [total, small, house, office] = await Promise.all([
+      totalCount(movingType),
+      totalCount(['SMALL']),
+      totalCount(['HOUSE']),
+      totalCount(['OFFICE']),
+    ]);
 
     // 견적 요청 리스트 조회 where
     const estimateReqListWhere = {
@@ -571,9 +578,11 @@ async function findEstimateReqListByMover(
       });
     }
 
-    const small = await totalCount(['SMALL']);
-    const house = await totalCount(['HOUSE']);
-    const office = await totalCount(['OFFICE']);
+    const [small, house, office] = await Promise.all([
+      totalCount(['SMALL']),
+      totalCount(['HOUSE']),
+      totalCount(['OFFICE']),
+    ]);
 
     // 견적 요청 리스트 조회 where
     const estimateReqListWhere = {

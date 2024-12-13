@@ -1,8 +1,10 @@
+import { Prisma } from '@prisma/client';
 import estimateRepository from '../repositories/estimateRepository';
 import estimateRequestRepository from '../repositories/estimateRequestRepository';
 import moverRepository from '../repositories/moverRepository';
-import movingInfoRepository from '../repositories/movingInfoRepository';
 import userRepository from '../repositories/userRepository';
+import { EstimateWithMovingInfoAndcustomerNameAndIsConfirmed } from '../types/serviceType';
+import { todayUTC } from '../utils/dateUtil';
 import {
   getMoverFavoriteStats,
   getMoverReviewStats,
@@ -11,11 +13,13 @@ import {
   estimateReqInfoMapper,
   findConfirmedEstimateListMapper,
   findReceivedEstimateListMapper,
+  findSentEstimateListMapper,
 } from './mappers/estimateMapper';
 import { estimateReqMovingInfoWithDateSelect } from './selects/estimateRequsetSelect';
 import {
   estimateMoverSelect,
-  estimateWithMovinInfoAndcustomerNameSelect,
+  estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+  estimateWithMovingInfoAndcustomerNameSelect,
 } from './selects/estimateSelect';
 import { moverSelect } from './selects/moverSelect';
 import { userCustomerSelect } from './selects/userSelect';
@@ -32,23 +36,25 @@ async function findReceivedEstimateList(userId: number, estimateReqId: number) {
     throw new Error('소비자 전용 API 입니다.');
   }
 
-  const estimateReq = await estimateRequestRepository.findFirstData({
-    where: {
-      id: estimateReqId,
-      customerId: user.Customer.id,
-    },
-    select: estimateReqMovingInfoWithDateSelect,
-  });
+  const [estimateReq, estimateList] = await Promise.all([
+    estimateRequestRepository.findFirstData({
+      where: {
+        id: estimateReqId,
+        customerId: user.Customer.id,
+      },
+      select: estimateReqMovingInfoWithDateSelect,
+    }),
+
+    estimateRepository.findManyData({
+      where: { estimateRequestId: estimateReqId },
+      select: estimateMoverSelect,
+    }),
+  ]);
 
   // 견적 요청이 존재하는지 확인
   if (!estimateReq) {
     throw new Error('존재하지 않는 견적 요청입니다.');
   }
-
-  const estimateList = await estimateRepository.findManyData({
-    where: { estimateRequestId: estimateReqId },
-    select: estimateMoverSelect,
-  });
 
   const info = estimateReqInfoMapper(estimateReq);
 
@@ -60,15 +66,15 @@ async function findReceivedEstimateList(userId: number, estimateReqId: number) {
     };
   }
 
-  const AcceptedEstimate = estimateList.filter(
+  const acceptedEstimate = estimateList.filter(
     (estimate) => estimate.status === 'ACCEPTED'
   );
-  const WaitingEstimateList = estimateList.filter(
+  const waitingEstimateList = estimateList.filter(
     (estimate) => estimate.status !== 'ACCEPTED'
   );
 
   // 확정된 견적 먼저
-  const newEstimateList = [...AcceptedEstimate, ...WaitingEstimateList];
+  const newEstimateList = [...acceptedEstimate, ...waitingEstimateList];
 
   const customer = user.Customer;
 
@@ -120,32 +126,34 @@ async function findConfirmedEstimateList(
     throw new Error('기사 전용 API 입니다.');
   }
 
-  // 기사가 보낸 확정된 견적 카운트
-  const total = await estimateRepository.countData({
-    moverId: mover.id,
-    status: 'ACCEPTED',
-  });
+  const [total, estimateList] = await Promise.all([
+    // 기사가 보낸 확정된 견적 카운트
+    estimateRepository.countData({
+      moverId: mover.id,
+      status: 'ACCEPTED',
+    }),
 
-  // 기사가 보낸 확정된 견적 조회
-  const estimateList = await estimateRepository.findManyByPaginationData({
-    paginationParams: {
-      orderBy: [
-        {
-          isMovingComplete: 'asc',
+    // 기사가 보낸 확정된 견적 조회
+    estimateRepository.findManyByPaginationData({
+      paginationParams: {
+        orderBy: [
+          {
+            isMovingComplete: 'asc',
+          },
+          {
+            MovingInfo: { movingDate: 'asc' },
+          },
+        ],
+        skip,
+        take,
+        where: {
+          moverId: mover.id,
+          status: 'ACCEPTED',
         },
-        {
-          MovingInfo: { movingDate: 'asc' },
-        },
-      ],
-      skip,
-      take,
-      where: {
-        moverId: mover.id,
-        status: 'ACCEPTED',
       },
-    },
-    select: estimateWithMovinInfoAndcustomerNameSelect,
-  });
+      select: estimateWithMovingInfoAndcustomerNameSelect,
+    }),
+  ]);
 
   const list = estimateList.map((estimate) => {
     const { MovingInfo, Customer, ...rest } = estimate;
@@ -160,7 +168,137 @@ async function findConfirmedEstimateList(
   };
 }
 
+// 기사-보냈 견적 리스트 조회 API
+async function findSentEstimateList(
+  userId: number,
+  skip: number,
+  take: number
+) {
+  const mover = await moverRepository.findFirstData({
+    where: { userId },
+    select: moverSelect,
+  });
+
+  // 기사인지 확인
+  if (!mover) {
+    throw new Error('기사 전용 API 입니다.');
+  }
+
+  const today = todayUTC();
+
+  const whereEntity: Prisma.EstimateWhereInput = {
+    moverId: mover.id,
+    status: { in: ['ACCEPTED', 'WAITING'] },
+  };
+
+  const [total, movingUpcomingCount] = await Promise.all([
+    // 총 리스트 갯수
+    estimateRepository.countData(whereEntity),
+
+    // 이사일이 안지난 리스트 수
+    estimateRepository.countData({
+      ...whereEntity,
+      MovingInfo: { movingDate: { gte: today } },
+    }),
+  ]);
+
+  const movingUpcomingOrderBy = [
+    {
+      status: 'desc',
+    },
+    {
+      MovingInfo: { movingDate: 'asc' },
+    },
+  ];
+
+  let estimateList: EstimateWithMovingInfoAndcustomerNameAndIsConfirmed[];
+  if (movingUpcomingCount >= skip + take) {
+    estimateList = await estimateRepository.findManyByPaginationData({
+      paginationParams: {
+        orderBy: movingUpcomingOrderBy,
+        skip,
+        take,
+        where: {
+          ...whereEntity,
+          MovingInfo: { movingDate: { gte: today } },
+        },
+      },
+      select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+    });
+  } else if (movingUpcomingCount > skip && movingUpcomingCount < skip + take) {
+    const movingUpcomingTake = movingUpcomingCount - skip;
+    const movingOverTake = take - movingUpcomingTake;
+
+    const [movingUpcomingList, movingOverList] = await Promise.all([
+      // movingUpcomingList
+      estimateRepository.findManyByPaginationData({
+        paginationParams: {
+          orderBy: movingUpcomingOrderBy,
+          skip,
+          take: movingUpcomingTake,
+          where: {
+            ...whereEntity,
+            MovingInfo: { movingDate: { gte: today } },
+          },
+        },
+        select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+      }),
+
+      // movingOverList
+      estimateRepository.findManyByPaginationData({
+        paginationParams: {
+          orderBy: { MovingInfo: { movingDate: 'asc' } },
+          skip: 0,
+          take: movingOverTake,
+          where: {
+            ...whereEntity,
+            MovingInfo: { movingDate: { lt: today } },
+          },
+        },
+        select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+      }),
+    ]);
+
+    estimateList = [...movingUpcomingList, ...movingOverList];
+  } else {
+    const movingOverSkip = skip - movingUpcomingCount;
+
+    estimateList = await estimateRepository.findManyByPaginationData({
+      paginationParams: {
+        orderBy: { MovingInfo: { movingDate: 'asc' } },
+        skip: movingOverSkip,
+        take,
+        where: {
+          ...whereEntity,
+          MovingInfo: { movingDate: { lt: today } },
+        },
+      },
+      select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+    });
+  }
+
+  const list = estimateList.map((estimate) => {
+    const { MovingInfo, Customer, EstimateRequest, ...rest } = estimate;
+    const cutomerName = Customer.User.name;
+    const isReqConfirmed = EstimateRequest.isConfirmed;
+
+    return findSentEstimateListMapper(
+      MovingInfo,
+      rest,
+      cutomerName,
+      isReqConfirmed,
+      today
+    );
+  });
+
+  return {
+    total,
+    list,
+  };
+}
+
 export default {
   findReceivedEstimateList,
   findConfirmedEstimateList,
+  findSentEstimateList,
 };

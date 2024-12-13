@@ -63,6 +63,17 @@ export interface CustomerName {
   };
 }
 
+export interface EstimateWithMovingInfoAndcustomerName extends Estimate {
+  MovingInfo: MovingInfo;
+  Customer: CustomerName;
+}
+ 
+export interface EstimateWithMovingInfoAndcustomerNameAndIsConfirmed extends EstimateWithMovingInfoAndcustomerName {
+  EstimateRequest: {
+    isConfirmed: boolean
+  }
+}
+
 export interface FindEstimateReqListByMoverType {
   movingType: $Enums.serviceType;
   movingDate: Date;

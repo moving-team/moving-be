@@ -8,6 +8,7 @@ estimateRouter.use(authenticateToken);
 
 estimateRouter
   .get('/confirmed', estimateController.findConfirmedEstimateList)
+  .get('/sentList', estimateController.findSentEstimateList)
   .get('/:estimateRequestId', estimateController.findReceivedEstimateList);
 
 export default estimateRouter;
