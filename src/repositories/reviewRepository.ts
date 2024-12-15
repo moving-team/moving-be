@@ -21,8 +21,6 @@ type ReviewUpdateInputType = Prisma.ReviewUpdateInput;
 
 type ReviewOrderByType = Prisma.ReviewOrderByWithRelationInput;
 
-
-
 type AggregateResults = {
   _sum?: Prisma.ReviewSumAggregateOutputType;
   _avg?: Prisma.ReviewAvgAggregateOutputType;
@@ -35,27 +33,34 @@ type AggregateResults = {
 function createData<T extends ReviewSelectType>({
   data,
   select,
+  tx,
 }: {
   data: ReviewUncheckedCreateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<ReviewPayload<T>>;
 function createData({
   data,
+  tx,
 }: {
   data: ReviewUncheckedCreateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<ReviewPayload<undefined>>;
 
 async function createData<T extends ReviewSelectType | undefined>({
   data,
   select,
+  tx,
 }: {
   data: ReviewUncheckedCreateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.review.create({ data });
+    return await db.review.create({ data });
   }
-  return await prisma.review.create({
+  return await db.review.create({
     data,
     select,
   });
@@ -219,37 +224,48 @@ function updateData<T extends ReviewSelectType>({
   where,
   data,
   select,
+  tx,
 }: {
   where: ReviewWhereUniqueInputType;
   data: ReviewUpdateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<ReviewPayload<T>>;
 function updateData({
   where,
   data,
+  tx,
 }: {
   where: ReviewWhereUniqueInputType;
   data: ReviewUpdateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<ReviewPayload<undefined>>;
 
 async function updateData<T extends ReviewSelectType | undefined>({
   where,
   data,
   select,
+  tx,
 }: {
   where: ReviewWhereUniqueInputType;
   data: ReviewUpdateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.review.update({ where, data });
+    return await db.review.update({ where, data });
   }
-  return await prisma.review.update({ where, data, select });
+  return await db.review.update({ where, data, select });
 }
 
 // deleteData
-async function deleteData(where: { id: number }): Promise<void> {
-  await prisma.review.delete({ where });
+async function deleteData(
+  where: { id: number },
+  tx?: Prisma.TransactionClient
+): Promise<void> {
+  const db = tx || prisma;
+  await db.review.delete({ where });
 }
 // aggregate 사용
 async function aggregateData({
@@ -276,7 +292,7 @@ async function aggregateData({
     ...(!!_max && { _max }),
   };
 
-  return await prisma.review.aggregate(aggregateOptions) as AggregateResults;
+  return (await prisma.review.aggregate(aggregateOptions)) as AggregateResults;
 }
 
 export default {

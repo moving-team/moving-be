@@ -25,27 +25,34 @@ type EstimateOrderByType = Prisma.EstimateOrderByWithRelationInput;
 function createData<T extends EstimateSelectType>({
   data,
   select,
+  tx
 }: {
   data: EstimateUncheckedCreateInputType;
   select: T;
+  tx?: Prisma.TransactionClient
 }): Promise<EstimatePayload<T>>;
 function createData({
   data,
+  tx
 }: {
   data: EstimateUncheckedCreateInputType;
+  tx?: Prisma.TransactionClient
 }): Promise<EstimatePayload<undefined>>;
 
 async function createData<T extends EstimateSelectType | undefined>({
   data,
   select,
+  tx
 }: {
   data: EstimateUncheckedCreateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient
 }) {
+  const db = tx || prisma
   if (select === undefined) {
-    return await prisma.estimate.create({ data });
+    return await db.estimate.create({ data });
   }
-  return await prisma.estimate.create({
+  return await db.estimate.create({
     data,
     select,
   });
@@ -205,37 +212,45 @@ function updateData<T extends EstimateSelectType>({
   where,
   data,
   select,
+  tx,
 }: {
   where: EstimateWhereUniqueInputType;
   data: EstimateUpdateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<EstimatePayload<T>>;
 function updateData({
   where,
   data,
+  tx,
 }: {
   where: EstimateWhereUniqueInputType;
   data: EstimateUpdateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<EstimatePayload<undefined>>;
 
 async function updateData<T extends EstimateSelectType | undefined>({
   where,
   data,
   select,
+  tx,
 }: {
   where: EstimateWhereUniqueInputType;
   data: EstimateUpdateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.estimate.update({ where, data });
+    return await db.estimate.update({ where, data });
   }
-  return await prisma.estimate.update({ where, data, select });
+  return await db.estimate.update({ where, data, select });
 }
 
 // deleteData
-async function deleteData(where: { id: number }): Promise<void> {
-  await prisma.estimate.delete({ where });
+async function deleteData(where: { id: number }, tx?: Prisma.TransactionClient): Promise<void> {
+  const db = tx || prisma
+  await db.estimate.delete({ where });
 }
 
 export default {
@@ -246,5 +261,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
-  findManyData
+  findManyData,
 };

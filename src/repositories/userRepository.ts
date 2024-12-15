@@ -26,27 +26,34 @@ type UserOrderByType = Prisma.UserOrderByWithRelationInput;
 function createData<T extends UserSelectType>({
   data,
   select,
+  tx,
 }: {
   data: UserUncheckedCreateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<UserPayload<T>>;
 function createData({
   data,
+  tx,
 }: {
   data: UserUncheckedCreateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<UserPayload<undefined>>;
 
 async function createData<T extends UserSelectType | undefined>({
   data,
   select,
+  tx,
 }: {
   data: UserUncheckedCreateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.user.create({ data });
+    return await db.user.create({ data });
   }
-  return await prisma.user.create({
+  return await db.user.create({
     data,
     select,
   });
@@ -208,37 +215,48 @@ function updateData<T extends UserSelectType>({
   where,
   data,
   select,
+  tx,
 }: {
   where: UserWhereUniqueInputType;
   data: UserUpdateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<UserPayload<T>>;
 function updateData({
   where,
   data,
+  tx,
 }: {
   where: UserWhereUniqueInputType;
   data: UserUpdateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<UserPayload<undefined>>;
 
 async function updateData<T extends UserSelectType | undefined>({
   where,
   data,
   select,
+  tx,
 }: {
   where: UserWhereUniqueInputType;
   data: UserUpdateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.user.update({ where, data });
+    return await db.user.update({ where, data });
   }
-  return await prisma.user.update({ where, data, select });
+  return await db.user.update({ where, data, select });
 }
 
 // deleteData
-async function deleteData(where: { id: number }): Promise<void> {
-  await prisma.user.delete({ where });
+async function deleteData(
+  where: { id: number },
+  tx?: Prisma.TransactionClient
+): Promise<void> {
+  const db = tx || prisma;
+  await db.user.delete({ where });
 }
 
 export default {

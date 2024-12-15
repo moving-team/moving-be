@@ -16,15 +16,26 @@ import {
   findSentEstimateListMapper,
   findWatingEstimateListMapper,
 } from './mappers/estimateMapper';
-import { estimateReqMovingInfoWithDateSelect } from './selects/estimateRequsetSelect';
+import {
+  estimateReqMovingInfoWithDateSelect,
+  estimateReqSelect,
+} from './selects/estimateRequsetSelect';
 import {
   estimateMoverAndMovingInfoSelect,
   estimateMoverSelect,
+  estimateSelect,
+  estimateWithEstimateReqAndMovingInfoAndMoverSelect,
+  estimateWithEstimateReqAndMovingInfoSelect,
   estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
   estimateWithMovingInfoAndcustomerNameSelect,
 } from './selects/estimateSelect';
-import { moverSelect } from './selects/moverSelect';
+import { moverSelect, moverUserSelect } from './selects/moverSelect';
 import { userCustomerSelect } from './selects/userSelect';
+import customerRepository from '../repositories/customerRepository';
+import { customerSelect } from './selects/customerSelect';
+import prisma from '../config/prisma';
+import notificationRepository from '../repositories/notificationRepository';
+import { createNotificationContents } from '../utils/createNotificationContents';
 
 // 유저-받았던 견적 리스트 조회 API
 async function findReceivedEstimateList(userId: number, estimateReqId: number) {
@@ -364,9 +375,94 @@ async function findWatingEstimateList(userId: number) {
   return { list };
 }
 
+// 유저-견적 확정 API 
+async function updateConfirmEstimate(userId: number, estimateId: number) {
+  const user = await userRepository.findFirstData({
+    where: { id: userId },
+    select: userCustomerSelect,
+  });
+
+  // 소비자인지 확인
+  if (!user?.Customer) {
+    throw new Error('소비자 전용 API 입니다.');
+  }
+
+  const estimate = await estimateRepository.findFirstData({
+    where: {
+      id: estimateId,
+      customerId: user.Customer.id,
+    },
+    select: estimateWithEstimateReqAndMovingInfoAndMoverSelect,
+  });
+
+  // 해당 견적이 소비자와 관련있는지 확인
+  if (!estimate) {
+    throw new Error('권한이 없습니다');
+  }
+
+  const estimateReq = estimate.EstimateRequest;
+  const movingDate = new Date(estimate.MovingInfo.movingDate).getTime();
+  const todayString = todayUTC();
+  const today = new Date(todayString).getTime();
+
+  if (estimateReq.isConfirmed) {
+    throw new Error('이미 견적이 확정된 요청입니다. 추가 확정은 불가능합니다.');
+  } else if (estimateReq.isCancelled) {
+    throw new Error('요청이 취소 되어 견적을 확정할 수 없습니다.');
+  } else if (movingDate < today) {
+    throw new Error('이사 날짜가 지나 견적을 확정할 수 없습니다.');
+  }
+
+  const mover = await moverRepository.findFirstData({
+    where: { id: estimate.Mover.id },
+    select: moverUserSelect,
+  });
+
+  if (!mover) {
+    throw new Error('다시 시도해주세요');
+  }
+
+  const contents = createNotificationContents({
+    type: 'confirm',
+    customerName: user.name,
+    moverName: mover.nickname,
+  }) as string;
+
+  await prisma.$transaction(async (tx) => {
+    // 견적 상태 변경
+    await estimateRepository.updateData({
+      where: { id: estimateId },
+      data: { status: 'ACCEPTED' },
+      select: estimateSelect,
+      tx,
+    });
+
+    // 해당 견적의 요청의 isConfirmed 변경
+    await estimateRequestRepository.updateData({
+      where: { id: estimateReq.id },
+      data: { isConfirmed: true },
+      select: estimateReqSelect,
+      tx,
+    });
+
+    // 알림 생성
+    await notificationRepository.createData({
+      data: {
+        userId: mover.User.id,
+        estimateRequestId: estimate.EstimateRequest.id,
+        estimateId,
+        contents,
+      },
+    });
+  });
+
+  return { estimateId, isConfirmed: true };
+}
+
 export default {
   findReceivedEstimateList,
   findConfirmedEstimateList,
   findSentEstimateList,
   findWatingEstimateList,
+  updateConfirmEstimate,
 };

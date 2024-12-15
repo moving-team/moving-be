@@ -156,6 +156,7 @@ model EstimateRequest {
 
   Estimate                Estimate[]
   AssignedEstimateRequest AssignedEstimateRequest[]
+  Notification            Notification[]
 
   @@map("estimate_requests")
 }
@@ -212,17 +213,19 @@ model Favorite {
 }
 
 model Notification {
-  id                        Int                     @id @default(autoincrement())
-  User                      User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId                    Int                     @map("user_id")
-  Estimate                  Estimate                @relation(fields: [estimateId], references: [id], onDelete: Cascade)
-  estimateId                Int                     @map("estimate_id")
-  AssignedEstimateRequest   AssignedEstimateRequest @relation(fields: [assignedEstimateRequestId], references: [id], onDelete: Cascade)
-  assignedEstimateRequestId Int                     @map("assigned_estimate_request_id")
+  id                        Int                      @id @default(autoincrement())
+  User                      User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId                    Int                      @map("user_id")
+  EstimateRequest           EstimateRequest          @relation(fields: [estimateRequestId], references: [id], onDelete: Cascade)
+  estimateRequestId         Int                      @map("estimate_request_id")
+  Estimate                  Estimate?                @relation(fields: [estimateId], references: [id], onDelete: Cascade)
+  estimateId                Int?                     @map("estimate_id")
+  AssignedEstimateRequest   AssignedEstimateRequest? @relation(fields: [assignedEstimateRequestId], references: [id], onDelete: Cascade)
+  assignedEstimateRequestId Int?                     @map("assigned_estimate_request_id")
   contents                  String
-  isRead                    Boolean                 @default(false) @map("is_read")
-  createdAt                 DateTime                @default(now())
-  updatedAt                 DateTime                @updatedAt
+  isRead                    Boolean                  @default(false) @map("is_read")
+  createdAt                 DateTime                 @default(now())
+  updatedAt                 DateTime                 @updatedAt
 
   @@map("notification")
 }

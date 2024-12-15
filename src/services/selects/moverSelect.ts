@@ -1,3 +1,5 @@
+import { userSelect } from "./userSelect";
+
 export const moverSelect = {
   id: true,
   profileImage: true,
@@ -9,6 +11,11 @@ export const moverSelect = {
   serviceType: true,
   confirmationCount: true,
 };
+
+export const moverUserSelect = {
+  ...moverSelect,
+  User: {select: userSelect}
+}
 
 export const favoriteMoverSelect = {
     id: true,
