@@ -14,9 +14,11 @@ import {
   findConfirmedEstimateListMapper,
   findReceivedEstimateListMapper,
   findSentEstimateListMapper,
+  findWatingEstimateListMapper,
 } from './mappers/estimateMapper';
 import { estimateReqMovingInfoWithDateSelect } from './selects/estimateRequsetSelect';
 import {
+  estimateMoverAndMovingInfoSelect,
   estimateMoverSelect,
   estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
   estimateWithMovingInfoAndcustomerNameSelect,
@@ -297,8 +299,74 @@ async function findSentEstimateList(
   };
 }
 
+// 유저-대기중인 견적 조회 API
+async function findWatingEstimateList(userId: number) {
+  const user = await userRepository.findFirstData({
+    where: { id: userId },
+    select: userCustomerSelect,
+  });
+
+  if (!user?.Customer) {
+    // 소비자자인지 확인
+    throw new Error('소비자 전용 API 입니다.');
+  }
+
+  const today = todayUTC();
+  const customerId = user.Customer.id;
+
+  // 견적 조회(기사님 정보, 이사정보, 지정 견적 먼저, 오래된 순)
+  const estimateList = await estimateRepository.findManyData({
+    where: {
+      customerId,
+      MovingInfo: { movingDate: { gte: today } },
+      EstimateRequest: {
+        isConfirmed: false,
+        isCancelled: false,
+      },
+    },
+    orderBy: [{ isAssigned: 'desc' }, { createdAt: 'asc' }],
+    select: estimateMoverAndMovingInfoSelect,
+  });
+
+  const list = await Promise.all(
+    estimateList.map(async (estimate) => {
+      const [reviewStats, confirmationCount, favorite] = await Promise.all([
+        // 리뷰 평점 및 갯수
+        getMoverReviewStats(estimate.Mover.id),
+
+        // 총 확정 갯수
+        estimateRepository.countData({
+          moverId: estimate.Mover.id,
+          status: 'ACCEPTED',
+        }),
+
+        // 찜 갯수 및 찜 여부
+        getMoverFavoriteStats(estimate.Mover.id, customerId),
+      ]);
+
+      const { totalReviews, averageScore } = reviewStats;
+      const { favoriteCount, isFavorite } = favorite;
+      const { MovingInfo, Mover, ...rest } = estimate;
+
+      return findWatingEstimateListMapper(
+        rest,
+        Mover,
+        MovingInfo,
+        averageScore,
+        totalReviews,
+        confirmationCount,
+        favoriteCount,
+        isFavorite
+      );
+    })
+  );
+
+  return { list };
+}
+
 export default {
   findReceivedEstimateList,
   findConfirmedEstimateList,
   findSentEstimateList,
+  findWatingEstimateList,
 };

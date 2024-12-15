@@ -15,6 +15,11 @@ export const estimateMoverSelect = {
   Mover: { select: moverSelect },
 };
 
+export const estimateMoverAndMovingInfoSelect = {
+  ...estimateMoverSelect,
+  MovingInfo: {select: movingInfoSelect}
+}
+
 export const estimateWithMoverIdSelect = {
   ...estimateSelect,
   moverId: true,

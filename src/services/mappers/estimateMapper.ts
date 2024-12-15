@@ -2,9 +2,9 @@ import {
   Estimate,
   EstimateReqWithMovingInfoAndDate,
   EstimateWithMover,
+  Mover,
   MovingInfo,
 } from '../../types/serviceType';
-import { todayUTC } from '../../utils/dateUtil';
 import { changeMovingDate, changeRegion } from '../../utils/mapperUtil';
 
 export function estimateReqInfoMapper(
@@ -94,7 +94,7 @@ export function findSentEstimateListMapper(
   if (movingDate < todayGetTime) {
     isMoveDateOver = true;
   }
-  
+
   return {
     estimateId: estimate.id,
     movingType: movingInfo.movingType,
@@ -103,6 +103,38 @@ export function findSentEstimateListMapper(
     isReqConfirmed,
     isMoveDateOver,
     customerName,
+    movingDate: changeMovingDate(movingInfo.movingDate),
+    departure: changeRegion(movingInfo.departure),
+    arrival: changeRegion(movingInfo.arrival),
+    price: estimate.price,
+  };
+}
+
+export function findWatingEstimateListMapper(
+  estimate: Estimate,
+  mover: Mover,
+  movingInfo: MovingInfo,
+  averageScore: number,
+  totalReviews: number,
+  confirmationCount: number,
+  favoriteCount: number,
+  isFavorite: boolean
+) {
+  return {
+    estimateId: estimate.id,
+    moverId: mover.id,
+    serviceType: mover.serviceType,
+    isAssigned: estimate.isAssigned,
+    profileImg: mover.profileImage,
+    moverName: mover.nickname,
+    reviewStats: {
+      averageScore,
+      totalReviews,
+    },
+    career: mover.career,
+    confirmationCount,
+    favoriteCount,
+    isFavorite,
     movingDate: changeMovingDate(movingInfo.movingDate),
     departure: changeRegion(movingInfo.departure),
     arrival: changeRegion(movingInfo.arrival),
