@@ -3,7 +3,10 @@ import estimateRepository from '../repositories/estimateRepository';
 import estimateRequestRepository from '../repositories/estimateRequestRepository';
 import moverRepository from '../repositories/moverRepository';
 import userRepository from '../repositories/userRepository';
-import { EstimateWithMovingInfoAndcustomerNameAndIsConfirmed } from '../types/serviceType';
+import {
+  Estimate,
+  EstimateWithMovingInfoAndcustomerNameAndIsConfirmed,
+} from '../types/serviceType';
 import { todayUTC } from '../utils/dateUtil';
 import {
   getMoverFavoriteStats,
@@ -19,23 +22,24 @@ import {
 import {
   estimateReqMovingInfoWithDateSelect,
   estimateReqSelect,
+  estimateReqwithMovingInfoAndCustomerAndUserNameSelect,
 } from './selects/estimateRequsetSelect';
 import {
   estimateMoverAndMovingInfoSelect,
   estimateMoverSelect,
   estimateSelect,
   estimateWithEstimateReqAndMovingInfoAndMoverSelect,
-  estimateWithEstimateReqAndMovingInfoSelect,
   estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
   estimateWithMovingInfoAndcustomerNameSelect,
 } from './selects/estimateSelect';
 import { moverSelect, moverUserSelect } from './selects/moverSelect';
 import { userCustomerSelect } from './selects/userSelect';
-import customerRepository from '../repositories/customerRepository';
-import { customerSelect } from './selects/customerSelect';
 import prisma from '../config/prisma';
 import notificationRepository from '../repositories/notificationRepository';
 import { createNotificationContents } from '../utils/createNotificationContents';
+import { CreateEstimate } from '../structs/estimate-struct';
+import assignedEstimateRequestRepository from '../repositories/assignedEstimateRequestRepository';
+import { assignedEstimateReqSelect } from './selects/assignedEstimateRequestSelect';
 
 // 유저-받았던 견적 리스트 조회 API
 async function findReceivedEstimateList(userId: number, estimateReqId: number) {
@@ -375,7 +379,7 @@ async function findWatingEstimateList(userId: number) {
   return { list };
 }
 
-// 유저-견적 확정 API 
+// 유저-견적 확정 API
 async function updateConfirmEstimate(userId: number, estimateId: number) {
   const user = await userRepository.findFirstData({
     where: { id: userId },
@@ -459,10 +463,171 @@ async function updateConfirmEstimate(userId: number, estimateId: number) {
   return { estimateId, isConfirmed: true };
 }
 
+// 기사-견적 작성 API
+async function createEstimate(userId: number, reqData: CreateEstimate) {
+  const { estimateRequestId, ...rest } = reqData;
+
+  const [mover, estimateReq, checkEstimate, isAssigned] = await Promise.all([
+    moverRepository.findFirstData({
+      where: { userId },
+      select: moverSelect,
+    }),
+
+    estimateRequestRepository.findFirstData({
+      where: { id: estimateRequestId },
+      select: estimateReqwithMovingInfoAndCustomerAndUserNameSelect,
+    }),
+
+    // 견적 작성 여부 확인
+    estimateRepository.findFirstData({
+      where: {
+        Mover: { userId },
+        estimateRequestId,
+      },
+    }),
+
+    // 지정 요청 여부 확인
+    assignedEstimateRequestRepository.findFirstData({
+      where: {
+        estimateRequestId,
+        Mover: { userId },
+        isRejected: false,
+      },
+      select: assignedEstimateReqSelect,
+    }),
+  ]);
+
+  if (!mover) {
+    // 기사인지 확인
+    throw new Error('기사 전용 API 입니다.');
+  } else if (
+    mover.serviceRegion.length === 0 ||
+    mover.serviceType.length === 0
+  ) {
+    // 프로필 등록 여부 확인
+    throw new Error('프로필을 먼저 등록해주세요.');
+  } else if (!estimateReq) {
+    // 견적 유무 확인
+    throw new Error('존재하지 않은 요청입니다.');
+  } else if (estimateReq.isConfirmed) {
+    // 견적 확정 여부
+    throw new Error('이미 확정된 견적이 있는 요청입니다.');
+  } else if (estimateReq.isCancelled) {
+    // 견적 요청 취소 여부
+    throw new Error('취소된 견적입니다.');
+  } else if (checkEstimate) {
+    // 견적 작성 여부
+    throw new Error('이미 견적을 작성하였습니다.');
+  }
+
+  const todayString = todayUTC();
+  const today = new Date(todayString).getTime();
+  const movingDate = new Date(estimateReq.MovingInfo.movingDate).getTime();
+
+  // 이사일이 지났는지 확인
+  if (today > movingDate) {
+    throw new Error('이사일이 지난 요청입니다.');
+  }
+
+  let estimate: Estimate;
+
+  if (isAssigned) {
+    const estimateCount = await estimateRepository.countData({
+      estimateRequestId,
+      isAssigned: true,
+    });
+
+    if (estimateCount === 3) {
+      throw new Error(
+        '해당 견적 요청은 이미 최대치의 견적을 받아 견적을 보낼 수 없습니다.'
+      );
+    }
+
+    estimate = await prisma.$transaction(async (tx) => {
+      const createData = await estimateRepository.createData({
+        data: {
+          ...rest,
+          customerId: estimateReq.Customer.id,
+          moverId: mover.id,
+          estimateRequestId,
+          movingInfoId: estimateReq.MovingInfo.id,
+          isAssigned: true,
+        },
+        select: estimateSelect,
+      });
+
+      const contents = createNotificationContents({
+        type: 'writen',
+        moverName: mover.nickname,
+        movingType: estimateReq.MovingInfo.movingType,
+      }) as string;
+
+      await notificationRepository.createData({
+        data: {
+          userId: estimateReq.Customer.User.id,
+          estimateRequestId,
+          estimateId: createData.id,
+          contents,
+        },
+      });
+
+      return createData;
+    });
+  } else {
+    const estimateCount = await estimateRepository.countData({
+      estimateRequestId,
+      isAssigned: false,
+    });
+
+    if (estimateCount === 5) {
+      throw new Error(
+        '해당 견적 요청은 이미 최대치의 견적을 받아 견적을 보낼 수 없습니다.'
+      );
+    }
+
+    estimate = await prisma.$transaction(async (tx) => {
+      const createData = await estimateRepository.createData({
+        data: {
+          ...rest,
+          customerId: estimateReq.Customer.id,
+          moverId: mover.id,
+          estimateRequestId,
+          movingInfoId: estimateReq.MovingInfo.id,
+        },
+        select: estimateSelect,
+      });
+
+      const contents = createNotificationContents({
+        type: 'writen',
+        moverName: mover.nickname,
+        movingType: estimateReq.MovingInfo.movingType,
+      }) as string;
+
+      await notificationRepository.createData({
+        data: {
+          userId: estimateReq.Customer.User.id,
+          estimateRequestId,
+          estimateId: createData.id,
+          contents,
+        },
+      });
+
+      return createData;
+    });
+  }
+
+  return {
+    estimateId: estimate.id,
+    comment: estimateReq.comment,
+    price: estimate.price,
+  };
+}
+
 export default {
   findReceivedEstimateList,
   findConfirmedEstimateList,
   findSentEstimateList,
   findWatingEstimateList,
   updateConfirmEstimate,
+  createEstimate,
 };
