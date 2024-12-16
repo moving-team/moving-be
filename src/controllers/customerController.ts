@@ -12,7 +12,7 @@ const getCustomerController = async (
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다');
     }
     const { id } = (req as any).user as { id: number };
     const customer = await customerService.getCustomer(id);
@@ -33,7 +33,7 @@ const patchCustomerProfileController = async (
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다');
     }
     const { id } = (req as any).user as { id: number };
 
@@ -62,7 +62,7 @@ const patchCustomerInfoController = async (
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다');
     }
     const { id } = (req as any).user as { id: number };
     await customerService.patchCustomerInfo(id, req.body);

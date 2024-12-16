@@ -73,7 +73,7 @@ const getMoverController = async (
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다');
     }
 
     const { id } = (req as any).user as { id: number };
@@ -95,7 +95,7 @@ const patchMoverProfileController = async (
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다');
     }
     const { id } = (req as any).user as { id: number };
     const profileImage = req.file ? (req.file as any).location : undefined;
@@ -122,7 +122,7 @@ const patchMoverInfoController = async (
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다');
     }
     const { id } = (req as any).user as { id: number };
     await moverService.patchMoverInfo(id, req.body);
