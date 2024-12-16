@@ -57,3 +57,12 @@ export const estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect = {
     select: { isConfirmed: true },
   },
 };
+
+export const estimateWithUserIdSelect = {
+  ...estimateMoverSelect,
+  Mover: {
+    select: {
+      User: { select: { id: true } },
+    },
+  },
+};
