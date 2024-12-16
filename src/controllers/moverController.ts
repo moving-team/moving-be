@@ -9,13 +9,6 @@ const getMoverListController = async (
   next: NextFunction
 ) => {
   try {
-    if (
-      !req.user ||
-      typeof req.user === 'string' ||
-      typeof req.user.id !== 'number'
-    ) {
-      throw new Error('다시 시도해 주세요');
-    }
     const { id } = (req as any).user as { id: number };
     const page = req.query.page ? parseInt(req.query.page as string, 10) : 1;
     const pageSize = req.query.pageSize
@@ -60,13 +53,6 @@ const getMoverDetailController = async (
   next: NextFunction
 ) => {
   try {
-    if (
-      !req.user ||
-      typeof req.user === 'string' ||
-      typeof req.user.id !== 'number'
-    ) {
-      throw new Error('다시 시도해 주세요');
-    }
     const { id } = (req as any).user as { id: number };
     const moverId = parseInt(req.params.moverId, 10);
     const mover = await moverService.getMoverDetail(id, moverId);
