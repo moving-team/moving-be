@@ -20,7 +20,10 @@ router
   .route('/:moverId/detail')
   .all(authenticateToken)
   .get(moverController.getMoverDetailController);
-router.route('/list').get(moverController.getMoverListController);
+router
+  .route('/list')
+  .all(authenticateToken)
+  .get(moverController.getMoverListController);
 router
   .route('/info')
   .all(authenticateToken)

@@ -11,7 +11,8 @@ export const authenticateToken = async (
   const refreshToken = req.cookies?.refreshToken;
 
   if (!accessToken && !refreshToken) {
-    res.status(401).json({ message: '인증 토큰이 없습니다.' });
+    req.user = {};
+    next();
     return;
   }
 

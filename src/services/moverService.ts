@@ -175,17 +175,30 @@ const getMoverDetail = async (userId: number, moverId: number) => {
   const favoriteCount = await favoriteRepository.countData({
     moverId: moverData?.id,
   });
-  const customerData = await customerRepository.findFirstData({
-    where: { userId: userId },
-  });
-  const estimateReqData = await estimateRequestRepository.findFirstData({
-    where: { customerId: customerData?.id },
-  });
-  const isAssigned = estimateReqData
-    ? !!(await assignedEstimateRequestRepository.findFirstData({
-        where: { estimateRequestId: estimateReqData.id },
-      }))
-    : false;
+  let isAssigned = false;
+  let isFavorite = false;
+  let isConfirmed = false;
+  if (userId) {
+    const customerData = await customerRepository.findFirstData({
+      where: { id: userId },
+    });
+    const estimateReqData = await estimateRequestRepository.findFirstData({
+      where: { customerId: customerData?.id },
+    });
+    if (estimateReqData?.isConfirmed === true) {
+      isConfirmed = true;
+    }
+    if (isConfirmed) {
+      isAssigned = estimateReqData
+        ? !!(await assignedEstimateRequestRepository.findFirstData({
+            where: { estimateRequestId: estimateReqData.id },
+          }))
+        : false;
+    }
+    isFavorite = !!(await favoriteRepository.findFirstData({
+      where: { moverId: moverData?.id, customerId: userId },
+    }));
+  }
 
   if (moverData && moverData.Review) {
     const reviews = moverData.Review;
@@ -206,6 +219,8 @@ const getMoverDetail = async (userId: number, moverId: number) => {
       },
       favoriteCount: favoriteCount,
       isAssigned: isAssigned,
+      isFavorite: isFavorite,
+      isConfirmed: isConfirmed,
     };
   }
 
