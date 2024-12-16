@@ -183,7 +183,7 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
         movingType: deleteEstimateReq.MovingInfo.movingType,
       }) as string;
 
-      // 알람 생성성
+      // 알람 생성
       await notificationRepository.createData({
         data: {
           userId: estimate.Mover.User.id,
