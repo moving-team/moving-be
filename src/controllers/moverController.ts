@@ -39,6 +39,7 @@ const getMoverListController = async (
       | undefined;
 
     const movers = await moverService.getMoverList({
+      id,
       page,
       pageSize,
       keyword,

@@ -8,6 +8,7 @@ import { serviceRegion, serviceType } from '@prisma/client';
 import bcrypt from 'bcrypt';
 
 const getMoverList = async ({
+  id,
   page,
   pageSize,
   keyword,
@@ -16,6 +17,7 @@ const getMoverList = async ({
   selectedServiceType,
   selectedServiceRegion,
 }: {
+  id?: number;
   page?: number;
   pageSize?: number;
   keyword?: string;
@@ -93,6 +95,30 @@ const getMoverList = async ({
           ).toFixed(1)
         );
       }
+      let isAssigned = false;
+      let isFavorite = false;
+      let isConfirmed = false;
+      if (id) {
+        const customerData = await customerRepository.findFirstData({
+          where: { id: id },
+        });
+        const estimateReqData = await estimateRequestRepository.findFirstData({
+          where: { customerId: customerData?.id },
+        });
+        if (estimateReqData?.isConfirmed === true) {
+          isConfirmed = true;
+        }
+        if (isConfirmed) {
+          isAssigned = estimateReqData
+            ? !!(await assignedEstimateRequestRepository.findFirstData({
+                where: { estimateRequestId: estimateReqData.id },
+              }))
+            : false;
+        }
+        isFavorite = !!(await favoriteRepository.findFirstData({
+          where: { moverId: mover?.id, customerId: id },
+        }));
+      }
 
       const { Review, profileImage, nickname, ...moverDataWithoutReviews } =
         mover;
@@ -106,6 +132,8 @@ const getMoverList = async ({
           totalReviews: reviewCount,
         },
         favoriteCount,
+        isAssigned,
+        isFavorite,
       };
     })
   );
