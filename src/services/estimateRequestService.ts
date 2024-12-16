@@ -21,10 +21,15 @@ import {
 import { customerSelect } from './selects/customerSelect';
 import {
   estimateReqCustomerSelect,
+  estimateReqMovingInfoSelect,
   estimateReqMovingInfoWithDateSelect,
   estimateReqSelect,
 } from './selects/estimateRequsetSelect';
-import { estimateMoverSelect, estimateSelect } from './selects/estimateSelect';
+import {
+  estimateMoverSelect,
+  estimateSelect,
+  estimateWithUserIdSelect,
+} from './selects/estimateSelect';
 import {
   movingInfoEstimateReqUserNameWithDateSelect,
   movingInfoEstimateReqWithDateSelect,
@@ -38,6 +43,9 @@ import {
   getMoverFavoriteStats,
   getMoverReviewStats,
 } from '../utils/moverUtile';
+import prisma from '../config/prisma';
+import notificationRepository from '../repositories/notificationRepository';
+import { createNotificationContents } from '../utils/createNotificationContents';
 
 export interface PagenationQuery {
   type?: $Enums.serviceType | $Enums.serviceType[];
@@ -124,7 +132,7 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
       select: estimateReqCustomerSelect,
     }),
 
-    userRepository.findUniqueOrThrowtData({
+    userRepository.findFirstData({
       where: { id: userId },
       select: userCustomerSelect,
     }),
@@ -135,41 +143,59 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
     throw new Error('존재하지 않는 견적 요청입니다.');
   } else if (estimateReq.isCancelled) {
     throw new Error('이미 취소된 요청입니다.');
+  } else if (estimateReq.isConfirmed) {
+    throw new Error("이미 확정한 요청은 취소할 수 없습니다.");
+    
   }
 
   // 권한 확인
-  if (user.Customer && user.Customer.id !== estimateReq.Customer.id) {
+  if (!user || !user.Customer) {
+    throw new Error('소비자 전용 API 입니다.');
+  } else if (user.Customer.id !== estimateReq.Customer.id) {
     throw new Error('권한이 없습니다.');
-  }
-
-  // 취소 여부 수정
-  const deleteEstimateReq = await estimateRequestRepository.updateData({
-    where: { id: estimateRequestId },
-    data: { isCancelled: true },
-    select: estimateReqSelect,
-  });
-
-  // 취소 여부가 변경이 안됐을 때
-  if (!deleteEstimateReq.isCancelled) {
-    throw new Error('다시 시도해 주세요.');
   }
 
   // 해당 요청에 보낸 견적 조회
   const estimateList = await estimateRepository.findManyData({
     where: { estimateRequestId },
-    select: estimateSelect,
+    select: estimateWithUserIdSelect,
   });
 
-  // 견적 상태 수정
-  Promise.all(
+  const deleteEstimateReq = await prisma.$transaction(async (tx) => {
+    // 취소 여부 수정
+    const estimateReq = await estimateRequestRepository.updateData({
+      where: { id: estimateRequestId },
+      data: { isCancelled: true },
+      select: estimateReqMovingInfoSelect,
+    });
+
     estimateList.map(async (estimate) => {
+      // 견적 상태 수정
       await estimateRepository.updateData({
         where: { id: estimate.id },
         data: { status: 'REJECTED' },
         select: estimateSelect,
       });
-    })
-  );
+
+      const contents = createNotificationContents({
+        type: 'cancel',
+        customerName: user.name,
+        movingType: deleteEstimateReq.MovingInfo.movingType,
+      }) as string;
+
+      // 알람 생성성
+      await notificationRepository.createData({
+        data: {
+          userId: estimate.Mover.User.id,
+          estimateRequestId,
+          estimateId: estimate.id,
+          contents,
+        },
+      });
+    });
+
+    return estimateReq;
+  });
 
   return {
     estimateReqId: deleteEstimateReq.id,

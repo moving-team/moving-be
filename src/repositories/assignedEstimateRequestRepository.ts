@@ -31,27 +31,34 @@ type AssignedEstimateReqOrderByType =
 function createData<T extends AssignedEstimateReqSelectType>({
   data,
   select,
+  tx,
 }: {
   data: AssignedEstimateReqUncheckedCreateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<AssignedEstimateReqPayload<T>>;
 function createData({
   data,
+  tx,
 }: {
   data: AssignedEstimateReqUncheckedCreateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<AssignedEstimateReqPayload<undefined>>;
 
 async function createData<T extends AssignedEstimateReqSelectType | undefined>({
   data,
   select,
+  tx,
 }: {
   data: AssignedEstimateReqUncheckedCreateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.assignedEstimateRequest.create({ data });
+    return await db.assignedEstimateRequest.create({ data });
   }
-  return await prisma.assignedEstimateRequest.create({
+  return await db.assignedEstimateRequest.create({
     data,
     select,
   });
@@ -194,7 +201,9 @@ function findManyData({
   orderBy?: AssignedEstimateReqOrderByType;
 }): Promise<AssignedEstimateReqPayload<undefined>[]>;
 
-async function findManyData<T extends AssignedEstimateReqSelectType | undefined>({
+async function findManyData<
+  T extends AssignedEstimateReqSelectType | undefined
+>({
   where,
   select,
   orderBy = { createdAt: 'desc' },
@@ -221,37 +230,48 @@ function updateData<T extends AssignedEstimateReqSelectType>({
   where,
   data,
   select,
+  tx,
 }: {
   where: AssignedEstimateReqWhereUniqueInputType;
   data: AssignedEstimateReqUpdateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<AssignedEstimateReqPayload<T>>;
 function updateData({
   where,
   data,
+  tx,
 }: {
   where: AssignedEstimateReqWhereUniqueInputType;
   data: AssignedEstimateReqUpdateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<AssignedEstimateReqPayload<undefined>>;
 
 async function updateData<T extends AssignedEstimateReqSelectType | undefined>({
   where,
   data,
   select,
+  tx,
 }: {
   where: AssignedEstimateReqWhereUniqueInputType;
   data: AssignedEstimateReqUpdateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.assignedEstimateRequest.update({ where, data });
+    return await db.assignedEstimateRequest.update({ where, data });
   }
-  return await prisma.assignedEstimateRequest.update({ where, data, select });
+  return await db.assignedEstimateRequest.update({ where, data, select });
 }
 
 // deleteData
-async function deleteData(where: { id: number }): Promise<void> {
-  await prisma.assignedEstimateRequest.delete({ where });
+async function deleteData(
+  where: { id: number },
+  tx?: Prisma.TransactionClient
+): Promise<void> {
+  const db = tx || prisma;
+  await db.assignedEstimateRequest.delete({ where });
 }
 
 export default {
@@ -262,5 +282,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
-  findManyData
+  findManyData,
 };

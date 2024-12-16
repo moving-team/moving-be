@@ -25,27 +25,34 @@ type MovingInfoOrderByType = Prisma.MovingInfoOrderByWithRelationInput;
 function createData<T extends MovingInfoSelectType>({
   data,
   select,
+  tx,
 }: {
   data: MovingInfoUncheckedCreateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<MovingInfoPayload<T>>;
 function createData({
   data,
+  tx,
 }: {
   data: MovingInfoUncheckedCreateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<MovingInfoPayload<undefined>>;
 
 async function createData<T extends MovingInfoSelectType | undefined>({
   data,
   select,
+  tx,
 }: {
   data: MovingInfoUncheckedCreateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.movingInfo.create({ data });
+    return await db.movingInfo.create({ data });
   }
-  return await prisma.movingInfo.create({
+  return await db.movingInfo.create({
     data,
     select,
   });
@@ -205,37 +212,48 @@ function updateData<T extends MovingInfoSelectType>({
   where,
   data,
   select,
+  tx,
 }: {
   where: MovingInfoWhereUniqueInputType;
   data: MovingInfoUpdateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<MovingInfoPayload<T>>;
 function updateData({
   where,
   data,
+  tx,
 }: {
   where: MovingInfoWhereUniqueInputType;
   data: MovingInfoUpdateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<MovingInfoPayload<undefined>>;
 
 async function updateData<T extends MovingInfoSelectType | undefined>({
   where,
   data,
   select,
+  tx,
 }: {
   where: MovingInfoWhereUniqueInputType;
   data: MovingInfoUpdateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.movingInfo.update({ where, data });
+    return await db.movingInfo.update({ where, data });
   }
-  return await prisma.movingInfo.update({ where, data, select });
+  return await db.movingInfo.update({ where, data, select });
 }
 
 // deleteData
-async function deleteData(where: { id: number }): Promise<void> {
-  await prisma.movingInfo.delete({ where });
+async function deleteData(
+  where: { id: number },
+  tx?: Prisma.TransactionClient
+): Promise<void> {
+  const db = tx || prisma;
+  await db.movingInfo.delete({ where });
 }
 
 export default {

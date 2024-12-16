@@ -115,9 +115,36 @@ async function findWatingEstimateList(
   }
 }
 
+// 유저-견적 확정 API
+async function updateConfirmEstimate(
+  req: Request<{ estimateId: string }, {}, {}>,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
+    ) {
+      throw new Error('다시 시도해 주세요');
+    }
+
+    const { id: userId } = req.user;
+    const {estimateId} = req.params
+    const estimateIdNum = parseInt(estimateId, 10)
+
+    const estimate = await estimateService.updateConfirmEstimate(userId, estimateIdNum);
+    res.send(estimate);
+  } catch (err) {
+    return next(err);
+  }
+}
+
 export default {
   findReceivedEstimateList,
   findConfirmedEstimateList,
   findSentEstimateList,
   findWatingEstimateList,
+  updateConfirmEstimate
 };

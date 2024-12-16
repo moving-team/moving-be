@@ -26,27 +26,34 @@ type NotificationOrderByType = Prisma.NotificationOrderByWithRelationInput;
 function createData<T extends NotificationSelectType>({
   data,
   select,
+  tx,
 }: {
   data: NotificationUncheckedCreateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<NotificationPayload<T>>;
 function createData({
   data,
+  tx,
 }: {
   data: NotificationUncheckedCreateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<NotificationPayload<undefined>>;
 
 async function createData<T extends NotificationSelectType | undefined>({
   data,
   select,
+  tx,
 }: {
   data: NotificationUncheckedCreateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.notification.create({ data });
+    return await db.notification.create({ data });
   }
-  return await prisma.notification.create({
+  return await db.notification.create({
     data,
     select,
   });
@@ -206,37 +213,48 @@ function updateData<T extends NotificationSelectType>({
   where,
   data,
   select,
+  tx,
 }: {
   where: NotificationWhereUniqueInputType;
   data: NotificationUpdateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<NotificationPayload<T>>;
 function updateData({
   where,
   data,
+  tx,
 }: {
   where: NotificationWhereUniqueInputType;
   data: NotificationUpdateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<NotificationPayload<undefined>>;
 
 async function updateData<T extends NotificationSelectType | undefined>({
   where,
   data,
   select,
+  tx,
 }: {
   where: NotificationWhereUniqueInputType;
   data: NotificationUpdateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.notification.update({ where, data });
+    return await db.notification.update({ where, data });
   }
-  return await prisma.notification.update({ where, data, select });
+  return await db.notification.update({ where, data, select });
 }
 
 // deleteData
-async function deleteData(where: { id: number }): Promise<void> {
-  await prisma.notification.delete({ where });
+async function deleteData(
+  where: { id: number },
+  tx?: Prisma.TransactionClient
+): Promise<void> {
+  const db = tx || prisma;
+  await db.notification.delete({ where });
 }
 
 export default {
@@ -247,6 +265,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
-  findManyData
+  findManyData,
 };
-

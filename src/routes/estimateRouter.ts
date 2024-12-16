@@ -10,6 +10,7 @@ estimateRouter
   .get('/', estimateController.findWatingEstimateList)
   .get('/confirmed', estimateController.findConfirmedEstimateList)
   .get('/sentList', estimateController.findSentEstimateList)
-  .get('/:estimateRequestId', estimateController.findReceivedEstimateList);
+  .get('/:estimateRequestId', estimateController.findReceivedEstimateList)
+  .patch('/:estimateId', estimateController.updateConfirmEstimate);
 
 export default estimateRouter;

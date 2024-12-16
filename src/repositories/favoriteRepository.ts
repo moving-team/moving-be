@@ -25,27 +25,34 @@ type FavoriteOrderByType = Prisma.FavoriteOrderByWithRelationInput;
 function createData<T extends FavoriteSelectType>({
   data,
   select,
+  tx,
 }: {
   data: FavoriteUncheckedCreateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<FavoritePayload<T>>;
 function createData({
   data,
+  tx,
 }: {
   data: FavoriteUncheckedCreateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<FavoritePayload<undefined>>;
 
 async function createData<T extends FavoriteSelectType | undefined>({
   data,
   select,
+  tx,
 }: {
   data: FavoriteUncheckedCreateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.favorite.create({ data });
+    return await db.favorite.create({ data });
   }
-  return await prisma.favorite.create({
+  return await db.favorite.create({
     data,
     select,
   });
@@ -200,43 +207,53 @@ async function findManyData<T extends FavoriteSelectType | undefined>({
   });
 }
 
-
 // updateData
 function updateData<T extends FavoriteSelectType>({
   where,
   data,
   select,
+  tx,
 }: {
   where: FavoriteWhereUniqueInputType;
   data: FavoriteUpdateInputType;
   select: T;
+  tx?: Prisma.TransactionClient;
 }): Promise<FavoritePayload<T>>;
 function updateData({
   where,
   data,
+  tx,
 }: {
   where: FavoriteWhereUniqueInputType;
   data: FavoriteUpdateInputType;
+  tx?: Prisma.TransactionClient;
 }): Promise<FavoritePayload<undefined>>;
 
 async function updateData<T extends FavoriteSelectType | undefined>({
   where,
   data,
   select,
+  tx,
 }: {
   where: FavoriteWhereUniqueInputType;
   data: FavoriteUpdateInputType;
   select?: T;
+  tx?: Prisma.TransactionClient;
 }) {
+  const db = tx || prisma;
   if (select === undefined) {
-    return await prisma.favorite.update({ where, data });
+    return await db.favorite.update({ where, data });
   }
-  return await prisma.favorite.update({ where, data, select });
+  return await db.favorite.update({ where, data, select });
 }
 
 // deleteData
-async function deleteData(where: { id: number }): Promise<void> {
-  await prisma.favorite.delete({ where });
+async function deleteData(
+  where: { id: number },
+  tx?: Prisma.TransactionClient
+): Promise<void> {
+  const db = tx || prisma;
+  await db.favorite.delete({ where });
 }
 
 export default {
@@ -247,5 +264,5 @@ export default {
   findManyByPaginationData,
   updateData,
   deleteData,
-  findManyData
+  findManyData,
 };
