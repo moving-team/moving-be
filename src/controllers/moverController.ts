@@ -9,6 +9,7 @@ const getMoverListController = async (
   next: NextFunction
 ) => {
   try {
+    const { id } = (req as any).user as { id: number };
     const page = req.query.page ? parseInt(req.query.page as string, 10) : 1;
     const pageSize = req.query.pageSize
       ? parseInt(req.query.pageSize as string, 10)
@@ -31,6 +32,7 @@ const getMoverListController = async (
       | undefined;
 
     const movers = await moverService.getMoverList({
+      id,
       page,
       pageSize,
       keyword,
@@ -66,6 +68,14 @@ const getMoverController = async (
   next: NextFunction
 ) => {
   try {
+    if (
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
+    ) {
+      throw new Error('권한이 없습니다');
+    }
+
     const { id } = (req as any).user as { id: number };
     const mover = await moverService.getMover(id);
     res.status(200).json(mover);
@@ -80,6 +90,13 @@ const patchMoverProfileController = async (
   next: NextFunction
 ) => {
   try {
+    if (
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
+    ) {
+      throw new Error('권한이 없습니다');
+    }
     const { id } = (req as any).user as { id: number };
     const profileImage = req.file ? (req.file as any).location : undefined;
 
@@ -100,6 +117,13 @@ const patchMoverInfoController = async (
   next: NextFunction
 ) => {
   try {
+    if (
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
+    ) {
+      throw new Error('권한이 없습니다');
+    }
     const { id } = (req as any).user as { id: number };
     await moverService.patchMoverInfo(id, req.body);
     res.status(200).json({ message: '수정 완료' });
