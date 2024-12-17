@@ -100,11 +100,10 @@ const kakaoLoginController = async (
   if (!userType) {
     res.status(400).json('userType이 필요합니다.');
   } else {
-    res.status(200).json(
-      kakao.getKakaoLoginUrl(userType as string, {
-        state: userType as string,
-      })
-    );
+    const url = kakao.getKakaoLoginUrl(userType as string, {
+      state: userType as string,
+    });
+    res.redirect(url);
   }
 };
 
@@ -130,7 +129,8 @@ const kakaoCallbackController = async (
           ...data.cookieOptions.refreshToken,
           sameSite: 'none',
         });
-        res.status(201).json('로그인 성공');
+        // res.status(201).json('로그인 성공');
+        res.redirect('http://localhost:3001/');
       } else {
         res.status(404).json(data);
       }
@@ -141,7 +141,18 @@ const kakaoCallbackController = async (
       } else if (state === 'MOVER') {
         await moverService.createMover(user.id);
       }
-      res.status(200).json(user);
+      const data = await userService.SNSLogin(user);
+      if (data.accessToken && data.refreshToken) {
+        res.cookie('accessToken', data.accessToken, {
+          ...data.cookieOptions.accessToken,
+          sameSite: 'none',
+        });
+        res.cookie('refreshToken', data.refreshToken, {
+          ...data.cookieOptions.refreshToken,
+          sameSite: 'none',
+        });
+        res.redirect('http://localhost:3001/');
+      }
     }
   } catch (err) {
     next(err);
