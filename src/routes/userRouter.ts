@@ -10,6 +10,10 @@ router.route('/login').post(userController.loginController);
 
 router.route('/logout').post(userController.logoutController);
 
+router.route('/kakao').get(userController.kakaoLoginController);
+
+router.route('/callback/kakao').get(userController.kakaoCallbackController);
+
 router
   .route('/me')
   .all(authenticateToken)

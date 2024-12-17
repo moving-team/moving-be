@@ -52,6 +52,16 @@ const register = async (data: any, userType: string) => {
   return response;
 };
 
+const SNSRegister = async (data: any, state: string) => {
+  const userData = {
+    email: data.nickname,
+    name: data.nickname,
+    userType: state as 'CUSTOMER' | 'MOVER',
+  };
+  const user = await userRepository.createData({ data: userData });
+  return user;
+};
+
 const userLogin = async (data: any) => {
   if (!data.email || !data.password) {
     throw new Error('이메일 및 패스워드를 입력해주세요.');
@@ -115,4 +125,47 @@ const userLogin = async (data: any) => {
   }
 };
 
-export { register, userLogin, getUser };
+const SNSLogin = async (user: any) => {
+  const cookieOptions = {
+    accessToken: {
+      httpOnly: NODE_ENV === 'production' ? true : false,
+      secure: true,
+      maxAge: 1000 * 60 * 60,
+      sameSite: 'none',
+    },
+
+    refreshToken: {
+      httpOnly: NODE_ENV === 'production' ? true : false,
+      secure: true,
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      sameSite: 'none',
+    },
+  };
+
+  const accessToken = generateToken(
+    { id: user.id },
+    ACCESS_TOKEN_SECRET,
+    `${cookieOptions.accessToken.maxAge / 1000}s`
+  );
+  const refreshToken = generateToken(
+    { id: user.id },
+    REFRESH_TOKEN_SECRET,
+    `${cookieOptions.refreshToken.maxAge / 1000}s`
+  );
+
+  return {
+    user,
+    accessToken,
+    refreshToken,
+    cookieOptions,
+  };
+};
+
+const checkUser = async (nickname: string) => {
+  const user = await userRepository.findFirstData({
+    where: { email: nickname },
+  });
+  return user;
+};
+
+export { register, userLogin, getUser, checkUser, SNSRegister, SNSLogin };
