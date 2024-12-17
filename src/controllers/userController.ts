@@ -4,6 +4,7 @@ import * as customerService from '../services/customerService';
 import * as moverService from '../services/moverService';
 import { NODE_ENV } from '../config/env';
 import { kakao } from '../utils/kakao';
+import { naver } from '../utils/naver';
 const getUserController = async (
   req: Request,
   res: Response,
@@ -91,6 +92,79 @@ const logoutController = async (
     .json('로그아웃 성공');
 };
 
+const naverLoginController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { userType } = req.query;
+  if (!userType) {
+    res.status(400).json('userType이 필요합니다.');
+  } else {
+    const url = naver.getNaverLoginUrl(userType as string, {
+      state: userType as string,
+    });
+    // res.redirect(url);
+    res.status(200).json(url);
+  }
+};
+
+const naverCallbackController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { code, state } = req.query;
+  if (!state) {
+    res.status(400).json('userType이 필요합니다.');
+  } else {
+    const [userType, randomState] = (state as string).split('_');
+    try {
+      const tokenData = await naver.getToken(code as string);
+      const userData = await naver.getUserInfo(tokenData.access_token);
+      const userCheck = await userService.checkUser(userData.response.email);
+      if (userCheck) {
+        const data = await userService.SNSLogin(userCheck);
+        if (data.accessToken && data.refreshToken) {
+          res.cookie('accessToken', data.accessToken, {
+            ...data.cookieOptions.accessToken,
+            sameSite: 'none',
+          });
+          res.cookie('refreshToken', data.refreshToken, {
+            ...data.cookieOptions.refreshToken,
+            sameSite: 'none',
+          });
+          res.redirect('http://localhost:3001/');
+        }
+      } else {
+        const user = await userService.SNSRegister(
+          userData.response,
+          userType as string
+        );
+        if (userType === 'CUSTOMER') {
+          await customerService.createCustomer(user.id);
+        } else if (userType === 'MOVER') {
+          await moverService.createMover(user.id);
+        }
+        const data = await userService.SNSLogin(user);
+        if (data.accessToken && data.refreshToken) {
+          res.cookie('accessToken', data.accessToken, {
+            ...data.cookieOptions.accessToken,
+            sameSite: 'none',
+          });
+          res.cookie('refreshToken', data.refreshToken, {
+            ...data.cookieOptions.refreshToken,
+            sameSite: 'none',
+          });
+          res.redirect('http://localhost:3001/');
+        }
+      }
+    } catch (err) {
+      next(err);
+    }
+  }
+};
+
 const kakaoLoginController = async (
   req: Request,
   res: Response,
@@ -129,7 +203,6 @@ const kakaoCallbackController = async (
           ...data.cookieOptions.refreshToken,
           sameSite: 'none',
         });
-        // res.status(201).json('로그인 성공');
         res.redirect('http://localhost:3001/');
       } else {
         res.status(404).json(data);
@@ -166,4 +239,6 @@ export default {
   getUserController,
   kakaoLoginController,
   kakaoCallbackController,
+  naverLoginController,
+  naverCallbackController,
 };

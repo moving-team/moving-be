@@ -14,6 +14,9 @@ const SC_URL = process.env.SC_URL as string;
 const NODE_ENV = process.env.NODE_ENV as string;
 const KAKAO_REST_API_KEY = process.env.KAKAO_REST_API_KEY as string;
 const KAKAO_REDIRECT_URI = process.env.KAKAO_REDIRECT_URI as string;
+const NAVER_CLIENT_ID = process.env.NAVER_CLIENT_ID as string;
+const NAVER_CLIENT_SECRET = process.env.NAVER_CLIENT_SECRET as string;
+const NAVER_REDIRECT_URI = process.env.NAVER_REDIRECT_URI as string;
 
 export {
   PORT,
@@ -29,4 +32,7 @@ export {
   NODE_ENV,
   KAKAO_REST_API_KEY,
   KAKAO_REDIRECT_URI,
+  NAVER_CLIENT_ID,
+  NAVER_CLIENT_SECRET,
+  NAVER_REDIRECT_URI,
 };

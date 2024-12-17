@@ -54,8 +54,8 @@ const register = async (data: any, userType: string) => {
 
 const SNSRegister = async (data: any, state: string) => {
   const userData = {
-    email: data.nickname,
-    name: data.nickname,
+    email: data.nickname || data.email,
+    name: data.nickname || data.name,
     userType: state as 'CUSTOMER' | 'MOVER',
   };
   const user = await userRepository.createData({ data: userData });

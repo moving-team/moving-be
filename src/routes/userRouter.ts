@@ -14,6 +14,10 @@ router.route('/kakao').get(userController.kakaoLoginController);
 
 router.route('/callback/kakao').get(userController.kakaoCallbackController);
 
+router.route('/naver').get(userController.naverLoginController);
+
+router.route('/callback/naver').get(userController.naverCallbackController);
+
 router
   .route('/me')
   .all(authenticateToken)
