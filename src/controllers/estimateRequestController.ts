@@ -16,7 +16,7 @@ async function createEstimateReq(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다.');
     }
 
     const { id: userId } = req.user;
@@ -42,7 +42,7 @@ async function deleteEstimateReq(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다.');
     }
 
     const { id: userId } = req.user;
@@ -71,7 +71,7 @@ async function findEstimateReq(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다.');
     }
 
     const { id: userId } = req.user;
@@ -94,7 +94,7 @@ async function findEstimateReqListByCustomer(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다.');
     }
 
     const { id: userId } = req.user;
@@ -129,7 +129,7 @@ async function findEstimateReqListByMover(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다.');
     }
 
     const { id: userId } = req.user;

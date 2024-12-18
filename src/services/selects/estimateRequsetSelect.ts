@@ -1,4 +1,4 @@
-import { customerSelect} from './customerSelect';
+import { customerSelect, customerWithUserNameSelect} from './customerSelect';
 import { movingInfoSelect } from './movingInfoSelect';
 
 export const estimateReqSelect = {
@@ -22,6 +22,11 @@ export const estimateReqMovingInfoSelect = {
 export const estimateReqCustomerSelect = {
   ...estimateReqSelect,
   Customer: { select: customerSelect },
+};
+
+export const estimateReqwithMovingInfoAndCustomerAndUserNameSelect = {
+  ...estimateReqMovingInfoSelect,
+  Customer: { select: customerWithUserNameSelect },
 };
 
 export const estimateReqMovingInfoWithDateSelect = {

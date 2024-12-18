@@ -144,8 +144,7 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
   } else if (estimateReq.isCancelled) {
     throw new Error('이미 취소된 요청입니다.');
   } else if (estimateReq.isConfirmed) {
-    throw new Error("이미 확정한 요청은 취소할 수 없습니다.");
-    
+    throw new Error('이미 확정한 요청은 취소할 수 없습니다.');
   }
 
   // 권한 확인
@@ -167,6 +166,7 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
       where: { id: estimateRequestId },
       data: { isCancelled: true },
       select: estimateReqMovingInfoSelect,
+      tx,
     });
 
     estimateList.map(async (estimate) => {
@@ -175,6 +175,7 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
         where: { id: estimate.id },
         data: { status: 'REJECTED' },
         select: estimateSelect,
+        tx,
       });
 
       const contents = createNotificationContents({
@@ -183,7 +184,7 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
         movingType: deleteEstimateReq.MovingInfo.movingType,
       }) as string;
 
-      // 알람 생성성
+      // 알람 생성
       await notificationRepository.createData({
         data: {
           userId: estimate.Mover.User.id,
@@ -191,6 +192,7 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
           estimateId: estimate.id,
           contents,
         },
+        tx,
       });
     });
 
@@ -373,7 +375,7 @@ async function findEstimateReqListByCustomer(
   };
 }
 
-// 기사-견적 요청 리스트 조회 API
+// 기사-견적 요청 리스트 조회 API(견적 갯수에 따른 필터 추가)
 async function findEstimateReqListByMover(
   userId: number,
   query: PagenationQuery

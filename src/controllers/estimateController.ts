@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import estimateService from '../services/estimateService';
+import { CreateEstimate } from '../structs/estimate-struct';
 
 // 유저-받았던 견적 리스트 조회 API
 async function findReceivedEstimateList(
@@ -13,7 +14,7 @@ async function findReceivedEstimateList(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다.');
     }
 
     const { id: userId } = req.user;
@@ -40,7 +41,7 @@ async function findConfirmedEstimateList(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다.');
     }
 
     const { id: userId } = req.user;
@@ -72,7 +73,7 @@ async function findSentEstimateList(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다.');
     }
 
     const { id: userId } = req.user;
@@ -104,7 +105,7 @@ async function findWatingEstimateList(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다.');
     }
 
     const { id: userId } = req.user;
@@ -127,15 +128,41 @@ async function updateConfirmEstimate(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('다시 시도해 주세요');
+      throw new Error('권한이 없습니다.');
     }
 
     const { id: userId } = req.user;
-    const {estimateId} = req.params
-    const estimateIdNum = parseInt(estimateId, 10)
+    const { estimateId } = req.params;
+    const estimateIdNum = parseInt(estimateId, 10);
 
-    const estimate = await estimateService.updateConfirmEstimate(userId, estimateIdNum);
+    const estimate = await estimateService.updateConfirmEstimate(
+      userId,
+      estimateIdNum
+    );
     res.send(estimate);
+  } catch (err) {
+    return next(err);
+  }
+}
+
+// 기사-견적 작성 API
+async function createEstimate(
+  req: Request<{}, {}, CreateEstimate>,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
+    ) {
+      throw new Error('권한이 없습니다.');
+    }
+
+    const { id: userId } = req.user;
+    const estimate = await estimateService.createEstimate(userId, req.body);
+    res.status(201).send(estimate)
   } catch (err) {
     return next(err);
   }
@@ -146,5 +173,6 @@ export default {
   findConfirmedEstimateList,
   findSentEstimateList,
   findWatingEstimateList,
-  updateConfirmEstimate
+  updateConfirmEstimate,
+  createEstimate,
 };
