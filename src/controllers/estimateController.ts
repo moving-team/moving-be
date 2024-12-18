@@ -162,7 +162,30 @@ async function createEstimate(
 
     const { id: userId } = req.user;
     const estimate = await estimateService.createEstimate(userId, req.body);
-    res.status(201).send(estimate)
+    res.status(201).send(estimate);
+  } catch (err) {
+    return next(err);
+  }
+}
+
+// 견적 상세 조회 API
+async function findEstimateDetail(
+  req: Request<{ estimateId: string }, {}, {}>,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
+    ) {
+      throw new Error('권한이 없습니다.');
+    }
+
+    const { estimateId } = req.params;
+    const estimate = estimateService.findEstimateDetail(estimateId);
+    res.send(estimate);
   } catch (err) {
     return next(err);
   }
@@ -175,4 +198,5 @@ export default {
   findWatingEstimateList,
   updateConfirmEstimate,
   createEstimate,
+  findEstimateDetail,
 };
