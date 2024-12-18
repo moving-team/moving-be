@@ -708,12 +708,10 @@ async function findMovingCompleteList(
   take: number,
   skip: number
 ) {
-  const today = todayUTC();
-
   const reviewedEstimateWhere = {
     status: 'ACCEPTED' as $Enums.status,
+    isMovingComplete: true,
     Customer: { userId },
-    MovingInfo: { movingDate: { lt: today } },
   };
   const [customer, total, unreviewedEstimateCount] = await Promise.all([
     customerRepository.findFirstData({
