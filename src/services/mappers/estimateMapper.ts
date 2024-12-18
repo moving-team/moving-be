@@ -1,5 +1,6 @@
 import {
   Estimate,
+  EstimateReqWithDate,
   EstimateReqWithMovingInfoAndDate,
   EstimateWithMover,
   Mover,
@@ -139,5 +140,73 @@ export function findWatingEstimateListMapper(
     departure: changeRegion(movingInfo.departure),
     arrival: changeRegion(movingInfo.arrival),
     price: estimate.price,
+  };
+}
+
+export function findEstimateDetailByCustomerMapper(
+  estimate: Estimate,
+  estimateReq: EstimateReqWithDate,
+  mover: Mover,
+  movingInfo: MovingInfo,
+  averageScore: number,
+  totalReviews: number,
+  confirmationCount: number,
+  favoriteCount: number,
+  isFavorite: boolean
+) {
+  let isConfirmed = false;
+  if (estimate.status === 'ACCEPTED') {
+    isConfirmed = true;
+  }
+
+  return {
+    estimateId: estimate.id,
+    moverId: mover.id,
+    isConfirmed,
+    isReqConfirmed: estimateReq.isConfirmed,
+    serviceType: mover.serviceType,
+    isAssigned: estimate.isAssigned,
+    summary: mover.summary,
+    profileImg: mover.profileImage,
+    moverName: mover.nickname,
+    reviewStats: {
+      averageScore,
+      totalReviews,
+    },
+    career: mover.career,
+    confirmationCount,
+    favoriteCount,
+    isFavorite,
+    price: estimate.price,
+    moverComment: estimate.comment,
+    customerComment: estimateReq.comment,
+    movingRequest: changeMovingDate(estimateReq.createdAt),
+    movingType: movingInfo.movingType,
+    movingDate: changeMovingDate(movingInfo.movingDate),
+    departure: movingInfo.departure,
+    arrival: movingInfo.arrival,
+  };
+}
+
+export function findEstimateDetailByMoverMapper(
+  estimate: Estimate,
+  estimateReq: EstimateReqWithDate,
+  customerName: string,
+  movingInfo: MovingInfo
+) {
+  return {
+    estimateId: estimate.id,
+    movingType: movingInfo.movingType,
+    isAssigned: estimate.isAssigned,
+    customerName,
+    movingDate: changeMovingDate(movingInfo.movingDate),
+    departure: changeRegion(movingInfo.departure),
+    arrival: changeRegion(movingInfo.arrival),
+    price: estimate.price,
+    moverComment: estimate.comment,
+    customerComment: estimateReq.comment,
+    movingRequest: changeMovingDate(estimateReq.createdAt),
+    detailDeparture: movingInfo.departure,
+    detailArrival: movingInfo.arrival,
   };
 }

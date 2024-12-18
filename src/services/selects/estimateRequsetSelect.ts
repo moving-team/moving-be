@@ -1,4 +1,4 @@
-import { customerSelect, customerWithUserNameSelect} from './customerSelect';
+import { customerSelect, customerWithUserNameSelect } from './customerSelect';
 import { movingInfoSelect } from './movingInfoSelect';
 
 export const estimateReqSelect = {
@@ -12,6 +12,15 @@ export const estimateReqWithDateSelect = {
   ...estimateReqSelect,
   createdAt: true,
   updatedAt: true,
+};
+
+export const estimateReqWithDateAndCustomerNameSelect = {
+  ...estimateReqWithDateSelect,
+  Customer: {
+    select: {
+      User: { select: { name: true } },
+    },
+  },
 };
 
 export const estimateReqMovingInfoSelect = {

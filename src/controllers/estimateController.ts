@@ -183,8 +183,9 @@ async function findEstimateDetail(
       throw new Error('권한이 없습니다.');
     }
 
-    const { estimateId } = req.params;
-    const estimate = estimateService.findEstimateDetail(estimateId);
+    const { id: userId } = req.user;
+    const estimateId = parseInt(req.params.estimateId);
+    const estimate = estimateService.findEstimateDetail(userId, estimateId);
     res.send(estimate);
   } catch (err) {
     return next(err);
