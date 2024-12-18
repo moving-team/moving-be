@@ -53,6 +53,7 @@ export function findEstimateReqListByCustomerAndConfirmedMapper(
   const estimateReq = movingInfo.EstimateRequest;
   return {
     estimateReqId: estimateReq.id,
+    moverId: estimate.Mover.id,
     isConfirmed: estimateReq.isConfirmed,
     isCancelled: estimateReq.isCancelled,
     isAssigned: estimate.isAssigned,
