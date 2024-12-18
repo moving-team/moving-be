@@ -14,6 +14,11 @@ export interface EstimateReq {
   isConfirmed: boolean;
   isCancelled: boolean;
 }
+export interface Review {
+  id: number;
+  description: string;
+  score: number;
+}
 
 export interface EstimateReqWithDate extends EstimateReq {
   createdAt: Date;
@@ -39,6 +44,11 @@ export interface Estimate {
   status: $Enums.status;
   isAssigned: boolean;
   price: number;
+}
+
+export interface EstimateWithDate extends Estimate {
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface Mover {
@@ -67,11 +77,12 @@ export interface EstimateWithMovingInfoAndcustomerName extends Estimate {
   MovingInfo: MovingInfo;
   Customer: CustomerName;
 }
- 
-export interface EstimateWithMovingInfoAndcustomerNameAndIsConfirmed extends EstimateWithMovingInfoAndcustomerName {
+
+export interface EstimateWithMovingInfoAndcustomerNameAndIsConfirmed
+  extends EstimateWithMovingInfoAndcustomerName {
   EstimateRequest: {
-    isConfirmed: boolean
-  }
+    isConfirmed: boolean;
+  };
 }
 
 export interface FindEstimateReqListByMoverType {
@@ -107,4 +118,3 @@ export interface CreateReviewInput {
   score: number;
   description: string;
 }
-

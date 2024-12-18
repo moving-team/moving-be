@@ -2,9 +2,11 @@ import {
   Estimate,
   EstimateReqWithDate,
   EstimateReqWithMovingInfoAndDate,
+  EstimateWithDate,
   EstimateWithMover,
   Mover,
   MovingInfo,
+  Review,
 } from '../../types/serviceType';
 import { changeMovingDate, changeRegion } from '../../utils/mapperUtil';
 
@@ -208,5 +210,30 @@ export function findEstimateDetailByMoverMapper(
     movingRequest: changeMovingDate(estimateReq.createdAt),
     detailDeparture: movingInfo.departure,
     detailArrival: movingInfo.arrival,
+  };
+}
+
+export function findMovingCompleteListMapper(
+  estimate: EstimateWithDate,
+  movingInfo: MovingInfo,
+  mover: Mover,
+  review: Review | null
+) {
+  let isReviewWritten = false;
+  if (review) {
+    isReviewWritten = true;
+  }
+
+  return {
+    estimateId: estimate.id,
+    moverId: mover.id,
+    isReviewWritten,
+    serviceType: mover.serviceType,
+    isAssigned: estimate.isAssigned,
+    profileImg: mover.profileImage,
+    moverName: mover.nickname,
+    movingDate: changeMovingDate(movingInfo.movingDate),
+    price: estimate.price,
+    createdAt: estimate.createdAt,
   };
 }
