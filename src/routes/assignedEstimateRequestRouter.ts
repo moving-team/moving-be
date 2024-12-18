@@ -6,6 +6,9 @@ const assignedEstimateReqRouter = express.Router();
 
 assignedEstimateReqRouter.use(authenticateToken);
 
-assignedEstimateReqRouter
+assignedEstimateReqRouter.post(
+  '/',
+  assignedEstimateRequestController.createAssigned
+);
 
-export default assignedEstimateReqRouter
+export default assignedEstimateReqRouter;
