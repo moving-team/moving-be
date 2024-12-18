@@ -11,7 +11,9 @@ export const authenticateToken = async (
   const refreshToken = req.cookies?.refreshToken;
 
   if (!accessToken && !refreshToken) {
-    res.status(401).json({ message: '인증 토큰이 없습니다.' });
+    req.user = {};
+    console.log('빈 값', req.user);
+    next();
     return;
   }
 
@@ -22,7 +24,8 @@ export const authenticateToken = async (
   } catch (err) {
     if (!refreshToken) {
       res.clearCookie('accessToken');
-      res.status(403).json({ message: '유효하지 않은 토큰입니다.' });
+      req.user = {};
+      next();
       return;
     }
 
@@ -42,7 +45,8 @@ export const authenticateToken = async (
       req.user = user;
       next();
     } catch (refreshErr) {
-      res.status(403).json({ message: '유효하지 않은 리프레시 토큰입니다.' });
+      req.user = {};
+      next();
       return;
     }
   }
