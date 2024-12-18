@@ -14,6 +14,7 @@ estimateRouter
   .get('/sentList', estimateController.findSentEstimateList)
   .get('/list/:estimateRequestId', estimateController.findReceivedEstimateList)
   .patch('/:estimateId', estimateController.updateConfirmEstimate)
-  .get('/:estimateId', estimateController.findEstimateDetail);
+  .get('/:estimateId', estimateController.findEstimateDetail)
+  .get('/movedList', estimateController.findMovingCompleteList);
 
 export default estimateRouter;
