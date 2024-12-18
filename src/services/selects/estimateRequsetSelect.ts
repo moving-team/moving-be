@@ -14,15 +14,6 @@ export const estimateReqWithDateSelect = {
   updatedAt: true,
 };
 
-export const estimateReqWithDateAndCustomerNameSelect = {
-  ...estimateReqWithDateSelect,
-  Customer: {
-    select: {
-      User: { select: { name: true } },
-    },
-  },
-};
-
 export const estimateReqMovingInfoSelect = {
   ...estimateReqSelect,
   MovingInfo: { select: movingInfoSelect },

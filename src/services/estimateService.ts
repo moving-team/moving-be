@@ -651,11 +651,11 @@ async function findEstimateDetail(userId: number, estimateId: number) {
   }
   const {
     Mover: mover,
-    EstimateRequest,
+    EstimateRequest: estimateReq,
     MovingInfo: movingInfo,
+    Customer: customer,
     ...rest
   } = estimate;
-  const { Customer, ...estimateReq } = EstimateRequest;
 
   if (user && user.Customer && !user.Mover) {
     const [reviewStats, confirmationCount, favorite] = await Promise.all([
@@ -690,7 +690,7 @@ async function findEstimateDetail(userId: number, estimateId: number) {
     return findEstimateDetailByMoverMapper(
       estimate,
       estimateReq,
-      Customer.User.name,
+      customer.User.name,
       movingInfo
     );
   }

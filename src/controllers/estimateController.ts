@@ -185,7 +185,7 @@ async function findEstimateDetail(
 
     const { id: userId } = req.user;
     const estimateId = parseInt(req.params.estimateId);
-    const estimate = estimateService.findEstimateDetail(userId, estimateId);
+    const estimate = await estimateService.findEstimateDetail(userId, estimateId);
     res.send(estimate);
   } catch (err) {
     return next(err);
