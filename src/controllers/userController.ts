@@ -14,7 +14,7 @@ const getUserController = async (
   try {
     const { id } = (req as any).user as { id: number };
     if (!id) {
-      res.status(200).json({ user: {} });
+      res.status(200).json(null);
       return;
     }
     const userData = await userService.getUser(id);
