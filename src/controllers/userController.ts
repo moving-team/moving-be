@@ -143,7 +143,7 @@ const naverCallbackController = async (
             ...data.cookieOptions.refreshToken,
             sameSite: 'none',
           });
-          res.redirect('http://localhost:3001/');
+          res.redirect('http://localhost:3000/');
         }
       } else {
         const user = await userService.SNSRegister(
@@ -233,7 +233,7 @@ const kakaoCallbackController = async (
           ...data.cookieOptions.refreshToken,
           sameSite: 'none',
         });
-        res.redirect('http://localhost:3001/');
+        res.redirect('http://localhost:3000/');
       }
     }
   } catch (err) {
