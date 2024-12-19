@@ -10,7 +10,10 @@ import userRepository from '../repositories/userRepository';
 import { createNotificationContents } from '../utils/createNotificationContents';
 import { todayUTC } from '../utils/dateUtil';
 import { assignedEstimateReqSelect } from './selects/assignedEstimateRequestSelect';
-import { estimateReqMovingInfoSelect } from './selects/estimateRequsetSelect';
+import {
+  estimateReqMovingInfoSelect,
+  estimateReqwithMovingInfoAndCustomerAndUserNameSelect,
+} from './selects/estimateRequsetSelect';
 import { estimateSelect } from './selects/estimateSelect';
 import { moverSelect, moverUserSelect } from './selects/moverSelect';
 import { userCustomerSelect } from './selects/userSelect';
@@ -85,7 +88,9 @@ async function createAssigned(userId: number, moverId: number) {
     throw err;
   } else if (assignedEstimateReq) {
     // 해당 기사의 지정 여부 확인
-    const err: CustomError = new Error('이미 기사님께 지정 견적 요청을 하셨습니다.');
+    const err: CustomError = new Error(
+      '이미 기사님께 지정 견적 요청을 하셨습니다.'
+    );
     err.status = 400;
     throw err;
   } else if (!mover.serviceRegion.includes(REGION_NAME_TO_CODE[departure])) {
@@ -123,4 +128,97 @@ async function createAssigned(userId: number, moverId: number) {
   return { isAssignedEstimate: 'true' };
 }
 
-export default { createAssigned };
+// 기사 - 지정 견적 반려 API
+async function rejectedAssigned(userId: number, estimateReqId: number) {
+  const [mover, estimateReq, assign] = await Promise.all([
+    moverRepository.findFirstData({
+      where: { userId },
+      select: moverSelect,
+    }),
+
+    estimateRequestRepository.findFirstData({
+      where: { id: estimateReqId },
+      select: estimateReqwithMovingInfoAndCustomerAndUserNameSelect,
+    }),
+
+    assignedEstimateRequestRepository.findFirstData({
+      where: {
+        estimateRequestId: estimateReqId,
+        Mover: { userId },
+      },
+    }),
+  ]);
+
+  if (!mover) {
+    // 기사인지 확인
+    const err: CustomError = new Error('기사 전용 API 입니다.');
+    err.status = 403;
+    throw err;
+  } else if (!estimateReq) {
+    // 견적 요청의 존재 여부
+    const err: CustomError = new Error('존재하지 않는 견적 요청입니다.');
+    err.status = 400;
+    throw err;
+  } else if (!assign) {
+    // 지정 견적 요청의 존재 여부
+    const err: CustomError = new Error('존재하지 않는 지정 견적 요청입니다.');
+    err.status = 400;
+    throw err;
+  }
+
+  const todaySting = todayUTC();
+  const today = new Date(todaySting).getTime();
+  const movingDate = new Date(estimateReq.MovingInfo.movingDate).getTime();
+
+  if (estimateReq.isCancelled) {
+    // 요청이 취소 되었을 때
+    const err: CustomError = new Error('취소된 요청입니다.');
+    err.status = 400;
+    throw err;
+  } else if (estimateReq.isConfirmed) {
+    // 요청이 취소 되어 있을때
+    const err: CustomError = new Error('견적을 확정한 요청입니다.');
+    err.status = 400;
+    throw err;
+  } else if (today > movingDate) {
+    // 이사 날짜가 지났을때 
+    const err: CustomError = new Error('이사일이 지난 요청입니다.');
+    err.status = 400;
+    throw err;
+  }
+
+  const contents = createNotificationContents({
+    type: 'reject',
+    moverName: mover.nickname,
+    movingType: estimateReq.MovingInfo.movingType,
+  }) as string;
+
+  const reject = await prisma.$transaction(async (tx) => {
+    const assignEstimateReq =
+      await assignedEstimateRequestRepository.updateData({
+        where: { id: assign?.id },
+        data: { isRejected: true },
+        select: assignedEstimateReqSelect,
+        tx,
+      });
+
+    await notificationRepository.createData({
+      data: {
+        userId: estimateReq.Customer.User.id,
+        estimateRequestId: estimateReqId,
+        assignedEstimateRequestId: assignEstimateReq.id,
+        contents,
+      },
+      tx,
+    });
+
+    return assignEstimateReq;
+  });
+
+  return {
+    assignedEstimateReqId: reject.id,
+    isRejected: reject.isRejected,
+  };
+}
+
+export default { createAssigned, rejectedAssigned };
