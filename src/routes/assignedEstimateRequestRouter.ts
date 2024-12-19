@@ -9,6 +9,6 @@ assignedEstimateReqRouter.use(authenticateToken);
 assignedEstimateReqRouter.post(
   '/',
   assignedEstimateRequestController.createAssigned
-);
+).patch('/:estimateRequestId', assignedEstimateRequestController.rejectedAssigned);
 
 export default assignedEstimateReqRouter;
