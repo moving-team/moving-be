@@ -6,6 +6,7 @@ import customerRepository from '../repositories/customerRepository';
 import userRepository from '../repositories/userRepository';
 import { serviceRegion, serviceType } from '@prisma/client';
 import bcrypt from 'bcrypt';
+import { todayUTC } from '../utils/dateUtil';
 
 const getMoverList = async ({
   id,
@@ -211,9 +212,18 @@ const getMoverDetail = async (userId: number, moverId: number) => {
       where: { id: userId },
     });
     const estimateReqData = await estimateRequestRepository.findFirstData({
-      where: { customerId: customerData?.id },
+      where: {
+        customerId: customerData?.id,
+        isConfirmed: false,
+        isCancelled: false,
+        MovingInfo: {
+          movingDate: {
+            gte: todayUTC(),
+          },
+        },
+      },
     });
-    if (estimateReqData?.isConfirmed === true) {
+    if (estimateReqData) {
       isConfirmed = true;
     }
     if (isConfirmed) {
