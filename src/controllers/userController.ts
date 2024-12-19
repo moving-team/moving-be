@@ -104,8 +104,8 @@ const naverLoginController = async (
     const url = naver.getNaverLoginUrl(userType as string, {
       state: userType as string,
     });
-    // res.redirect(url);
-    res.status(200).json(url);
+    res.redirect(url);
+    // res.status(200).json(url);
   }
 };
 
