@@ -43,12 +43,12 @@ async function createAssigned(userId: number, moverId: number) {
   if (!user || !user.Customer) {
     // 소비자 여부 확인
     throw new Error('소비자 전용 API 입니다');
-  } else if (!estimateReq) {
-    // 견적 요청 여부 확인
-    throw new Error('일반 견적 요청을 먼저 진행해 주세요.');
   } else if (!mover) {
     // 기사 여부 확인
     throw new Error('존재하지 않는 기사님입니다');
+  } else if (!estimateReq) {
+    // 견적 요청 여부 확인
+    throw new Error('일반 견적 요청을 먼저 진행해 주세요.');
   }
 
   const [estimate, assignedEstimateReq] = await Promise.all([
@@ -77,7 +77,7 @@ async function createAssigned(userId: number, moverId: number) {
   } else if (assignedEstimateReq) {
     // 해당 기사의 지정 여부 확인
     throw new Error('이미 기사님께 지정 견적 요청을 하셨습니다');
-  } else if (!(REGION_NAME_TO_CODE[departure] in mover.serviceRegion)) {
+  } else if (!mover.serviceRegion.includes(REGION_NAME_TO_CODE[departure])) {
     // 기사의 서비스 지역인지 확인
     throw new Error('해당 기사님의 서비스 지역이 아닙니다.');
   }
