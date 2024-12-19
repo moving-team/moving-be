@@ -1,4 +1,5 @@
 import { customerSelect } from './customerSelect';
+import { moverSelect } from './moverSelect';
 
 export const userSelect = {
   id: true,
@@ -11,4 +12,9 @@ export const userSelect = {
 export const userCustomerSelect = {
   ...userSelect,
   Customer: { select: customerSelect },
+};
+
+export const userWithCustomerAndMover = {
+  ...userCustomerSelect,
+  Mover: { select: moverSelect },
 };

@@ -1,4 +1,4 @@
-import { customerSelect, customerWithUserNameSelect} from './customerSelect';
+import { customerSelect, customerWithUserNameSelect } from './customerSelect';
 import { movingInfoSelect } from './movingInfoSelect';
 
 export const estimateReqSelect = {

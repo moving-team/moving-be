@@ -15,6 +15,8 @@ import {
 import {
   estimateReqInfoMapper,
   findConfirmedEstimateListMapper,
+  findEstimateDetailByCustomerMapper,
+  findEstimateDetailByMoverMapper,
   findReceivedEstimateListMapper,
   findSentEstimateListMapper,
   findWatingEstimateListMapper,
@@ -29,11 +31,15 @@ import {
   estimateMoverSelect,
   estimateSelect,
   estimateWithEstimateReqAndMovingInfoAndMoverSelect,
+  estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerNameSelect,
   estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
   estimateWithMovingInfoAndcustomerNameSelect,
 } from './selects/estimateSelect';
 import { moverSelect, moverUserSelect } from './selects/moverSelect';
-import { userCustomerSelect } from './selects/userSelect';
+import {
+  userCustomerSelect,
+  userWithCustomerAndMover,
+} from './selects/userSelect';
 import prisma from '../config/prisma';
 import notificationRepository from '../repositories/notificationRepository';
 import { createNotificationContents } from '../utils/createNotificationContents';
@@ -623,6 +629,75 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
   };
 }
 
+// 견적 상세 조회 API
+async function findEstimateDetail(userId: number, estimateId: number) {
+  const [estimate, user] = await Promise.all([
+    estimateRepository.findFirstData({
+      where: { id: estimateId },
+      select:
+        estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerNameSelect,
+    }),
+
+    // 소비자인지, 기사인지 확인
+    userRepository.findFirstData({
+      where: { id: userId },
+      select: userWithCustomerAndMover,
+    }),
+  ]);
+
+  // 존재하는 견적인지 확인
+  if (!estimate) {
+    throw new Error('존재하지 않는 견적입니다.');
+  }
+  const {
+    Mover: mover,
+    EstimateRequest: estimateReq,
+    MovingInfo: movingInfo,
+    Customer: customer,
+    ...rest
+  } = estimate;
+
+  if (user && user.Customer && !user.Mover) {
+    const [reviewStats, confirmationCount, favorite] = await Promise.all([
+      // 리뷰 평점 및 갯수
+      getMoverReviewStats(mover.id),
+
+      // 총 확정 갯수
+      estimateRepository.countData({
+        moverId: mover.id,
+        status: 'ACCEPTED',
+      }),
+
+      // 찜 갯수 및 찜 여부
+      getMoverFavoriteStats(mover.id, user.Customer.id),
+    ]);
+
+    const { totalReviews, averageScore } = reviewStats;
+    const { favoriteCount, isFavorite } = favorite;
+
+    return findEstimateDetailByCustomerMapper(
+      rest,
+      estimateReq,
+      mover,
+      movingInfo,
+      averageScore,
+      totalReviews,
+      confirmationCount,
+      favoriteCount,
+      isFavorite
+    );
+  } else if (user && !user.Customer && user.Mover) {
+    return findEstimateDetailByMoverMapper(
+      estimate,
+      estimateReq,
+      customer.User.name,
+      movingInfo
+    );
+  }
+
+  throw new Error('다시 시도해 주세요.');
+}
+
 export default {
   findReceivedEstimateList,
   findConfirmedEstimateList,
@@ -630,4 +705,5 @@ export default {
   findWatingEstimateList,
   updateConfirmEstimate,
   createEstimate,
+  findEstimateDetail,
 };
