@@ -5,14 +5,23 @@ import * as moverService from '../services/moverService';
 import { NODE_ENV } from '../config/env';
 import { kakao } from '../utils/kakao';
 import { naver } from '../utils/naver';
+
 const getUserController = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const { id } = (req as any).user as { id: number };
-  const user = await userService.getUser(id);
-  res.status(200).json(user);
+  try {
+    const { id } = (req as any).user as { id: number };
+    if (!id) {
+      res.status(200).json({ user: {} });
+      return;
+    }
+    const userData = await userService.getUser(id);
+    res.status(200).json(userData);
+  } catch (err) {
+    next(err);
+  }
 };
 
 const registerController = async (
@@ -156,7 +165,7 @@ const naverCallbackController = async (
             ...data.cookieOptions.refreshToken,
             sameSite: 'none',
           });
-          res.redirect('http://localhost:3001/');
+          res.redirect('http://localhost:3000/');
         }
       }
     } catch (err) {
@@ -203,7 +212,7 @@ const kakaoCallbackController = async (
           ...data.cookieOptions.refreshToken,
           sameSite: 'none',
         });
-        res.redirect('http://localhost:3001/');
+        res.redirect('http://localhost:3000/');
       } else {
         res.status(404).json(data);
       }

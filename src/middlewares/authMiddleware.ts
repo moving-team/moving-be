@@ -10,9 +10,13 @@ export const authenticateToken = async (
   const accessToken = req.cookies?.accessToken;
   const refreshToken = req.cookies?.refreshToken;
 
+  console.log('Cookies:', req.cookies); // 전체 쿠키 확인
+  console.log('Access Token:', accessToken); // access token 값 확인
+  console.log('Refresh Token:', refreshToken); // refresh token 값 확인
+
   if (!accessToken && !refreshToken) {
     req.user = {};
-    console.log('빈 값', req.user);
+    console.log('빈값');
     next();
     return;
   }
