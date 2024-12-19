@@ -132,6 +132,16 @@ const naverCallbackController = async (
       const tokenData = await naver.getToken(code as string);
       const userData = await naver.getUserInfo(tokenData.access_token);
       const userCheck = await userService.checkUser(userData.response.email);
+      if (userCheck?.userType !== state) {
+        const response: any = {
+          error: {
+            message: `${state} 회원이 아닙니다.`,
+            status: 404,
+          },
+          user: null,
+        };
+        res.status(404).json(response);
+      }
       if (userCheck) {
         const data = await userService.SNSLogin(userCheck);
         if (data.accessToken && data.refreshToken) {
@@ -201,6 +211,16 @@ const kakaoCallbackController = async (
     const userData = await kakao.getUserInfo(tokenData.access_token); // userData = {nickname, providerId}
 
     const userCheck = await userService.checkUser(userData.nickname);
+    if (userCheck?.userType !== state) {
+      const response: any = {
+        error: {
+          message: `${state} 회원이 아닙니다.`,
+          status: 404,
+        },
+        user: null,
+      };
+      res.status(404).json(response);
+    }
     if (userCheck) {
       const data = await userService.SNSLogin(userCheck);
       if (data.accessToken && data.refreshToken) {
