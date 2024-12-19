@@ -46,6 +46,7 @@ import {
 import prisma from '../config/prisma';
 import notificationRepository from '../repositories/notificationRepository';
 import { createNotificationContents } from '../utils/createNotificationContents';
+import { CustomError } from '../middlewares/errHandler';
 
 export interface PagenationQuery {
   type?: $Enums.serviceType | $Enums.serviceType[];
@@ -69,11 +70,14 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
   });
 
   if (!user.Customer) {
-    throw new Error('소비자 전용 API 입니다');
+    const err: CustomError = new Error('소비자 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   } else if (user.Customer.region === 'NULL') {
     // 소비자 프로필 유무 확인
-    const error = new Error('프로필을 등록 해주세요');
-    throw error;
+    const err: CustomError = new Error('프로필을 등록 해주세요.');
+    err.status = 400;
+    throw err;
   }
 
   const today = todayUTC();
@@ -90,7 +94,9 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
   });
 
   if (checkEstimateReq) {
-    throw new Error('이미 견적을 요청하셨습니다.');
+    const err: CustomError = new Error('이미 요청한 견적이 있습니다.');
+    err.status = 400;
+    throw err;
   }
 
   const { comment, movingDate, ...rest } = data;
@@ -99,7 +105,9 @@ async function createEstimateReq(userId: number, data: CreateEstimateReq) {
   const todayDateTime = new Date().getTime();
 
   if (movingDateTime < todayDateTime) {
-    throw new Error('이미 지난 날짜입니다.');
+    const err: CustomError = new Error('이미 지난 날짜입니다.');
+    err.status = 400;
+    throw err;
   }
 
   // 이사 정보 생성
@@ -140,18 +148,30 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
 
   // 견적 요청 유무 확인
   if (!estimateReq) {
-    throw new Error('존재하지 않는 견적 요청입니다.');
+    const err: CustomError = new Error('존재하지 않는 견적 요청입니다.');
+    err.status = 400;
+    throw err;
   } else if (estimateReq.isCancelled) {
-    throw new Error('이미 취소된 요청입니다.');
+    const err: CustomError = new Error('이미 취소된 요청입니다.');
+    err.status = 400;
+    throw err;
   } else if (estimateReq.isConfirmed) {
-    throw new Error('이미 확정한 요청은 취소할 수 없습니다.');
+    const err: CustomError = new Error(
+      '이미 확정한 요청은 취소할 수 없습니다.'
+    );
+    err.status = 400;
+    throw err;
   }
 
   // 권한 확인
   if (!user || !user.Customer) {
-    throw new Error('소비자 전용 API 입니다.');
+    const err: CustomError = new Error('소비자 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   } else if (user.Customer.id !== estimateReq.Customer.id) {
-    throw new Error('권한이 없습니다.');
+    const err: CustomError = new Error('권한이 없습니다.');
+    err.status = 401;
+    throw err;
   }
 
   // 해당 요청에 보낸 견적 조회
@@ -214,7 +234,9 @@ async function findEstimateReq(userId: number) {
 
   // 유저가 소비자인지 기사인지 확인
   if (!user?.Customer) {
-    throw new Error('소비자 전용 API 입니다.');
+    const err: CustomError = new Error('소비자 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   }
 
   const estimateReq = await estimateRequestRepository.findFirstData({
@@ -227,7 +249,9 @@ async function findEstimateReq(userId: number) {
 
   // 견적 요청이 있는지 확인
   if (!estimateReq || !estimateReq.MovingInfo) {
-    throw new Error('견적 요청 내역이 없습니다.');
+    const err: CustomError = new Error('견적 요청 내역이 없습니다.');
+    err.status = 403;
+    throw err;
   }
 
   const today = todayUTC();
@@ -243,7 +267,9 @@ async function findEstimateReq(userId: number) {
 
   // 이사일이 지났는지 확인
   if (!movingInfo) {
-    throw new Error('견적 요청 내역이 없습니다.');
+    const err: CustomError = new Error('견적 요청 내역이 없습니다.');
+    err.status = 403;
+    throw err;
   }
 
   // 확정된 견적이 여부에 따른 response 변경
@@ -284,7 +310,9 @@ async function findEstimateReqListByCustomer(
 
   // 소비자인지 확인
   if (!customer) {
-    throw new Error('소비자 전용 API 입니다.');
+    const err: CustomError = new Error('소비자 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   }
 
   const today = todayUTC();
@@ -448,7 +476,9 @@ async function findEstimateReqListByMover(
 
   // 기사인지 확인
   if (!mover) {
-    throw new Error('기사 전용 API 입니다.');
+    const err: CustomError = new Error('기사 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   }
 
   const today = todayUTC();

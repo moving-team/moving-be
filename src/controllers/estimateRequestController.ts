@@ -3,6 +3,7 @@ import { CreateEstimateReq } from '../structs/estimateRequest-struct';
 import estimateRequestService, {
   PagenationQuery,
 } from '../services/estimateRequestService';
+import { CustomError } from '../middlewares/errHandler';
 
 // 견적 요청 작성 API
 async function createEstimateReq(
@@ -16,7 +17,9 @@ async function createEstimateReq(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;
@@ -42,7 +45,9 @@ async function deleteEstimateReq(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;
@@ -71,7 +76,9 @@ async function findEstimateReq(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;
@@ -94,7 +101,9 @@ async function findEstimateReqListByCustomer(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;
@@ -129,7 +138,9 @@ async function findEstimateReqListByMover(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;

@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import assignedEstimateRequestService from '../services/assignedEstimateRequestService';
+import { CustomError } from '../middlewares/errHandler';
 
 // 유저-지정 견적 요청 API
 async function createAssigned(
@@ -13,7 +14,9 @@ async function createAssigned(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;

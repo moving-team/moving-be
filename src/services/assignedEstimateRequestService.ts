@@ -1,5 +1,6 @@
 import prisma from '../config/prisma';
 import { REGION_NAME_TO_CODE } from '../contents/region';
+import { CustomError } from '../middlewares/errHandler';
 import assignedEstimateRequestRepository from '../repositories/assignedEstimateRequestRepository';
 import estimateRepository from '../repositories/estimateRepository';
 import estimateRequestRepository from '../repositories/estimateRequestRepository';
@@ -42,13 +43,19 @@ async function createAssigned(userId: number, moverId: number) {
 
   if (!user || !user.Customer) {
     // 소비자 여부 확인
-    throw new Error('소비자 전용 API 입니다');
+    const err: CustomError = new Error('소비자 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   } else if (!mover) {
     // 기사 여부 확인
-    throw new Error('존재하지 않는 기사님입니다');
+    const err: CustomError = new Error('존재하지 않는 기사님입니다.');
+    err.status = 400;
+    throw err;
   } else if (!estimateReq) {
     // 견적 요청 여부 확인
-    throw new Error('일반 견적 요청을 먼저 진행해 주세요.');
+    const err: CustomError = new Error('일반 견적 요청을 먼저 진행해 주세요.');
+    err.status = 400;
+    throw err;
   }
 
   const [estimate, assignedEstimateReq] = await Promise.all([
@@ -73,13 +80,19 @@ async function createAssigned(userId: number, moverId: number) {
 
   if (estimate) {
     // 해당 기사가 견적을 보냈는지 확인
-    throw new Error('해당 기사가 보낸 견적가가 존재 합니다.');
+    const err: CustomError = new Error('해당 기사가 보낸 견적이 존재 합니다.');
+    err.status = 400;
+    throw err;
   } else if (assignedEstimateReq) {
     // 해당 기사의 지정 여부 확인
-    throw new Error('이미 기사님께 지정 견적 요청을 하셨습니다');
+    const err: CustomError = new Error('이미 기사님께 지정 견적 요청을 하셨습니다.');
+    err.status = 400;
+    throw err;
   } else if (!mover.serviceRegion.includes(REGION_NAME_TO_CODE[departure])) {
     // 기사의 서비스 지역인지 확인
-    throw new Error('해당 기사님의 서비스 지역이 아닙니다.');
+    const err: CustomError = new Error('해당 기사님의 서비스 지역이 아닙니다.');
+    err.status = 400;
+    throw err;
   }
 
   const contents = createNotificationContents({
