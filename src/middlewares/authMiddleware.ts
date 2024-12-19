@@ -12,7 +12,6 @@ export const authenticateToken = async (
 
   if (!accessToken && !refreshToken) {
     req.user = {};
-    console.log('빈 값', req.user);
     next();
     return;
   }
