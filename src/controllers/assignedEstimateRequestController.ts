@@ -61,4 +61,41 @@ async function rejectedAssigned(
     return next(err);
   }
 }
-export default { createAssigned, rejectedAssigned };
+
+// 기사 - 반려된 견적 요청 및 취소된 견적 요청 조회 API
+async function findRejecteListdAssigned(
+  req: Request<{}, {}, {}, { page: string; pageSize: string }>,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    if (
+      !req.user ||
+      typeof req.user === 'string' ||
+      typeof req.user.id !== 'number'
+    ) {
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
+    }
+
+    const { id: userId } = req.user;
+    const { page = '1', pageSize = '4' } = req.query;
+    const pageNum = parseInt(page, 10) || 1;
+    const pageSizeNum = parseInt(pageSize, 10) || 8;
+    const skip = (pageNum - 1) * pageSizeNum;
+
+    const assignedEstimateReq =
+      await assignedEstimateRequestService.findRejecteListdAssigned(
+        userId,
+        skip,
+        take
+      );
+
+    res.send(assignedEstimateReq);
+  } catch (err) {
+    return next(err);
+  }
+}
+
+export default { createAssigned, rejectedAssigned, findRejecteListdAssigned };
