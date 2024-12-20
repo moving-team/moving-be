@@ -34,3 +34,12 @@ export const estimateReqMovingInfoWithDateSelect = {
   createdAt: true,
   updatedAt: true,
 };
+
+export const estimateReqDateWithMovingInfoAndCustomerNameSelect = {
+  ...estimateReqMovingInfoWithDateSelect,
+  Customer: {
+    select: {
+      User: { select: { name: true } },
+    },
+  },
+};

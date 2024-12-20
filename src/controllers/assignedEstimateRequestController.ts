@@ -89,7 +89,7 @@ async function findRejecteListdAssigned(
       await assignedEstimateRequestService.findRejecteListdAssigned(
         userId,
         skip,
-        take
+        pageSizeNum
       );
 
     res.send(assignedEstimateReq);
