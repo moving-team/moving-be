@@ -870,6 +870,28 @@ async function findMovingCompleteList(
   }
 }
 
+// 이사 완료 정보 수정 API
+async function updateDatabase() {
+  const today = todayUTC();
+  const estimateList = await estimateRepository.findManyData({
+    where: {
+      status: 'ACCEPTED',
+      isMovingComplete: false,
+      MovingInfo: { movingDate: { lt: today } },
+    },
+    select: estimateSelect,
+  });
+
+  await Promise.all(
+    estimateList.map(async (estimate) => {
+      await estimateRepository.updateData({
+        where: { id: estimate.id },
+        data: { isMovingComplete: true },
+      });
+    })
+  );
+}
+
 export default {
   findReceivedEstimateList,
   findConfirmedEstimateList,
@@ -879,4 +901,5 @@ export default {
   createEstimate,
   findEstimateDetail,
   findMovingCompleteList,
+  updateDatabase,
 };

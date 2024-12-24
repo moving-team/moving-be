@@ -245,11 +245,7 @@ async function findMovingCompleteList(
 }
 
 // 이사 완료 정보 수정 API
-async function updateDatabase(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+async function updateDatabase(req: Request, res: Response, next: NextFunction) {
   try {
     const estimate = await estimateService.updateDatabase();
     res.send(estimate);
@@ -267,4 +263,5 @@ export default {
   createEstimate,
   findEstimateDetail,
   findMovingCompleteList,
+  updateDatabase,
 };
