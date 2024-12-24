@@ -21,3 +21,22 @@ export const RESION: { [key in $Enums.serviceRegion]: string } = {
   JEJU: '제주',
 };
 
+export const REGION_NAME_TO_CODE: { [key in string]: $Enums.serviceRegion } = {
+  서울: 'SEOUL',
+  경기: 'GYEONGGI',
+  인천: 'INCHEON',
+  강원: 'GANGWON',
+  충북: 'CHUNGBUK',
+  충남: 'CHUNGNAM',
+  세종: 'SEJONG',
+  대전: 'DAEJEON',
+  전북: 'JEONBUK',
+  전남: 'JEONNAM',
+  광주: 'GWANGJU',
+  경북: 'GYEONGBUK',
+  경남: 'GYEONGNAM',
+  대구: 'DAEGU',
+  울산: 'ULSAN',
+  부산: 'BUSAN',
+  제주: 'JEJU',
+};

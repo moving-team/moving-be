@@ -13,6 +13,7 @@ import reviewRouter from './routes/reviewRouter';
 import { unifiedLogger } from './middlewares/logger'; // 개발 중 사용했던 로깅 주석 처리
 import { USER_URL, USER_URL2, SC_URL } from './config/env';
 import morgan from 'morgan';
+import assignedEstimateReqRouter from './routes/assignedEstimateRequestRouter';
 
 const app = express();
 app.use(cookieParser());
@@ -41,6 +42,7 @@ app.use('/estimateReq', estimateReqRouter);
 app.use('/estimate', estimateRouter);
 app.use('/favorite', favoriteRouter);
 app.use('/review', reviewRouter);
+app.use('/assignedEstimateReq', assignedEstimateReqRouter);
 
 app.use(errorHandler);
 
