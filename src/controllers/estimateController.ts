@@ -247,8 +247,8 @@ async function findMovingCompleteList(
 // 이사 완료 정보 수정 API
 async function updateDatabase(req: Request, res: Response, next: NextFunction) {
   try {
-    const estimate = await estimateService.updateDatabase();
-    res.send(estimate);
+    await estimateService.updateDatabase();
+    res.send({ success: true });
   } catch (err) {
     return next(err);
   }
