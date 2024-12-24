@@ -244,6 +244,20 @@ async function findMovingCompleteList(
   }
 }
 
+// 이사 완료 정보 수정 API
+async function updateDatabase(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const estimate = await estimateService.updateDatabase();
+    res.send(estimate);
+  } catch (err) {
+    return next(err);
+  }
+}
+
 export default {
   findReceivedEstimateList,
   findConfirmedEstimateList,
