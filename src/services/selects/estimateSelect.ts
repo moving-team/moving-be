@@ -5,6 +5,7 @@ import {
 import { moverSelect } from './moverSelect';
 import { movingInfoSelect } from './movingInfoSelect';
 import { reviewSelect } from './reviewSelect';
+import { userSelect } from './userSelect';
 
 export const estimateSelect = {
   id: true,
@@ -107,3 +108,15 @@ export const estimateWithMovingInfoAndCustomerNameAndEstimateReqDateSelect = {
     },
   },
 };
+
+export const estimateWithMovingInfoAndCustomerUserAndMoverUserAndEstimateReqIdSelect =
+  {
+    ...estimateWithMovingInfoSelect,
+    Customer: {
+      select: { User: { select: userSelect } },
+    },
+    Mover: {
+      select: { User: { select: userSelect } },
+    },
+    EstimateRequest: { select: { id: true } },
+  };

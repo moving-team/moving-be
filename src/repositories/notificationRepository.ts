@@ -257,6 +257,30 @@ async function deleteData(
   await db.notification.delete({ where });
 }
 
+// createManyData
+function createManyData({
+  data,
+  tx,
+  skipDuplicates,
+}: {
+  data: NotificationUncheckedCreateInputType[];
+  tx?: Prisma.TransactionClient;
+  skipDuplicates?: boolean;
+}): Promise<{ count: number }>;
+
+async function createManyData({
+  data,
+  tx,
+  skipDuplicates,
+}: {
+  data: NotificationUncheckedCreateInputType[];
+  tx?: Prisma.TransactionClient;
+  skipDuplicates?: boolean;
+}) {
+  const db = tx || prisma;
+  return await db.notification.createMany({ data, skipDuplicates });
+}
+
 export default {
   createData,
   findFirstData,
@@ -266,4 +290,5 @@ export default {
   updateData,
   deleteData,
   findManyData,
+  createManyData,
 };

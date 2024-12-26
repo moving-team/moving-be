@@ -4,6 +4,6 @@ import notificationCotroller from '../controllers/notificationCotroller';
 
 const notificationRouter = express.Router();
 
-notificationRouter.post('/', notificationCotroller.sendMovingDayReminder)
+notificationRouter.post('/', notificationCotroller.sendMovingDayReminder);
 
 export default notificationRouter;
