@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import estimateService from '../services/estimateService';
 import { CreateEstimate } from '../structs/estimate-struct';
+import { CustomError } from '../middlewares/errHandler';
 
 // 유저-받았던 견적 리스트 조회 API
 async function findReceivedEstimateList(
@@ -14,7 +15,9 @@ async function findReceivedEstimateList(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;
@@ -41,7 +44,9 @@ async function findConfirmedEstimateList(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;
@@ -73,7 +78,9 @@ async function findSentEstimateList(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;
@@ -105,7 +112,9 @@ async function findWatingEstimateList(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;
@@ -128,7 +137,9 @@ async function updateConfirmEstimate(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;
@@ -157,7 +168,9 @@ async function createEstimate(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;
@@ -180,7 +193,9 @@ async function findEstimateDetail(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;
@@ -207,7 +222,9 @@ async function findMovingCompleteList(
       typeof req.user === 'string' ||
       typeof req.user.id !== 'number'
     ) {
-      throw new Error('권한이 없습니다.');
+      const err: CustomError = new Error('권한이 없습니다.');
+      err.status = 401;
+      throw err;
     }
 
     const { id: userId } = req.user;

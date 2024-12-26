@@ -40,6 +40,7 @@ function errorHandler(
   }
 
   res.status(status).json({
+    status,
     path: req.path,
     method: req.method,
     message: error.message ?? 'Internal Server Error',

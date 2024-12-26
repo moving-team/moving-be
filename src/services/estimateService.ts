@@ -50,6 +50,7 @@ import assignedEstimateRequestRepository from '../repositories/assignedEstimateR
 import { assignedEstimateReqSelect } from './selects/assignedEstimateRequestSelect';
 import customerRepository from '../repositories/customerRepository';
 import { customerSelect } from './selects/customerSelect';
+import { CustomError } from '../middlewares/errHandler';
 
 // 유저-받았던 견적 리스트 조회 API
 async function findReceivedEstimateList(userId: number, estimateReqId: number) {
@@ -60,7 +61,9 @@ async function findReceivedEstimateList(userId: number, estimateReqId: number) {
 
   // 소비자인지 확인
   if (!user?.Customer) {
-    throw new Error('소비자 전용 API 입니다.');
+    const err: CustomError = new Error('소비자 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   }
 
   const [estimateReq, estimateList] = await Promise.all([
@@ -80,7 +83,9 @@ async function findReceivedEstimateList(userId: number, estimateReqId: number) {
 
   // 견적 요청이 존재하는지 확인
   if (!estimateReq) {
-    throw new Error('존재하지 않는 견적 요청입니다.');
+    const err: CustomError = new Error('존재하지 않는 견적 요청입니다.');
+    err.status = 400;
+    throw err;
   }
 
   const info = estimateReqInfoMapper(estimateReq);
@@ -150,7 +155,9 @@ async function findConfirmedEstimateList(
 
   // 기사인지 확인
   if (!mover) {
-    throw new Error('기사 전용 API 입니다.');
+    const err: CustomError = new Error('기사 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   }
 
   const [total, estimateList] = await Promise.all([
@@ -208,7 +215,9 @@ async function findSentEstimateList(
 
   // 기사인지 확인
   if (!mover) {
-    throw new Error('기사 전용 API 입니다.');
+    const err: CustomError = new Error('기사 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   }
 
   const today = todayUTC();
@@ -333,7 +342,9 @@ async function findWatingEstimateList(userId: number) {
 
   if (!user?.Customer) {
     // 소비자자인지 확인
-    throw new Error('소비자 전용 API 입니다.');
+    const err: CustomError = new Error('소비자 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   }
 
   const today = todayUTC();
@@ -398,7 +409,9 @@ async function updateConfirmEstimate(userId: number, estimateId: number) {
 
   // 소비자인지 확인
   if (!user?.Customer) {
-    throw new Error('소비자 전용 API 입니다.');
+    const err: CustomError = new Error('소비자 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   }
 
   const estimate = await estimateRepository.findFirstData({
@@ -411,7 +424,9 @@ async function updateConfirmEstimate(userId: number, estimateId: number) {
 
   // 해당 견적이 소비자와 관련있는지 확인
   if (!estimate) {
-    throw new Error('권한이 없습니다');
+    const err: CustomError = new Error('권한이 없습니다.');
+    err.status = 401;
+    throw err;
   }
 
   const estimateReq = estimate.EstimateRequest;
@@ -420,11 +435,23 @@ async function updateConfirmEstimate(userId: number, estimateId: number) {
   const today = new Date(todayString).getTime();
 
   if (estimateReq.isConfirmed) {
-    throw new Error('이미 견적이 확정된 요청입니다. 추가 확정은 불가능합니다.');
+    const err: CustomError = new Error(
+      '이미 견적이 확정된 요청입니다. 추가 확정은 불가능합니다.'
+    );
+    err.status = 400;
+    throw err;
   } else if (estimateReq.isCancelled) {
-    throw new Error('요청이 취소 되어 견적을 확정할 수 없습니다.');
+    const err: CustomError = new Error(
+      '요청이 취소 되어 견적을 확정할 수 없습니다.'
+    );
+    err.status = 400;
+    throw err;
   } else if (movingDate < today) {
-    throw new Error('이사 날짜가 지나 견적을 확정할 수 없습니다.');
+    const err: CustomError = new Error(
+      '이사 날짜가 지나 견적을 확정할 수 없습니다.'
+    );
+    err.status = 400;
+    throw err;
   }
 
   const mover = await moverRepository.findFirstData({
@@ -433,7 +460,9 @@ async function updateConfirmEstimate(userId: number, estimateId: number) {
   });
 
   if (!mover) {
-    throw new Error('다시 시도해주세요');
+    const err: CustomError = new Error('다시 시도해주세요.');
+    err.status = 400;
+    throw err;
   }
 
   const contents = createNotificationContents({
@@ -509,25 +538,37 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
 
   if (!mover) {
     // 기사인지 확인
-    throw new Error('기사 전용 API 입니다.');
+    const err: CustomError = new Error('기사 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   } else if (
     mover.serviceRegion.length === 0 ||
     mover.serviceType.length === 0
   ) {
     // 프로필 등록 여부 확인
-    throw new Error('프로필을 먼저 등록해주세요.');
+    const err: CustomError = new Error('프로필을 먼저 등록해주세요.');
+    err.status = 400;
+    throw err;
   } else if (!estimateReq) {
-    // 견적 유무 확인
-    throw new Error('존재하지 않은 요청입니다.');
+    // 견적 요청 유무 확인
+    const err: CustomError = new Error('존재하지 않은 요청입니다.');
+    err.status = 400;
+    throw err;
   } else if (estimateReq.isConfirmed) {
     // 견적 확정 여부
-    throw new Error('이미 확정된 견적이 있는 요청입니다.');
+    const err: CustomError = new Error('이미 확정된 견적이 있는 요청입니다.');
+    err.status = 400;
+    throw err;
   } else if (estimateReq.isCancelled) {
     // 견적 요청 취소 여부
-    throw new Error('취소된 견적입니다.');
+    const err: CustomError = new Error('취소된 견적입니다.');
+    err.status = 400;
+    throw err;
   } else if (checkEstimate) {
     // 견적 작성 여부
-    throw new Error('이미 견적을 작성하였습니다.');
+    const err: CustomError = new Error('이미 견적을 작성하였습니다.');
+    err.status = 400;
+    throw err;
   }
 
   const todayString = todayUTC();
@@ -536,7 +577,9 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
 
   // 이사일이 지났는지 확인
   if (today > movingDate) {
-    throw new Error('이사일이 지난 요청입니다.');
+    const err: CustomError = new Error('이사일이 지난 요청입니다.');
+    err.status = 400;
+    throw err;
   }
 
   let estimate: Estimate;
@@ -548,9 +591,11 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
     });
 
     if (estimateCount === 3) {
-      throw new Error(
+      const err: CustomError = new Error(
         '해당 견적 요청은 이미 최대치의 견적을 받아 견적을 보낼 수 없습니다.'
       );
+      err.status = 400;
+      throw err;
     }
 
     estimate = await prisma.$transaction(async (tx) => {
@@ -590,9 +635,11 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
     });
 
     if (estimateCount === 5) {
-      throw new Error(
+      const err: CustomError = new Error(
         '해당 견적 요청은 이미 최대치의 견적을 받아 견적을 보낼 수 없습니다.'
       );
+      err.status = 400;
+      throw err;
     }
 
     estimate = await prisma.$transaction(async (tx) => {
@@ -651,7 +698,9 @@ async function findEstimateDetail(userId: number, estimateId: number) {
 
   // 존재하는 견적인지 확인
   if (!estimate) {
-    throw new Error('존재하지 않는 견적입니다.');
+    const err: CustomError = new Error('존재하지 않는 견적입니다.');
+    err.status = 400;
+    throw err;
   }
   const {
     Mover: mover,
@@ -699,7 +748,9 @@ async function findEstimateDetail(userId: number, estimateId: number) {
     );
   }
 
-  throw new Error('다시 시도해 주세요.');
+  const err: CustomError = new Error('다시 시도해 주세요.');
+  err.status = 400;
+  throw err;
 }
 
 // 유저-이사 완료한 견적 리스트 조회 API
@@ -728,7 +779,9 @@ async function findMovingCompleteList(
 
   // 소비자인지 확인
   if (!customer) {
-    throw new Error('소비자 전용 API 입니다.');
+    const err: CustomError = new Error('소비자 전용 API 입니다.');
+    err.status = 403;
+    throw err;
   }
 
   if (unreviewedEstimateCount >= skip + take) {
