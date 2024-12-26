@@ -1,4 +1,3 @@
-import prisma from '../config/prisma';
 import estimateRepository from '../repositories/estimateRepository';
 import notificationRepository from '../repositories/notificationRepository';
 import { createNotificationContents } from '../utils/createNotificationContents';
