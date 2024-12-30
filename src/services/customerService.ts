@@ -45,7 +45,6 @@ const getCustomer = async (userId: number) => {
   return list;
 };
 
-// 301  1
 const createCustomer = async (userId: number) => {
   const data = {
     userId: userId,
