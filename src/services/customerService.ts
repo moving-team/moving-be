@@ -22,9 +22,15 @@ const getCustomer = async (userId: number) => {
   });
 
   const estimateReqConfirmed = await estimateRequestRepository.findFirstData({
-    where: { customerId: customerData?.id, isConfirmed: false },
+    where: {
+      AND: [{ customerId: customerData?.userId }, { isConfirmed: false }],
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
   });
-  const isConfirmed = !estimateReqConfirmed;
+  const isConfirmed = estimateReqConfirmed === null;
+  console.log(estimateReqConfirmed);
 
   const list = {
     id: customerData?.id,
@@ -39,6 +45,7 @@ const getCustomer = async (userId: number) => {
   return list;
 };
 
+// 301  1
 const createCustomer = async (userId: number) => {
   const data = {
     userId: userId,
