@@ -97,3 +97,13 @@ export const estimateWithUserIdSelect = {
     },
   },
 };
+
+export const estimateWithMovingInfoAndCustomerNameAndEstimateReqDateSelect = {
+  ...estimateWithMovingInfoSelect,
+  EstimateRequest: { select: estimateReqWithDateSelect },
+  Customer: {
+    select: {
+      User: { select: { name: true } },
+    },
+  },
+};

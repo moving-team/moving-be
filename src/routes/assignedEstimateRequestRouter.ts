@@ -6,9 +6,15 @@ const assignedEstimateReqRouter = express.Router();
 
 assignedEstimateReqRouter.use(authenticateToken);
 
-assignedEstimateReqRouter.post(
-  '/',
-  assignedEstimateRequestController.createAssigned
-).patch('/:estimateRequestId', assignedEstimateRequestController.rejectedAssigned);
+assignedEstimateReqRouter
+  .post('/', assignedEstimateRequestController.createAssigned)
+  .get(
+    '/rejectList',
+    assignedEstimateRequestController.findRejecteListdAssigned
+  )
+  .patch(
+    '/:estimateRequestId',
+    assignedEstimateRequestController.rejectedAssigned
+  );
 
 export default assignedEstimateReqRouter;
