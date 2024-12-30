@@ -208,12 +208,12 @@ const getMoverDetail = async (userId: number, moverId: number) => {
   let isFavorite = false;
   let isConfirmed = false;
   if (userId) {
-    const customerData = await customerRepository.findFirstData({
-      where: { id: userId },
+    const moverData = await moverRepository.findFirstData({
+      where: { userId: userId },
     });
     const estimateReqData = await estimateRequestRepository.findFirstData({
       where: {
-        customerId: customerData?.id,
+        customerId: moverData?.id,
         isConfirmed: false,
         isCancelled: false,
         MovingInfo: {
