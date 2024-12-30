@@ -132,6 +132,7 @@ const naverCallbackController = async (
       const tokenData = await naver.getToken(code as string);
       const userData = await naver.getUserInfo(tokenData.access_token);
       const userCheck = await userService.checkUser(userData.response.email);
+
       if (userCheck) {
         const data = await userService.SNSLogin(userCheck);
         if (data.accessToken && data.refreshToken) {
@@ -201,6 +202,7 @@ const kakaoCallbackController = async (
     const userData = await kakao.getUserInfo(tokenData.access_token); // userData = {nickname, providerId}
 
     const userCheck = await userService.checkUser(userData.nickname);
+
     if (userCheck) {
       const data = await userService.SNSLogin(userCheck);
       if (data.accessToken && data.refreshToken) {
