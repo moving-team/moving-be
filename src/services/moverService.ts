@@ -229,7 +229,10 @@ const getMoverDetail = async (userId: number, moverId: number) => {
     if (isConfirmed) {
       isAssigned = estimateReqData
         ? !!(await assignedEstimateRequestRepository.findFirstData({
-            where: { estimateRequestId: estimateReqData.id },
+            where: {
+              moverId: moverData?.id,
+              estimateRequestId: estimateReqData.id,
+            },
           }))
         : false;
     }
