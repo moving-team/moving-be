@@ -514,7 +514,7 @@ async function findEstimateReqListByMover(
   // 지정 견적 요청 관련 필터
   const validAssignedEstimateRequestFilter = {
     AssignedEstimateRequest: {
-      every: {
+      every: { // 수정 필요
         moverId: mover.id,
         isRejected: false,
       },

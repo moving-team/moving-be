@@ -28,7 +28,6 @@ import {
   estimateReqwithMovingInfoAndCustomerAndUserNameSelect,
 } from './selects/estimateRequsetSelect';
 import {
-  estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerNameSelect,
   estimateMoverAndMovingInfoSelect,
   estimateMoverSelect,
   estimateSelect,
@@ -36,6 +35,7 @@ import {
   estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
   estimateWithMovingInfoAndcustomerNameSelect,
   estimateDateWithMoverAndMovingInfoAndReviewSelect,
+  estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerIdAndNameSelect,
 } from './selects/estimateSelect';
 import { moverSelect, moverUserSelect } from './selects/moverSelect';
 import {
@@ -686,7 +686,7 @@ async function findEstimateDetail(userId: number, estimateId: number) {
     estimateRepository.findFirstData({
       where: { id: estimateId },
       select:
-        estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerNameSelect,
+        estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerIdAndNameSelect,
     }),
 
     // 소비자인지, 기사인지 확인
@@ -702,6 +702,7 @@ async function findEstimateDetail(userId: number, estimateId: number) {
     err.status = 400;
     throw err;
   }
+
   const {
     Mover: mover,
     EstimateRequest: estimateReq,
@@ -709,6 +710,12 @@ async function findEstimateDetail(userId: number, estimateId: number) {
     Customer: customer,
     ...rest
   } = estimate;
+
+  if(user && !user.Mover && user.Customer?.id !== customer.id) {
+    const err: CustomError = new Error('권한이 없습니다.');
+    err.status = 401;
+    throw err;
+  }
 
   if (user && user.Customer && !user.Mover) {
     const [reviewStats, confirmationCount, favorite] = await Promise.all([
@@ -869,7 +876,6 @@ async function findMovingCompleteList(
     };
   }
 }
-
 
 export default {
   findReceivedEstimateList,

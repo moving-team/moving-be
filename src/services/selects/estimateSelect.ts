@@ -43,11 +43,12 @@ export const estimateWithMoverAndMovingInfoAndEstimateReqDateSelect = {
   EstimateRequest: { select: estimateReqWithDateSelect },
 };
 
-export const estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerNameSelect =
+export const estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerIdAndNameSelect =
   {
     ...estimateWithMoverAndMovingInfoAndEstimateReqDateSelect,
     Customer: {
       select: {
+        id: true,
         User: { select: { name: true } },
       },
     },
