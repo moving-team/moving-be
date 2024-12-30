@@ -9,12 +9,19 @@ import notificationRepository from '../repositories/notificationRepository';
 import userRepository from '../repositories/userRepository';
 import { createNotificationContents } from '../utils/createNotificationContents';
 import { todayUTC } from '../utils/dateUtil';
-import { assignedEstimateReqSelect } from './selects/assignedEstimateRequestSelect';
+import { findRejecteListdAssignedMapper } from './mappers/assignedEstimateRequestMapper';
+import {
+  assignedDateWithMovingInfoAndCustomerNameAndEstimateReqSelect,
+  assignedEstimateReqSelect,
+} from './selects/assignedEstimateRequestSelect';
 import {
   estimateReqMovingInfoSelect,
   estimateReqwithMovingInfoAndCustomerAndUserNameSelect,
 } from './selects/estimateRequsetSelect';
-import { estimateSelect } from './selects/estimateSelect';
+import {
+  estimateSelect,
+  estimateWithMovingInfoAndCustomerNameAndEstimateReqDateSelect,
+} from './selects/estimateSelect';
 import { moverSelect, moverUserSelect } from './selects/moverSelect';
 import { userCustomerSelect } from './selects/userSelect';
 
@@ -181,7 +188,7 @@ async function rejectedAssigned(userId: number, estimateReqId: number) {
     err.status = 400;
     throw err;
   } else if (today > movingDate) {
-    // 이사 날짜가 지났을때 
+    // 이사 날짜가 지났을때
     const err: CustomError = new Error('이사일이 지난 요청입니다.');
     err.status = 400;
     throw err;
@@ -221,4 +228,90 @@ async function rejectedAssigned(userId: number, estimateReqId: number) {
   };
 }
 
-export default { createAssigned, rejectedAssigned };
+// 기사 - 반려된 견적 요청 및 취소된 견적 요청 조회 API
+async function findRejecteListdAssigned(
+  userId: number,
+  skip: number,
+  take: number
+) {
+  const [mover, total, cancelledRequest, rejectedRequest] = await Promise.all([
+    moverRepository.findFirstData({
+      where: { userId },
+      select: moverSelect,
+    }),
+
+    estimateRequestRepository.countData({
+      OR: [
+        {
+          AssignedEstimateRequest: {
+            some: { Mover: { userId }, isRejected: true }, // 기사가 지정 견적 요청을 반려한 경우
+          },
+        },
+        {
+          isCancelled: true,
+          Estimate: { some: { Mover: { userId } } }, // 기사가 견적을 보냈지만 소비자가 요청 자체를 취소한 경우
+        },
+      ],
+    }),
+
+    estimateRepository.findManyData({
+      where: {
+        EstimateRequest: { isCancelled: true },
+        Mover: { userId },
+      },
+      select: estimateWithMovingInfoAndCustomerNameAndEstimateReqDateSelect,
+    }),
+
+    assignedEstimateRequestRepository.findManyData({
+      where: {
+        isRejected: true,
+        Mover: { userId },
+      },
+      select: assignedDateWithMovingInfoAndCustomerNameAndEstimateReqSelect,
+    }),
+  ]);
+
+  // 기사인지 확인
+  if (!mover) {
+    const err: CustomError = new Error('기사 전용 API 입니다.');
+    err.status = 403;
+    throw err;
+  }
+
+  const newCancelledRequest = cancelledRequest.map((data) => {
+    const { MovingInfo, Customer, EstimateRequest, ...rest } = data;
+    return findRejecteListdAssignedMapper(
+      EstimateRequest,
+      MovingInfo,
+      rest.isAssigned,
+      Customer.User.name,
+      EstimateRequest.updatedAt
+    );
+  });
+
+  const newRejectedRequest = rejectedRequest.map((data) => {
+    const { EstimateRequest, ...rest } = data;
+    const { Customer, MovingInfo, ...rest2 } = EstimateRequest;
+    return findRejecteListdAssignedMapper(
+      rest2,
+      MovingInfo,
+      true,
+      Customer.User.name,
+      rest.updatedAt
+    );
+  });
+
+  const list = [...newCancelledRequest, ...newRejectedRequest]
+    .sort(
+      (a, b) =>
+        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime() // 정렬렬
+    )
+    .slice(skip, skip + take + 1); // 페이지네이션
+
+  return {
+    total,
+    list,
+  };
+}
+
+export default { createAssigned, rejectedAssigned, findRejecteListdAssigned };
