@@ -46,9 +46,6 @@ export function midnightTaskScheduler() {
         }),
       ]);
 
-      console.log({ estimateList1 });
-      console.log({ estimateList2 });
-
       const data = estimateList2.flatMap((estimate) => {
         const { MovingInfo, Customer, Mover, EstimateRequest, ...rest } =
           estimate;
