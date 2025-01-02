@@ -306,7 +306,7 @@ async function findRejecteListdAssigned(
       (a, b) =>
         new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime() // 정렬렬
     )
-    .slice(skip, skip + take + 1); // 페이지네이션
+    .slice(skip, skip + take); // 페이지네이션
 
   return {
     total,
