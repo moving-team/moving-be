@@ -48,6 +48,10 @@ import notificationRepository from '../repositories/notificationRepository';
 import { createNotificationContents } from '../utils/createNotificationContents';
 import { CustomError } from '../middlewares/errHandler';
 
+//알림용 import
+import { sendNotification } from '../controllers/notificationController';
+import { NotificationType } from '../types/serviceType';
+
 export interface PagenationQuery {
   type?: $Enums.serviceType | $Enums.serviceType[];
   isAssigned?: string;
@@ -189,39 +193,48 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
       tx,
     });
 
-    estimateList.map(async (estimate) => {
-      // 견적 상태 수정
-      await estimateRepository.updateData({
-        where: { id: estimate.id },
-        data: { status: 'REJECTED' },
-        select: estimateSelect,
-        tx,
-      });
+    const notifications = await Promise.all(
+      estimateList.map(async (estimate) => {
+        // 견적 상태 수정
+        await estimateRepository.updateData({
+          where: { id: estimate.id },
+          data: { status: 'REJECTED' },
+          select: estimateSelect,
+          tx,
+        });
+  
+        const contents = createNotificationContents({
+          type: 'cancel',
+          customerName: user.name,
+          movingType: deleteEstimateReq.estimateReq.MovingInfo.movingType,
+        }) as string;
+  
+        // 알람 생성
+        return notificationRepository.createData({
+          data: {
+            userId: estimate.Mover.User.id,
+            estimateRequestId,
+            estimateId: estimate.id,
+            contents,
+          },
+          tx,
+        });
+      })
+    );
 
-      const contents = createNotificationContents({
-        type: 'cancel',
-        customerName: user.name,
-        movingType: deleteEstimateReq.MovingInfo.movingType,
-      }) as string;
-
-      // 알람 생성
-      await notificationRepository.createData({
-        data: {
-          userId: estimate.Mover.User.id,
-          estimateRequestId,
-          estimateId: estimate.id,
-          contents,
-        },
-        tx,
-      });
-    });
-
-    return estimateReq;
+    return { estimateReq, notifications };
   });
 
+  // 알림 발송
+  if (deleteEstimateReq.notifications) {
+    deleteEstimateReq.notifications.forEach((notification) => {
+      sendNotification(String(notification.userId), notification);
+    });
+  }
+
   return {
-    estimateReqId: deleteEstimateReq.id,
-    isCancelled: deleteEstimateReq.isCancelled,
+    estimateReqId: deleteEstimateReq.estimateReq.id,
+    isCancelled: deleteEstimateReq.estimateReq.isCancelled,
   };
 }
 

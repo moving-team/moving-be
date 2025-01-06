@@ -10,6 +10,7 @@ import moverRouter from './routes/moverRouter';
 import estimateRouter from './routes/estimateRouter';
 import favoriteRouter from './routes/favoriteRouter';
 import reviewRouter from './routes/reviewRouter';
+import notificationRouter from './routes/notificationRoutes';
 import { unifiedLogger } from './middlewares/logger'; // 개발 중 사용했던 로깅 주석 처리
 import { USER_URL, USER_URL2, SC_URL } from './config/env';
 import morgan from 'morgan';
@@ -48,6 +49,7 @@ app.use('/estimate', estimateRouter);
 app.use('/favorite', favoriteRouter);
 app.use('/review', reviewRouter);
 app.use('/assignedEstimateReq', assignedEstimateReqRouter);
+app.use('/notification', notificationRouter);
 
 app.use(errorHandler);
 

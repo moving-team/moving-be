@@ -52,6 +52,10 @@ import customerRepository from '../repositories/customerRepository';
 import { customerSelect } from './selects/customerSelect';
 import { CustomError } from '../middlewares/errHandler';
 
+//알림용 import
+import { sendNotification } from '../controllers/notificationController';
+import { NotificationType } from '../types/serviceType';
+
 // 유저-받았던 견적 리스트 조회 API
 async function findReceivedEstimateList(userId: number, estimateReqId: number) {
   const user = await userRepository.findFirstData({
@@ -471,7 +475,7 @@ async function updateConfirmEstimate(userId: number, estimateId: number) {
     moverName: mover.nickname,
   }) as string;
 
-  await prisma.$transaction(async (tx) => {
+  const result: NotificationType = await prisma.$transaction(async (tx) => {
     // 견적 상태 변경
     await estimateRepository.updateData({
       where: { id: estimateId },
@@ -489,7 +493,7 @@ async function updateConfirmEstimate(userId: number, estimateId: number) {
     });
 
     // 알림 생성
-    await notificationRepository.createData({
+    const notification = await notificationRepository.createData({
       data: {
         userId: mover.User.id,
         estimateRequestId: estimate.EstimateRequest.id,
@@ -497,7 +501,14 @@ async function updateConfirmEstimate(userId: number, estimateId: number) {
         contents,
       },
     });
+
+    return notification;
   });
+
+  // 알림 발송 추가
+  if (result) {
+    sendNotification(String(mover.User.id), result);
+  }
 
   return { estimateId, isConfirmed: true };
 }
@@ -582,7 +593,7 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
     throw err;
   }
 
-  let estimate: Estimate;
+  let estimate: {createData: Estimate, notification: NotificationType}
 
   if (isAssigned) {
     const estimateCount = await estimateRepository.countData({
@@ -617,16 +628,15 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
         movingType: estimateReq.MovingInfo.movingType,
       }) as string;
 
-      await notificationRepository.createData({
+      const notification = await notificationRepository.createData({
         data: {
           userId: estimateReq.Customer.User.id,
           estimateRequestId,
           estimateId: createData.id,
           contents,
-        },
+        }
       });
-
-      return createData;
+      return {createData, notification};
     });
   } else {
     const estimateCount = await estimateRepository.countData({
@@ -660,7 +670,7 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
         movingType: estimateReq.MovingInfo.movingType,
       }) as string;
 
-      await notificationRepository.createData({
+      const notification = await notificationRepository.createData({
         data: {
           userId: estimateReq.Customer.User.id,
           estimateRequestId,
@@ -669,14 +679,19 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
         },
       });
 
-      return createData;
+      return {createData, notification};
     });
   }
 
+  // 알림 발송 추가
+  if (estimate.notification) {
+    sendNotification(String(estimateReq.Customer.User.id), estimate.notification);
+  }
+
   return {
-    estimateId: estimate.id,
+    estimateId: estimate.createData.id,
     comment: estimateReq.comment,
-    price: estimate.price,
+    price: estimate.createData.price,
   };
 }
 
@@ -711,7 +726,7 @@ async function findEstimateDetail(userId: number, estimateId: number) {
     ...rest
   } = estimate;
 
-  if(user && !user.Mover && user.Customer?.id !== customer.id) {
+  if (user && !user.Mover && user.Customer?.id !== customer.id) {
     const err: CustomError = new Error('권한이 없습니다.');
     err.status = 401;
     throw err;

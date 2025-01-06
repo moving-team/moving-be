@@ -25,6 +25,10 @@ import {
 import { moverSelect, moverUserSelect } from './selects/moverSelect';
 import { userCustomerSelect } from './selects/userSelect';
 
+//알림용 import
+import { sendNotification } from '../controllers/notificationController';
+import { NotificationType } from '../types/serviceType';
+
 // 유저-지정 견적 요청 API
 async function createAssigned(userId: number, moverId: number) {
   const today = todayUTC();
@@ -114,14 +118,14 @@ async function createAssigned(userId: number, moverId: number) {
   }) as string;
 
   // 지정 견적 생성 및 알림 생성
-  await prisma.$transaction(async (tx) => {
+  const result: NotificationType = await prisma.$transaction(async (tx) => {
     const assignedEstimateReq =
       await assignedEstimateRequestRepository.createData({
         data: { estimateRequestId: estimateReq.id, moverId },
         tx,
       });
 
-    await notificationRepository.createData({
+    const notification = await notificationRepository.createData({
       data: {
         userId: mover.User.id,
         estimateRequestId: estimateReq.id,
@@ -130,7 +134,13 @@ async function createAssigned(userId: number, moverId: number) {
       },
       tx,
     });
+    return notification;
   });
+
+  //알림 발송 추가
+  if (result) {
+    sendNotification(String(mover.User.id), result);
+  }
 
   return { isAssignedEstimate: 'true' };
 }
@@ -209,7 +219,7 @@ async function rejectedAssigned(userId: number, estimateReqId: number) {
         tx,
       });
 
-    await notificationRepository.createData({
+    const notification = await notificationRepository.createData({
       data: {
         userId: estimateReq.Customer.User.id,
         estimateRequestId: estimateReqId,
@@ -219,12 +229,17 @@ async function rejectedAssigned(userId: number, estimateReqId: number) {
       tx,
     });
 
-    return assignEstimateReq;
+    return {assignEstimateReq, notification};
   });
 
+    //알림 발송 추가
+    if (reject.notification) {
+      sendNotification(String(estimateReq.Customer.User.id), reject.notification);
+    }
+
   return {
-    assignedEstimateReqId: reject.id,
-    isRejected: reject.isRejected,
+    assignedEstimateReqId: reject.assignEstimateReq.id,
+    isRejected: reject.assignEstimateReq.isRejected,
   };
 }
 
