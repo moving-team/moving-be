@@ -24,7 +24,7 @@ const getCustomer = async (userId: number) => {
   const estimateReqConfirmed = await estimateRequestRepository.findFirstData({
     where: {
       customerId: customerData?.id,
-      isConfirmed: false,
+      AND: [{ isConfirmed: false }, { isCancelled: false }],
     },
     orderBy: {
       createdAt: 'desc',
