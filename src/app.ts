@@ -28,7 +28,8 @@ app.use(
       'http://localhost:3000',
       'http://localhost:3001',
       'http://localhost:3002',
-      'https://moving-fe-teal.vercel.app/'
+      'https://moving-fe-teal.vercel.app',
+      'https://moving-fe-teal.vercel.app/',
     ],
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
