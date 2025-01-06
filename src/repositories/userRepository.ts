@@ -64,30 +64,36 @@ function findFirstData<T extends UserSelectType>({
   where,
   select,
   orderBy,
+  include,
 }: {
   where: UserWhereInputType;
   select: T;
   orderBy?: UserOrderByType;
+  include?: { Mover: any; Customer: any };
 }): Promise<UserPayload<T> | null>;
 function findFirstData({
   where,
   orderBy,
+  include,
 }: {
   where: UserWhereInputType;
   orderBy?: UserOrderByType;
+  include?: { Mover: any; Customer: any };
 }): Promise<UserPayload<undefined> | null>;
 
 async function findFirstData<T extends UserSelectType | undefined>({
   where,
   select,
   orderBy = { createdAt: 'desc' },
+  include,
 }: {
   where: UserWhereInputType;
   select?: T;
   orderBy?: UserOrderByType;
+  include?: { Mover: any; Customer: any };
 }) {
   if (select === undefined) {
-    return await prisma.user.findFirst({ where, orderBy });
+    return await prisma.user.findFirst({ where, orderBy, include });
   }
   return await prisma.user.findFirst({
     where,
