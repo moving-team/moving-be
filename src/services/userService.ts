@@ -12,7 +12,13 @@ const generateToken = (payload: any, secret: string, expiresIn: string) => {
 };
 
 const getUser = async (id: number) => {
-  const userData = await userRepository.findFirstData({ where: { id } });
+  const userData = await userRepository.findFirstData({
+    where: { id },
+    include: {
+      Customer: true,
+      Mover: true,
+    },
+  });
   if (!userData) throw new Error('유저 없음');
   const { password, ...userDataWithoutPassword } = userData;
   return userDataWithoutPassword;
