@@ -209,7 +209,7 @@ const getMoverDetail = async (userId: number, moverId: number) => {
   let isConfirmed = false;
   if (userId) {
     const customerData = await customerRepository.findFirstData({
-      where: { id: userId },
+      where: { userId: userId },
     });
     const estimateReqData = await estimateRequestRepository.findFirstData({
       where: {
@@ -229,7 +229,10 @@ const getMoverDetail = async (userId: number, moverId: number) => {
     if (isConfirmed) {
       isAssigned = estimateReqData
         ? !!(await assignedEstimateRequestRepository.findFirstData({
-            where: { estimateRequestId: estimateReqData.id },
+            where: {
+              moverId: moverData?.id,
+              estimateRequestId: estimateReqData.id,
+            },
           }))
         : false;
     }
@@ -284,14 +287,37 @@ const getMover = async (userId: number) => {
           name: true,
         },
       },
+      Review: {
+        select: {
+          score: true,
+        },
+      },
     },
   });
+
   if (moverData) {
-    const { profileImage, nickname, ...moverDataWithoutReviews } = moverData;
+    const reviews = moverData.Review;
+    let avgScore = 0;
+    let reviewCount = 0;
+
+    if (reviews && reviews.length > 0) {
+      reviewCount = reviews.length;
+      avgScore = Number(
+        (
+          reviews.reduce((sum, review) => sum + review.score, 0) / reviewCount
+        ).toFixed(1)
+      );
+    }
+    const { Review, profileImage, nickname, ...moverDataWithoutReviews } =
+      moverData;
     return {
       ...moverDataWithoutReviews,
       profileImg: profileImage,
       moverName: nickname,
+      reviewStats: {
+        averageScore: avgScore,
+        totalReviews: reviewCount,
+      },
     };
   } else {
     throw new Error('프로필 없음');

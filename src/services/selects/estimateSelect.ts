@@ -5,6 +5,7 @@ import {
 import { moverSelect } from './moverSelect';
 import { movingInfoSelect } from './movingInfoSelect';
 import { reviewSelect } from './reviewSelect';
+import { userSelect } from './userSelect';
 
 export const estimateSelect = {
   id: true,
@@ -42,11 +43,12 @@ export const estimateWithMoverAndMovingInfoAndEstimateReqDateSelect = {
   EstimateRequest: { select: estimateReqWithDateSelect },
 };
 
-export const estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerNameSelect =
+export const estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerIdAndNameSelect =
   {
     ...estimateWithMoverAndMovingInfoAndEstimateReqDateSelect,
     Customer: {
       select: {
+        id: true,
         User: { select: { name: true } },
       },
     },
@@ -97,3 +99,25 @@ export const estimateWithUserIdSelect = {
     },
   },
 };
+
+export const estimateWithMovingInfoAndCustomerNameAndEstimateReqDateSelect = {
+  ...estimateWithMovingInfoSelect,
+  EstimateRequest: { select: estimateReqWithDateSelect },
+  Customer: {
+    select: {
+      User: { select: { name: true } },
+    },
+  },
+};
+
+export const estimateWithMovingInfoAndCustomerUserAndMoverUserAndEstimateReqIdSelect =
+  {
+    ...estimateWithMovingInfoSelect,
+    Customer: {
+      select: { User: { select: userSelect } },
+    },
+    Mover: {
+      select: { User: { select: userSelect } },
+    },
+    EstimateRequest: { select: { id: true } },
+  };
