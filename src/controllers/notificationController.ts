@@ -34,7 +34,7 @@ export const connectToNotifications = (req: Request, res: Response): void => {
   }
 };
 
-// 알림 보내기기
+// 알림 보내기
 export const sendNotification = (
   userId: string,
   notification: {
@@ -71,7 +71,7 @@ export const getUnreadNotifications = async (req: Request, res: Response): Promi
   }
 };
 
-// 읽지 않은 알림 상태 변경경
+// 읽지 않은 알림 상태 변경
 export const postNotificationMarkRead = (req: Request, res: Response): void => {
   try {
     if (!req.user || typeof req.user === 'string') {

@@ -18,6 +18,6 @@ router
   router
   .route('/read/:notificationId')
   .all(authenticateToken)
-  .get(postNotificationMarkRead);
+  .post(postNotificationMarkRead);
 
 export default router;

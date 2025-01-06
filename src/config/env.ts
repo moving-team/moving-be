@@ -17,6 +17,8 @@ const KAKAO_REDIRECT_URI = process.env.KAKAO_REDIRECT_URI as string;
 const NAVER_CLIENT_ID = process.env.NAVER_CLIENT_ID as string;
 const NAVER_CLIENT_SECRET = process.env.NAVER_CLIENT_SECRET as string;
 const NAVER_REDIRECT_URI = process.env.NAVER_REDIRECT_URI as string;
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID as string;
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET as string;
 
 export {
   PORT,

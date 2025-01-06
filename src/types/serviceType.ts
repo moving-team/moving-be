@@ -121,12 +121,12 @@ export interface CreateReviewInput {
 
 export interface NotificationType {
   id: number;
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
   userId: number;
   estimateRequestId: number;
   estimateId: number | null;
   assignedEstimateRequestId: number | null;
   contents: string;
-  isRead?: boolean;
+  isRead: boolean;
 }
