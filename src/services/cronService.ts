@@ -8,6 +8,9 @@ import {
 import notificationRepository from '../repositories/notificationRepository';
 import { createNotificationContents } from '../utils/createNotificationContents';
 
+//알림용 import 
+import { sendNotification } from '../controllers/notificationController';
+
 export function midnightTaskScheduler() {
   cron.schedule('00 15 * * *', async () => {
     console.log('스케줄러 실행: ', new Date());
@@ -71,7 +74,7 @@ export function midnightTaskScheduler() {
         ];
       });
 
-      await Promise.all([
+      const notifications = await Promise.all([
         // 이사 완료 정보 수정
         ...estimateList1.map(async (estimate) => {
           await estimateRepository.updateData({
@@ -83,6 +86,15 @@ export function midnightTaskScheduler() {
         // 이사 전날 확인 알람 생성
         notificationRepository.createManyData({ data }),
       ]);
+
+      // 알림 발송 추가
+      const createdNotifications = notifications.pop();
+      if (Array.isArray(createdNotifications)) {
+        createdNotifications.forEach((notification) => {
+          sendNotification(String(notification.userId), notification);
+        });
+      }
+
     } catch (err) {
       console.log(err);
     }

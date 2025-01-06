@@ -118,3 +118,15 @@ export interface CreateReviewInput {
   score: number;
   description: string;
 }
+
+export interface NotificationType {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+  userId: number;
+  estimateRequestId: number;
+  estimateId: number | null;
+  assignedEstimateRequestId: number | null;
+  contents: string;
+  isRead: boolean;
+}
