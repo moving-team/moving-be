@@ -80,14 +80,22 @@ const patchCustomerInfo = async (userId: number, data: any) => {
     where: { id: userId },
   });
   if (!userData) {
-    throw new Error('유저 정보 없음');
+    return {
+      status: 400,
+      type: 'user',
+      message: '유저 정보가 없습니다.',
+    };
   }
   const isPasswordMatch = await bcrypt.compare(
     data.usedPassword,
     userData.password as string
   );
   if (!isPasswordMatch) {
-    throw new Error('비밀번호가 일치하지 않아요');
+    return {
+      status: 400,
+      type: 'password',
+      message: '비밀번호가 일치하지 않습니다.',
+    };
   }
   const newHashedPassword = await bcrypt.hash(data.newPassword, 10);
   const patchData = {
@@ -96,7 +104,13 @@ const patchCustomerInfo = async (userId: number, data: any) => {
     password: newHashedPassword,
   };
   const where = { id: userData.id };
-  return await userRepository.updateData({ where, data: patchData });
+  await userRepository.updateData({ where, data: patchData });
+
+  return {
+    status: 200,
+    type: 'success',
+    message: '회원정보 수정 완료',
+  };
 };
 
 export { patchCustomerProfile, patchCustomerInfo, createCustomer, getCustomer };
