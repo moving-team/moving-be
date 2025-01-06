@@ -18,7 +18,7 @@ import { midnightTaskScheduler } from './services/cronService';
 
 const app = express();
 
-midnightTaskScheduler()
+midnightTaskScheduler();
 
 app.use(cookieParser());
 app.use(morgan('dev'));
