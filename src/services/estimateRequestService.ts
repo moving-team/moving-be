@@ -249,9 +249,7 @@ async function findEstimateReq(userId: number) {
 
   // 견적 요청이 있는지 확인
   if (!estimateReq || !estimateReq.MovingInfo) {
-    const err: CustomError = new Error('견적 요청 내역이 없습니다.');
-    err.status = 403;
-    throw err;
+    return { message: '견적 요청 내역이 없습니다.' };
   }
 
   const today = todayUTC();
@@ -267,9 +265,7 @@ async function findEstimateReq(userId: number) {
 
   // 이사일이 지났는지 확인
   if (!movingInfo) {
-    const err: CustomError = new Error('견적 요청 내역이 없습니다.');
-    err.status = 403;
-    throw err;
+    return { message: '견적 요청 내역이 없습니다.' };
   }
 
   // 확정된 견적이 여부에 따른 response 변경
@@ -515,6 +511,7 @@ async function findEstimateReqListByMover(
   const validAssignedEstimateRequestFilter = {
     AssignedEstimateRequest: {
       every: {
+        // 수정 필요
         moverId: mover.id,
         isRejected: false,
       },

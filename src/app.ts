@@ -14,8 +14,12 @@ import { unifiedLogger } from './middlewares/logger'; // 개발 중 사용했던
 import { USER_URL, USER_URL2, SC_URL } from './config/env';
 import morgan from 'morgan';
 import assignedEstimateReqRouter from './routes/assignedEstimateRequestRouter';
+import { midnightTaskScheduler } from './services/cronService';
 
 const app = express();
+
+midnightTaskScheduler()
+
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(
@@ -24,6 +28,7 @@ app.use(
       'http://localhost:3000',
       'http://localhost:3001',
       'http://localhost:3002',
+      'https://moving-fe-teal.vercel.app/'
     ],
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
