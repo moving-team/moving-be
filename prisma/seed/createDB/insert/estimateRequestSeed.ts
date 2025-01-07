@@ -1,29 +1,87 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../../helper/helperDB';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import pLimit from 'p-limit';
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 const BATCH_SIZE = 100; // 배치 크기
 const CONCURRENCY_LIMIT = 10; // 비동기 큐 최대 동시 실행 작업 수
 const FAILED_DATA_DIR = path.join(__dirname, '../faildata'); // 실패한 데이터 저장 디렉터리
 const FAILED_DATA_FILE = path.join(FAILED_DATA_DIR, 'failed_estimate_requests.json'); // 실패한 데이터 저장 파일 경로
 
-async function seedEstimateRequest() {
+async function saveFailedData(data: any[], filePath: string) {
+  try {
+    await fs.mkdir(FAILED_DATA_DIR, { recursive: true });
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.error(`❌ 실패한 데이터를 저장하는 중 오류 발생: ${filePath}`, error);
+  }
+}
+
+async function retryFailedData(failedFilePath: string, createFn: (item: any) => Promise<void>) {
+  try {
+    const fileExists = await fs
+      .stat(failedFilePath)
+      .then(() => true)
+      .catch(() => false);
+
+    if (!fileExists) {
+      console.log(`✨ ${failedFilePath} 파일이 존재하지 않아 재시도할 데이터가 없습니다.`);
+      return true; // No data to retry
+    }
+
+    const failedData = JSON.parse(await fs.readFile(failedFilePath, 'utf-8'));
+
+    if (!Array.isArray(failedData) || failedData.length === 0) {
+      console.log(`✨ ${failedFilePath}에 유효한 데이터가 없어 재시도 작업을 건너뜁니다.`);
+      await fs.unlink(failedFilePath); // 삭제
+      return true; // No data to retry
+    }
+
+    console.log(`🔄 ${failedFilePath}에 저장된 실패 데이터를 다시 시도합니다...`);
+
+    const limit = pLimit(CONCURRENCY_LIMIT);
+    const retryFailed: any[] = [];
+
+    await Promise.all(
+      failedData.map((item) =>
+        limit(async () => {
+          try {
+            await createFn(item);
+          } catch (error) {
+            console.error(`❌ 재처리 실패: ${JSON.stringify(item)}`, error);
+            retryFailed.push(item);
+          }
+        })
+      )
+    );
+
+    if (retryFailed.length > 0) {
+      await saveFailedData(retryFailed, failedFilePath);
+      console.log(`❌ 재시도 실패 데이터를 ${failedFilePath}에 저장했습니다.`);
+      return false; // Some data failed
+    } else {
+      await fs.unlink(failedFilePath);
+      console.log(`✅ 모든 실패 데이터를 성공적으로 처리하여 ${failedFilePath} 파일을 삭제했습니다.`);
+      return true; // All data succeeded
+    }
+  } catch (error) {
+    console.error(`❌ 실패 데이터를 다시 처리하는 중 오류 발생: ${failedFilePath}`, error);
+    return false;
+  }
+}
+
+export async function seedEstimateRequests() {
   const failedRequests: any[] = []; // 실패한 데이터 저장 배열
 
   try {
     console.log('🚀 EstimateRequest 데이터 시딩을 시작합니다...');
 
-    // JSON 파일 경로
-    const estimateRequestFilePath = '../data/estimateRequest.json';
-
-    // JSON 데이터 읽기
+    const estimateRequestFilePath = path.join(__dirname, '../data/estimateRequest.json');
     const fileData = await fs.readFile(estimateRequestFilePath, 'utf-8');
     const estimateRequests = JSON.parse(fileData);
 
-    // 데이터 타입 검증
     if (!Array.isArray(estimateRequests) || estimateRequests.length === 0) {
       console.log('⚠️ JSON 파일에 유효한 데이터가 없습니다.');
       return;
@@ -31,14 +89,11 @@ async function seedEstimateRequest() {
 
     console.log(`📄 총 ${estimateRequests.length}개의 EstimateRequest 데이터를 읽었습니다.`);
 
-    // 기존 데이터 확인 (중복 방지)
-    console.log('🔍 기존 EstimateRequest 데이터를 확인 중...');
     const existingRecords = await prisma.estimateRequest.findMany({
       select: { id: true },
     });
     const existingIds = new Set(existingRecords.map((record) => record.id));
 
-    // 중복 제거된 데이터 필터링
     const filteredRequests = estimateRequests.filter(
       (request: any) => !existingIds.has(request.id)
     );
@@ -50,17 +105,14 @@ async function seedEstimateRequest() {
       return;
     }
 
-    // 비동기 큐 생성
     const limit = pLimit(CONCURRENCY_LIMIT);
 
-    // 배치 처리
     for (let i = 0; i < filteredRequests.length; i += BATCH_SIZE) {
       const batch = filteredRequests.slice(i, i + BATCH_SIZE);
       const batchNumber = Math.ceil(i / BATCH_SIZE) + 1;
 
       console.log(`🛠️ 배치 ${batchNumber} 처리 중...`);
 
-      // 비동기 큐로 배치 데이터 병렬 처리
       await Promise.all(
         batch.map((request: any, index) =>
           limit(async () => {
@@ -68,10 +120,10 @@ async function seedEstimateRequest() {
               await prisma.estimateRequest.create({
                 data: request,
               });
-              console.log(`✅ [${i + index + 1}/${filteredRequests.length}] 성공적으로 삽입된 EstimateRequest: ${request.id}`);
+              console.log(`✅ [${i + index + 1}/${filteredRequests.length}] 성공 (customer_ID) : ${request.customerId}`);
             } catch (error) {
-              console.error(`❌ 삽입 실패: ${request.id}`, error);
-              failedRequests.push(request); // 실패한 데이터 저장
+              console.error(`❌ 삽입 실패: ${request.customerId}`, error);
+              failedRequests.push(request);
             }
           })
         )
@@ -82,32 +134,37 @@ async function seedEstimateRequest() {
 
     console.log('✨ 모든 EstimateRequest 데이터를 성공적으로 처리했습니다!');
   } catch (error) {
-    if (error instanceof Error) {
-      console.error('🔥 EstimateRequest 데이터 시딩 중 오류 발생:', error.message);
-      console.error('📋 스택 트레이스:', error.stack);
-    } else {
-      console.error('🚨 알 수 없는 오류 발생:', error);
-    }
+    console.error('🔥 EstimateRequest 데이터 시딩 중 오류 발생:', error);
   } finally {
-    // 실패한 데이터를 ../faildata/ 경로에 저장
     if (failedRequests.length > 0) {
       console.log(`❌ ${failedRequests.length}개의 실패한 데이터를 ${FAILED_DATA_FILE}에 저장합니다.`);
-
-      try {
-        // faildata 디렉터리 생성 (존재하지 않을 경우)
-        await fs.mkdir(FAILED_DATA_DIR, { recursive: true });
-        // 실패한 데이터 파일 저장
-        await fs.writeFile(FAILED_DATA_FILE, JSON.stringify(failedRequests, null, 2));
-        console.log(`📁 실패한 데이터를 ${FAILED_DATA_FILE}에 저장했습니다.`);
-      } catch (fsError) {
-        console.error('❌ 실패한 데이터를 저장하는 중 오류 발생:', fsError);
-      }
+      await saveFailedData(failedRequests, FAILED_DATA_FILE);
+    } else {
+      console.log('✅ 모든 데이터를 성공적으로 처리하여 실패 데이터가 없습니다.');
     }
 
-    await prisma.$disconnect();
-    console.log('🔌 Prisma 클라이언트 연결이 해제되었습니다.');
+    const allSuccess = await retryFailedData(FAILED_DATA_FILE, async (request) => {
+      await prisma.estimateRequest.create({
+        data: request,
+      });
+    });
+
+    if (allSuccess) {
+      console.log('✨ 모든 실패 데이터를 성공적으로 재처리했습니다!');
+    } else {
+      console.log('❌ 일부 실패 데이터가 여전히 남아 있습니다.');
+    }
   }
 }
 
-// 실행
-seedEstimateRequest();
+// 파일이 직접 실행되었는지 확인
+if (require.main === module) {
+  seedEstimateRequests()
+    .catch((error) => {
+      console.error('❌ 시딩 작업 중 오류 발생:', error);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+      console.log('🔌 Prisma 클라이언트 연결이 해제되었습니다.');
+    });
+}

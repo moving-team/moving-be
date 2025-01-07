@@ -1,140 +1,121 @@
 import { PrismaClient, Prisma } from '@prisma/client';
+import { seedingMain } from '../createDB/insert/seedingMain';
 
-const prisma = new PrismaClient();
-
-/**
- * 테이블과 Prisma 모델 매핑
- */
-const prismaModels: Record<string, any> = {
-  user: prisma.user,
-  mover: prisma.mover,
-  customer: prisma.customer,
-  review: prisma.review,
-  moving_info: prisma.movingInfo,
-  estimate_requests: prisma.estimateRequest,
-  assigned_estimate_request: prisma.assignedEstimateRequest,
-  estimate: prisma.estimate,
-  favorite: prisma.favorite,
-  notification: prisma.notification,
-};
+export const prisma = new PrismaClient();
 
 /**
- * 테이블과 시퀀스 매핑
+ * Graceful shutdown handler
  */
-const tableSequenceMapping: Record<string, string> = {
-  user: 'user_id_seq',
-  mover: 'mover_id_seq',
-  customer: 'customer_id_seq',
-  review: 'review_id_seq',
-  moving_info: 'moving_info_id_seq',
-  estimate_requests: 'estimate_requests_id_seq',
-  assigned_estimate_request: 'assigned_estimate_request_id_seq',
-  estimate: 'estimate_id_seq',
-  favorite: 'favorite_id_seq',
-  notification: 'notification_id_seq',
-};
-
-/**
- * 데이터베이스에서 사용 가능한 테이블 목록을 가져오는 함수 (_prisma_migrations 제외)
- */
-async function getTables(): Promise<string[]> {
+async function gracefulShutdown(reason: string) {
+  console.log(`🔌 ${reason} - Prisma 연결을 해제합니다.`);
   try {
-    const tables = await prisma.$queryRaw<{ table_name: string }[]>(
-      Prisma.sql`SELECT table_name
-                 FROM information_schema.tables
-                 WHERE table_schema = 'public';`
-    );
-
-    // _prisma_migrations 테이블 제외
-    return tables
-      .map((t) => t.table_name)
-      .filter((tableName) => tableName !== '_prisma_migrations');
+    await prisma.$disconnect();
+    console.log('✔️ Prisma 연결이 안전하게 해제되었습니다.');
   } catch (error) {
-    if (error instanceof Error) {
-      console.error('❌ 테이블 목록을 가져오는 중 에러 발생:', error.message);
-    }
-    return [];
+    console.error('❌ Prisma 연결 해제 중 오류 발생:', error);
+  } finally {
+    console.log('👋 프로세스를 종료합니다.');
+    process.exit(0);
   }
 }
 
 /**
- * 특정 테이블 데이터를 삭제하고 시퀀스를 초기화하는 함수
- * @param tableName 삭제할 테이블 이름
- * @param startId 삭제를 시작할 ID
+ * 데이터 삭제 및 시퀀스 초기화 함수
+ * @param tableName 테이블 이름
+ * @param startId 시작 ID
  */
-async function deleteFromTable(tableName: string, startId: number) {
-  const model = prismaModels[tableName];
-  const sequenceName = tableSequenceMapping[tableName];
-
-  if (!model || !sequenceName) {
-    console.error(`⚠️ 테이블 ${tableName}에 대한 모델 또는 시퀀스 매핑이 없습니다.`);
-    return;
-  }
-
+async function resetTable(tableName: string, startId: number = 1) {
   try {
-    console.log(`🗑️ ${tableName} 테이블에서 ID ${startId} 이상 데이터를 삭제 중...`);
-    const deleteCount = await model.deleteMany({
-      where: { id: { gte: startId } },
-    });
-    console.log(`✅ ${tableName} 테이블에서 ${deleteCount.count}개의 데이터가 삭제되었습니다.`);
+    console.log(`🗑️ ${tableName} 테이블 데이터 삭제 중...`);
+    const deleteCount = await prisma.$executeRawUnsafe(`DELETE FROM "${tableName}" WHERE id >= ${startId}`);
+    console.log(`✅ ${tableName} 테이블에서 ${deleteCount}개의 데이터가 삭제되었습니다.`);
 
+    const sequenceName = `${tableName}_id_seq`;
     console.log(`🔄 ${sequenceName} 시퀀스를 ${startId}로 초기화 중...`);
-    await prisma.$executeRawUnsafe(`ALTER SEQUENCE ${sequenceName} RESTART WITH ${startId}`);
+    await prisma.$executeRawUnsafe(`ALTER SEQUENCE "${sequenceName}" RESTART WITH ${startId}`);
     console.log(`✔️ ${sequenceName} 시퀀스가 ${startId}로 초기화되었습니다.`);
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(`❌ ${tableName} 테이블 삭제 중 에러 발생:`, error.message);
-    }
+    console.error(`❌ ${tableName} 테이블 데이터 삭제 또는 시퀀스 초기화 중 오류 발생:`, error);
   }
 }
 
 /**
- * 모든 테이블 데이터를 삭제하고, 시퀀스를 초기화하는 함수 (_prisma_migrations 제외)
+ * 모든 테이블 데이터 초기화 및 시퀀스 리셋 (_prisma_migrations 제외)
  */
+// async function clearAllTables() {
+//   try {
+//     const tables = await prisma.$queryRaw<{ table_name: string }[]>(
+//       Prisma.sql`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';`
+//     );
+
+//     const filteredTables = tables
+//       .map((t) => t.table_name)
+//       .filter((tableName) => tableName !== '_prisma_migrations');
+
+//     if (filteredTables.length === 0) {
+//       console.log('📂 초기화할 테이블이 없습니다.');
+//       return;
+//     }
+
+//     for (const table of filteredTables) {
+//       await resetTable(table);
+//     }
+
+//     console.log('🎉 모든 테이블 데이터와 시퀀스 초기화가 완료되었습니다.');
+//   } catch (error) {
+//     console.error('❌ 모든 테이블 초기화 중 오류 발생:', error);
+//   }
+// }
+
 async function clearAllTables() {
   try {
-    const tables = await getTables();
+    // Prisma 클라이언트 트랜잭션 시작
+    await prisma.$transaction(async (tx) => {
+      // 삭제 순서 정의
+      const deleteOrder = [
+        "notification",
+        "review",
+        "assigned_estimate_request",
+        "favorite",
+        "estimate",
+        "estimate_requests",
+        "moving_info",
+        "mover",
+        "customer",
+        "user",
+      ];
 
-    if (tables.length === 0) {
-      console.log('📂 테이블이 존재하지 않습니다.');
-      return;
-    }
-
-    console.log('🗑️ 모든 테이블 데이터를 삭제 중...');
-    for (const table of tables) {
-      // _prisma_migrations 테이블은 삭제하지 않음
-      if (table === '_prisma_migrations') {
-        console.log(`🚫 ${table} 테이블은 건너뜁니다.`);
-        continue;
+      // 각 테이블 데이터 삭제 및 시퀀스 초기화
+      for (const table of deleteOrder) {
+        await resetTable(table); // resetTable 활용
       }
 
-      const model = prismaModels[table];
-      const sequenceName = tableSequenceMapping[table];
+      console.log('✅ 초기화 순서에 따라 지정된 모든 테이블 삭제 및 시퀀스 초기화 완료.');
 
-      if (!model || !sequenceName) {
-        console.warn(`⚠️ 테이블 ${table}에 대한 모델 또는 시퀀스 매핑이 없습니다.`);
-        continue;
-      }
+      // 남아 있는 테이블 확인 (삭제 순서와 _prisma_migrations 제외)
+      const remainingTables = await tx.$queryRaw<{ table_name: string }[]>(
+        Prisma.sql`
+          SELECT table_name 
+          FROM information_schema.tables 
+          WHERE table_schema = 'public' 
+            AND table_name NOT IN (${Prisma.join([...deleteOrder, "_prisma_migrations"])});
+        `
+      );
 
-      try {
-        await model.deleteMany();
-        console.log(`✅ ${table} 테이블 데이터 삭제 완료.`);
+      if (remainingTables.length > 0) {
+        console.log('⚠️ 삭제되지 않은 테이블이 발견되었습니다:');
+        remainingTables.forEach((table) => console.log(`- ${table.table_name}`));
 
-        console.log(`🔄 ${sequenceName} 시퀀스를 1로 초기화 중...`);
-        await prisma.$executeRawUnsafe(`ALTER SEQUENCE ${sequenceName} RESTART WITH 1`);
-        console.log(`✔️ ${sequenceName} 시퀀스 초기화 완료.`);
-      } catch (error) {
-        if (error instanceof Error) {
-          console.error(`❌ ${table} 테이블 데이터 삭제 중 에러 발생:`, error.message);
+        // 남은 테이블 삭제 및 시퀀스 초기화
+        for (const table of remainingTables) {
+          await resetTable(table.table_name); // resetTable 활용
         }
+      } else {
+        console.log('🎉 모든 테이블이 성공적으로 초기화되었습니다.');
       }
-    }
-
-    console.log('🎉 모든 테이블 데이터와 시퀀스 초기화 완료.');
+    }, { maxWait: 15000, timeout: 1000 * 60 * 10 }); // 트랜잭션 시간 10분
   } catch (error) {
-    if (error instanceof Error) {
-      console.error('❌ 전체 테이블 초기화 중 에러 발생:', error.message);
-    }
+    console.error('❌ 모든 테이블 초기화 중 오류 발생:', error);
   }
 }
 
@@ -142,81 +123,84 @@ async function clearAllTables() {
  * 메인 함수
  */
 async function main() {
-  console.log('🚀 데이터베이스 관리 작업을 시작합니다.');
-
   const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
-  const askQuestion = (question: string): Promise<string> => {
-    return new Promise((resolve) => readline.question(question, resolve));
-  };
+  const askQuestion = (query: string): Promise<string> => new Promise((resolve) => readline.question(query, resolve));
 
-  while (true) {
-    console.log('\n다음 작업 중 하나를 선택하세요:');
-    console.log('1. 모든 테이블 데이터 초기화 및 시퀀스 초기화');
-    console.log('2. 특정 테이블 데이터 삭제 및 시퀀스 초기화');
-    console.log('3. 작업 종료');
+  // Graceful shutdown handlers for termination signals
+  process.on('SIGINT', () => gracefulShutdown('SIGINT(Ctrl+C) 신호'));
+  process.on('SIGTERM', () => gracefulShutdown('SIGTERM 신호'));
 
-    const choice = await askQuestion('선택: ');
+  try {
+    while (true) {
+      console.log('\n다음 작업 중 하나를 선택하세요:');
+      console.log('1. 모든 테이블 데이터 초기화 및 시퀀스 초기화');
+      console.log('2. 특정 테이블 데이터 삭제 및 시퀀스 초기화');
+      console.log('3. 데이터 전체 순차 시딩 작업');
+      console.log('4. 작업 종료');
 
-    if (choice === '1') {
-      await clearAllTables();
-    } else if (choice === '2') {
-      const tables = await getTables();
+      const choice = await askQuestion('선택: ');
 
-      if (tables.length === 0) {
-        console.log('📂 테이블이 존재하지 않습니다.');
-        continue;
+      if (choice === '1') {
+        await clearAllTables();
+      } else if (choice === '2') {
+        const tables = await prisma.$queryRaw<{ table_name: string }[]>(
+          Prisma.sql`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';`
+        );
+
+        const filteredTables = tables
+          .map((t) => t.table_name)
+          .filter((tableName) => tableName !== '_prisma_migrations');
+
+        if (filteredTables.length === 0) {
+          console.log('📂 삭제할 테이블이 없습니다.');
+          continue;
+        }
+
+        console.log('📋 사용 가능한 테이블 목록:');
+        filteredTables.forEach((table, index) => {
+          console.log(`${index + 1}. ${table}`);
+        });
+
+        const tableChoice = parseInt(await askQuestion('테이블 번호를 선택하세요: '), 10);
+        if (isNaN(tableChoice) || tableChoice < 1 || tableChoice > filteredTables.length) {
+          console.log('⚠️ 잘못된 선택입니다.');
+          continue;
+        }
+
+        const tableName = filteredTables[tableChoice - 1];
+        const startId = parseInt(await askQuestion('시작 ID를 입력하세요 (기본값 1): '), 10) || 1;
+
+        await resetTable(tableName, startId);
+      } else if (choice === '3') {
+        console.log('🚀 데이터 전체 순차 시딩 중...');
+        await seedingMain();
+      } else if (choice === '4') {
+        console.log('👋 작업을 종료합니다.');
+        break;
+      } else {
+        console.log('⚠️ 잘못된 선택입니다. 다시 시도하세요.');
       }
-
-      console.log('📋 사용 가능한 테이블 목록:');
-      tables.forEach((table, index) => {
-        console.log(`${index + 1}. ${table}`);
-      });
-
-      const tableChoice = parseInt(await askQuestion('테이블 번호를 선택하세요: '), 10);
-      if (isNaN(tableChoice) || tableChoice < 1 || tableChoice > tables.length) {
-        console.log('⚠️ 잘못된 선택입니다.');
-        continue;
-      }
-
-      const tableName = tables[tableChoice - 1];
-      const startId = parseInt(await askQuestion('시작 ID를 입력하세요: '), 10);
-
-      if (isNaN(startId)) {
-        console.log('⚠️ 잘못된 ID 입력입니다.');
-        continue;
-      }
-
-      await deleteFromTable(tableName, startId);
-    } else if (choice === '3') {
-      console.log('👋 작업을 종료합니다.');
-      break;
-    } else {
-      console.log('⚠️ 잘못된 선택입니다. 다시 시도하세요.');
     }
+  } catch (error) {
+    console.error('❌ 프로그램 실행 중 에러 발생:', error);
+  } finally {
+    readline.close();
+    await prisma.$disconnect();
+    console.log('🔌 Prisma 클라이언트 연결이 해제되었습니다.');
   }
-
-  readline.close();
 }
 
-main().catch((error) => {
-  console.error('❌ 프로그램 실행 중 에러 발생:', error);
-  prisma.$disconnect();
+// Graceful shutdown on uncaught exceptions
+process.on('uncaughtException', (error) => {
+  console.error('🔥 예기치 않은 오류 발생:', error);
+  gracefulShutdown('예기치 않은 예외 처리');
 });
 
-
-// All sequences: [
-//   { sequence_name: 'mover_id_seq' },
-//   { sequence_name: 'user_id_seq' },
-//   { sequence_name: 'customer_id_seq' },
-//   { sequence_name: 'review_id_seq' },
-//   { sequence_name: 'moving_info_id_seq' },
-//   { sequence_name: 'estimate_requests_id_seq' },
-//   { sequence_name: 'assigned_estimate_request_id_seq' },
-//   { sequence_name: 'estimate_id_seq' },
-//   { sequence_name: 'favorite_id_seq' },
-//   { sequence_name: 'notification_id_seq' }
-// ]
+// Start the main function only if the file is executed directly
+if (require.main === module) {
+  main();
+}
