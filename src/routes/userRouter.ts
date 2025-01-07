@@ -18,6 +18,10 @@ router.route('/naver').get(userController.naverLoginController);
 
 router.route('/callback/naver').get(userController.naverCallbackController);
 
+router.route('/google').get(userController.googleLoginController);
+
+router.route('/callback/google').get(userController.googleCallbackController);
+
 router
   .route('/me')
   .all(authenticateToken)

@@ -19,6 +19,7 @@ const NAVER_CLIENT_SECRET = process.env.NAVER_CLIENT_SECRET as string;
 const NAVER_REDIRECT_URI = process.env.NAVER_REDIRECT_URI as string;
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID as string;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET as string;
+const GOOGLE_REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI as string;
 
 export {
   PORT,
@@ -37,4 +38,7 @@ export {
   NAVER_CLIENT_ID,
   NAVER_CLIENT_SECRET,
   NAVER_REDIRECT_URI,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  GOOGLE_REDIRECT_URI,
 };
