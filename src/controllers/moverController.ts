@@ -98,11 +98,14 @@ const patchMoverProfileController = async (
       throw new Error('권한이 없습니다');
     }
     const { id } = (req as any).user as { id: number };
+    const { career } = req.body;
+    const careerNumber = parseInt(career);
     const profileImage = req.file ? (req.file as any).location : undefined;
 
     const updateData = {
       ...req.body,
       profileImage: profileImage,
+      career: careerNumber,
     };
     await moverService.patchMoverProfile(id, updateData);
   } catch (err) {
