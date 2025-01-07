@@ -58,7 +58,7 @@ export function findEstimateReqListByCustomerAndConfirmedMapper(
     isCancelled: estimateReq.isCancelled,
     isAssigned: estimate.isAssigned,
     profileImg: estimate.Mover.profileImage,
-    nickname: estimate.Mover.nickname,
+    moverName: estimate.Mover.nickname,
     reviewStats: {
       averageScore,
       totalReviews,

@@ -3,6 +3,7 @@ import userRepository from '../repositories/userRepository';
 import customerRepository from '../repositories/customerRepository';
 import estimateRequestRepository from '../repositories/estimateRequestRepository';
 import { $Enums } from '@prisma/client';
+import { todayUTC } from '../utils/dateUtil';
 
 const getCustomer = async (userId: number) => {
   const customerData = await customerRepository.findFirstData({
@@ -21,13 +22,14 @@ const getCustomer = async (userId: number) => {
     },
   });
 
+  const today = todayUTC();
+
   const estimateReqConfirmed = await estimateRequestRepository.findFirstData({
     where: {
       customerId: customerData?.id,
-      AND: [{ isConfirmed: false }, { isCancelled: false }],
-    },
-    orderBy: {
-      createdAt: 'desc',
+      isConfirmed: false,
+      isCancelled: false,
+      MovingInfo: { movingDate: { gte: today } },
     },
   });
   console.log(estimateReqConfirmed);
