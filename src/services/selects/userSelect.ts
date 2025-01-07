@@ -18,3 +18,11 @@ export const userWithCustomerAndMover = {
   ...userCustomerSelect,
   Mover: { select: moverSelect },
 };
+
+export const customerIdOnly = {
+  Customer: {
+    select: {
+      id: true,
+    },
+  },
+};

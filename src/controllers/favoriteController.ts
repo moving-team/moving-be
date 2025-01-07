@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { toggleFavorite, getFavoriteMovers } from '../services/favoriteService';
+import { getCustomerId } from '../services/userService';
 
 export async function toggleFavoriteHandler(
   req: Request<{}, {}, { moverId: number }>,
@@ -10,10 +11,11 @@ export async function toggleFavoriteHandler(
     if (!req.user || typeof req.user === 'string') {
       throw new Error('로그인이 필요한 서비스입니다.');
     }
-    const customerId = req.user.id;
+    const userId = req.user.id; 
     const { moverId } = req.body;
-    
-    // Service 연결
+
+    // 서비스 연결 
+    const customerId = await getCustomerId(userId); // customerID 조회
     const result = await toggleFavorite(customerId, moverId);
 
     res.status(200).json(result);
@@ -32,7 +34,7 @@ export async function getFavoriteMoversHandler(
     if (!req.user || typeof req.user === 'string') {
       throw new Error('인증된 사용자만 접근 가능합니다.');
     }
-    const customerId = req.user.id;
+    const userId = req.user.id; //customer ID 찾기 필요
 
     // 페이지네이션 정보 가져오기
     const { page = '1', pageSize = '10' } = req.query;
@@ -40,7 +42,8 @@ export async function getFavoriteMoversHandler(
     const pageSizeNum = parseInt(pageSize, 10) || 10;
     const skip = (pageNum - 1) * pageSizeNum;
 
-    // 서비스 호출
+    // 서비스 연결 
+    const customerId = await getCustomerId(userId); // customerID 조회
     const result = await getFavoriteMovers(customerId, skip, pageSizeNum);
 
     // 결과 응답
