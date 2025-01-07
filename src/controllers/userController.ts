@@ -267,7 +267,7 @@ export const googleCallbackController = async (
     try {
       const tokenData = await google.getToken(code as string);
       const userData = await google.getUserInfo(tokenData.access_token);
-      const userCheck = await userService.checkUser(userData.email);
+      const userCheck = await userService.checkUser(userData.response.email);
 
       if (userCheck) {
         const data = await userService.SNSLogin(userCheck);
