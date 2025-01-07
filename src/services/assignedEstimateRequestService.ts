@@ -229,13 +229,13 @@ async function rejectedAssigned(userId: number, estimateReqId: number) {
       tx,
     });
 
-    return {assignEstimateReq, notification};
+    return { assignEstimateReq, notification };
   });
 
-    //알림 발송 추가
-    if (reject.notification) {
-      sendNotification(String(estimateReq.Customer.User.id), reject.notification);
-    }
+  //알림 발송 추가
+  if (reject.notification) {
+    sendNotification(String(estimateReq.Customer.User.id), reject.notification);
+  }
 
   return {
     assignedEstimateReqId: reject.assignEstimateReq.id,

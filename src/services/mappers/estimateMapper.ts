@@ -62,7 +62,7 @@ export function findReceivedEstimateListMapper(
 
 export function findConfirmedEstimateListMapper(
   movingInfo: MovingInfo,
-  estimate: Estimate,
+  estimate: EstimateWithDate,
   customerName: string
 ) {
   return {
@@ -75,12 +75,13 @@ export function findConfirmedEstimateListMapper(
     departure: changeRegion(movingInfo.departure),
     arrival: changeRegion(movingInfo.arrival),
     price: estimate.price,
+    updatedAt: changeMovingDate(estimate.updatedAt),
   };
 }
 
 export function findSentEstimateListMapper(
   movingInfo: MovingInfo,
-  estimate: Estimate,
+  estimate: EstimateWithDate,
   customerName: string,
   isReqConfirmed: boolean,
   today: string
@@ -110,6 +111,7 @@ export function findSentEstimateListMapper(
     departure: changeRegion(movingInfo.departure),
     arrival: changeRegion(movingInfo.arrival),
     price: estimate.price,
+    createdAt: changeMovingDate(estimate.createdAt),
   };
 }
 

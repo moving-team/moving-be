@@ -80,6 +80,8 @@ export interface EstimateWithMovingInfoAndcustomerName extends Estimate {
 
 export interface EstimateWithMovingInfoAndcustomerNameAndIsConfirmed
   extends EstimateWithMovingInfoAndcustomerName {
+  createdAt: Date;
+  updatedAt: Date;
   EstimateRequest: {
     isConfirmed: boolean;
   };

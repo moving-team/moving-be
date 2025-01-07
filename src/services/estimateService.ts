@@ -32,10 +32,10 @@ import {
   estimateMoverSelect,
   estimateSelect,
   estimateWithEstimateReqAndMovingInfoAndMoverSelect,
-  estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
   estimateWithMovingInfoAndcustomerNameSelect,
   estimateDateWithMoverAndMovingInfoAndReviewSelect,
   estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerIdAndNameSelect,
+  estimateWitDateAndhMovingInfoAndcustomerNameAndIsConfirmedSelect,
 } from './selects/estimateSelect';
 import { moverSelect, moverUserSelect } from './selects/moverSelect';
 import {
@@ -263,7 +263,7 @@ async function findSentEstimateList(
           MovingInfo: { movingDate: { gte: today } },
         },
       },
-      select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+      select: estimateWitDateAndhMovingInfoAndcustomerNameAndIsConfirmedSelect,
     });
   } else if (movingUpcomingCount > skip && movingUpcomingCount < skip + take) {
     const movingUpcomingTake = movingUpcomingCount - skip;
@@ -281,7 +281,7 @@ async function findSentEstimateList(
             MovingInfo: { movingDate: { gte: today } },
           },
         },
-        select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+        select: estimateWitDateAndhMovingInfoAndcustomerNameAndIsConfirmedSelect,
       }),
 
       // movingOverList
@@ -295,7 +295,7 @@ async function findSentEstimateList(
             MovingInfo: { movingDate: { lt: today } },
           },
         },
-        select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+        select: estimateWitDateAndhMovingInfoAndcustomerNameAndIsConfirmedSelect,
       }),
     ]);
 
@@ -313,7 +313,7 @@ async function findSentEstimateList(
           MovingInfo: { movingDate: { lt: today } },
         },
       },
-      select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+      select: estimateWitDateAndhMovingInfoAndcustomerNameAndIsConfirmedSelect,
     });
   }
 
