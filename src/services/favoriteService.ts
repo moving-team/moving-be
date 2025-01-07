@@ -1,6 +1,8 @@
 import favoriteRepository from '../repositories/favoriteRepository';
 import reviewRepository from '../repositories/reviewRepository';
+import userRepository from '../repositories/userRepository';
 import { favoriteMoverSelect } from './selects/moverSelect';
+import { customerIdOnly } from './selects/userSelect';
 
 export async function toggleFavorite(customerId: number, moverId: number) {
   // 기존 찜 체크
