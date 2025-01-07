@@ -21,6 +21,7 @@ export const uploadImage = (fieldName: string) => {
     storage: multerS3({
       s3,
       bucket: AWS_S3_BUCKET,
+      acl: 'public-read',
       key: (req, file, cb) => {
         cb(null, `profiles/${Date.now()}_${file.originalname}`);
       },
