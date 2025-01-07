@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { getReviews, createReview, getMyReviews } from '../services/reviewService';
+import { getCustomerId } from '../services/userService';
 
 // 리뷰 목록 및 통계 데이터를 반환
 export async function getReviewsHandler(
@@ -33,10 +34,11 @@ export async function createReviewHandler(
     if (!req.user || typeof req.user === 'string') {
       throw new Error('로그인이 필요한 서비스입니다.');
     }
-    const customerId = req.user.id; // customoerID 가져오기
+    const userId = req.user.id;
     const { estimateId, moverId, score, content: description } = req.body; // req body 가져오기
 
     // Service 불러오기
+    const customerId = await getCustomerId(userId);
     const newReview = await createReview({ customerId, estimateId, moverId, score, description });
 
     res.status(201).json(newReview);
@@ -57,7 +59,7 @@ export async function getMyReviewsHandler(
       throw new Error('로그인이 필요한 서비스입니다.');
     }
 
-    const customerId = req.user.id; // 토큰에서 사용자 ID 가져오기
+    const userId = req.user.id;
 
     const { page = '1', pageSize = '10' } = req.query; // 쿼리에서 정보 가져오기
     const pageNum = parseInt(page, 10) || 1;
@@ -65,6 +67,7 @@ export async function getMyReviewsHandler(
     const skip = (pageNum - 1) * pageSizeNum;
 
     // Service 불러오기
+    const customerId = await getCustomerId(userId);
     const result = await getMyReviews(customerId, skip, pageSizeNum);
 
     res.status(200).json(result);
