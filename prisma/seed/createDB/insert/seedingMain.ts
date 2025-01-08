@@ -14,14 +14,14 @@ export async function seedingMain() {
   console.log('🚀 모든 시딩 작업을 순차적으로 실행합니다.\n');
 
   const seedFunctions = [
-    // { name: 'User Seed', func: seedDatabase },
-    // { name: 'Moving Info Seed', func: seedMovingInfo },
-    // { name: 'Estimate Request Seed', func: seedEstimateRequests },
-    // { name: 'Assigned Estimate Request Seed', func: seedAssignedEstimateRequests },
-    // { name: 'Estimate Seed', func: seedEstimates },
+    { name: 'User Seed', func: seedDatabase },
+    { name: 'Moving Info Seed', func: seedMovingInfo },
+    { name: 'Estimate Request Seed', func: seedEstimateRequests },
+    { name: 'Assigned Estimate Request Seed', func: seedAssignedEstimateRequests },
+    { name: 'Estimate Seed', func: seedEstimates },
     { name: 'Review Seed', func: seedReviews },
-    // { name: 'Favorite Seed', func: seedFavorites },
-    // { name: 'Confirmation Count Set', func: setConfirmationCounts },
+    { name: 'Favorite Seed', func: seedFavorites },
+    { name: 'Confirmation Count Set', func: setConfirmationCounts },
   ];
 
   for (const { name, func } of seedFunctions) {
