@@ -7,7 +7,7 @@ const movingInfoCount = 10000; // 생성할 데이터 개수
 
 type MovingInfoData = {
   movingType: serviceType;
-  movingDate: Date; 
+  movingDate: Date;
   departure: string;
   arrival: string;
   createdAt: Date;
@@ -16,7 +16,7 @@ type MovingInfoData = {
 // 무작위 날짜 생성 함수
 function generateRandomDate(): Date {
   const start = new Date('2023-01-01');
-  const end = new Date('2024-12-04');
+  const end = new Date('2025-01-08');
   const date = new Date(
     start.getTime() + Math.random() * (end.getTime() - start.getTime())
   );
@@ -26,26 +26,24 @@ function generateRandomDate(): Date {
 // movingDate를 createdAt의 43일 이후로 설정하는 함수
 function calculateMovingDate(createdAt: Date): Date {
   const movingDate = new Date(createdAt);
-  movingDate.setDate(movingDate.getDate() + 43); // 43일 추가
+  movingDate.setDate(movingDate.getDate() + 20); // 43일 추가
   return movingDate; // Date 객체 반환
 }
 
 // 데이터 생성
 function generateMovingInfo(count: number): MovingInfoData[] {
   const movingInfoList: MovingInfoData[] = [];
-  
+
   for (let i = 0; i < count; i++) {
     const createdAt = generateRandomDate(); // 생성 시간
-    const movingDate = calculateMovingDate(createdAt); // 43일 이후 날짜
+    const movingDate = calculateMovingDate(createdAt); 
 
     // 누적 생성 갯수 출력
-    process.stdout.write(
-      `Processing: ${i + 1}/${count} movingInfo\r`
-    );
+    process.stdout.write(`Processing: ${i + 1}/${count} movingInfo\r`);
 
     movingInfoList.push({
-      movingType: getServiceTypes() as serviceType, 
-      movingDate, 
+      movingType: getServiceTypes() as serviceType,
+      movingDate,
       departure: getRandomAddress(),
       arrival: getRandomAddress(),
       createdAt,
@@ -65,7 +63,13 @@ function generateMovingInfo(count: number): MovingInfoData[] {
     movingDate: item.movingDate.toISOString(),
     createdAt: item.createdAt.toISOString(),
   }));
-  fs.writeFileSync('./data/movingInfo.json', JSON.stringify(jsonData, null, 2), 'utf-8');
+  fs.writeFileSync(
+    './data/movingInfo.json',
+    JSON.stringify(jsonData, null, 2),
+    'utf-8'
+  );
 
-  console.log(`${movingInfoCount}개의 MovingInfo 데이터가 movingInfo.json에 저장되었습니다.`);
+  console.log(
+    `${movingInfoCount}개의 MovingInfo 데이터가 movingInfo.json에 저장되었습니다.`
+  );
 })();
