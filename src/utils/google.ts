@@ -37,6 +37,10 @@ class Google {
       state,
     };
 
+    // return `https://accounts.google.com/o/oauth2/auth?${new URLSearchParams(
+    //   config
+    // ).toString()}`;
+
     return `https://accounts.google.com/o/oauth2/v2/auth?${new URLSearchParams(
       config
     ).toString()}`;
