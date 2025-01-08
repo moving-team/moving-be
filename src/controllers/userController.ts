@@ -244,6 +244,9 @@ const kakaoCallbackController = async (
 };
 
 export const googleLoginController = (req: Request, res: Response) => {
+  // 로깅
+  console.log('[Google Login] Controller: Initiating Google Login');
+
   const { userType } = req.query;
   if (!userType) {
     res.status(400).json('userType이 필요합니다.');
@@ -258,6 +261,9 @@ export const googleCallbackController = async (
   res: Response,
   next: NextFunction
 ) => {
+  // 로깅
+  console.log('[Google Login] Controller: Handling Google Callback');
+  
   const { code, state } = req.query;
 
   if (!state) {
