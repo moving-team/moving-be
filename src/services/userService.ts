@@ -6,6 +6,7 @@ import {
   REFRESH_TOKEN_SECRET,
   NODE_ENV,
 } from '../config/env';
+import { customerIdOnly } from './selects/userSelect';
 
 const generateToken = (payload: any, secret: string, expiresIn: string) => {
   return jwt.sign(payload, secret, { expiresIn });
@@ -174,4 +175,18 @@ const checkUser = async (nickname: string) => {
   return user;
 };
 
-export { register, userLogin, getUser, checkUser, SNSRegister, SNSLogin };
+
+const getCustomerId = async (userId: number) => {
+  const user = await userRepository.findFirstData({
+    where: { id: userId },
+    select: customerIdOnly,
+  });
+
+  if (!user || !user.Customer) {
+    throw new Error('존재하지 않는 사용자입니다.');
+  }
+
+  return user.Customer.id;
+}
+
+export { register, userLogin, getUser, checkUser, SNSRegister, SNSLogin, getCustomerId };

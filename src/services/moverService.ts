@@ -72,6 +72,7 @@ const getMoverList = async ({
       },
     },
   };
+  const totalCount = await moverRepository.countData(where);
   const movers = await moverRepository.findManyAllData({
     where,
     select,
@@ -112,7 +113,10 @@ const getMoverList = async ({
         if (isConfirmed) {
           isAssigned = estimateReqData
             ? !!(await assignedEstimateRequestRepository.findFirstData({
-                where: { estimateRequestId: estimateReqData.id },
+                where: {
+                  moverId: mover.id,
+                  estimateRequestId: estimateReqData.id,
+                },
               }))
             : false;
         }
@@ -174,9 +178,9 @@ const getMoverList = async ({
 
   return {
     list: processedMovers,
-    totalCount: movers.length,
+    totalCount: totalCount,
     currentPage: page,
-    totalPages: Math.ceil(movers.length / (pageSize ?? 10)),
+    totalPages: Math.ceil(totalCount / (pageSize ?? 10)),
   };
 };
 
