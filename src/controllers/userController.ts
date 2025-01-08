@@ -245,7 +245,7 @@ const kakaoCallbackController = async (
 
 export const googleLoginController = (req: Request, res: Response) => {
   // 로깅
-  console.log('[Google Login] Controller: Initiating Google Login');
+  // console.log('[Google Login] Controller: Initiating Google Login');
 
   const { userType } = req.query;
   if (!userType) {
@@ -262,7 +262,7 @@ export const googleCallbackController = async (
   next: NextFunction
 ) => {
   // 로깅
-  console.log('[Google Login] Controller: Handling Google Callback');
+  // console.log('[Google Login] Controller: Handling Google Callback');
   
   const { code, state } = req.query;
 
@@ -273,7 +273,7 @@ export const googleCallbackController = async (
     try {
       const tokenData = await google.getToken(code as string);
       const userData = await google.getUserInfo(tokenData.access_token);
-      const userCheck = await userService.checkUser(userData.email);
+      const userCheck = await userService.checkUser(userData.email); // 이메일 체킹에서 문제가 있었음음
 
       if (userCheck) {
         const data = await userService.SNSLogin(userCheck);

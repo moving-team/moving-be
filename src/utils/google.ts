@@ -25,7 +25,7 @@ class Google {
 
   getGoogleLoginUrl(userType: string) {
     // 로깅
-    console.log('[Google Login] Generating Google Login URL');
+    // console.log('[Google Login] Generating Google Login URL');
 
     const randomState = this.generateRandomState();
     const state = `${userType}_${randomState}`;
@@ -37,10 +37,6 @@ class Google {
       state,
     };
 
-    // return `https://accounts.google.com/o/oauth2/auth?${new URLSearchParams(
-    //   config
-    // ).toString()}`;
-
     return `https://accounts.google.com/o/oauth2/v2/auth?${new URLSearchParams(
       config
     ).toString()}`;
@@ -48,7 +44,7 @@ class Google {
 
   async getToken(code: string) {
     // 로깅
-    console.log('[Google Login] Requesting access token');
+    // console.log('[Google Login] Requesting access token');
 
     const config = {
       grant_type: 'authorization_code',
@@ -72,7 +68,7 @@ class Google {
 
 
       // 로깅
-      console.log('[Google Login] Access token received:', response.data);
+      // console.log('[Google Login] Access token received:', response.data);
 
       return response.data;
     } catch (error: any) {
@@ -84,7 +80,7 @@ class Google {
 
   async getUserInfo(accessToken: string) {
     // 로깅 
-    console.log('[Google Login] Requesting user info');
+    // console.log('[Google Login] Requesting user info');
 
     try {
       const response = await axios.get(
