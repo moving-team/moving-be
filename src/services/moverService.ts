@@ -241,7 +241,7 @@ const getMoverDetail = async (userId: number, moverId: number) => {
         : false;
     }
     isFavorite = !!(await favoriteRepository.findFirstData({
-      where: { moverId: moverData?.id, customerId: userId },
+      where: { moverId: moverData?.id, customerId: customerData?.id },
     }));
   }
 
