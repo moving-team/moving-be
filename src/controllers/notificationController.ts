@@ -8,7 +8,6 @@ const clients: ClientMap = new Map();
 // SSE 연결 엔드포인트
 export const connectToNotifications = (req: Request, res: Response): void => {
   try {
-    console.log(test1)
     if (!req.user || typeof req.user === 'string') {
       throw new Error('로그인이 필요한 서비스입니다.');
     }
@@ -57,6 +56,7 @@ export const sendNotification = (
 // 누적 알림 조회
 export const getUnreadNotifications = async (req: Request, res: Response): Promise<void> => {
   try {
+    console.log(test1)
     if (!req.user || typeof req.user === 'string') {
       throw new Error('로그인이 필요한 서비스입니다.');
     }
