@@ -1,5 +1,5 @@
 import prisma from '../config/prisma';
-import { PagenationParamsByPage } from '../types/repositoryType';
+import { EstimatePagenationParamsByPage,} from '../types/repositoryType';
 import { Prisma } from '@prisma/client';
 
 type EstimateReqSelectType = Prisma.EstimateRequestSelect;
@@ -7,7 +7,7 @@ type EstimateReqSelectType = Prisma.EstimateRequestSelect;
 type EstimateReqPayload<T extends EstimateReqSelectType | undefined> =
   Prisma.EstimateRequestGetPayload<{ select: T }>;
 
-interface EstimateReqPagenationParams extends PagenationParamsByPage {
+interface EstimateReqPagenationParams extends EstimatePagenationParamsByPage {
   where?: Prisma.EstimateRequestWhereInput;
 }
 
