@@ -1,3 +1,4 @@
+import e from 'express';
 import {
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
@@ -23,6 +24,9 @@ class Google {
   }
 
   getGoogleLoginUrl(userType: string) {
+    // 로깅
+    // console.log('[Google Login] Generating Google Login URL');
+
     const randomState = this.generateRandomState();
     const state = `${userType}_${randomState}`;
     const config = {
@@ -39,6 +43,9 @@ class Google {
   }
 
   async getToken(code: string) {
+    // 로깅
+    // console.log('[Google Login] Requesting access token');
+
     const config = {
       grant_type: 'authorization_code',
       client_id: this.clientId,
@@ -47,30 +54,49 @@ class Google {
       code,
     };
 
-    const response = await axios.post(
-      'https://oauth2.googleapis.com/token',
-      config,
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      }
-    );
+    try {
 
-    return response.data;
+      const response = await axios.post(
+        'https://oauth2.googleapis.com/token',
+        config,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
+
+
+      // 로깅
+      // console.log('[Google Login] Access token received:', response.data);
+
+      return response.data;
+    } catch (error: any) {
+      console.error('[Google Login] Error fetching access token:', error.message);
+      throw new Error('Failed to fetch access token');
+    }
   }
 
-  async getUserInfo(accessToken: string) {
-    const response = await axios.get(
-      'https://www.googleapis.com/oauth2/v2/userinfo',
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
 
-    return response.data;
+  async getUserInfo(accessToken: string) {
+    // 로깅 
+    // console.log('[Google Login] Requesting user info');
+
+    try {
+      const response = await axios.get(
+        'https://www.googleapis.com/oauth2/v2/userinfo',
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      console.log('[Google Login] User info received:', response.data);
+      return response.data;
+    } catch (error: any) {
+      console.error('[Google Login] Error fetching user info:', error.message);
+      throw new Error('Failed to fetch user info');
+    }
   }
 }
 
