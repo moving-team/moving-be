@@ -1,13 +1,14 @@
-import { PrismaClient } from '@prisma/client';
-import * as fs from 'fs';
+import { prisma } from '../helper/helperDB';
+import fs from 'fs/promises';
+import path from 'path';
 import { getRandomComment } from '../generate/getReqComment';
 
-const prisma = new PrismaClient();
+const BATCH_SIZE = 100;
 
 // MovingInfo 데이터 타입
 type MovingInfo = {
   id: number;
-  movingDate: Date; // DateTime으로 변경
+  movingDate: Date;
   createdAt: Date;
 };
 
@@ -26,7 +27,7 @@ type EstimateRequest = {
   createdAt: Date;
 };
 
-// 랜덤 정수 생성 (최소값 포함, 최대값 포함)
+// 랜덤 정수 생성
 function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -37,16 +38,58 @@ function getRandomCustomerId(customerIds: number[]): number {
   return customerIds[randomIndex];
 }
 
-async function generateEstimateRequest(): Promise<void> {
+// EstimateRequest 생성 로직
+function generateEstimateRequestsBatch(
+  movingInfoBatch: MovingInfo[],
+  customerIds: number[],
+  customerEstimateLimits: Map<number, number>,
+  today: Date
+): EstimateRequest[] {
+  const estimateRequests: EstimateRequest[] = [];
+
+  for (const movingInfo of movingInfoBatch) {
+    let customerId = getRandomCustomerId(customerIds);
+
+    while (true) {
+      const currentRequestCount = estimateRequests.filter(
+        (req) => req.customerId === customerId
+      ).length;
+
+      if (currentRequestCount < (customerEstimateLimits.get(customerId) || 0)) {
+        break;
+      }
+
+      customerId = getRandomCustomerId(customerIds);
+    }
+
+    const isFuture = movingInfo.movingDate > today;
+    const isConfirmed = isFuture
+      ? Math.random() <= 0.2
+      : Math.random() <= 0.97;
+    const isCancelled = !isConfirmed && Math.random() <= 0.2;
+
+    estimateRequests.push({
+      customerId,
+      movingInfoId: movingInfo.id,
+      comment: getRandomComment(),
+      isConfirmed,
+      isCancelled,
+      createdAt: movingInfo.createdAt,
+    });
+  }
+
+  return estimateRequests;
+}
+
+// 전체 EstimateRequest 생성
+export async function createEstimateRequest(): Promise<void> {
   try {
     console.log('Start generating EstimateRequest data...');
 
-    // MovingInfo 데이터 가져오기
     const movingInfoData: MovingInfo[] = await prisma.movingInfo.findMany({
       select: { id: true, movingDate: true, createdAt: true },
     });
 
-    // Customer ID 가져오기
     const customers: Customer[] = await prisma.customer.findMany({
       select: { id: true },
     });
@@ -56,85 +99,84 @@ async function generateEstimateRequest(): Promise<void> {
       throw new Error('No MovingInfo or Customer data found in the database.');
     }
 
-    // 각 customerId별 EstimateRequest 생성 제한 개수 설정
     const customerEstimateLimits: Map<number, number> = new Map();
     customerIds.forEach((id) =>
       customerEstimateLimits.set(id, getRandomInt(1, 20))
     );
 
-    const estimateRequests: EstimateRequest[] = [];
     const today = new Date();
+    const totalBatches = Math.ceil(movingInfoData.length / BATCH_SIZE);
 
-    for (let i = 0; i < movingInfoData.length; i++) {
-      const movingInfo = movingInfoData[i];
-      let customerId = getRandomCustomerId(customerIds); // 랜덤 고객 선택
+    console.log(`Total batches: ${totalBatches}`);
 
-      // 고객 ID 순환으로 제한 조건을 무시
-      while (true) {
-        const currentRequestCount = estimateRequests.filter(
-          (req) => req.customerId === customerId
-        ).length;
+    const filePath = path.join(__dirname, './data/estimateRequest.json');
+    await fs.mkdir(path.dirname(filePath), { recursive: true }); // 폴더 생성
+    const writeStream = await fs.open(filePath, 'w');
+    await writeStream.write('['); // JSON 배열 시작
 
-        // 제한을 초과하지 않았거나 무시할 때 해당 고객에 요청 생성
-        if (
-          currentRequestCount < (customerEstimateLimits.get(customerId) || 0)
-        ) {
-          break;
-        }
+    for (let batchIndex = 0; batchIndex < totalBatches; batchIndex++) {
+      const start = batchIndex * BATCH_SIZE;
+      const end = Math.min(start + BATCH_SIZE, movingInfoData.length);
+      const batch = movingInfoData.slice(start, end);
 
-        // 제한 초과 시 다른 랜덤 고객 선택
-        customerId = getRandomCustomerId(customerIds);
-      }
+      console.log(`Processing batch ${batchIndex + 1}/${totalBatches}...`);
 
-      // MovingDate와 현재 날짜를 고려한 상태 결정
-      const isFuture = movingInfo.movingDate > today;
-      const isConfirmed = isFuture
-        ? Math.random() <= 0.2 // 확률적 true
-        : Math.random() <= 0.97; // 확률적 true
-      const isCancelled = !isConfirmed && Math.random() <= 0.2;
+      const batchEstimateRequests = generateEstimateRequestsBatch(
+        batch,
+        customerIds,
+        customerEstimateLimits,
+        today
+      );
 
-      // 새로운 EstimateRequest 생성
-      estimateRequests.push({
-        customerId,
-        movingInfoId: movingInfo.id,
-        comment: getRandomComment(),
-        isConfirmed,
-        isCancelled,
-        createdAt: movingInfo.createdAt,
-      });
-
-      // 누적 생성 갯수 출력
-      process.stdout.write(
-        `Processing: ${i + 1}/${movingInfoData.length} EstimateRequests\r`
+      const jsonBatch = JSON.stringify(batchEstimateRequests, null, 2).slice(
+        1,
+        -1
+      ); // JSON 형식 변환
+      await writeStream.write(
+        `${batchIndex === 0 ? '' : ','}${jsonBatch}` // 쉼표 처리
       );
     }
 
-    // JSON 파일로 저장
-    const filePath = './data/estimateRequest.json';
-    fs.writeFileSync(
-      filePath,
-      JSON.stringify(estimateRequests, null, 2),
-      'utf-8'
-    );
+    await writeStream.write(']'); // JSON 배열 종료
+    await writeStream.close(); // 스트림 닫기
 
-    // 로그 추가: 모든 movingInfo 처리 여부 확인
-    console.log(
-      `\nAll MovingInfo processed: ${
-        movingInfoData.length === estimateRequests.length
-      }`
-    );
-    console.log(
-      `Total MovingInfo: ${movingInfoData.length}, Total EstimateRequests: ${estimateRequests.length}`
-    );
+    async function prettifyJsonFile(filePath: string): Promise<void> {
+      try {
+        console.log('Prettifying JSON file...');
+        const rawData = await fs.readFile(filePath, 'utf-8');
+        const jsonData = JSON.parse(rawData); // JSON 파싱
+        const prettyData = JSON.stringify(jsonData, null, 2); // Pretty 변환
+        await fs.writeFile(filePath, prettyData, 'utf-8'); // 파일 다시 저장
+        console.log('JSON file prettified successfully.');
+      } catch (error) {
+        console.error('Error prettifying JSON file:', error);
+      }
+    }
 
+    await prettifyJsonFile(filePath);
+
+    console.log(
+      `All batches processed. Total EstimateRequests: ${movingInfoData.length}`
+    );
     console.log(`EstimateRequest data has been saved to ${filePath}`);
   } catch (error) {
     console.error('Error during EstimateRequest data generation:', error);
-  } finally {
-    await prisma.$disconnect();
-    console.log('Prisma client disconnected.');
-  }
+  } 
 }
 
-// 데이터 생성 실행
-generateEstimateRequest();
+// 실행
+if (require.main === module) {
+  createEstimateRequest()
+    .catch((error) => {
+      console.error('❌ Error occurred:', error);
+    })
+    .finally(async () => {
+      try {
+        console.log('🔌 Disconnecting Prisma...');
+        await prisma.$disconnect();
+        console.log('✔️ Prisma disconnected successfully.');
+      } catch (disconnectError) {
+        console.error('❌ Error during Prisma disconnect:', disconnectError);
+      }
+    });
+}

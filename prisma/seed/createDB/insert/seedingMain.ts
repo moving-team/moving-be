@@ -7,28 +7,51 @@ import { seedEstimates } from './estimateSeed';
 import { seedReviews } from './reviewSeed';
 import { seedFavorites } from './favoriteSeed';
 import { setConfirmationCounts } from './confirmationCountSet';
-// export const prisma = new PrismaClient();
 
-export const CONCURRENCY_LIMIT = 1; // 비동기 큐 최대 동시 실행 작업 수
+// createData
+import { createUser } from '../createUser';
+import { createMovingInfo } from '../createMovingInfo';
+import { createEstimateRequest } from '../createEstimateRequest';
+import { createAssignedEstimateRequest } from '../createAssigendEstimateRequest';
+import { createEstimate } from '../createEstimate';
+import { createReview } from '../createReview';
+import { createFavorite } from '../createFavorite';
 
-export async function seedingMain() {
+export const CONCURRENCY_LIMIT = 10; // 비동기 큐 최대 동시 실행 작업 수
+
+
+export async function seedingMain(isTest: boolean = false) {
   console.log('🚀 모든 시딩 작업을 순차적으로 실행합니다.\n');
 
   const seedFunctions = [
+    { name: 'Create Users', func: createUser, params: [isTest] },
     { name: 'User Seed', func: seedDatabase },
+
+    { name: 'Create Moving Info', func: createMovingInfo, params: [isTest]  },
     { name: 'Moving Info Seed', func: seedMovingInfo },
+
+    { name: 'Create Estimate Requests', func: createEstimateRequest },
     { name: 'Estimate Request Seed', func: seedEstimateRequests },
+
+    { name: 'Create Assigned Estimate Requests', func: createAssignedEstimateRequest },
     { name: 'Assigned Estimate Request Seed', func: seedAssignedEstimateRequests },
+
+    { name: 'Create Estimates', func: createEstimate },
     { name: 'Estimate Seed', func: seedEstimates },
+
+    { name: 'Create Reviews', func: createReview },
     { name: 'Review Seed', func: seedReviews },
+
+    { name: 'Create Favorites', func: createFavorite },
     { name: 'Favorite Seed', func: seedFavorites },
+
     { name: 'Confirmation Count Set', func: setConfirmationCounts },
   ];
 
-  for (const { name, func } of seedFunctions) {
+  for (const { name, func, params } of seedFunctions) {
     console.log(`⚙️ 실행 중: ${name}`);
     try {
-      await func();
+      await func(...(params || []));
       console.log(`✅ ${name} 완료.\n`);
     } catch (error) {
       console.error(`❌ ${name} 실행 중 오류 발생:`, error);

@@ -1,10 +1,11 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../helper/helperDB';
 import { getRandomResponseComment } from '../generate/getResComment';
 import { getPriceByMovingType } from '../generate/getWeightPrice';
 import { getMoverAcceptRate } from '../generate/setMoverWeight';
-import * as fs from 'fs';
+import * as fs from 'fs/promises';
+import path from 'path';
 
-const prisma = new PrismaClient();
+const BATCH_SIZE = 100;
 
 type Estimate = {
   estimateRequestId: number;
@@ -82,13 +83,14 @@ function deduplicateEstimates(estimates: Estimate[]): Estimate[] {
   });
 }
 
-// 과거 요청 처리 함수
-function processPastRequests(
+// Estimate 요청 처리 함수
+async function processEstimateRequestsBatch(
   requests: any[],
   movers: any[],
   assignedEstimateRequests: any[],
-  estimates: Estimate[]
-): void {
+  isFuture: boolean
+): Promise<Estimate[]> {
+  const estimates: Estimate[] = [];
   const moverAcceptRate = getMoverAcceptRate(movers);
 
   requests.forEach((request) => {
@@ -96,11 +98,11 @@ function processPastRequests(
     const customerId = request.customerId;
     const movingDate = new Date(request.MovingInfo.movingDate);
     const startCreatedAt = new Date(request.createdAt);
-    const endCreatedAt = new Date(Math.min(new Date().getTime(), movingDate.getTime() - 86400000));
+    const endCreatedAt = isFuture ? movingDate : new Date(Math.min(new Date().getTime(), movingDate.getTime() - 86400000));
 
     const requestEstimates: Estimate[] = [];
 
-    // Step 1: 전체 Mover에서 랜덤하게 뽑아 Unassigned Estimate 생성
+    // Unassigned Estimate 생성
     const unassignedSelectedMovers = selectMoversByWeight(movers, moverAcceptRate, unassigned);
     unassignedSelectedMovers.forEach((mover) => {
       requestEstimates.push({
@@ -109,7 +111,7 @@ function processPastRequests(
         customerId,
         isAssigned: false,
         price: getPriceByMovingType(request.MovingInfo.movingType),
-        status: 'REJECTED',
+        status: isFuture ? (Math.random() < 0.2 ? 'REJECTED' : 'WAITING') : 'REJECTED',
         isMovingComplete: false,
         comment: getRandomResponseComment(),
         movingInfoId: request.MovingInfo.id,
@@ -117,7 +119,7 @@ function processPastRequests(
       });
     });
 
-    // Step 2: AssignedEstimateRequest 기반으로 Assigned Estimate 생성
+    // Assigned Estimate 생성
     const assignedMoverIds = new Set(assignedEstimateRequests.map((req) => req.moverId));
     const assignedMovers = movers.filter((mover) => assignedMoverIds.has(mover.id));
     const assignedSelectedMovers = selectMoversByWeight(assignedMovers, moverAcceptRate, assigned);
@@ -128,7 +130,7 @@ function processPastRequests(
         customerId,
         isAssigned: true,
         price: getPriceByMovingType(request.MovingInfo.movingType),
-        status: 'REJECTED',
+        status: isFuture ? (Math.random() < 0.2 ? 'REJECTED' : 'WAITING') : 'REJECTED',
         isMovingComplete: false,
         comment: getRandomResponseComment(),
         movingInfoId: request.MovingInfo.id,
@@ -136,11 +138,10 @@ function processPastRequests(
       });
     });
 
-    // Step 3: 중복된 moverId 제거
     const uniqueEstimates = deduplicateEstimates(requestEstimates);
 
-    // Step 4: isConfirmed 상태가 true인 경우에만 랜덤하게 하나의 Estimate를 ACCEPT로 변경
-    if (request.isConfirmed && uniqueEstimates.length > 0) {
+    // isConfirmed 처리
+    if (!isFuture && request.isConfirmed && uniqueEstimates.length > 0) {
       const randomIndex = Math.floor(Math.random() * uniqueEstimates.length);
       uniqueEstimates[randomIndex].status = 'ACCEPTED';
       uniqueEstimates[randomIndex].isMovingComplete = true;
@@ -148,69 +149,14 @@ function processPastRequests(
 
     estimates.push(...uniqueEstimates);
   });
-}
 
-// 미래 요청 처리 함수
-function processFutureRequests(
-  requests: any[],
-  movers: any[],
-  assignedEstimateRequests: any[],
-  estimates: Estimate[]
-): void {
-  const moverAcceptRate = getMoverAcceptRate(movers);
-
-  requests.forEach((request) => {
-    const { assigned, unassigned } = determineAssignedCounts();
-    const customerId = request.customerId;
-    const movingDate = new Date(request.MovingInfo.movingDate);
-    const startCreatedAt = new Date(request.createdAt);
-    const endCreatedAt = movingDate;
-
-    const requestEstimates: Estimate[] = [];
-
-    // Step 1: 전체 Mover에서 랜덤하게 뽑아 Unassigned Estimate 생성
-    const unassignedSelectedMovers = selectMoversByWeight(movers, moverAcceptRate, unassigned);
-    unassignedSelectedMovers.forEach((mover) => {
-      requestEstimates.push({
-        estimateRequestId: request.id,
-        moverId: mover.id,
-        customerId,
-        isAssigned: false,
-        price: getPriceByMovingType(request.MovingInfo.movingType),
-        status: Math.random() < 0.2 ? 'REJECTED' : 'WAITING',
-        isMovingComplete: false,
-        comment: getRandomResponseComment(),
-        movingInfoId: request.MovingInfo.id,
-        createdAt: getRandomCreatedAt(startCreatedAt, endCreatedAt),
-      });
-    });
-
-    // Step 2: AssignedEstimateRequest 기반으로 Assigned Estimate 생성
-    const assignedMoverIds = new Set(assignedEstimateRequests.map((req) => req.moverId));
-    const assignedMovers = movers.filter((mover) => assignedMoverIds.has(mover.id));
-    const assignedSelectedMovers = selectMoversByWeight(assignedMovers, moverAcceptRate, assigned);
-    assignedSelectedMovers.forEach((mover) => {
-      requestEstimates.push({
-        estimateRequestId: request.id,
-        moverId: mover.id,
-        customerId,
-        isAssigned: true,
-        price: getPriceByMovingType(request.MovingInfo.movingType),
-        status: Math.random() < 0.2 ? 'REJECTED' : 'WAITING',
-        isMovingComplete: false,
-        comment: getRandomResponseComment(),
-        movingInfoId: request.MovingInfo.id,
-        createdAt: getRandomCreatedAt(startCreatedAt, endCreatedAt),
-      });
-    });
-
-    estimates.push(...deduplicateEstimates(requestEstimates));
-  });
+  return estimates;
 }
 
 // 주 함수: Estimate 생성
-async function generateEstimates(): Promise<void> {
+export async function createEstimate(): Promise<void> {
   const now = new Date();
+  const estimateFilePath = path.join(__dirname, './data/estimates.json');
 
   try {
     console.log('Start generating Estimate data...');
@@ -233,33 +179,75 @@ async function generateEstimates(): Promise<void> {
 
     const movers = await prisma.mover.findMany();
     const assignedEstimateRequests = await prisma.assignedEstimateRequest.findMany({
-      where: {
-        isRejected: false,
-      }
+      where: { isRejected: false },
     });
 
     if (estimateRequests.length === 0 || movers.length === 0) {
       throw new Error('No EstimateRequest or Mover data found in the database.');
     }
 
-    const estimates: Estimate[] = [];
-
     const pastRequests = estimateRequests.filter((req) => new Date(req.MovingInfo.movingDate) <= now);
     const futureRequests = estimateRequests.filter((req) => new Date(req.MovingInfo.movingDate) > now);
 
-    processPastRequests(pastRequests, movers, assignedEstimateRequests, estimates);
-    processFutureRequests(futureRequests, movers, assignedEstimateRequests, estimates);
+    await fs.mkdir(path.dirname(estimateFilePath), { recursive: true }); // 폴더 생성
+    const writeStream = await fs.open(estimateFilePath, 'w'); // JSON 스트림 열기
+    await writeStream.write('['); // JSON 배열 시작
 
-    const estimateFilePath = './data/estimates.json';
-    fs.writeFileSync(estimateFilePath, JSON.stringify(estimates, null, 2), 'utf-8');
-    console.log(`Generated ${estimates.length} estimates, saved to ${estimateFilePath}`);
+    // Past requests 처리
+    for (let i = 0; i < Math.ceil(pastRequests.length / BATCH_SIZE); i++) {
+      const batch = pastRequests.slice(i * BATCH_SIZE, (i + 1) * BATCH_SIZE);
+      const estimates = await processEstimateRequestsBatch(batch, movers, assignedEstimateRequests, false);
+      const jsonBatch = JSON.stringify(estimates, null, 2).slice(1, -1);
+      await writeStream.write(`${i === 0 ? '' : ','}${jsonBatch}`);
+      console.log(`Processed past batch ${i + 1}/${Math.ceil(pastRequests.length / BATCH_SIZE)}`);
+    }
+
+    // Future requests 처리
+    for (let i = 0; i < Math.ceil(futureRequests.length / BATCH_SIZE); i++) {
+      const batch = futureRequests.slice(i * BATCH_SIZE, (i + 1) * BATCH_SIZE);
+      const estimates = await processEstimateRequestsBatch(batch, movers, assignedEstimateRequests, true);
+      const jsonBatch = JSON.stringify(estimates, null, 2).slice(1, -1);
+      await writeStream.write(`${pastRequests.length === 0 && i === 0 ? '' : ','}${jsonBatch}`);
+      console.log(`Processed future batch ${i + 1}/${Math.ceil(futureRequests.length / BATCH_SIZE)}`);
+    }
+
+    await writeStream.write(']'); // JSON 배열 종료
+    await writeStream.close(); // 스트림 닫기
+
+    async function prettifyJsonFile(filePath: string): Promise<void> {
+      try {
+        console.log('Prettifying JSON file...');
+        const rawData = await fs.readFile(filePath, 'utf-8');
+        const jsonData = JSON.parse(rawData); // JSON 파싱
+        const prettyData = JSON.stringify(jsonData, null, 2); // Pretty 변환
+        await fs.writeFile(filePath, prettyData, 'utf-8'); // 파일 다시 저장
+        console.log('JSON file prettified successfully.');
+      } catch (error) {
+        console.error('Error prettifying JSON file:', error);
+      }
+    }
+
+    await prettifyJsonFile(estimateFilePath);
+
+    console.log(`Generated estimates saved to ${estimateFilePath}`);
   } catch (err) {
     console.error('Error generating estimates:', err);
-  } finally {
-    await prisma.$disconnect();
-    console.log('Prisma client disconnected.');
-  }
+  } 
 }
 
 // 실행
-generateEstimates();
+if (require.main === module) {
+  createEstimate()
+    .catch((error) => {
+      console.error('❌ 오류 발생:', error);
+    })
+    .finally(async () => {
+      try {
+        console.log('🔌 Prisma 클라이언트 연결을 해제합니다.');
+        await prisma.$disconnect();
+        console.log('✔️ 연결이 안전하게 해제되었습니다.');
+      } catch (disconnectError) {
+        console.error('❌ Prisma 연결 해제 중 오류 발생:', disconnectError);
+      }
+    });
+}

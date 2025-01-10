@@ -5,8 +5,10 @@ import { generateUniquePhoneNumber } from '../generate/getNumber';
 import { getRegion, getRegionArray } from '../generate/getRegion';
 import { getWeightedServiceTypesArray, getServiceTypesArray } from '../generate/getServiceType';
 import * as fs from 'fs';
+import path from 'path';
 import * as bcrypt from 'bcrypt'; // bcrypt 추가
 import * as dotenv from 'dotenv'; // dotenv 추가
+import { is } from 'superstruct';
 
 dotenv.config(); // .env 파일 로드
 
@@ -14,8 +16,7 @@ const prisma = new PrismaClient();
 const saltRounds = 10; 
 const commonPassword = process.env.COMMON_PASSWORD || 'defaultPassword'; 
 
-const moverCount = 300; // 생성할 Mover 수
-const customerCount = 1500; // customer 수
+
 
 export type UserData = {
   userType: 'MOVER' | 'CUSTOMER';
@@ -63,11 +64,23 @@ function getBeforeDate(): Date {
 }
 
 // 데이터 생성
-async function generateUsers(): Promise<{
+async function generateUsers(isTest: boolean = false): Promise<{
   users: UserData[];
   movers: MoverData[];
   customers: CustomerData[];
 }> {
+  // 테스트 수량 지정
+  let moverCount = 0;
+  let customerCount = 0;
+
+  if (isTest) {
+    moverCount = 50;
+    customerCount = 150;
+  } else {
+    moverCount = 300;
+    customerCount = 1500;
+  }
+
   const users: UserData[] = [];
   const movers: MoverData[] = [];
   const customers: CustomerData[] = [];
@@ -150,8 +163,24 @@ function saveDataToJsonFile(data: any, filePath: string): void {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
 }
 
+
+const EXPORT_PATH_USER = path.join(__dirname, './data/users.json');
+const EXPORT_PATH_MOVER = path.join(__dirname, './data/movers.json');
+const EXPORT_PATH_CUSTOMERS = path.join(__dirname, './data/customers.json');
+
+
 // 데이터 생성 및 저장
-(async () => {
+export async function createUser(isTest: boolean = false): Promise<void> {
+  const { users, movers, customers } = await generateUsers(isTest);
+  saveDataToJsonFile(users, EXPORT_PATH_USER);
+  saveDataToJsonFile(movers, EXPORT_PATH_MOVER);
+  saveDataToJsonFile(customers, EXPORT_PATH_CUSTOMERS);
+
+  console.log('데이터가 각각 users.json, movers.json, customers.json에 저장되었습니다.');
+  await prisma.$disconnect();
+}
+
+async function main() {
   const { users, movers, customers } = await generateUsers();
   saveDataToJsonFile(users, './data/users.json');
   saveDataToJsonFile(movers, './data/movers.json');
@@ -159,4 +188,8 @@ function saveDataToJsonFile(data: any, filePath: string): void {
 
   console.log('데이터가 각각 users.json, movers.json, customers.json에 저장되었습니다.');
   await prisma.$disconnect();
-})();
+}
+
+if (require.main === module) {
+  main()
+} 
