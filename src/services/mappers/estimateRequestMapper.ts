@@ -2,7 +2,7 @@ import {
   EstimateReq,
   EstimateReqWithMovingInfoAndDate,
   EstimateWithMover,
-  FindEstimateReqListByMoverType,
+  FindEstimateReqListByMoverAndisAssignedType,
   MovingInfo,
   MovingInfoWithEstimateReqAndhDate,
 } from '../../types/serviceType';
@@ -37,9 +37,9 @@ export function getestimateReqByNoConfirmedMapper(
     arrival: estimateReq.MovingInfo.arrival,
     comment: estimateReq.comment,
     isConfirmed: estimateReq.isConfirmed,
-    createAt: changeMovingDate(estimateReq.createdAt)
+    createAt: changeMovingDate(estimateReq.createdAt),
   };
-} 
+}
 
 export function findEstimateReqListByCustomerAndConfirmedMapper(
   movingInfo: MovingInfoWithEstimateReqAndhDate,
@@ -71,7 +71,7 @@ export function findEstimateReqListByCustomerAndConfirmedMapper(
     departure: changeRegion(movingInfo.departure),
     arrival: changeRegion(movingInfo.arrival),
     price: estimate.price,
-    createdAt: changeMovingDate(estimateReq.createdAt)
+    createdAt: changeMovingDate(estimateReq.createdAt),
   };
 }
 
@@ -92,22 +92,19 @@ export function findEstimateReqListByCustomerAndCancelMapper(
   };
 }
 
-export function findEstimateReqListByMoverMapper(
-  movingInfoList: FindEstimateReqListByMoverType
+export function findEstimateReqListByMoverAndisAssignedMapper(
+  estimateReq: FindEstimateReqListByMoverAndisAssignedType,
+  isAssigned: boolean
 ) {
-  const estimateReq = movingInfoList.EstimateRequest;
-  const customerName = movingInfoList.EstimateRequest.Customer.User.name;
-  const AssignedEstimateReq =
-    movingInfoList.EstimateRequest.AssignedEstimateRequest.length;
-  const isAssigned = AssignedEstimateReq === 0 ? false : true;
+  const { MovingInfo, Customer, ...rest } = estimateReq;
   return {
-    estimateReqId: estimateReq.id,
-    customerName,
-    movingType: movingInfoList.movingType,
-    movingDate: changeMovingDate(movingInfoList.movingDate),
-    departure: changeRegion(movingInfoList.departure),
-    arrival: changeRegion(movingInfoList.arrival),
-    comment: estimateReq.comment,
+    estimateReqId: rest.id,
+    customerName: Customer.User.name,
+    movingType: MovingInfo.movingType,
+    movingDate: changeMovingDate(MovingInfo.movingDate),
+    departure: MovingInfo.departure,
+    arrival: MovingInfo.arrival,
+    comment: rest.comment,
     isAssigned,
     createAt: changeMovingDate(estimateReq.createdAt),
   };

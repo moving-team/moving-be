@@ -15,12 +15,13 @@ import {
   createEstimateReqMapper,
   findEstimateReqListByCustomerAndCancelMapper,
   findEstimateReqListByCustomerAndConfirmedMapper,
-  findEstimateReqListByMoverMapper,
+  findEstimateReqListByMoverAndisAssignedMapper,
   getestimateReqByNoConfirmedMapper,
 } from './mappers/estimateRequestMapper';
 import { customerSelect } from './selects/customerSelect';
 import {
   estimateReqCustomerSelect,
+  estimateReqDateWithMovingInfoAndCustomerNameSelect,
   estimateReqMovingInfoSelect,
   estimateReqMovingInfoWithDateSelect,
   estimateReqSelect,
@@ -51,6 +52,7 @@ import { CustomError } from '../middlewares/errHandler';
 //알림용 import
 import { sendNotification } from '../controllers/notificationController';
 import { NotificationType } from '../types/serviceType';
+import assignedEstimateRequestRepository from '../repositories/assignedEstimateRequestRepository';
 
 export interface PagenationQuery {
   type?: $Enums.serviceType | $Enums.serviceType[];
@@ -202,13 +204,13 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
           select: estimateSelect,
           tx,
         });
-  
+
         const contents = createNotificationContents({
           type: 'cancel',
           customerName: user.name,
           movingType: deleteEstimateReq.estimateReq.MovingInfo.movingType,
         }) as string;
-  
+
         // 알람 생성
         return notificationRepository.createData({
           data: {
@@ -412,7 +414,7 @@ async function findEstimateReqListByCustomer(
   };
 }
 
-// 기사-견적 요청 리스트 조회 API(견적 갯수에 따른 필터 추가)
+// 기사-견적 요청 리스트 조회 API
 async function findEstimateReqListByMover(
   userId: number,
   query: PagenationQuery
@@ -430,12 +432,15 @@ async function findEstimateReqListByMover(
   const pageNum = parseInt(page) || 1;
   const take = parseInt(pageSize) || 4;
   const skip = (pageNum - 1) * take;
-  const orderBy: Prisma.MovingInfoOrderByWithAggregationInput =
-    order === 'request' ? { createdAt: 'asc' } : { movingDate: 'asc' };
+  const orderBy =
+    order === 'request'
+      ? { createdAt: 'asc' }
+      : { MovingInfo: { movingDate: 'asc' } };
   let validIsAssigned = 'true';
   if (isAssigned === 'true' || isAssigned === 'false') {
     validIsAssigned = isAssigned;
   }
+  // 특정 keyWord를 지역에서 찾을 수 있게 변환
   let region = keyWord;
   if (keyWord === '서울특별시' || keyWord === '서울시') {
     region = '서울';
@@ -492,9 +497,13 @@ async function findEstimateReqListByMover(
 
   const today = todayUTC();
 
+  // keyWord에 따른 소비자 이름 검색
+  const customerFilter: Prisma.CustomerWhereInput = {
+    User: { name: { contains: keyWord, mode: 'insensitive' } },
+  };
+
   // keyWord 여부에 따른 지역 필터 변경
   let regionFilter: Prisma.MovingInfoWhereInput;
-
   if (keyWord === '') {
     const regionList = mover.serviceRegion.map((item) => RESION[item]);
 
@@ -514,57 +523,159 @@ async function findEstimateReqListByMover(
     };
   }
 
-  // 견적 요청 관련 조회 필터
-  const validEstimateRequestFilter = {
-    isConfirmed: false,
-    isCancelled: false,
-  };
-
-  // 지정 견적 요청 관련 필터
-  const validAssignedEstimateRequestFilter = {
-    AssignedEstimateRequest: {
-      every: {
-        // 수정 필요
-        moverId: mover.id,
-        isRejected: false,
-      },
+  // 내가 작성한 견적에 해당하는 요청 아이디 조회
+  const moverEstimateIds = await estimateRepository.findManyData({
+    where: {
+      moverId: mover.id,
+      MovingInfo: { movingDate: { gte: today } },
     },
-  };
+    select: { estimateRequestId: true },
+  });
 
-  // 지정 요청 갯수
-  const assign = await movingInfoRepository.countData({
-    AND: [
-      {
-        movingDate: { gte: today },
-        movingType: { in: movingType },
+  const moverEstimateIdsList = moverEstimateIds.map(
+    (estimate) => estimate.estimateRequestId
+  );
+
+  // 요청 아이디 조회 함수
+  async function getByestimateRequestIds({
+    isAssigned,
+    count,
+    assinedList,
+  }: {
+    isAssigned: boolean;
+    count: number;
+    assinedList: number[];
+  }) {
+    return await estimateRepository.groupByData({
+      by: ['estimateRequestId'],
+      where: {
+        isAssigned,
         EstimateRequest: {
-          ...validEstimateRequestFilter,
-          AssignedEstimateRequest: { some: {} }, // AssignedEstimateRequest가 존재해야 함
+          AND: [
+            {
+              id: { not: { in: [...moverEstimateIdsList, ...assinedList] } }, // 중복 방지를 위한 일부 아이디 제외
+              isConfirmed: false,
+              isCancelled: false,
+              MovingInfo: { movingDate: { gte: today } },
+            },
+            {
+              OR: [{ MovingInfo: regionFilter }, { Customer: customerFilter }],
+            },
+          ],
         },
       },
-      {
-        EstimateRequest: { ...validAssignedEstimateRequestFilter },
+      orderBy: { estimateRequestId: 'asc' },
+      having: {
+        estimateRequestId: {
+          _count: { gte: count },
+        },
       },
-      regionFilter,
-    ],
+    });
+  }
+
+  // 견적 요청 공용 where
+  const estimateReqWhere = [
+    {
+      isConfirmed: false,
+      isCancelled: false,
+      MovingInfo: { movingDate: { gte: today } },
+    },
+    {
+      OR: [{ MovingInfo: regionFilter }, { Customer: customerFilter }],
+    },
+  ];
+
+  // 지정견적이 3개 이상인 요청 아이디 조회
+  const isAssignedTrueEstimateReqIds = await getByestimateRequestIds({
+    isAssigned: true,
+    count: 3,
+    assinedList: [],
   });
+
+  const isAssignedTrueEstimateReqIdList = isAssignedTrueEstimateReqIds.map(
+    (group) => group.estimateRequestId
+  );
+
+  // 지정 요청 관련 제외할 아이디
+  const excludeAssignedQuest = [
+    ...isAssignedTrueEstimateReqIdList,
+    ...moverEstimateIdsList,
+  ];
+
+  // 지정 요청 리스트 조회
+  const [assignedEstimateReqIds, assignedEstimateReqIdsByMovingType] =
+    await Promise.all([
+      // 그냥 조회
+      assignedEstimateRequestRepository.findManyData({
+        where: {
+          moverId: mover.id,
+          isRejected: false,
+          EstimateRequest: {
+            AND: [
+              ...estimateReqWhere,
+              { id: { not: { in: excludeAssignedQuest } } },
+            ],
+          },
+        },
+        select: { estimateRequestId: true },
+      }),
+
+      // query에 따른 조회
+      assignedEstimateRequestRepository.findManyData({
+        where: {
+          moverId: mover.id,
+          isRejected: false,
+          EstimateRequest: {
+            AND: [
+              ...estimateReqWhere,
+              { id: { not: { in: excludeAssignedQuest } } },
+              { MovingInfo: { movingType: { in: movingType } } },
+            ],
+          },
+        },
+        select: { estimateRequestId: true },
+      }),
+    ]);
+
+  // 지정 요청 갯수
+  const assign = assignedEstimateReqIdsByMovingType.length;
+
+  const assignedIdList = assignedEstimateReqIds.map(
+    (group) => group.estimateRequestId
+  );
+
+  const assignedEstimateReqIdListByMovingType =
+    assignedEstimateReqIdsByMovingType.map((id) => id.estimateRequestId);
+
+  // 일반 요청 관련 제외할 아이디
+  const excludeCommonQuest = [
+    ...assignedEstimateReqIdListByMovingType,
+    ...moverEstimateIdsList,
+  ];
 
   if (validIsAssigned === 'false') {
     // validIsAssigned가 false일 때
 
+    // 일반견적이 5개 이상인 요청 아이디 조회
+    const estimateRequestIdGroup = await getByestimateRequestIds({
+      isAssigned: false,
+      count: 5,
+      assinedList: assignedIdList,
+    });
+
+    const commonIdList = estimateRequestIdGroup.map(
+      (group) => group.estimateRequestId
+    );
+
     // movingType에 따른 카운트
     async function totalCount(movingType: $Enums.serviceType[]) {
-      return await movingInfoRepository.countData({
+      return await estimateRequestRepository.countData({
         AND: [
+          ...estimateReqWhere,
           {
-            movingDate: { gte: today },
-            movingType: { in: movingType },
-            EstimateRequest: {
-              ...validEstimateRequestFilter,
-              ...validAssignedEstimateRequestFilter, // AssignedEstimateRequest가 없을 시 true
-            },
+            id: { not: { in: [...commonIdList, ...excludeAssignedQuest] } },
           },
-          regionFilter,
+          { MovingInfo: { movingType: { in: movingType } } },
         ],
       });
     }
@@ -576,44 +687,109 @@ async function findEstimateReqListByMover(
       totalCount(['OFFICE']),
     ]);
 
-    // 견적 요청 리스트 조회 where
-    const estimateReqListWhere = {
-      AND: [
-        {
-          movingDate: { gte: today },
-          movingType: { in: movingType },
-          EstimateRequest: {
-            ...validEstimateRequestFilter,
-            ...validAssignedEstimateRequestFilter,
-          },
-        },
-        regionFilter,
-      ],
-    };
-
-    // 견적 요청 리스트
-    const estimateReqList = await movingInfoRepository.findManyByPaginationData(
-      {
-        paginationParams: {
-          orderBy: [
-            {
-              EstimateRequest: { AssignedEstimateRequest: { _count: 'desc' } },
+    let list: FindEstimateReqListByMoverType[];
+    if (assign >= skip + take) {
+      const assignedList =
+        await estimateRequestRepository.findManyByPaginationData({
+          paginationParams: {
+            where: {
+              AND: [
+                ...estimateReqWhere,
+                { id: { in: assignedEstimateReqIdListByMovingType } },
+                { MovingInfo: { movingType: { in: movingType } } },
+              ],
             },
             orderBy,
-          ],
-          skip,
-          take,
-          where: estimateReqListWhere,
-        },
-        select: movingInfoEstimateReqUserNameWithDateSelect,
-      }
-    );
+            take,
+            skip,
+          },
+          select: estimateReqDateWithMovingInfoAndCustomerNameSelect,
+        });
 
-    const list = estimateReqList.map((movingInfo) => {
-      return findEstimateReqListByMoverMapper(
-        movingInfo as FindEstimateReqListByMoverType
-      );
-    });
+      list = assignedList.map((assigned) => {
+        return findEstimateReqListByMoverAndisAssignedMapper(assigned, true);
+      });
+    } else if (assign > skip && assign < skip + take) {
+      const assignedTake = assign - skip;
+      const commonTake = take - assignedTake;
+
+      const [assignedList, commonList] = await Promise.all([
+        // 지정 요청 조회
+        estimateRequestRepository.findManyByPaginationData({
+          paginationParams: {
+            where: {
+              AND: [
+                ...estimateReqWhere,
+                { id: { in: assignedEstimateReqIdListByMovingType } },
+                { MovingInfo: { movingType: { in: movingType } } },
+              ],
+            },
+            orderBy,
+            take: assignedTake,
+            skip,
+          },
+          select: estimateReqDateWithMovingInfoAndCustomerNameSelect,
+        }),
+
+        // 일반 요청 조회
+        estimateRequestRepository.findManyByPaginationData({
+          paginationParams: {
+            where: {
+              AND: [
+                ...estimateReqWhere,
+                {
+                  id: {
+                    not: { in: [...commonIdList, ...excludeCommonQuest] },
+                  },
+                },
+                { MovingInfo: { movingType: { in: movingType } } },
+              ],
+            },
+            orderBy,
+            take: commonTake,
+            skip: 0,
+          },
+          select: estimateReqDateWithMovingInfoAndCustomerNameSelect,
+        }),
+      ]);
+
+      const assignedListMapper = assignedList.map((assigned) => {
+        return findEstimateReqListByMoverAndisAssignedMapper(assigned, true);
+      });
+      
+      const commonListMapper = commonList.map((common) => {
+        return findEstimateReqListByMoverAndisAssignedMapper(common, false);
+      });
+
+      list = [...assignedListMapper, ...commonListMapper];
+    } else {
+      const commonSkip = skip - assign;
+
+      const commonList =
+        await estimateRequestRepository.findManyByPaginationData({
+          paginationParams: {
+            where: {
+              AND: [
+                ...estimateReqWhere,
+                {
+                  id: {
+                    not: { in: [...commonIdList, ...excludeCommonQuest] },
+                  },
+                },
+                { MovingInfo: { movingType: { in: movingType } } },
+              ],
+            },
+            orderBy,
+            take,
+            skip: commonSkip,
+          },
+          select: estimateReqDateWithMovingInfoAndCustomerNameSelect,
+        });
+
+      list = commonList.map((common) => {
+        return findEstimateReqListByMoverAndisAssignedMapper(common, false);
+      });
+    }
 
     return {
       total,
@@ -628,20 +804,11 @@ async function findEstimateReqListByMover(
 
     // movingType에 따른 카운트
     async function totalCount(movingType: $Enums.serviceType[]) {
-      return await movingInfoRepository.countData({
+      return await estimateRequestRepository.countData({
         AND: [
-          {
-            movingDate: { gte: today },
-            movingType: { in: movingType },
-            EstimateRequest: {
-              ...validEstimateRequestFilter,
-              AssignedEstimateRequest: { some: {} }, // AssignedEstimateRequest가 존재해야 함
-            },
-          },
-          {
-            EstimateRequest: { ...validAssignedEstimateRequestFilter },
-          },
-          regionFilter,
+          ...estimateReqWhere,
+          { id: { in: assignedIdList } },
+          { MovingInfo: { movingType: { in: movingType } } },
         ],
       });
     }
@@ -652,41 +819,25 @@ async function findEstimateReqListByMover(
       totalCount(['OFFICE']),
     ]);
 
-    // 견적 요청 리스트 조회 where
-    const estimateReqListWhere = {
-      AND: [
-        {
-          movingDate: { gte: today },
-          movingType: { in: movingType },
-          EstimateRequest: {
-            ...validEstimateRequestFilter,
-            AssignedEstimateRequest: { some: {} }, // AssignedEstimateRequest가 존재해야 함
-          },
-        },
-        {
-          EstimateRequest: { ...validAssignedEstimateRequestFilter },
-        },
-        regionFilter,
-      ],
-    };
-
-    // 견적 요청 리스트
-    const estimateReqList = await movingInfoRepository.findManyByPaginationData(
-      {
+    const assignedList =
+      await estimateRequestRepository.findManyByPaginationData({
         paginationParams: {
+          where: {
+            AND: [
+              ...estimateReqWhere,
+              { id: { in: assignedEstimateReqIdListByMovingType } },
+              { MovingInfo: { movingType: { in: movingType } } },
+            ],
+          },
           orderBy,
-          skip,
           take,
-          where: estimateReqListWhere,
+          skip,
         },
-        select: movingInfoEstimateReqUserNameWithDateSelect,
-      }
-    );
+        select: estimateReqDateWithMovingInfoAndCustomerNameSelect,
+      });
 
-    const list = estimateReqList.map((movingInfo) => {
-      return findEstimateReqListByMoverMapper(
-        movingInfo as FindEstimateReqListByMoverType
-      );
+    const list = assignedList.map((assigned) => {
+      return findEstimateReqListByMoverAndisAssignedMapper(assigned, true);
     });
 
     return {

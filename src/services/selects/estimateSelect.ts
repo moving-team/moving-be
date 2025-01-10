@@ -16,6 +16,12 @@ export const estimateSelect = {
   comment: true,
 };
 
+export const estimateWithDateSelect = {
+ ...estimateSelect,
+  createdAt: true,
+  updatedAt: true,
+}
+
 export const estimateWithMovingInfoSelect = {
   ...estimateSelect,
   MovingInfo: { select: movingInfoSelect },
@@ -75,7 +81,7 @@ export const estimateWithMoverIdSelect = {
 };
 
 export const estimateWithMovingInfoAndcustomerNameSelect = {
-  ...estimateSelect,
+  ...estimateWithDateSelect,
   MovingInfo: { select: movingInfoSelect },
   Customer: {
     select: {
@@ -84,8 +90,10 @@ export const estimateWithMovingInfoAndcustomerNameSelect = {
   },
 };
 
-export const estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect = {
+export const estimateWitDateAndhMovingInfoAndcustomerNameAndIsConfirmedSelect = {
   ...estimateWithMovingInfoAndcustomerNameSelect,
+  createdAt: true,
+  updatedAt: true,
   EstimateRequest: {
     select: { isConfirmed: true },
   },

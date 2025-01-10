@@ -32,10 +32,10 @@ import {
   estimateMoverSelect,
   estimateSelect,
   estimateWithEstimateReqAndMovingInfoAndMoverSelect,
-  estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
   estimateWithMovingInfoAndcustomerNameSelect,
   estimateDateWithMoverAndMovingInfoAndReviewSelect,
   estimateWithMoverAndMovingInfoAndEstimateReqDateAndCustomerIdAndNameSelect,
+  estimateWitDateAndhMovingInfoAndcustomerNameAndIsConfirmedSelect,
 } from './selects/estimateSelect';
 import { moverSelect, moverUserSelect } from './selects/moverSelect';
 import {
@@ -263,7 +263,7 @@ async function findSentEstimateList(
           MovingInfo: { movingDate: { gte: today } },
         },
       },
-      select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+      select: estimateWitDateAndhMovingInfoAndcustomerNameAndIsConfirmedSelect,
     });
   } else if (movingUpcomingCount > skip && movingUpcomingCount < skip + take) {
     const movingUpcomingTake = movingUpcomingCount - skip;
@@ -281,7 +281,8 @@ async function findSentEstimateList(
             MovingInfo: { movingDate: { gte: today } },
           },
         },
-        select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+        select:
+          estimateWitDateAndhMovingInfoAndcustomerNameAndIsConfirmedSelect,
       }),
 
       // movingOverList
@@ -295,7 +296,8 @@ async function findSentEstimateList(
             MovingInfo: { movingDate: { lt: today } },
           },
         },
-        select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+        select:
+          estimateWitDateAndhMovingInfoAndcustomerNameAndIsConfirmedSelect,
       }),
     ]);
 
@@ -313,7 +315,7 @@ async function findSentEstimateList(
           MovingInfo: { movingDate: { lt: today } },
         },
       },
-      select: estimateWithMovingInfoAndcustomerNameAndIsConfirmedSelect,
+      select: estimateWitDateAndhMovingInfoAndcustomerNameAndIsConfirmedSelect,
     });
   }
 
@@ -593,7 +595,7 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
     throw err;
   }
 
-  let estimate: {createData: Estimate, notification: NotificationType}
+  let estimate: { createData: Estimate; notification: NotificationType };
 
   if (isAssigned) {
     const estimateCount = await estimateRepository.countData({
@@ -634,9 +636,9 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
           estimateRequestId,
           estimateId: createData.id,
           contents,
-        }
+        },
       });
-      return {createData, notification};
+      return { createData, notification };
     });
   } else {
     const estimateCount = await estimateRepository.countData({
@@ -679,13 +681,16 @@ async function createEstimate(userId: number, reqData: CreateEstimate) {
         },
       });
 
-      return {createData, notification};
+      return { createData, notification };
     });
   }
 
   // 알림 발송 추가
   if (estimate.notification) {
-    sendNotification(String(estimateReq.Customer.User.id), estimate.notification);
+    sendNotification(
+      String(estimateReq.Customer.User.id),
+      estimate.notification
+    );
   }
 
   return {

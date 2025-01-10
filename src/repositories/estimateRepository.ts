@@ -25,30 +25,30 @@ type EstimateOrderByType = Prisma.EstimateOrderByWithRelationInput;
 function createData<T extends EstimateSelectType>({
   data,
   select,
-  tx
+  tx,
 }: {
   data: EstimateUncheckedCreateInputType;
   select: T;
-  tx?: Prisma.TransactionClient
+  tx?: Prisma.TransactionClient;
 }): Promise<EstimatePayload<T>>;
 function createData({
   data,
-  tx
+  tx,
 }: {
   data: EstimateUncheckedCreateInputType;
-  tx?: Prisma.TransactionClient
+  tx?: Prisma.TransactionClient;
 }): Promise<EstimatePayload<undefined>>;
 
 async function createData<T extends EstimateSelectType | undefined>({
   data,
   select,
-  tx
+  tx,
 }: {
   data: EstimateUncheckedCreateInputType;
   select?: T;
-  tx?: Prisma.TransactionClient
+  tx?: Prisma.TransactionClient;
 }) {
-  const db = tx || prisma
+  const db = tx || prisma;
   if (select === undefined) {
     return await db.estimate.create({ data });
   }
@@ -248,9 +248,62 @@ async function updateData<T extends EstimateSelectType | undefined>({
 }
 
 // deleteData
-async function deleteData(where: { id: number }, tx?: Prisma.TransactionClient): Promise<void> {
-  const db = tx || prisma
+async function deleteData(
+  where: { id: number },
+  tx?: Prisma.TransactionClient
+): Promise<void> {
+  const db = tx || prisma;
   await db.estimate.delete({ where });
+}
+
+// groupByData 함수 정의
+export async function groupByData({
+  where,
+  by,
+  _count,
+  _avg,
+  _sum,
+  _min,
+  _max,
+  orderBy,
+  having,
+  take,
+  skip,
+}: {
+  where: Prisma.EstimateWhereInput;
+  by: Prisma.EstimateScalarFieldEnum[];
+  _count?: Prisma.EstimateCountAggregateInputType;
+  _avg?: Prisma.EstimateAvgAggregateInputType;
+  _sum?: Prisma.EstimateSumAggregateInputType;
+  _min?: Prisma.EstimateMinAggregateInputType;
+  _max?: Prisma.EstimateMaxAggregateInputType;
+  orderBy:
+    | Prisma.EstimateOrderByWithAggregationInput
+    | Prisma.EstimateOrderByWithAggregationInput[]; // 필수로 설정
+  having?: Prisma.EstimateScalarWhereWithAggregatesInput;
+  take?: number;
+  skip?: number;
+}) {
+  if (!orderBy) {
+    throw new Error('orderBy is required'); // orderBy가 없으면 에러 발생
+  }
+
+  const groupByOptions = {
+    where,
+    by,
+    ...(!!_count && { _count }),
+    ...(!!_avg && { _avg }),
+    ...(!!_sum && { _sum }),
+    ...(!!_min && { _min }),
+    ...(!!_max && { _max }),
+    orderBy, // 필수로 설정
+    ...(having && { having }),
+    ...(take && { take }),
+    ...(skip && { skip }),
+  };
+
+  // Prisma의 groupBy 메서드 호출
+  return await prisma.estimate.groupBy(groupByOptions); // 타입 오류 해결
 }
 
 export default {
@@ -262,4 +315,5 @@ export default {
   updateData,
   deleteData,
   findManyData,
+  groupByData,
 };

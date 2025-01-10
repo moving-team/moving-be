@@ -80,28 +80,43 @@ export interface EstimateWithMovingInfoAndcustomerName extends Estimate {
 
 export interface EstimateWithMovingInfoAndcustomerNameAndIsConfirmed
   extends EstimateWithMovingInfoAndcustomerName {
+  createdAt: Date;
+  updatedAt: Date;
   EstimateRequest: {
     isConfirmed: boolean;
   };
 }
 
 export interface FindEstimateReqListByMoverType {
+  estimateReqId: number;
+  customerName: string;
   movingType: $Enums.serviceType;
-  movingDate: Date;
+  movingDate: string;
   departure: string;
   arrival: string;
+  comment: string | null;
+  isAssigned: boolean;
+  createAt: string;
+}
+
+export interface FindEstimateReqListByMoverAndisAssignedType {
   id: number;
-  EstimateRequest: {
+  isConfirmed: boolean;
+  isCancelled: boolean;
+  comment: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+  Customer: {
+    User: {
+      name: string;
+    };
+  };
+  MovingInfo: {
+    movingType: $Enums.serviceType;
+    movingDate: Date;
+    departure: string;
+    arrival: string;
     id: number;
-    comment: string | null;
-    isConfirmed: boolean;
-    isCancelled: boolean;
-    createdAt: Date;
-    updatedAt: Date;
-    Customer: CustomerName;
-    AssignedEstimateRequest: {
-      id: number;
-    }[];
   };
 }
 
