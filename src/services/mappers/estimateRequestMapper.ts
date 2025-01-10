@@ -109,24 +109,3 @@ export function findEstimateReqListByMoverAndisAssignedMapper(
     createAt: changeMovingDate(estimateReq.createdAt),
   };
 }
-
-// export function findEstimateReqListByMoverMapper(
-//   movingInfoList: FindEstimateReqListByMoverType
-// ) {
-//   const estimateReq = movingInfoList.EstimateRequest;
-//   const customerName = movingInfoList.EstimateRequest.Customer.User.name;
-//   const AssignedEstimateReq =
-//     movingInfoList.EstimateRequest.AssignedEstimateRequest.length;
-//   const isAssigned = AssignedEstimateReq === 0 ? false : true;
-//   return {
-//     estimateReqId: estimateReq.id,
-//     customerName,
-//     movingType: movingInfoList.movingType,
-//     movingDate: changeMovingDate(movingInfoList.movingDate),
-//     departure: changeRegion(movingInfoList.departure),
-//     arrival: changeRegion(movingInfoList.arrival),
-//     comment: estimateReq.comment,
-//     isAssigned,
-//     createAt: changeMovingDate(estimateReq.createdAt),
-//   };
-// }
