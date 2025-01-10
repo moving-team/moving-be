@@ -440,6 +440,7 @@ async function findEstimateReqListByMover(
   if (isAssigned === 'true' || isAssigned === 'false') {
     validIsAssigned = isAssigned;
   }
+  // 특정 keyWord를 지역에서 찾을 수 있게 변환
   let region = keyWord;
   if (keyWord === '서울특별시' || keyWord === '서울시') {
     region = '서울';
@@ -494,8 +495,6 @@ async function findEstimateReqListByMover(
     throw err;
   }
 
-  console.log(mover.id)
-
   const today = todayUTC();
 
   // keyWord에 따른 소비자 이름 검색
@@ -520,7 +519,7 @@ async function findEstimateReqListByMover(
     };
   } else {
     regionFilter = {
-      OR: [{ departure: keWordFilter }, { arrival: keWordFilter }], 
+      OR: [{ departure: keWordFilter }, { arrival: keWordFilter }],
     };
   }
 
@@ -550,13 +549,11 @@ async function findEstimateReqListByMover(
     return await estimateRepository.groupByData({
       by: ['estimateRequestId'],
       where: {
-        isAssigned, // 견적이 없는 요청은 반환되지 않음
-        NOT: {
-          estimateRequestId: { in: [...moverEstimateIdsList, ...assinedList] },
-        },
+        isAssigned,
         EstimateRequest: {
           AND: [
             {
+              id: { not: { in: [...moverEstimateIdsList, ...assinedList] } }, // 중복 방지를 위한 일부 아이디 제외
               isConfirmed: false,
               isCancelled: false,
               MovingInfo: { movingDate: { gte: today } },
@@ -570,13 +567,25 @@ async function findEstimateReqListByMover(
       orderBy: { estimateRequestId: 'asc' },
       having: {
         estimateRequestId: {
-          _count: { lt: count },
+          _count: { gte: count },
         },
       },
     });
   }
 
-  // 지정견적이 3개 미만인 요청 아이디 조회
+  // 견적 요청 공용 where
+  const estimateReqWhere = [
+    {
+      isConfirmed: false,
+      isCancelled: false,
+      MovingInfo: { movingDate: { gte: today } },
+    },
+    {
+      OR: [{ MovingInfo: regionFilter }, { Customer: customerFilter }],
+    },
+  ];
+
+  // 지정견적이 3개 이상인 요청 아이디 조회
   const isAssignedTrueEstimateReqIds = await getByestimateRequestIds({
     isAssigned: true,
     count: 3,
@@ -587,7 +596,11 @@ async function findEstimateReqListByMover(
     (group) => group.estimateRequestId
   );
 
-  console.log({ isAssignedTrueEstimateReqIdList });
+  // 지정 요청 관련 제외할 아이디
+  const excludeAssignedQuest = [
+    ...isAssignedTrueEstimateReqIdList,
+    ...moverEstimateIdsList,
+  ];
 
   // 지정 요청 리스트 조회
   const [assignedEstimateReqIds, assignedEstimateReqIdsByMovingType] =
@@ -597,7 +610,12 @@ async function findEstimateReqListByMover(
         where: {
           moverId: mover.id,
           isRejected: false,
-          estimateRequestId: { in: isAssignedTrueEstimateReqIdList },
+          EstimateRequest: {
+            AND: [
+              ...estimateReqWhere,
+              { id: { not: { in: excludeAssignedQuest } } },
+            ],
+          },
         },
         select: { estimateRequestId: true },
       }),
@@ -607,8 +625,13 @@ async function findEstimateReqListByMover(
         where: {
           moverId: mover.id,
           isRejected: false,
-          estimateRequestId: { in: isAssignedTrueEstimateReqIdList },
-          EstimateRequest: { MovingInfo: { movingType: { in: movingType } } },
+          EstimateRequest: {
+            AND: [
+              ...estimateReqWhere,
+              { id: { not: { in: excludeAssignedQuest } } },
+              { MovingInfo: { movingType: { in: movingType } } },
+            ],
+          },
         },
         select: { estimateRequestId: true },
       }),
@@ -617,26 +640,29 @@ async function findEstimateReqListByMover(
   // 지정 요청 갯수
   const assign = assignedEstimateReqIdsByMovingType.length;
 
-  console.log({assignedEstimateReqIds})
-  console.log({assignedEstimateReqIdsByMovingType})
-  // 베열화
   const assignedIdList = assignedEstimateReqIds.map(
     (group) => group.estimateRequestId
   );
+
   const assignedEstimateReqIdListByMovingType =
     assignedEstimateReqIdsByMovingType.map((id) => id.estimateRequestId);
+
+  // 일반 요청 관련 제외할 아이디
+  const excludeCommonQuest = [
+    ...assignedEstimateReqIdListByMovingType,
+    ...moverEstimateIdsList,
+  ];
 
   if (validIsAssigned === 'false') {
     // validIsAssigned가 false일 때
 
-    // 일반견적이 5개 미만인 요청 아이디 조회
+    // 일반견적이 5개 이상인 요청 아이디 조회
     const estimateRequestIdGroup = await getByestimateRequestIds({
       isAssigned: false,
       count: 5,
       assinedList: assignedIdList,
     });
 
-    // 배열화
     const commonIdList = estimateRequestIdGroup.map(
       (group) => group.estimateRequestId
     );
@@ -644,8 +670,13 @@ async function findEstimateReqListByMover(
     // movingType에 따른 카운트
     async function totalCount(movingType: $Enums.serviceType[]) {
       return await estimateRequestRepository.countData({
-        id: { in: [...commonIdList, ...assignedIdList] },
-        MovingInfo: { movingType: { in: movingType } },
+        AND: [
+          ...estimateReqWhere,
+          {
+            id: { not: { in: [...commonIdList, ...excludeAssignedQuest] } },
+          },
+          { MovingInfo: { movingType: { in: movingType } } },
+        ],
       });
     }
 
@@ -661,7 +692,13 @@ async function findEstimateReqListByMover(
       const assignedList =
         await estimateRequestRepository.findManyByPaginationData({
           paginationParams: {
-            where: { id: { in: assignedEstimateReqIdListByMovingType } },
+            where: {
+              AND: [
+                ...estimateReqWhere,
+                { id: { in: assignedEstimateReqIdListByMovingType } },
+                { MovingInfo: { movingType: { in: movingType } } },
+              ],
+            },
             orderBy,
             take,
             skip,
@@ -680,7 +717,13 @@ async function findEstimateReqListByMover(
         // 지정 요청 조회
         estimateRequestRepository.findManyByPaginationData({
           paginationParams: {
-            where: { id: { in: assignedEstimateReqIdListByMovingType } },
+            where: {
+              AND: [
+                ...estimateReqWhere,
+                { id: { in: assignedEstimateReqIdListByMovingType } },
+                { MovingInfo: { movingType: { in: movingType } } },
+              ],
+            },
             orderBy,
             take: assignedTake,
             skip,
@@ -692,8 +735,15 @@ async function findEstimateReqListByMover(
         estimateRequestRepository.findManyByPaginationData({
           paginationParams: {
             where: {
-              id: { in: commonIdList },
-              MovingInfo: { movingType: { in: movingType } },
+              AND: [
+                ...estimateReqWhere,
+                {
+                  id: {
+                    not: { in: [...commonIdList, ...excludeCommonQuest] },
+                  },
+                },
+                { MovingInfo: { movingType: { in: movingType } } },
+              ],
             },
             orderBy,
             take: commonTake,
@@ -706,6 +756,7 @@ async function findEstimateReqListByMover(
       const assignedListMapper = assignedList.map((assigned) => {
         return findEstimateReqListByMoverAndisAssignedMapper(assigned, true);
       });
+      
       const commonListMapper = commonList.map((common) => {
         return findEstimateReqListByMoverAndisAssignedMapper(common, false);
       });
@@ -718,8 +769,15 @@ async function findEstimateReqListByMover(
         await estimateRequestRepository.findManyByPaginationData({
           paginationParams: {
             where: {
-              id: { in: commonIdList },
-              MovingInfo: { movingType: { in: movingType } },
+              AND: [
+                ...estimateReqWhere,
+                {
+                  id: {
+                    not: { in: [...commonIdList, ...excludeCommonQuest] },
+                  },
+                },
+                { MovingInfo: { movingType: { in: movingType } } },
+              ],
             },
             orderBy,
             take,
@@ -747,8 +805,11 @@ async function findEstimateReqListByMover(
     // movingType에 따른 카운트
     async function totalCount(movingType: $Enums.serviceType[]) {
       return await estimateRequestRepository.countData({
-        id: { in: assignedIdList },
-        MovingInfo: { movingType: { in: movingType } },
+        AND: [
+          ...estimateReqWhere,
+          { id: { in: assignedIdList } },
+          { MovingInfo: { movingType: { in: movingType } } },
+        ],
       });
     }
 
@@ -761,7 +822,13 @@ async function findEstimateReqListByMover(
     const assignedList =
       await estimateRequestRepository.findManyByPaginationData({
         paginationParams: {
-          where: { id: { in: assignedEstimateReqIdListByMovingType } },
+          where: {
+            AND: [
+              ...estimateReqWhere,
+              { id: { in: assignedEstimateReqIdListByMovingType } },
+              { MovingInfo: { movingType: { in: movingType } } },
+            ],
+          },
           orderBy,
           take,
           skip,
@@ -783,16 +850,6 @@ async function findEstimateReqListByMover(
     };
   }
 }
-
-// movingType에 맞춰서 assign 갯수 반환
-// 키워드에 따른 출발지, 도착지, 소비자 명 조회
-// 지정 견적 먼저 반환
-// 취소 안되고 확정 안된 견적 요청 조회
-// 일반 견적 5개, 지정 견적 3개 이하로 받은것만 조회
-// 이사 날짜 안지난 것만 조회
-// 지정 요청이 있을 시 반려 안한것만 조회
-// 상세 주소로 반환
-// createdAt 추가
 
 export default {
   createEstimateReq,
