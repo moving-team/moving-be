@@ -1,5 +1,6 @@
 import { PrismaClient, Prisma } from '@prisma/client';
 import { seedingMain } from '../createDB/insert/seedingMain';
+import { findLogAndFixMismatchedCustomerIds } from '../createDB/patch/updateEstimateCustomerId';
 
 export const prisma = new PrismaClient();
 
@@ -38,34 +39,6 @@ async function resetTable(tableName: string, startId: number = 1) {
     console.error(`❌ ${tableName} 테이블 데이터 삭제 또는 시퀀스 초기화 중 오류 발생:`, error);
   }
 }
-
-/**
- * 모든 테이블 데이터 초기화 및 시퀀스 리셋 (_prisma_migrations 제외)
- */
-// async function clearAllTables() {
-//   try {
-//     const tables = await prisma.$queryRaw<{ table_name: string }[]>(
-//       Prisma.sql`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';`
-//     );
-
-//     const filteredTables = tables
-//       .map((t) => t.table_name)
-//       .filter((tableName) => tableName !== '_prisma_migrations');
-
-//     if (filteredTables.length === 0) {
-//       console.log('📂 초기화할 테이블이 없습니다.');
-//       return;
-//     }
-
-//     for (const table of filteredTables) {
-//       await resetTable(table);
-//     }
-
-//     console.log('🎉 모든 테이블 데이터와 시퀀스 초기화가 완료되었습니다.');
-//   } catch (error) {
-//     console.error('❌ 모든 테이블 초기화 중 오류 발생:', error);
-//   }
-// }
 
 async function clearAllTables() {
   try {
@@ -140,7 +113,8 @@ async function main() {
       console.log('1. 모든 테이블 데이터 초기화 및 시퀀스 초기화');
       console.log('2. 특정 테이블 데이터 삭제 및 시퀀스 초기화');
       console.log('3. 데이터 전체 순차 시딩 작업');
-      console.log('4. 작업 종료');
+      console.log('4. Estimate에서 CustomerId 업데이트 (일단 사용 ❌❌❌)')
+      console.log('5. 작업 종료');
 
       const choice = await askQuestion('선택: ');
 
@@ -176,9 +150,16 @@ async function main() {
 
         await resetTable(tableName, startId);
       } else if (choice === '3') {
+        const isTest = await askQuestion('Test Mode? (y/n): ') === 'y';
+        console.log('isTest?? : ', isTest);
+
         console.log('🚀 데이터 전체 순차 시딩 중...');
-        await seedingMain();
+        await seedingMain(isTest);
+        
       } else if (choice === '4') {
+        console.log('🚀 업데이트를 시도합니다.');
+        await findLogAndFixMismatchedCustomerIds();
+      } else if (choice === '5') {
         console.log('👋 작업을 종료합니다.');
         break;
       } else {
@@ -194,13 +175,11 @@ async function main() {
   }
 }
 
-// Graceful shutdown on uncaught exceptions
 process.on('uncaughtException', (error) => {
   console.error('🔥 예기치 않은 오류 발생:', error);
   gracefulShutdown('예기치 않은 예외 처리');
 });
 
-// Start the main function only if the file is executed directly
 if (require.main === module) {
   main();
 }
