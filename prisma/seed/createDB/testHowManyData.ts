@@ -67,62 +67,67 @@ async function countEstimateRequests() {
 }
 
 
-async function validateCustomerConnections() {
+
+async function findAndLogMismatchedCustomerIds() {
   try {
-    // 잘 연결된 customerId 확인
-    const validCustomerCount = await prisma.customer.count({
-      where: {
-        EstimateRequest: {
-          some: {
-            Estimate: {
-              some: {}, // Estimate와 연결된 경우
-            },
-          },
-        },
+    // Estimate에서 데이터 가져오기
+    const estimates = await prisma.estimate.findMany({
+      select: {
+        id: true,
+        customerId: true,
+        estimateRequestId: true,
       },
     });
 
-    // 연결에 오류가 있는 customerId 확인
-    const invalidCustomerCount = await prisma.customer.count({
-      where: {
-        OR: [
-          {
-            EstimateRequest: {
-              none: {}, // EstimateRequest가 없는 경우
-            },
-          },
-          {
-            EstimateRequest: {
-              some: {
-                Estimate: {
-                  none: {}, // EstimateRequest가 있지만 Estimate가 없는 경우
-                },
-              },
-            },
-          },
-        ],
+    // EstimateRequest에서 데이터 가져오기
+    const estimateRequests = await prisma.estimateRequest.findMany({
+      select: {
+        id: true,
+        customerId: true,
       },
     });
 
-    // 결과 출력
-    console.log(`잘 연결된 customerId 갯수: ${validCustomerCount}`);
-    console.log(`연결에 오류가 있는 customerId 갯수: ${invalidCustomerCount}`);
+    // EstimateRequest 데이터를 Map으로 변환 (빠른 검색을 위해)
+    const estimateRequestMap = new Map(
+      estimateRequests.map((er) => [er.id, er.customerId])
+    );
 
-    return { validCustomerCount, invalidCustomerCount };
+    // 불일치 데이터 확인 및 로깅
+    estimates.forEach((estimate) => {
+      const requestCustomerId = estimateRequestMap.get(estimate.estimateRequestId);
+      if (requestCustomerId !== estimate.customerId) {
+        console.log(`불일치 발견:`);
+        console.log(`Estimate ID: ${estimate.id}`);
+        console.log(`Estimate Customer ID: ${estimate.customerId}`);
+        console.log(`EstimateRequest ID: ${estimate.estimateRequestId}`);
+        console.log(`EstimateRequest Customer ID: ${requestCustomerId}`);
+      }
+    });
+
+    console.log("불일치 확인 완료.");
   } catch (error) {
-    console.error("연결 검증 중 에러 발생:", error);
+    console.error("데이터 검증 중 에러 발생:", error);
     throw error;
   } finally {
+    // Prisma Client 연결 종료
     await prisma.$disconnect();
   }
 }
 
 // 함수 호출
-validateCustomerConnections().then(({ validCustomerCount, invalidCustomerCount }) => {
-  console.log(`결과: 유효한 연결 = ${validCustomerCount}, 오류가 있는 연결 = ${invalidCustomerCount}`);
-}).catch(error => {
+findAndLogMismatchedCustomerIds().then(() => {
+  console.log("실행 완료");
+}).catch((error) => {
   console.error("실행 중 에러 발생:", error);
 });
+
+
+// 함수 호출
+// validateCustomerConnections().then(({ validCustomerCount, invalidCustomerCount }) => {
+//   console.log(`결과: 유효한 연결 = ${validCustomerCount}, 오류가 있는 연결 = ${invalidCustomerCount}`);
+// }).catch(error => {
+//   console.error("실행 중 에러 발생:", error);
+// });
 
 
 
