@@ -81,7 +81,7 @@ export async function createReview(input: CreateReviewInput) {
 export async function getMyReviews(customerId: number, skip: number, take: number) {
   // 사용자 작성 리뷰 목록 조회
   const myReviews = await reviewRepository.findManyByPaginationData({
-    paginationParams: { skip, take, where: { customerId } },
+    paginationParams: { skip, take, where: { customerId }, orderBy: { createdAt: 'desc' } },
     select: myReviewSelect,
   });
 
