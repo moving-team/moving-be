@@ -232,7 +232,11 @@ async function generateEstimates(): Promise<void> {
     });
 
     const movers = await prisma.mover.findMany();
-    const assignedEstimateRequests = await prisma.assignedEstimateRequest.findMany();
+    const assignedEstimateRequests = await prisma.assignedEstimateRequest.findMany({
+      where: {
+        isRejected: false,
+      }
+    });
 
     if (estimateRequests.length === 0 || movers.length === 0) {
       throw new Error('No EstimateRequest or Mover data found in the database.');
