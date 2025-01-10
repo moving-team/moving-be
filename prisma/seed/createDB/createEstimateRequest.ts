@@ -91,7 +91,7 @@ async function generateEstimateRequest(): Promise<void> {
       const isConfirmed = isFuture
         ? Math.random() <= 0.2 // 확률적 true
         : Math.random() <= 0.97; // 확률적 true
-      const isCancelled = !isConfirmed && Math.random() <= 0.1;
+      const isCancelled = !isConfirmed && Math.random() <= 0.2;
 
       // 새로운 EstimateRequest 생성
       estimateRequests.push({
