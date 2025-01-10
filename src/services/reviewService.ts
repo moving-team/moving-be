@@ -7,7 +7,7 @@ import { reviewListSelect, myReviewSelect } from './selects/reviewSelect';
 export async function getReviews(moverId: number, skip: number, take: number) {
   // 리뷰 목록 가져오기
   const reviews = await reviewRepository.findManyByPaginationData({
-    paginationParams: { skip, take, where: { moverId } },
+    paginationParams: { skip, take, where: { moverId }, orderBy: { createdAt: 'desc' } },
     select: reviewListSelect,
   });
 
