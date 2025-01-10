@@ -3,10 +3,10 @@ import * as fs from 'fs/promises';
 import * as path from 'path';
 import pLimit from 'p-limit';
 
-// const prisma = new PrismaClient();
+import { CONCURRENCY_LIMIT } from './seedingMain';
 
 const BATCH_SIZE = 100; // 배치 크기
-const CONCURRENCY_LIMIT = 10; // 비동기 큐 최대 동시 실행 작업 수
+// const CONCURRENCY_LIMIT = 10; // 비동기 큐 최대 동시 실행 작업 수
 const FAILED_DATA_DIR = path.join(__dirname, '../faildata'); // 실패한 데이터 저장 디렉터리
 const FAILED_DATA_FILE = path.join(FAILED_DATA_DIR, 'failed_estimate_requests.json'); // 실패한 데이터 저장 파일 경로
 

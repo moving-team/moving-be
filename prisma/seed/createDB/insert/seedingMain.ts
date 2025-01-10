@@ -7,8 +7,9 @@ import { seedEstimates } from './estimateSeed';
 import { seedReviews } from './reviewSeed';
 import { seedFavorites } from './favoriteSeed';
 import { setConfirmationCounts } from './confirmationCountSet';
-
 // export const prisma = new PrismaClient();
+
+export const CONCURRENCY_LIMIT = 1; // 비동기 큐 최대 동시 실행 작업 수
 
 export async function seedingMain() {
   console.log('🚀 모든 시딩 작업을 순차적으로 실행합니다.\n');
