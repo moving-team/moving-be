@@ -102,7 +102,7 @@ const getMoverList = async ({
       let isConfirmed = false;
       if (id) {
         const customerData = await customerRepository.findFirstData({
-          where: { id: id },
+          where: { userId: id },
         });
         const estimateReqData = await estimateRequestRepository.findFirstData({
           where: { customerId: customerData?.id },
