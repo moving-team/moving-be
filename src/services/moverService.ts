@@ -353,6 +353,8 @@ const patchMoverProfile = async (userId: number, updateData: any) => {
   if (!moverData) {
     throw new Error('프로필 생성하지 않음');
   }
+  console.log({moverData: moverData.nickname})
+  console.log({updateData: updateData.nickname})
   if (moverData.nickname === updateData.nickname) {
     console.log('test1')
     return {
