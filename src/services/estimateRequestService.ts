@@ -208,7 +208,7 @@ async function deleteEstimateReq(userId: number, estimateRequestId: number) {
         const contents = createNotificationContents({
           type: 'cancel',
           customerName: user.name,
-          movingType: deleteEstimateReq.estimateReq.MovingInfo.movingType,
+          movingType: estimateReq.MovingInfo.movingType,
         }) as string;
 
         // 알람 생성
@@ -666,6 +666,15 @@ async function findEstimateReqListByMover(
     const commonIdList = estimateRequestIdGroup.map(
       (group) => group.estimateRequestId
     );
+    console.log({assignedIdList})
+    console.log({commonIdList})
+    console.log({excludeAssignedQuest})
+
+    let excludeTotalCount = commonIdList
+
+    // if(assign >= 1) {
+    //   excludeTotalCount = [...commonIdList, ...]
+    // }
 
     // movingType에 따른 카운트
     async function totalCount(movingType: $Enums.serviceType[]) {
