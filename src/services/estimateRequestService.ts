@@ -684,9 +684,6 @@ async function findEstimateReqListByMover(
     const commonIdList = estimateRequestIdGroup.map(
       (group) => group.estimateRequestId
     );
-    console.log({ assignedIdList });
-    console.log({ commonIdList });
-    console.log({ excludeAssignedQuest });
 
     let excludeTotalCount = commonIdList;
 
