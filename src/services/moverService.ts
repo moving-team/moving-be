@@ -114,7 +114,7 @@ const getMoverList = async ({
           isAssigned = estimateReqData
             ? !!(await assignedEstimateRequestRepository.findFirstData({
                 where: {
-                  moverId: mover.id,
+                  moverId: mover.userId,
                   estimateRequestId: estimateReqData.id,
                 },
               }))
