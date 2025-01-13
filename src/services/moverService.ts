@@ -110,16 +110,21 @@ const getMoverList = async ({
         if (estimateReqData?.isConfirmed === true) {
           isConfirmed = true;
         }
-        if (isConfirmed) {
-          isAssigned = estimateReqData
-            ? !!(await assignedEstimateRequestRepository.findFirstData({
-                where: {
-                  moverId: mover.userId,
-                  estimateRequestId: estimateReqData.id,
-                },
-              }))
-            : false;
-        }
+
+        const testData = await assignedEstimateRequestRepository.findFirstData({
+          where: {
+            moverId: mover.id,
+            estimateRequestId: estimateReqData?.id,
+          },
+        });
+        isAssigned = estimateReqData
+          ? !!(await assignedEstimateRequestRepository.findFirstData({
+              where: {
+                moverId: mover.id,
+                estimateRequestId: estimateReqData.id,
+              },
+            }))
+          : false;
         isFavorite = !!(await favoriteRepository.findFirstData({
           where: { moverId: mover?.id, customerId: customerData?.id },
         }));
