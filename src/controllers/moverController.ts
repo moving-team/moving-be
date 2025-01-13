@@ -107,11 +107,15 @@ const patchMoverProfileController = async (
       profileImage: profileImage,
       career: careerNumber,
     };
-    await moverService.patchMoverProfile(id, updateData);
+    const data = await moverService.patchMoverProfile(id, updateData);
+    if (data?.type === 'nickname') {
+      res.status(400).json(data);
+      return;
+    }
+    res.status(200).json({ message: '수정 완료' });
   } catch (err) {
     next(err);
   }
-  res.status(200).json({ message: '수정 완료' });
 };
 
 const patchMoverInfoController = async (

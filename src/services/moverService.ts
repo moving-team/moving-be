@@ -114,7 +114,7 @@ const getMoverList = async ({
           isAssigned = estimateReqData
             ? !!(await assignedEstimateRequestRepository.findFirstData({
                 where: {
-                  moverId: mover.id,
+                  moverId: mover.userId,
                   estimateRequestId: estimateReqData.id,
                 },
               }))
@@ -348,12 +348,21 @@ const patchMoverProfile = async (userId: number, updateData: any) => {
   if (!moverData) {
     throw new Error('프로필 생성하지 않음');
   }
+  if (moverData.nickname === updateData.nickname) {
+    return {
+      type: 'nickname',
+      message: '닉네임 중복입니다.',
+    };
+  }
+
   const patchData = {
     profileImage: updateData.profileImage,
     nickname: updateData.nickname,
     summary: updateData.summary,
     description: updateData.description,
     career: updateData.career,
+    serviceType: updateData.serviceType,
+    serviceRegion: updateData.serviceRegion,
   };
   await moverRepository.updateData({
     where: { id: moverData.id },
