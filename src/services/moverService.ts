@@ -348,6 +348,13 @@ const patchMoverProfile = async (userId: number, updateData: any) => {
   if (!moverData) {
     throw new Error('프로필 생성하지 않음');
   }
+  if (moverData.nickname === updateData.nickname) {
+    return {
+      type: 'nickname',
+      message: '닉네임 중복입니다.',
+    };
+  }
+
   const patchData = {
     profileImage: updateData.profileImage,
     nickname: updateData.nickname,
