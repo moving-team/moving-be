@@ -106,6 +106,6 @@ export function findEstimateReqListByMoverAndisAssignedMapper(
     arrival: MovingInfo.arrival,
     comment: rest.comment,
     isAssigned,
-    createAt: changeMovingDate(estimateReq.createdAt),
+    updatedAt: estimateReq.updatedAt,
   };
 }

@@ -75,7 +75,7 @@ export function findConfirmedEstimateListMapper(
     departure: changeRegion(movingInfo.departure),
     arrival: changeRegion(movingInfo.arrival),
     price: estimate.price,
-    updatedAt: changeMovingDate(estimate.updatedAt),
+    updatedAt: estimate.updatedAt,
   };
 }
 
@@ -111,7 +111,7 @@ export function findSentEstimateListMapper(
     departure: changeRegion(movingInfo.departure),
     arrival: changeRegion(movingInfo.arrival),
     price: estimate.price,
-    createdAt: changeMovingDate(estimate.createdAt),
+    updatedAt: estimate.updatedAt,
   };
 }
 
