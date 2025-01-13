@@ -22,7 +22,7 @@
 
 ### **기술 스택**
 - **Express, Prisma**
-- **AWS, PostgreSQL**
+- **AWS EC2, S3, PostgreSQL**
 
 ### 개발 기능 요약
 
@@ -36,3 +36,25 @@
     - moving-be/prisma/seed/helper/helperDB.ts
   - 리뷰 관련 API 기능 구현
   - Google 로그인 기능 구현
+ 
+
+### **김민수**
+#### 유저 관리 및 jwt 토큰 관리
+  - user
+    - 회원가입
+    - 로그인
+    - 로그아웃
+    - 유저조회
+  - Oauth
+    - 카카오 로그인
+    - 네이버 로그인
+  - CUSTOMER
+    - 소비자 프로필 조회
+    - 소비자 프로필 수정
+    - 소비자 기본 정보 수정
+  - MOVER
+    - 기사님 프로필 조회
+    - 기사님 프로필 수정
+    - 기사님 기본 정보 수정
+    - 기사님 리스트 조회
+    - 기사님 프로필 상세 조회
