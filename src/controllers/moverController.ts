@@ -109,7 +109,8 @@ const patchMoverProfileController = async (
     };
     const data = await moverService.patchMoverProfile(id, updateData);
     if (data?.type === 'nickname') {
-      return res.status(400).json(data);
+      res.status(400).json(data);
+      return;
     }
     res.status(200).json({ message: '수정 완료' });
   } catch (err) {
