@@ -96,7 +96,7 @@ export interface FindEstimateReqListByMoverType {
   arrival: string;
   comment: string | null;
   isAssigned: boolean;
-  createAt: string;
+  updatedAt: Date;
 }
 
 export interface FindEstimateReqListByMoverAndisAssignedType {
