@@ -58,3 +58,115 @@
     - 기사님 기본 정보 수정
     - 기사님 리스트 조회
     - 기사님 프로필 상세 조회
+   
+<hr>
+
+#### 폴더 구조
+
+<details>
+<summary>폴더 구조 보기</summary>
+
+<pre> 
+📦moving-be
+ ┣ 
+ ┣ 📂prisma
+ ┃ ┗ 📜schema.prisma
+ ┣ 📂src
+ ┃ ┣ 📂config
+ ┃ ┃ ┣ 📜env.ts
+ ┃ ┃ ┗ 📜prisma.ts
+ ┃ ┣ 📂contents
+ ┃ ┃ ┗ 📜region.ts
+ ┃ ┣ 📂controllers
+ ┃ ┃ ┣ 📜assignedEstimateRequestController.ts
+ ┃ ┃ ┣ 📜controller.ts
+ ┃ ┃ ┣ 📜customerController.ts
+ ┃ ┃ ┣ 📜estimateController.ts
+ ┃ ┃ ┣ 📜estimateRequestController.ts
+ ┃ ┃ ┣ 📜favoriteController.ts
+ ┃ ┃ ┣ 📜moverController.ts
+ ┃ ┃ ┣ 📜notificationController.ts
+ ┃ ┃ ┣ 📜reviewController.ts
+ ┃ ┃ ┗ 📜userController.ts
+ ┃ ┣ 📂middlewares
+ ┃ ┃ ┣ 📜authMiddleware.ts
+ ┃ ┃ ┣ 📜errHandler.ts
+ ┃ ┃ ┣ 📜logger.ts
+ ┃ ┃ ┣ 📜uploadMiddleware.ts
+ ┃ ┃ ┗ 📜validateData.ts
+ ┃ ┣ 📂repositories
+ ┃ ┃ ┣ 📜assignedEstimateRequestRepository.ts
+ ┃ ┃ ┣ 📜customerRepository.ts
+ ┃ ┃ ┣ 📜estimateRepository.ts
+ ┃ ┃ ┣ 📜estimateRequestRepository.ts
+ ┃ ┃ ┣ 📜favoriteRepository.ts
+ ┃ ┃ ┣ 📜moverRepository.ts
+ ┃ ┃ ┣ 📜movingInfoRepository.ts
+ ┃ ┃ ┣ 📜notificationRepository.ts
+ ┃ ┃ ┣ 📜reviewRepository.ts
+ ┃ ┃ ┗ 📜userRepository.ts
+ ┃ ┣ 📂routes
+ ┃ ┃ ┣ 📜assignedEstimateRequestRouter.ts
+ ┃ ┃ ┣ 📜customerRouter.ts
+ ┃ ┃ ┣ 📜estimateRequestRoute.ts
+ ┃ ┃ ┣ 📜estimateRouter.ts
+ ┃ ┃ ┣ 📜favoriteRouter.ts
+ ┃ ┃ ┣ 📜moverRouter.ts
+ ┃ ┃ ┣ 📜notificationRoutes.ts
+ ┃ ┃ ┣ 📜reviewRouter.ts
+ ┃ ┃ ┣ 📜route.ts
+ ┃ ┃ ┗ 📜userRouter.ts
+ ┃ ┣ 📂services
+ ┃ ┃ ┣ 📂mappers
+ ┃ ┃ ┃ ┣ 📜assignedEstimateRequestMapper.ts
+ ┃ ┃ ┃ ┣ 📜estimateMapper.ts
+ ┃ ┃ ┃ ┣ 📜estimateRequestMapper.ts
+ ┃ ┃ ┃ ┗ 📜mapper.ts
+ ┃ ┃ ┣ 📂selects
+ ┃ ┃ ┃ ┣ 📜assignedEstimateRequestSelect.ts
+ ┃ ┃ ┃ ┣ 📜customerSelect.ts
+ ┃ ┃ ┃ ┣ 📜estimateRequsetSelect.ts
+ ┃ ┃ ┃ ┣ 📜estimateSelect.ts
+ ┃ ┃ ┃ ┣ 📜moverSelect.ts
+ ┃ ┃ ┃ ┣ 📜movingInfoSelect.ts
+ ┃ ┃ ┃ ┣ 📜reviewSelect.ts
+ ┃ ┃ ┃ ┗ 📜userSelect.ts
+ ┃ ┃ ┣ 📜assignedEstimateRequestService.ts
+ ┃ ┃ ┣ 📜cronService.ts
+ ┃ ┃ ┣ 📜customerService.ts
+ ┃ ┃ ┣ 📜estimateRequestService.ts
+ ┃ ┃ ┣ 📜estimateService.ts
+ ┃ ┃ ┣ 📜favoriteService.ts
+ ┃ ┃ ┣ 📜moverService.ts
+ ┃ ┃ ┣ 📜notificationService.ts
+ ┃ ┃ ┣ 📜reviewService.ts
+ ┃ ┃ ┣ 📜service.ts
+ ┃ ┃ ┗ 📜userService.ts
+ ┃ ┣ 📂structs
+ ┃ ┃ ┣ 📜estimate-struct.ts
+ ┃ ┃ ┗ 📜estimateRequest-struct.ts
+ ┃ ┣ 📂types
+ ┃ ┃ ┣ 📜global.d.ts
+ ┃ ┃ ┣ 📜repositoryType.ts
+ ┃ ┃ ┗ 📜serviceType.ts
+ ┃ ┣ 📂utils
+ ┃ ┃ ┣ 📜createNotificationContents.ts
+ ┃ ┃ ┣ 📜dateUtil.ts
+ ┃ ┃ ┣ 📜google.ts
+ ┃ ┃ ┣ 📜kakao.ts
+ ┃ ┃ ┣ 📜mapperUtil.ts
+ ┃ ┃ ┣ 📜moverUtile.ts
+ ┃ ┃ ┣ 📜naver.ts
+ ┃ ┃ ┗ 📜reviewUtil.ts
+ ┃ ┗ 📜app.ts
+ ┣ 📜.env
+ ┣ 📜.gitignore
+ ┣ 📜.prettierrc
+ ┣ 📜README.md
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┣ 📜test.http
+ ┗ 📜tsconfig.json
+
+  </pre>
+</details>
