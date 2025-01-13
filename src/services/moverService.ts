@@ -356,14 +356,14 @@ const patchMoverProfile = async (userId: number, updateData: any) => {
   const nicknameCheck = await moverRepository.findFirstData({
     where: { nickname: updateData.nickname },
   });
-  if (moverData.nickname === updateData.nickname) {
-    return {
-      type: 'nickname',
-      message: '닉네임 중복입니다.',
-    };
-  }
+  // if (moverData.nickname === updateData.nickname) {
+  //   return {
+  //     type: 'nickname',
+  //     message: '닉네임 중복입니다.',
+  //   };
+  // }
 
-  if (nicknameCheck) {
+  if (moverData.nickname !== updateData.nickname && nicknameCheck) {
     return {
       type: 'nickname',
       message: '닉네임 중복입니다.',
