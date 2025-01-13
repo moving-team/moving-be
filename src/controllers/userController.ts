@@ -145,7 +145,7 @@ const naverCallbackController = async (
             ...data.cookieOptions.refreshToken,
             sameSite: 'none',
           });
-          res.redirect('http://localhost:3000/');
+          res.redirect('https://moving-fe-teal.vercel.app');
         }
       } else {
         const user = await userService.SNSRegister(
@@ -167,7 +167,7 @@ const naverCallbackController = async (
             ...data.cookieOptions.refreshToken,
             sameSite: 'none',
           });
-          res.redirect('http://localhost:3000/');
+          res.redirect('https://moving-fe-teal.vercel.app');
         }
       }
     } catch (err) {
@@ -214,7 +214,7 @@ const kakaoCallbackController = async (
           ...data.cookieOptions.refreshToken,
           sameSite: 'none',
         });
-        res.redirect('http://localhost:3000/');
+        res.redirect('https://moving-fe-teal.vercel.app');
       } else {
         res.status(404).json(data);
       }
@@ -235,7 +235,7 @@ const kakaoCallbackController = async (
           ...data.cookieOptions.refreshToken,
           sameSite: 'none',
         });
-        res.redirect('http://localhost:3000/');
+        res.redirect('https://moving-fe-teal.vercel.app');
       }
     }
   } catch (err) {
@@ -263,7 +263,7 @@ export const googleCallbackController = async (
 ) => {
   // 로깅
   // console.log('[Google Login] Controller: Handling Google Callback');
-  
+
   const { code, state } = req.query;
 
   if (!state) {
@@ -286,7 +286,7 @@ export const googleCallbackController = async (
             ...data.cookieOptions.refreshToken,
             sameSite: 'none',
           });
-          res.redirect('http://localhost:3000/');
+          res.redirect('https://moving-fe-teal.vercel.app');
         } else {
           res.status(404).json(data);
         }
@@ -310,7 +310,7 @@ export const googleCallbackController = async (
             ...data.cookieOptions.refreshToken,
             sameSite: 'none',
           });
-          res.redirect('http://localhost:3000/');
+          res.redirect('https://moving-fe-teal.vercel.app');
         }
       }
     } catch (err) {
