@@ -110,16 +110,21 @@ const getMoverList = async ({
         if (estimateReqData?.isConfirmed === true) {
           isConfirmed = true;
         }
-        if (isConfirmed) {
-          isAssigned = estimateReqData
-            ? !!(await assignedEstimateRequestRepository.findFirstData({
-                where: {
-                  moverId: mover.userId,
-                  estimateRequestId: estimateReqData.id,
-                },
-              }))
-            : false;
-        }
+
+        const testData = await assignedEstimateRequestRepository.findFirstData({
+          where: {
+            moverId: mover.id,
+            estimateRequestId: estimateReqData?.id,
+          },
+        });
+        isAssigned = estimateReqData
+          ? !!(await assignedEstimateRequestRepository.findFirstData({
+              where: {
+                moverId: mover.id,
+                estimateRequestId: estimateReqData.id,
+              },
+            }))
+          : false;
         isFavorite = !!(await favoriteRepository.findFirstData({
           where: { moverId: mover?.id, customerId: customerData?.id },
         }));
@@ -348,6 +353,9 @@ const patchMoverProfile = async (userId: number, updateData: any) => {
   if (!moverData) {
     throw new Error('프로필 생성하지 않음');
   }
+  const nicknameCheck = await moverRepository.findFirstData({
+    where: { nickname: updateData.nickname },
+  });
   if (moverData.nickname === updateData.nickname) {
     return {
       type: 'nickname',
@@ -355,6 +363,12 @@ const patchMoverProfile = async (userId: number, updateData: any) => {
     };
   }
 
+  if (nicknameCheck) {
+    return {
+      type: 'nickname',
+      message: '닉네임 중복입니다.',
+    };
+  }
   const patchData = {
     profileImage: updateData.profileImage,
     nickname: updateData.nickname,
