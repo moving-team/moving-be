@@ -603,39 +603,54 @@ async function findEstimateReqListByMover(
   ];
 
   // 지정 요청 리스트 조회
-  const [assignedEstimateReqIds, assignedEstimateReqIdsByMovingType] =
-    await Promise.all([
-      // 그냥 조회
-      assignedEstimateRequestRepository.findManyData({
-        where: {
-          moverId: mover.id,
-          isRejected: false,
-          EstimateRequest: {
-            AND: [
-              ...estimateReqWhere,
-              { id: { not: { in: excludeAssignedQuest } } },
-            ],
-          },
+  const [
+    assignedEstimateReqIds,
+    assignedEstimateReqIdsByMovingType,
+    assignedEstimateReqIdsByIsRejected,
+  ] = await Promise.all([
+    // 그냥 조회
+    assignedEstimateRequestRepository.findManyData({
+      where: {
+        moverId: mover.id,
+        isRejected: false,
+        EstimateRequest: {
+          AND: [
+            ...estimateReqWhere,
+            { id: { not: { in: excludeAssignedQuest } } },
+          ],
         },
-        select: { estimateRequestId: true },
-      }),
+      },
+      select: { estimateRequestId: true },
+    }),
 
-      // query에 따른 조회
-      assignedEstimateRequestRepository.findManyData({
-        where: {
-          moverId: mover.id,
-          isRejected: false,
-          EstimateRequest: {
-            AND: [
-              ...estimateReqWhere,
-              { id: { not: { in: excludeAssignedQuest } } },
-              { MovingInfo: { movingType: { in: movingType } } },
-            ],
-          },
+    // query에 따른 조회
+    assignedEstimateRequestRepository.findManyData({
+      where: {
+        moverId: mover.id,
+        isRejected: false,
+        EstimateRequest: {
+          AND: [
+            ...estimateReqWhere,
+            { id: { not: { in: excludeAssignedQuest } } },
+            { MovingInfo: { movingType: { in: movingType } } },
+          ],
         },
-        select: { estimateRequestId: true },
-      }),
-    ]);
+      },
+      select: { estimateRequestId: true },
+    }),
+
+    // 반려한 지정 요청 조회
+    assignedEstimateRequestRepository.findManyData({
+      where: {
+        moverId: mover.id,
+        isRejected: true,
+        EstimateRequest: {
+          AND: estimateReqWhere,
+        },
+      },
+      select: { estimateRequestId: true },
+    }),
+  ]);
 
   // 지정 요청 갯수
   const assign = assignedEstimateReqIdsByMovingType.length;
@@ -646,6 +661,9 @@ async function findEstimateReqListByMover(
 
   const assignedEstimateReqIdListByMovingType =
     assignedEstimateReqIdsByMovingType.map((id) => id.estimateRequestId);
+
+  const assignedEstimateReqIdListByIsRejected =
+    assignedEstimateReqIdsByIsRejected.map((id) => id.estimateRequestId);
 
   // 일반 요청 관련 제외할 아이디
   const excludeCommonQuest = [
@@ -666,15 +684,17 @@ async function findEstimateReqListByMover(
     const commonIdList = estimateRequestIdGroup.map(
       (group) => group.estimateRequestId
     );
-    console.log({assignedIdList})
-    console.log({commonIdList})
-    console.log({excludeAssignedQuest})
 
-    let excludeTotalCount = commonIdList
+    let excludeTotalCount = commonIdList;
 
-    // if(assign >= 1) {
-    //   excludeTotalCount = [...commonIdList, ...]
-    // }
+    if (assign >= 1) {
+      excludeTotalCount = [
+        ...commonIdList,
+        ...assignedEstimateReqIdListByMovingType, // 3개 이상의 지정 견적이 있는거 제외
+        ...assignedEstimateReqIdListByIsRejected, // 반려한 지정 요청 제외
+        ...moverEstimateIdsList,
+      ];
+    }
 
     // movingType에 따른 카운트
     async function totalCount(movingType: $Enums.serviceType[]) {
@@ -682,7 +702,7 @@ async function findEstimateReqListByMover(
         AND: [
           ...estimateReqWhere,
           {
-            id: { not: { in: [...commonIdList, ...excludeAssignedQuest] } },
+            id: { not: { in: excludeTotalCount } },
           },
           { MovingInfo: { movingType: { in: movingType } } },
         ],
@@ -765,7 +785,7 @@ async function findEstimateReqListByMover(
       const assignedListMapper = assignedList.map((assigned) => {
         return findEstimateReqListByMoverAndisAssignedMapper(assigned, true);
       });
-      
+
       const commonListMapper = commonList.map((common) => {
         return findEstimateReqListByMoverAndisAssignedMapper(common, false);
       });
