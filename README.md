@@ -1,8 +1,4 @@
-# 🛻 MOVING 
-
-
-
-## **FullStack 1기 3팀 BE**
+# 🛻 MOVING - **FullStack 1기 3팀**
 
 팀 노션 : [melodious-hair-848.notion.site](https://melodious-hair-848.notion.site/) 
 
