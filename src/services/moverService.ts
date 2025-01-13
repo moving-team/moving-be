@@ -354,6 +354,8 @@ const patchMoverProfile = async (userId: number, updateData: any) => {
     summary: updateData.summary,
     description: updateData.description,
     career: updateData.career,
+    serviceType: updateData.serviceType,
+    serviceRegion: updateData.serviceRegion,
   };
   await moverRepository.updateData({
     where: { id: moverData.id },
