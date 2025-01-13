@@ -142,7 +142,7 @@ async function createAssigned(userId: number, moverId: number) {
     sendNotification(String(mover.User.id), result);
   }
 
-  return { isAssignedEstimate: 'true' };
+  return { code: 201, isAssignedEstimate: 'true' };
 }
 
 // 기사 - 지정 견적 반려 API
