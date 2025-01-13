@@ -353,17 +353,22 @@ const patchMoverProfile = async (userId: number, updateData: any) => {
   if (!moverData) {
     throw new Error('프로필 생성하지 않음');
   }
-  console.log({moverData: moverData.nickname})
-  console.log({updateData: updateData.nickname})
+  const nicknameCheck = await moverRepository.findFirstData({
+    where: { nickname: updateData.nickname },
+  });
   if (moverData.nickname === updateData.nickname) {
-    console.log('test1')
     return {
       type: 'nickname',
       message: '닉네임 중복입니다.',
     };
   }
 
-  console.log('test2')
+  if (nicknameCheck) {
+    return {
+      type: 'nickname',
+      message: '닉네임 중복입니다.',
+    };
+  }
   const patchData = {
     profileImage: updateData.profileImage,
     nickname: updateData.nickname,
